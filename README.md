@@ -1,4 +1,15 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TimeAlly React
+The portal is organised in following routes:
+- `/` - this route should display dashboard
+- `/wallet` - this should show user wallet page
+- `/stakings` - this should show all stakings listed
+- `/stakings/:id` - this should show staking in detail and functionality
+- `/loan` - this should show all loans
+- `/loans/:id` - this should show loan in detail, repay amount and time remaining
+- `/transactions` - this should show all timeally transactions related to user
+- `/transactions/stakings` - this should show only staking transactions history
+- `/transactions/withdrawls` - this should show only withdrawls transactions history
+- `/insurance` - this should show comming soon
 
 ## Available Scripts
 
