@@ -1,18 +1,19 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { Container, Button } from 'react-bootstrap';
 
-import AllTransactions from './AllTransactions';
+const Transactions = props => {
 
-export default () => {
+
+
   return (
-    <div>
-      <Route path ="/transactions" exact component={AllTransactions} />
-      <Route path ="/transactions/stakings" exact render={
-        () => <div>List of staking transactions</div>
-      } />
-      <Route path ="/trasnactions/withdrawls" exact render={
-        () => <div>List of withdrawl transactions</div>
-      } />
-    </div>
+    <Container>
+      List of all transactions
+      <Button variant="outline-primary" onClick={() => props.history.push('/transactions/stakings')}>View only stakings</Button>
+      <Button variant="outline-primary" onClick={() => props.history.push('/transactions/withdrawls')}>View only withdrawls</Button>
+    </Container>
   );
-}
+};
+
+export default connect(state => {return{store: state}})(withRouter(Transactions));

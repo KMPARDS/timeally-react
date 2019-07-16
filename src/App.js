@@ -5,6 +5,8 @@ import { connect } from 'react-redux'; // this is for accessing the store\
 import Navbar from './containers/Navbar/Navbar';
 import Dashboard from './containers/Dashboard/Dashboard';
 import Transactions from './containers/Transactions/Transactions';
+import StakingTransactions from './containers/Transactions/Stakings.js';
+import WithdrawlTransactions from './containers/Transactions/Withdrawls.js';
 import Wallet from './containers/Wallet/Wallet';
 
 import logo from './logo.svg';
@@ -14,11 +16,22 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar style={{margin: '0 0 10px'}} />
+        <Navbar />
         <Switch>
           <Route path="/" exact component={Dashboard} />
-          <Route path="/transactions" exact component={Transactions} />
           <Route path="/wallet" exact component={Wallet} />
+          <Route path="/stakings" exact />
+          <Route path="/stakings/:id" exact />
+          <Route path="/loans" exact />
+          <Route path="/loans/:id" exact />
+          <Route path="/transactions" exact component={Transactions} />
+          <Route path="/transactions/stakings" exact component={StakingTransactions} />
+          <Route path="/trasnactions/withdrawls" exact render={
+            () => <div>List of withdrawl transactions</div>
+          } />
+          <Route path="/insurance" exact render={
+            () => <div>Coming soon</div>
+          } />
         </Switch>
       </div>
     </BrowserRouter>
