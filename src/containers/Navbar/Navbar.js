@@ -36,7 +36,7 @@ class NavbarComponent extends Component {
           </Navbar.Brand>
         </Link>
 
-        <Nav.Link style={{color: 'white'}} onClick={() => this.props.history.push('/')}>Dashboard</Nav.Link>
+        <Nav.Link style={{color: 'white'}} onClick={() => this.props.history.push('/dashboard')}>Dashboard</Nav.Link>
         <Nav.Link style={{color: 'white'}} onClick={() => this.props.history.push('/transactions')}>Transactions</Nav.Link>
 
         <Navbar.Toggle />

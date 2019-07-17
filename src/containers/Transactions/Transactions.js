@@ -8,11 +8,24 @@ const Transactions = props => {
 
 
   return (
-    <Container>
-      List of all transactions
-      <Button variant="outline-primary" onClick={() => props.history.push('/transactions/stakings')}>View only stakings</Button>
-      <Button variant="outline-primary" onClick={() => props.history.push('/transactions/withdrawls')}>View only withdrawls</Button>
-    </Container>
+    <div>
+      <div style={{textAlign: 'right', margin: '10px'}}>
+        <Button
+          style={{margin: '0 10px'}}
+          variant="outline-primary"
+          onClick={() => props.history.push('/transactions/stakings')}
+        >
+          View only stakings
+        </Button>
+        <Button
+          variant="outline-primary"
+          onClick={() => props.history.push('/transactions/withdrawls')}
+        >
+          View only withdrawls
+        </Button>
+      </div>
+      <span>List of all transactions</span>
+    </div>
   );
 };
 
