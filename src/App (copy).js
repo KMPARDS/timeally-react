@@ -35,13 +35,15 @@ function App(props) {
   return (
     
     <BrowserRouter>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"></link>
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"></link>
       <div className="App">
-        <Navbar />       
-        <div style={{margin:'0px'}}>
-          <Switch>            
+        <Navbar />
+       
+        <div style={{margin:'15px'}}>
+          <Switch>
+            
             {/* <Route path="/" exact render={() => <p>Home page</p>} /> */}
-            <Route path="/" exact component={Home} />
+            <Route path="/home" exact component={Home} />
             <Route path="/create-wallet" exact component={CreateWallet} />
             <Route path="/load-wallet" component={LoadWallet} />
             <Route path="/dashboard" exact component={Dashboard} />

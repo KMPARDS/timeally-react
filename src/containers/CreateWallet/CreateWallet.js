@@ -172,99 +172,142 @@ class CreateWalletPage extends Component {
 
     return (
       <div>
-        <Card>
-          <Card.Body align="center">
-            <Row>
-              <Col style={{textAlign: 'left'}}>
-                <Button variant="secondary" style={{display: this.state.currentScreen === 0 ? 'none' : 'inline'}} onClick={this.goBackScreen}>Back</Button>
-              </Col>
-              <Col><h4>Create Wallet</h4></Col>
-              <Col></Col>
-            </Row>
+          <div className="page-header">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <div className="page-breadcrumb">
+                        <ol className="breadcrumb">
+                          <li><a href="index.html">Home</a></li>
+                          <li className="active">Loan Eligibility Calculator</li>
+                        </ol>
+                      </div>
+                    </div>
+                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <div className="bg-white pinside30">
+                        <div className="row">
+                          <div className="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12">
+                            <h1 className="page-title">Create Wallet</h1>
+                          </div>
+                          <div className="col-xl-8 col-lg-8 col-md-3 col-sm-12 col-12">
+                            <div className="row">
+                              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div className="btn-action"> <a href="#" className="btn btn-default">How To Apply</a> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <Card style={{margin: '15px 0', maxWidth: '300px', display: this.state.currentScreen === 0 ? 'block' : 'none'}}>
-              <Card.Body align="center">
-                <Form>
-                  <Form.Group controlId="password1">
-                    <Form.Control isValid={this.state.doPasswordsMatch} isInvalid={this.state.password2 && !this.state.doPasswordsMatch} onKeyUp={this.updatepassword1} required type="password" placeholder="Create a strong password" />
-                  </Form.Group>
-                  <Form.Group controlId="password2">
-                    <Form.Control isValid={this.state.doPasswordsMatch} isInvalid={this.state.password2 && !this.state.doPasswordsMatch} onKeyUp={this.updatepassword2} required type="password" placeholder="Confirm password" />
-                  </Form.Group>
-                  <ProgressBar variant={this.state.progressBarColor} now={this.state.progressBarValue} />
-                  <Alert variant="danger" style={{marginTop: '15px', marginBottom: '0', display: this.state.passwordIssueOnSubmit ? 'block' : 'none'}}>
-                    You need to enter and confirm password before generating a mnemonic
-                  </Alert>
-                  <Button onClick={this.submitPassword} style={{marginTop: '15px'}}>
-                  <Spinner style={{display: this.state.mnemonicGenerateSpinner ? 'inline-block' : 'none', marginRight: '2px'}}
-                    as="span"
-                    animation="border"
-                    size="sm"
-                    role="status"
-                    aria-hidden="true"
-                  />
-                  {this.state.mnemonicGenerateSpinner ? 'Generating mnemonic...' : 'Generate mnemonic'}
-                  </Button>
-                </Form>
-              </Card.Body>
-            </Card>
-
-            <Card style={{margin: '15px 0', maxWidth: '400px', display: this.state.currentScreen === 1 ? 'block' : 'none'}}>
-              <Card.Body align="center">
-                <p>Please write this down in a safe place</p>
-                <p style={{fontWeight: '700'}}>{this.state.mnemonic}</p>
-                <Button onClick={this.showEntermnemonicScreen} style={{marginTop: '15px'}}>I wrote it down, Next</Button>
-              </Card.Body>
-            </Card>
-
-            <Card style={{margin: '15px 0', maxWidth: '400px', display: this.state.currentScreen === 2 ? 'block' : 'none'}}>
-              <Card.Body align="center">
-                <p>Please enter your mnemonic in order</p>
-                <Card style={{
-                  marginBottom: '15px',
-                  minHeight: '120px',
-                  border: this.state.isUsermnemonicCorrect ? '1px solid #0f08' : '1px solid rgba(0,0,0,.125)',
-                  backgroundColor: this.state.isUsermnemonicCorrect ? '#0f02' : '#0000'
-                }}>
+    <div className="container">
+        <div className="row">
+          <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">    
+           <div className="wrapper-content bg-white pinside40">
+              <div className="loan-eligibility-block">
+              <Card>
                   <Card.Body align="center">
-                    {this.state.userEnteredmnemonic.map(memNumber => this.state.mnemonicArray[memNumber].word).join(' ')}
+                    <Row>
+                      <Col style={{textAlign: 'left'}}>
+                        <Button variant="secondary" style={{display: this.state.currentScreen === 0 ? 'none' : 'inline'}} onClick={this.goBackScreen}>Back</Button>
+                      </Col>
+                      {/* <Col><h4>Create Wallet</h4></Col> */}
+                      <Col></Col>
+                    </Row>
+
+                    <Card style={{margin: '15px 0', maxWidth: '300px', display: this.state.currentScreen === 0 ? 'block' : 'none'}}>
+                      <Card.Body align="center">
+                        <Form>
+                          <Form.Group controlId="password1">
+                            <Form.Control isValid={this.state.doPasswordsMatch} isInvalid={this.state.password2 && !this.state.doPasswordsMatch} onKeyUp={this.updatepassword1} required type="password" placeholder="Create a strong password" />
+                          </Form.Group>
+                          <Form.Group controlId="password2">
+                            <Form.Control isValid={this.state.doPasswordsMatch} isInvalid={this.state.password2 && !this.state.doPasswordsMatch} onKeyUp={this.updatepassword2} required type="password" placeholder="Confirm password" />
+                          </Form.Group>
+                          <ProgressBar variant={this.state.progressBarColor} now={this.state.progressBarValue} />
+                          <Alert variant="danger" style={{marginTop: '15px', marginBottom: '0', display: this.state.passwordIssueOnSubmit ? 'block' : 'none'}}>
+                            You need to enter and confirm password before generating a mnemonic
+                          </Alert>
+                          <Button onClick={this.submitPassword} style={{marginTop: '15px'}}>
+                          <Spinner style={{display: this.state.mnemonicGenerateSpinner ? 'inline-block' : 'none', marginRight: '2px'}}
+                            as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                          />
+                          {this.state.mnemonicGenerateSpinner ? 'Generating mnemonic...' : 'Generate mnemonic'}
+                          </Button>
+                        </Form>
+                      </Card.Body>
+                    </Card>
+
+                    <Card style={{margin: '15px 0', maxWidth: '400px', display: this.state.currentScreen === 1 ? 'block' : 'none'}}>
+                      <Card.Body align="center">
+                        <p>Please write this down in a safe place</p>
+                        <p style={{fontWeight: '700'}}>{this.state.mnemonic}</p>
+                        <Button onClick={this.showEntermnemonicScreen} style={{marginTop: '15px'}}>I wrote it down, Next</Button>
+                      </Card.Body>
+                    </Card>
+
+                    <Card style={{margin: '15px 0', maxWidth: '400px', display: this.state.currentScreen === 2 ? 'block' : 'none'}}>
+                      <Card.Body align="center">
+                        <p>Please enter your mnemonic in order</p>
+                        <Card style={{
+                          marginBottom: '15px',
+                          minHeight: '120px',
+                          border: this.state.isUsermnemonicCorrect ? '1px solid #0f08' : '1px solid rgba(0,0,0,.125)',
+                          backgroundColor: this.state.isUsermnemonicCorrect ? '#0f02' : '#0000'
+                        }}>
+                          <Card.Body align="center">
+                            {this.state.userEnteredmnemonic.map(memNumber => this.state.mnemonicArray[memNumber].word).join(' ')}
+                          </Card.Body>
+                        </Card>
+                        {this.renderButtons()}
+                        <br />
+                        <Button onClick={this.showKeystoreScreen} style={{marginTop: '15px'}} disabled={!this.state.isUsermnemonicCorrect}>{this.state.isUsermnemonicCorrect ? 'Next step' : 'Verify Mnemonic'}</Button>
+                      </Card.Body>
+                    </Card>
+
+                    <Card style={{margin: '15px 0', display: this.state.currentScreen === 3 ? 'block' : 'none'}}>
+                      <Card.Body style={{textAlign: 'left'}}>
+                        <h4 style={{textAlign: 'center'}}>Keystore file</h4>
+                        <ol>
+                          <li>A keystore file contains the password encrypted version of your private key. Generation process takes your private key through AES-128-CTR and KDF-SCRIPT encryption algorithms. <u>It can take from 20 seconds to over a minute depending on your computer to encrypt your private key.</u> After some time if your browser prompts that web page is not responding, <u>then please click on wait.</u></li>
+                          <li>To spend the cryptocurrencies in your wallet, you need to have your keystore file as well as your password.</li>
+                          <li>If you misplaced your keystore file or forgot your password or both, then you will not be able to spend your funds.</li>
+                          <li>Then only way to unlock your funds is your mnemonic phrase. So keep it super safe.</li>
+                        </ol>
+                        <Card style={{fontWeight: '700', textAlign: 'center', backgroundColor: '#0001', maxWidth: '400px', margin: '0 auto', padding: '20px'}}>{this.state.mnemonic}</Card>
+                        <Button style={{display: 'block', textAlign:'center', margin: '10px auto'}} disabled={this.state.keystoreSpinner} onClick={this.downloadKeystore}>
+                          <Spinner style={{display: this.state.keystoreSpinner ? 'inline-block' : 'none', marginRight: '2px'}}
+                            as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                          />
+                          {this.state.keystoreSpinner ? 'Generating your keystore file' : 'Download your Keystore file'}
+                        </Button>
+                      </Card.Body>
+                    </Card>
+
                   </Card.Body>
                 </Card>
-                {this.renderButtons()}
-                <br />
-                <Button onClick={this.showKeystoreScreen} style={{marginTop: '15px'}} disabled={!this.state.isUsermnemonicCorrect}>{this.state.isUsermnemonicCorrect ? 'Next step' : 'Verify Mnemonic'}</Button>
-              </Card.Body>
-            </Card>
-
-            <Card style={{margin: '15px 0', display: this.state.currentScreen === 3 ? 'block' : 'none'}}>
-              <Card.Body style={{textAlign: 'left'}}>
-                <h4 style={{textAlign: 'center'}}>Keystore file</h4>
-                <ol>
-                  <li>A keystore file contains the password encrypted version of your private key. Generation process takes your private key through AES-128-CTR and KDF-SCRIPT encryption algorithms. <u>It can take from 20 seconds to over a minute depending on your computer to encrypt your private key.</u> After some time if your browser prompts that web page is not responding, <u>then please click on wait.</u></li>
-                  <li>To spend the cryptocurrencies in your wallet, you need to have your keystore file as well as your password.</li>
-                  <li>If you misplaced your keystore file or forgot your password or both, then you will not be able to spend your funds.</li>
-                  <li>Then only way to unlock your funds is your mnemonic phrase. So keep it super safe.</li>
-                </ol>
-                <Card style={{fontWeight: '700', textAlign: 'center', backgroundColor: '#0001', maxWidth: '400px', margin: '0 auto', padding: '20px'}}>{this.state.mnemonic}</Card>
-                <Button style={{display: 'block', textAlign:'center', margin: '10px auto'}} disabled={this.state.keystoreSpinner} onClick={this.downloadKeystore}>
-                  <Spinner style={{display: this.state.keystoreSpinner ? 'inline-block' : 'none', marginRight: '2px'}}
-                    as="span"
-                    animation="border"
-                    size="sm"
-                    role="status"
-                    aria-hidden="true"
-                  />
-                  {this.state.keystoreSpinner ? 'Generating your keystore file' : 'Download your Keystore file'}
-                </Button>
-              </Card.Body>
-            </Card>
-
-          </Card.Body>
-        </Card>
-        <CompleteModal
-          show={this.state.userDownloadedKeystore}
-          onHide={this.modalClose}
-        />
+                <CompleteModal
+                  show={this.state.userDownloadedKeystore}
+                  onHide={this.modalClose}
+                />                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     
       </div>
     );
   }
