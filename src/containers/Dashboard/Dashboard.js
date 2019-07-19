@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Card, Button } from 'react-bootstrap';
-
+import { Card, Button, Table } from 'react-bootstrap';
 import { timeally } from '../../env';
 
 const ethers = require('ethers');
@@ -44,17 +43,133 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        This is dashboard page
-        <div>
-          <Button onClick={() => this.props.history.push('/stakings/new')}>New Staking</Button>
-          <Card style={{margin: '15px 0'}}>
+          <div className="page-header">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <div className="page-breadcrumb">
+                        <ol className="breadcrumb">
+                          <li><a href="index.html">Home</a></li>
+                          <li className="active">Dashboard</li>
+                        </ol>
+                      </div>
+                    </div>
+                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <div className="bg-white pinside30">
+                        <div className="row">
+                          <div className="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12">
+                            <h1 className="page-title">Dashboard</h1>
+                          </div>
+                          <div className="col-xl-8 col-lg-8 col-md-3 col-sm-12 col-12">
+                            <div className="row">
+                              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div className="btn-action"> <Button onClick={() => this.props.history.push('/stakings/new')}>New Staking</Button></div>                               
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>        
+          <div>
+    <div className="container">
+        <div className="row">
+          <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div className="wrapper-content bg-white pinside10">
+              <div className="row">
+                <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div className="row">
+                    <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+                      <div className="bg-light pinside10 ">
+                        <div className="row">
+                          <div className="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5" style={{textAlign:'center'}}>
+                             <span> ETHER PRICE</span><br></br>                  
+                            <span style={{fontSize:'12px'}}>$217.61 @ 0.02213 BTC (+7.78%)</span>
+                            <hr />                            
+                            <span>LATEST BLOCK</span><br></br>                  
+                            <span style={{fontSize:'12px'}}>$217.61 @ 0.02213 BTC (+7.78%)</span>                        
+                          </div>
+                          <div className="vl" />
+                          <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" style={{textAlign:'center'}}>
+                            <span>MARKET CAP</span><br></br>                  
+                            <span style={{fontSize:'12px'}}>$217.61 @ 0.02213 BTC (+7.78%)</span>
+                            <hr />                            
+                            <span>DIFFICULTY</span><br></br>                  
+                            <span style={{fontSize:'12px'}}>$217.61 @ 0.02213 BTC (+7.78%)</span>                        
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="vl" />
+                    <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                      <div className="row">
+                        <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                          <div className="bg-light">
+                            <span style={{textAlign:'center', fontSize:'11px'}}>ETHEREUM TRANSACTION HISTORY IN 14 DAYS</span> 
+                            <h2 id="emi" className="pull-right" />
+                          </div>
+                        </div>                       
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container">
+       <h2 class="mb20">View All Staking in the World</h2>
+          <div className="row pinside40">      
+              <div className="tablebg">
+                  <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">   
+                          <table class="table">
+                              <thead style={{textAlign:'center'}}>
+                                <tr>                      
+                                  <th>Address</th>
+                                  <th>Plan</th>
+                                  <th>Amount</th>
+                                </tr>
+                              </thead>
+                          {this.state.stakings.map(staking => (
+                              <tbody  style={{textAlign:'center'}}>
+                                <tr>
+                                  
+                                  <td style={{color:'#f51f8a'}}>{staking.address}</td>
+                                  <td>{staking.planId ? '2 Year' : '1 Year'}</td>
+                                  <td>{staking.amount}</td>
+                                </tr>
+                                {/* <tr>
+                                  <th scope="row">2</th>
+                                  <td>Jacob</td>
+                                  <td>Thornton</td>
+                                  <td>@fat</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">3</th>
+                                  <td>Larry</td>
+                                  <td>the Bird</td>
+                                  <td>@twitter</td>
+                                </tr> */}
+                              </tbody>
+                              ))}
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+          {/* <Button onClick={() => this.props.history.push('/stakings/new')}>New Staking</Button> */}
+          {/* <Card style={{margin: '15px 0'}}>
             <Card.Body>
               <h5>View all stakings happening in world</h5>
               {this.state.stakings.map(staking => (
                 <p><strong>Address:</strong> {staking.address} and <strong>Plan:</strong> {staking.planId ? '2 Year' : '1 Year'} and <strong>Amount:</strong> {staking.amount} ES</p>
               ))}
             </Card.Body>
-          </Card>
+          </Card> */}
         </div>
       </div>
     );

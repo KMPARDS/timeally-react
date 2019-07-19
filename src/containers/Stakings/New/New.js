@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, Form, Alert, Button, Spinner } from 'react-bootstrap';
-
+import Header from './Header';
 import { esContract, timeally, network } from '../../../env';
 
 const ethers = require('ethers');
+
+
 
 class NewStaking extends Component {
   state = {
@@ -63,8 +65,15 @@ class NewStaking extends Component {
   }
 
   render() {
+
+
+
+
+
+
     if(this.state.currentScreen === 0) {
       return (
+        <Header>
         <Card>
           <Form onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
 
@@ -96,9 +105,11 @@ class NewStaking extends Component {
             </Button>
           </Form>
         </Card>
+        </Header>
       );
     } else if(this.state.currentScreen === 1) {
       return (
+        <Header>
         <Card>
           <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 2 of 3</h3>
@@ -116,9 +127,11 @@ class NewStaking extends Component {
             </Button>
           </div>
         </Card>
+        </Header>
       );
     } else if(this.state.currentScreen === 2) {
       return (
+        <Header>
         <Card>
           <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 3 of 3</h3>
@@ -141,15 +154,18 @@ class NewStaking extends Component {
             }
           </div>
         </Card>
+        </Header>
       );
     } else {
       return (
+        <Header>
         <Card>
           <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>Staking created!</h3>
             <p>Your staking is done. You can view your transaction on <a href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank">EtherScan</a></p>
           </div>
         </Card>
+        </Header>
       );
     }
   }

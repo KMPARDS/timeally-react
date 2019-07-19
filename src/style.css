@@ -60,7 +60,7 @@
 General css class
 -----------------------------------*/
 
-body { font-size: 15px; font-family: 'Poppins', sans-serif; line-height: 1.4; color: #778191; background-color: #f4f6f8; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-size: 15px; font-family: 'Poppins', sans-serif; line-height: 1.4; color: #333; background-color: #eff3f8; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 h1, h2, h3, h4, h5, h6 { margin: 0px 0px 10px 0px; color: #3c4d6b; font-weight: 500; }
 h1 { font-size: 32px; line-height: 44px; letter-spacing: -1px; }
 h2 { font-size: 24px; line-height: 32px; }
@@ -234,11 +234,11 @@ Background & Block color
 Buttons
 ------------------------------------------*/
 
-.btn { font-size: 14px !important; border-radius: 2px!important; line-height: 12px!important; letter-spacing: 1px!important; text-transform: uppercase!important; padding: 20px 30px !important; border: none!important; font-weight: 600!important; }
+.btn { margin: 0px 10px; font-size: 14px !important; border-radius: 2px!important; line-height: 12px!important; letter-spacing: 1px!important; text-transform: uppercase!important; padding: 20px 30px !important; border: none!important; font-weight: 600!important; }
 .btn-default { background-color: #971802; color: #fff; border-color: #f51f8a; }
 .btn-default:hover { color: #fff; background-color: #333; border-color: #ff389c; }
 .btn-default.focus, .btn-default:focus { color: #fff; background-color: #d5504f; border-color: #c64241; }
-.btn-primary { background-color: #15549a!important; color: #fff; }
+/* .btn-primary { background-color: #15549a!important; color: #fff; } */
 .btn-primary:hover { color: #fff; background-color: #2573cb; }
 .btn-primary.focus, .btn-primary:focus { }
 .btn-secondary { background-color: #778191; color: #fff; }
@@ -277,7 +277,7 @@ content
 .content { padding-bottom: 100px; padding-top: 100px; }
 .content-area { }
 .sidebar-area { }
-.wrapper-content { margin-top: -40px; margin-bottom: 100px; position: relative; }
+.wrapper-content { margin-top: -40px; margin-bottom: 40px; position: relative; box-shadow: 7px 25px 37px 1px #ccc; }
 
 /*-----------------------------------------
 Bullet
@@ -598,7 +598,7 @@ index-1
 .loan-rate-table { }
 .loan-rate-table .table-light { background-color: #eff5ff; margin-bottom: 30px; }
 .loan-rate-table .table thead { background-color: #e6f0ff; }
-.loan-rate-table .table>thead>tr>th { text-align: center; color: #15549a; font-size: 18px; border-top: transparent; border-bottom: transparent; padding: 20px 43px 20px; }
+.loan-rate-table .table>thead>tr>th { text-align: center; color: #15549a; font-size: 12px; border-top: transparent; border-bottom: transparent; padding: 20px 43px 20px; }
 .loan-rate-table .table tbody tr td { text-align: center; font-size: 16px; color: #414855; font-weight: 600; border-top: transparent; padding: 20px 0px; }
 .loan-half-img { }
 .loan-half-section { padding: 100px; }
@@ -608,7 +608,7 @@ compare card table
 -----------------------------------------------------*/
 .compare-table { }
 .compare-card-title { font-size: 18px; font-weight: 600; }
-.compare-table .table>thead>tr>th { padding: 12px 0px 10px 29px; text-align: left; font-weight: 500; }
+.compare-table .table>thead>tr>th { padding: 12px 0px 10px 29px; text-align: center; font-weight: 500; }
 .compare-table .table>tbody>tr>td { border-top: transparent; padding: 30px; vertical-align: middle; }
 .compare-table .table { margin-bottom: 0px; }
 .expandable-info { background-color: #fafafb; padding: 0px !important; }
@@ -669,7 +669,7 @@ compare Student loan table
 -----------------------------------------------------*/
 .header-standard { }
 .header-standard.header { padding-bottom: 0px; padding-top: 0px; }
-.top-header { padding-top: 22px; padding-bottom: 22px; }
+.top-header { padding-top: 5px; padding-bottom: 5px; }
 .quick-info { float: right; font-size: 16px; color: #414855; font-weight: 600; padding-top: 9px; }
 .header-standard .search-btn { border-radius: 2px; width: 46px; height: 42px; padding: 10px 0px 0px 0px; margin-top: 0px; color: #ffffff; background-color: #15549a; display: inline-block; }
 .header-standard #navigation { float: inherit; margin-top: -1px; }
@@ -1054,7 +1054,7 @@ EMI Calculator
 .table-bordered { border: 1px solid transparent; color: #333; }
 .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th { border: 1px solid #dee4ee; color: #3c4d6b; }
 .table-striped>tbody>tr:nth-of-type(odd) { background-color: #fafcfd; }
-.table>thead>tr>th { padding: 12px 43px 12px; line-height: 1.42857143; vertical-align: top; border-top: 1px solid #ddd; text-align: center; }
+.table>thead>tr>th { padding: 12px 43px 12px; line-height: 1.42857143; vertical-align: top; border-top: 0px solid #ddd; text-align: center; }
 
 /*--------------------------------
 Card Listing Page
@@ -1375,4 +1375,38 @@ Landing Page Template
   .pinside60 {
     padding: 30px;
 }
+}
+
+.vl {
+  border-left: 1px solid #ccc;
+  height: 150px;
+}
+
+.table td{
+  font-size: 12px;
+  
+}
+
+.tablebg{
+  background: #fff;
+  box-shadow: 10px 10px 10px #ccc;
+  border: 1px solid #ccc;
+  padding: 30px;
+  width: 100%;
+}
+
+.small-btn{
+  margin: 0px 0px;
+  font-size: 11px !important;
+  border-radius: 2px!important;
+  line-height: 12px!important;
+  letter-spacing: 1px!important;
+  text-transform: uppercase!important;
+  padding: 12px 10px !important;
+  border: none!important;
+  font-weight: 100!important;
+}
+
+.btn-light{
+  margin: 5px 10px;
 }

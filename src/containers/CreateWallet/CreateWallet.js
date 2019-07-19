@@ -179,7 +179,7 @@ class CreateWalletPage extends Component {
                       <div className="page-breadcrumb">
                         <ol className="breadcrumb">
                           <li><a href="index.html">Home</a></li>
-                          <li className="active">Loan Eligibility Calculator</li>
+                          <li className="active">Create Wallet</li>
                         </ol>
                       </div>
                     </div>
@@ -189,13 +189,13 @@ class CreateWalletPage extends Component {
                           <div className="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12">
                             <h1 className="page-title">Create Wallet</h1>
                           </div>
-                          <div className="col-xl-8 col-lg-8 col-md-3 col-sm-12 col-12">
+                          {/* <div className="col-xl-8 col-lg-8 col-md-3 col-sm-12 col-12">
                             <div className="row">
                               <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div className="btn-action"> <a href="#" className="btn btn-default">How To Apply</a> </div>
                               </div>
                             </div>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                       
@@ -219,7 +219,7 @@ class CreateWalletPage extends Component {
                       <Col></Col>
                     </Row>
 
-                    <Card style={{margin: '15px 0', maxWidth: '300px', display: this.state.currentScreen === 0 ? 'block' : 'none'}}>
+                    <Card style={{margin: '15px 0', maxWidth: '500px', display: this.state.currentScreen === 0 ? 'block' : 'none'}}>
                       <Card.Body align="center">
                         <Form>
                           <Form.Group controlId="password1">
@@ -254,7 +254,7 @@ class CreateWalletPage extends Component {
                       </Card.Body>
                     </Card>
 
-                    <Card style={{margin: '15px 0', maxWidth: '400px', display: this.state.currentScreen === 2 ? 'block' : 'none'}}>
+                    <Card style={{margin: '15px 0', maxWidth: '600px', display: this.state.currentScreen === 2 ? 'block' : 'none'}}>
                       <Card.Body align="center">
                         <p>Please enter your mnemonic in order</p>
                         <Card style={{
@@ -263,7 +263,7 @@ class CreateWalletPage extends Component {
                           border: this.state.isUsermnemonicCorrect ? '1px solid #0f08' : '1px solid rgba(0,0,0,.125)',
                           backgroundColor: this.state.isUsermnemonicCorrect ? '#0f02' : '#0000'
                         }}>
-                          <Card.Body align="center">
+                          <Card.Body className="memonicbtn" align="center">
                             {this.state.userEnteredmnemonic.map(memNumber => this.state.mnemonicArray[memNumber].word).join(' ')}
                           </Card.Body>
                         </Card>
