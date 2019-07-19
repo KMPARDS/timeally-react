@@ -82,7 +82,7 @@ class Home extends Component {
             <div className="col-xl-5 col-lg-5 col-md-6 col-sm-12 col-12">
               {/* hero-caption */}
               <div className="card-hero-block">
-                <h1 className="text-white">Erswap EcoSystem</h1>
+                <h1 className="text-white">Eraswap EcoSystem</h1>
                 <p className="text-white">After you spend $3,000 on purchases in the first 3 months after account opening. </p>
                 <span className="icon rate-done mb10 mr20"><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /> </span> <a href="#" className="btn-link-white">Read all 9,111 reviews</a>
                 <div className="mt30">

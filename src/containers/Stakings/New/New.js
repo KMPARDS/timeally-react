@@ -66,11 +66,6 @@ class NewStaking extends Component {
 
   render() {
 
-
-
-
-
-
     if(this.state.currentScreen === 0) {
       return (
         <Header>

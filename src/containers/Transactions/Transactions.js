@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import { Container, Button } from 'react-bootstrap';
 
 const Transactions = props => {
-
   return (
       <div>
           <div className="page-header">
@@ -22,7 +21,7 @@ const Transactions = props => {
                       <div className="bg-white pinside30">
                         <div className="row">
                           <div className="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12">
-                            <h1 className="page-title">Transactions</h1>
+                            <h1 className="page-title">All Transactions</h1>
                           </div>
                           <div className="col-xl-8 col-lg-8 col-md-3 col-sm-12 col-12">                                
                             <div className="row">

@@ -11,6 +11,7 @@ import Transactions from './containers/Transactions/Transactions';
 import StakingTransactions from './containers/Transactions/Stakings';
 import WithdrawlTransactions from './containers/Transactions/Withdrawls';
 import Wallet from './containers/Wallet/Wallet';
+import Loans from './containers/Loans/Loans';
 import Staking from './containers/Stakings/Stakings';
 
 import { Button } from 'react-bootstrap';
@@ -47,13 +48,11 @@ function App(props) {
             <Route path="/dashboard" exact component={Dashboard} />
             <Route path="/wallet" exact component={Wallet} />
             <Route path="/stakings" component={Staking} />
-            <Route path="/loans" exact />
+            <Route path="/loans" exact component={Loans} />
             <Route path="/loans/:id" exact />
             <Route path="/transactions" exact component={Transactions} />
             <Route path="/transactions/stakings" exact component={StakingTransactions} />
-            <Route path="/trasnactions/withdrawls" exact render={
-              () => <div>List of withdrawl transactions</div>
-            } />
+            <Route path="/transactions/withdrawls" exact component={WithdrawlTransactions} />
             <Route path="/insurance" exact render={
               () => <div>Coming soon</div>
             } />
@@ -69,44 +68,13 @@ function App(props) {
                   {/* <img src="images/ft-logo.png" alt="Borrow - Loan Company Website Templates" />  */}
                   </div>
                 {/* /.Footer Logo */}
-              </div>
-              <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
-                <div className="row">
-                  <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12">
-                    <h3 className="newsletter-title">Signup Our Newsletter</h3>
-                  </div>
-                  <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
-                    <div className="newsletter-form">
-                      {/* Newsletter Form */}
-                      <form action="newsletter.php" method="post">
-                        <div className="input-group">
-                          <input type="email" className="form-control" id="newsletter" name="newsletter" placeholder="Write E-Mail Address" required />
-                          <span className="input-group-btn">
-                            <button className="btn btn-default" type="submit">Go!</button>
-                          </span> </div>
-                        {/* /input-group */}
-                      </form>
-                    </div>
-                    {/* /.Newsletter Form */}
-                  </div>
-                </div>
-                {/* /.col-lg-6 */}
-              </div>
-            </div>
-            <hr className="dark-line" />
+              </div>           
+            </div>            
             <div className="row">
               <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div className="widget-text mt10">
                   {/* widget text */}
-                  <p>Our goal at Borrow Loan Company is to provide access to personal loans and education loan, car loan, home loan at insight competitive interest rates lorem ipsums. We are the loan provider, you can use our loan product.</p>
-                  <div className="row">
-                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-                      <p className="address-text"><span><i className="icon-placeholder-3 icon-1x" /> </span>3895 Sycamore Road Arlington, 97812 </p>
-                    </div>
-                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-                      <p className="call-text"><span><i className="icon-phone-call icon-1x" /></span>800-123-456</p>
-                    </div>
-                  </div>
+                  <p style={{color:'#fff'}}>Our goal at Borrow Loan Company is to provide access to personal loans and education loan, car loan, home loan at insight competitive interest rates lorem ipsums. We are the loan provider, you can use our loan product.</p>                  
                 </div>
                 {/* /.widget text */}
               </div>
@@ -151,10 +119,10 @@ function App(props) {
           <div className="container">
             <div className="row">
               <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-                <p>© Copyright 2016 | Borrow Loan Company</p>
+                <p style={{color:'#fff'}}>© Copyright 2019 | Time Ally</p>
               </div>
               <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 text-right">
-                <p>Terms of use | Privacy Policy</p>
+                <p style={{color:'#fff'}}>Terms of use | Privacy Policy</p>
               </div>
             </div>
           </div>

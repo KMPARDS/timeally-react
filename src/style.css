@@ -359,7 +359,7 @@ display: block; background: #dddddd; content: '';}*/
 #navigation.align-right ul ul ul { margin-left: 0; margin-right: 100%; }
 #navigation ul ul li a { border-bottom: 1px solid rgba(222, 231, 242, 1); padding: 15px 15px 16px 15px; width: 220px; font-size: 13px; text-decoration: none; color: #66707f; font-weight: 500; background: #fff; }
 #navigation ul ul li:last-child>a, .navigation ul ul li.last-item>a { border-bottom: 0; }
-#navigation ul ul li:hover>a, #navigation ul ul li a:hover { color: #f51f8a; background-color: #f4f6f8; }
+#navigation ul ul li:hover>a, #navigation ul ul li a:hover { color: #007bff; background-color: #f4f6f8; }
 #navigation ul ul li.has-sub>a:after { position: absolute; top: 20px; right: 11px; width: 8px; height: 2px; display: block; background: #66707f; content: ''; }
 #navigation.align-right ul ul li.has-sub>a:after { right: auto; left: 11px; }
 #navigation ul ul li.has-sub>a:before { position: absolute; top: 17px; right: 14px; display: block; width: 2px; height: 8px; background: #66707f; content: ''; -webkit-transition: all .25s ease; -moz-transition: all .25s ease; -ms-transition: all .25s ease; -o-transition: all .25s ease; transition: all .25s ease; }
@@ -422,7 +422,7 @@ display: block; background: #dddddd; content: '';}*/
 /*-----------------------------------------
 index-1
 ------------------------------------------*/
-.mail-text { border-right: 2px solid #1b5ca5; }
+.mail-text { border-right: 2px solid #fff; color: #fff }
 .rate-table { background-color: #fff; border-top: 1px solid #dee7f2; border-bottom: 1px solid #dee7f2; margin-top: -21px; }
 .loan-rate { font-size: 32px; color: #414855; margin-bottom: 0px; font-weight: 600; line-height: 1; }
 .rate-counter-block { border-right: 1px solid #dee7f2; padding-top: 20px; padding-bottom: 20px; }
@@ -670,7 +670,7 @@ compare Student loan table
 .header-standard { }
 .header-standard.header { padding-bottom: 0px; padding-top: 0px; }
 .top-header { padding-top: 5px; padding-bottom: 5px; }
-.quick-info { float: right; font-size: 16px; color: #414855; font-weight: 600; padding-top: 9px; }
+.quick-info { float: right; font-size: 16px; color: #fff; font-weight: 600; padding-top: 9px; }
 .header-standard .search-btn { border-radius: 2px; width: 46px; height: 42px; padding: 10px 0px 0px 0px; margin-top: 0px; color: #ffffff; background-color: #15549a; display: inline-block; }
 .header-standard #navigation { float: inherit; margin-top: -1px; }
 .header-standard #navigation>ul>li>a { padding: 22px 35px; color: #ffffff; font-weight: 400; }

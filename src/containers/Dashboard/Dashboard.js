@@ -63,7 +63,10 @@ class Dashboard extends Component {
                           <div className="col-xl-8 col-lg-8 col-md-3 col-sm-12 col-12">
                             <div className="row">
                               <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div className="btn-action"> <Button onClick={() => this.props.history.push('/stakings/new')}>New Staking</Button></div>                               
+                                <div className="btn-action"> 
+                                <Button className="btn btn-default btn-sm" onClick={() => this.props.history.push('/stakings/new')}>Apply for Loan</Button>
+                                <Button onClick={() => this.props.history.push('/stakings/new')}>New Staking</Button>
+                                </div>                               
                               </div>
                             </div>
                           </div>

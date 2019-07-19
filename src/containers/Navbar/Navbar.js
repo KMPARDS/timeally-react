@@ -23,6 +23,26 @@ class NavbarComponent extends Component {
   render() {
     return (
       <div>
+
+      <div className="top-bar">
+        {/* top-bar */}
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-4 col-lg-5 col-md-4 col-sm-6 col-6 d-none d-xl-block d-lg-block">
+              <p className="mail-text">Welcome to Time Ally</p>
+            </div>
+            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 d-none d-xl-block d-lg-block">
+              <p className="mail-text text-center">ES Price: 52445</p>
+            </div>
+            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 d-none d-xl-block d-lg-block">
+              <p className="mail-text text-center">Ether Price: 5747</p>
+            </div>
+            <div className="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 d-none d-xl-block d-lg-block">
+              <p className="mail-text text-center">Gas Price: 541</p>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="header-standard header">
         <div className="top-header">
           <div className="container">
@@ -37,7 +57,8 @@ class NavbarComponent extends Component {
                 <div className="quick-info">
                   {/* <span className="mr10">Call: 1-800-123-4567</span>
                   <span className="mr10"><a href="#">ATM &amp; Branches</a></span> */}
-                  <span><a href="#" className="btn btn-default btn-sm">Welcome Prafull M</a></span>                 
+                  <span><a onClick={() => this.props.history.push('/create-wallet')} className="btn btn-primary btn-sm">Create Wallet</a></span>  
+                  <span><a href="#" className="btn btn-default btn-sm">Welcome Prafull M</a></span>               
                 </div>
               </div>
             </div>
@@ -53,19 +74,15 @@ class NavbarComponent extends Component {
                   <ul>
                     <li className="active"><a onClick={() => this.props.history.push('/')}>Home</a></li>
                     <li className="active"><a onClick={() => this.props.history.push('/Dashboard')}>Dashboard</a></li>
-                    <li className="active"><a onClick={() => this.props.history.push('/create-wallet')}>Create Wallet</a>
-                      <ul>
-                          <li><a onClick={() => this.props.history.push('/Wallet')}>Wallet</a></li>
-                          {/* <li><a href="team.html" title="Team" className="animsition-link">Load Wallet</a></li> */}
-                        </ul>
-                    </li>
+                    <li className="active"><a onClick={() => this.props.history.push('/Wallet')}>Wallet</a></li>
                     {/* <li><a onClick={() => this.props.history.push('/Staking')}>Staking</a></li> */}
                     <li><a onClick={() => this.props.history.push('/transactions')}>Transactions</a>
                       <ul>
-                          <li><a onClick={() => this.props.history.push('/Stakingtransactions/stakings')}>Staking Transactions</a></li>
-                          <li><a onClick={() => this.props.history.push('/trasnactions/withdrawls')}>Withdrawal Transactions</a></li>
+                          <li><a onClick={() => this.props.history.push('/transactions/stakings')}>Staking Transactions</a></li>
+                          <li><a onClick={() => this.props.history.push('/transactions/withdrawls')}>Withdrawal Transactions</a></li>
                         </ul>
                     </li>
+                    <li className="active"><a onClick={() => this.props.history.push('/loans')}>Apply for Loan</a></li>
                     {/* <li><a href="about.html" className="animsition-link">About us</a>
                       <ul>
                         <li><a href="about.html" title="About us" className="animsition-link">About us</a></li>
@@ -82,7 +99,6 @@ class NavbarComponent extends Component {
       </div>
        </div>
       // <Navbar style={{backgroundColor: '#070707'}} {...this.props}>
-
       //   <Link to="/">
       //     <Navbar.Brand>
       //       <img
@@ -94,7 +110,6 @@ class NavbarComponent extends Component {
       //       />
       //     </Navbar.Brand>
       //   </Link>
-
       //   <Nav.Link style={{color: 'white'}} onClick={() => this.props.history.push('/dashboard')}>Dashboard</Nav.Link>
       //   <Nav.Link style={{color: 'white'}} onClick={() => this.props.history.push('/transactions')}>Transactions</Nav.Link>
 
@@ -124,9 +139,7 @@ class NavbarComponent extends Component {
       //       }}>Log out</Dropdown.Item> : null}
       //     </DropdownButton>
       //   </Navbar.Collapse>
-
-      // </Navbar>
-      
+      // </Navbar>     
 
       
     );
