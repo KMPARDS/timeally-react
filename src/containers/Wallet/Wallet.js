@@ -1,8 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { Card, Button, Table } from 'react-bootstrap';
-import { timeally } from '../../env';
 
 export default () => {
   return (
@@ -32,7 +28,7 @@ export default () => {
                         </div>
                       </div> */}
                     </div>
-                  </div>           
+                  </div>
                 </div>
               </div>
             </div>
@@ -43,17 +39,17 @@ export default () => {
               <div className="col-md-12">
                 <div className="wrapper-content bg-white pinside40">
                  <div className="bg-white section-space80">
-                   <div className="container">              
+                   <div className="container">
                 <div className="row">
                   {/* features */}
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-4 col-12">
                     <div className="bg-white pinside30 mb30 highlight-outline outline">
                       <p><b>Address</b> : <span style={{color:'#f51f8a'}}>0x75e89d5979E4f6Fba9F97c104c2F0AFB3F1dcB88</span></p>
-                      <div class="row">
-                        <div class="col-md-6"><b>ES Balance</b> : 85855</div>
-                        <div class="col-md-6"><b>Ether Balance</b> : 854455</div>
-                        <div class="col-md-6"><b>Total Stakings</b> : 5542254</div>
-                        <div class="col-md-6"><b>Accrued Balance</b> : 1111141</div>
+                      <div className="row">
+                        <div className="col-md-6"><b>ES Balance</b> : 85855</div>
+                        <div className="col-md-6"><b>Ether Balance</b> : 854455</div>
+                        <div className="col-md-6"><b>Total Stakings</b> : 5542254</div>
+                        <div className="col-md-6"><b>Accrued Balance</b> : 1111141</div>
                       </div>
                     </div>
                   </div>
@@ -62,11 +58,11 @@ export default () => {
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-4 col-12">
                     <div className="bg-white pinside30 mb30 highlight-outline outline">
                       <p><b>Address</b> : <span style={{color:'#007bff'}}>0x75e89d5979E4f6Fba9F97c104c2F0AFB3F1dcB88</span></p>
-                      <div class="row">
-                        <div class="col-md-6"><b>ES Balance</b> : 85855</div>
-                        <div class="col-md-6"><b>Ether Balance</b> : 854455</div>
-                        <div class="col-md-6"><b>Total Stakings</b> : 5542254</div>
-                        <div class="col-md-6"><b>Accrued Balance</b> : 1111141</div>
+                      <div className="row">
+                        <div className="col-md-6"><b>ES Balance</b> : 85855</div>
+                        <div className="col-md-6"><b>Ether Balance</b> : 854455</div>
+                        <div className="col-md-6"><b>Total Stakings</b> : 5542254</div>
+                        <div className="col-md-6"><b>Accrued Balance</b> : 1111141</div>
                       </div>
                     </div>
                   </div>
@@ -75,11 +71,11 @@ export default () => {
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-4 col-12">
                     <div className="bg-white pinside30 mb30 highlight-outline outline">
                       <p><b>Address</b> : <span style={{color:'#007bff'}}>0x75e89d5979E4f6Fba9F97c104c2F0AFB3F1dcB88</span></p>
-                      <div class="row">
-                        <div class="col-md-6"><b>ES Balance</b> : 85855</div>
-                        <div class="col-md-6"><b>Ether Balance</b> : 854455</div>
-                        <div class="col-md-6"><b>Total Stakings</b> : 5542254</div>
-                        <div class="col-md-6"><b>Accrued Balance</b> : 1111141</div>
+                      <div className="row">
+                        <div className="col-md-6"><b>ES Balance</b> : 85855</div>
+                        <div className="col-md-6"><b>Ether Balance</b> : 854455</div>
+                        <div className="col-md-6"><b>Total Stakings</b> : 5542254</div>
+                        <div className="col-md-6"><b>Accrued Balance</b> : 1111141</div>
                       </div>
                     </div>
                   </div>
@@ -88,11 +84,11 @@ export default () => {
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-4 col-12">
                     <div className="bg-white pinside30 mb30 highlight-outline outline">
                       <p><b>Address</b> : <span style={{color:'#f51f8a'}}>0x75e89d5979E4f6Fba9F97c104c2F0AFB3F1dcB88</span></p>
-                      <div class="row">
-                        <div class="col-md-6"><b>ES Balance</b> : 85855</div>
-                        <div class="col-md-6"><b>Ether Balance</b> : 854455</div>
-                        <div class="col-md-6"><b>Total Stakings</b> : 5542254</div>
-                        <div class="col-md-6"><b>Accrued Balance</b> : 1111141</div>
+                      <div className="row">
+                        <div className="col-md-6"><b>ES Balance</b> : 85855</div>
+                        <div className="col-md-6"><b>Ether Balance</b> : 854455</div>
+                        <div className="col-md-6"><b>Total Stakings</b> : 5542254</div>
+                        <div className="col-md-6"><b>Accrued Balance</b> : 1111141</div>
                       </div>
                     </div>
                   </div>
@@ -101,11 +97,11 @@ export default () => {
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-4 col-12">
                     <div className="bg-white pinside30 mb30 highlight-outline outline">
                       <p><b>Address</b> : <span style={{color:'#007bff'}}>0x75e89d5979E4f6Fba9F97c104c2F0AFB3F1dcB88</span></p>
-                      <div class="row">
-                        <div class="col-md-6"><b>ES Balance</b> : 85855</div>
-                        <div class="col-md-6"><b>Ether Balance</b> : 854455</div>
-                        <div class="col-md-6"><b>Total Stakings</b> : 5542254</div>
-                        <div class="col-md-6"><b>Accrued Balance</b> : 1111141</div>
+                      <div className="row">
+                        <div className="col-md-6"><b>ES Balance</b> : 85855</div>
+                        <div className="col-md-6"><b>Ether Balance</b> : 854455</div>
+                        <div className="col-md-6"><b>Total Stakings</b> : 5542254</div>
+                        <div className="col-md-6"><b>Accrued Balance</b> : 1111141</div>
                       </div>
                     </div>
                   </div>
@@ -114,13 +110,13 @@ export default () => {
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-4 col-12">
                     <div className="bg-white pinside30 mb30 highlight-outline outline">
                       <p><b>Address</b> : <span style={{color:'#007bff'}}>0x75e89d5979E4f6Fba9F97c104c2F0AFB3F1dcB88</span></p>
-                      <div class="row">
-                        <div class="col-md-6"><b>ES Balance</b> : 85855</div>
-                        <div class="col-md-6"><b>Ether Balance</b> : 854455</div>
-                        <div class="col-md-6"><b>Total Stakings</b> : 5542254</div>
-                        <div class="col-md-6"><b>Accrued Balance</b> : 1111141</div>
+                      <div className="row">
+                        <div className="col-md-6"><b>ES Balance</b> : 85855</div>
+                        <div className="col-md-6"><b>Ether Balance</b> : 854455</div>
+                        <div className="col-md-6"><b>Total Stakings</b> : 5542254</div>
+                        <div className="col-md-6"><b>Accrued Balance</b> : 1111141</div>
                       </div>
-                    </div>                  
+                    </div>
                   </div>
                   {/* /.features */}
                 </div>
@@ -130,6 +126,6 @@ export default () => {
           </div>
         </div>
       </div>
-    </div>  
+    </div>
   );
 };

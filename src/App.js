@@ -14,9 +14,9 @@ import Wallet from './containers/Wallet/Wallet';
 import Loans from './containers/Loans/Loans';
 import Staking from './containers/Stakings/Stakings';
 
-import { Button } from 'react-bootstrap';
+//import { Button } from 'react-bootstrap';
 
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 
 import provider from './ethereum/provider';
@@ -34,13 +34,13 @@ function App(props) {
   }
 
   return (
-    
-    <BrowserRouter>    
+
+    <BrowserRouter>
       <div className="App">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-        <Navbar />       
+        <Navbar />
         <div style={{margin:'0px'}}>
-          <Switch>            
+          <Switch>
             {/* <Route path="/" exact render={() => <p>Home page</p>} /> */}
             <Route path="/" exact component={Home} />
             <Route path="/create-wallet" exact component={CreateWallet} />
@@ -68,13 +68,13 @@ function App(props) {
                   {/* <img src="images/ft-logo.png" alt="Borrow - Loan Company Website Templates" />  */}
                   </div>
                 {/* /.Footer Logo */}
-              </div>           
-            </div>            
+              </div>
+            </div>
             <div className="row">
               <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div className="widget-text mt10">
                   {/* widget text */}
-                  <p style={{color:'#fff'}}>Our goal at Borrow Loan Company is to provide access to personal loans and education loan, car loan, home loan at insight competitive interest rates lorem ipsums. We are the loan provider, you can use our loan product.</p>                  
+                  <p style={{color:'#fff'}}>Our goal at Borrow Loan Company is to provide access to personal loans and education loan, car loan, home loan at insight competitive interest rates lorem ipsums. We are the loan provider, you can use our loan product.</p>
                 </div>
                 {/* /.widget text */}
               </div>
@@ -82,9 +82,9 @@ function App(props) {
                 <div className="widget-footer mt40">
                   {/* widget footer */}
                   <ul className="listnone">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">About Us</a></li>                   
+                    <li><a>Home</a></li>
+                    <li><a>Services</a></li>
+                    <li><a>About Us</a></li>                   
                   </ul>
                 </div>
                 {/* /.widget footer */}
@@ -95,7 +95,7 @@ function App(props) {
                   <ul className="listnone">
                     <li><a href="#">Car Loan</a></li>
                     <li><a href="#">Personal Loan</a></li>
-                    <li><a href="#">Education Loan</a></li>                   
+                    <li><a href="#">Education Loan</a></li>
                   </ul>
                 </div>
                 {/* /.widget footer */}
@@ -105,7 +105,7 @@ function App(props) {
                   {/* widget footer */}
                   <ul className="listnone">
                     <li><a href="#"><i className="fa fa-facebook" />Facebook</a></li>
-                    <li><a href="#"><i className="fa fa-google-plus" />Google Plus</a></li>                    
+                    <li><a href="#"><i className="fa fa-google-plus" />Google Plus</a></li>
                   </ul>
                 </div>
                 {/* /.widget footer */}
@@ -127,7 +127,7 @@ function App(props) {
             </div>
           </div>
         </div>
-       </div>      
+       </div>
     </BrowserRouter>
   );
 }

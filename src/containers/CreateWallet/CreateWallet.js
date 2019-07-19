@@ -34,7 +34,7 @@ class CreateWalletPage extends Component {
 
   updatepassword1 = event => {
     console.log(event.target.value)
-    this.state.password1 = event.target.value;
+    this.setState({ password1: event.target.value });
 
     //console.log(this.state.password1, this.state.password1.length / 15 * 100);
 
@@ -150,9 +150,7 @@ class CreateWalletPage extends Component {
     //const firstWallet = hdWallet.derivePath("m/44'/60'/0'/0/0").getWallet();
     const keystore = firstWallet.toV3(this.state.password1);
     const keystoreFileName = firstWallet.getV3Filename(new Date().getTime());
-    this.state.keystore = keystore;
-    this.state.keystoreFileName = keystoreFileName;
-    this.setState({ keystoreSpinner: false });
+    this.setState({ keystore, keystoreFileName, keystoreSpinner: false });
   };
 
   downloadKeystore = () => {
@@ -198,7 +196,7 @@ class CreateWalletPage extends Component {
                           </div> */}
                         </div>
                       </div>
-                      
+
                     </div>
                   </div>
                 </div>
@@ -206,7 +204,7 @@ class CreateWalletPage extends Component {
 
     <div className="container">
         <div className="row">
-          <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">    
+          <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
            <div className="wrapper-content bg-white pinside40">
               <div className="loan-eligibility-block">
               <Card>
@@ -301,13 +299,13 @@ class CreateWalletPage extends Component {
                 <CompleteModal
                   show={this.state.userDownloadedKeystore}
                   onHide={this.modalClose}
-                />                
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
-     
+
       </div>
     );
   }

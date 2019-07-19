@@ -1,8 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { Card, Button, Table, Form, ProgressBar, Alert, Row, Col, Spinner } from 'react-bootstrap';
-import { timeally } from '../../env';
+import { Card, Button, Form } from 'react-bootstrap';
 
 export default () => {
   return (
@@ -32,14 +29,14 @@ export default () => {
                         </div>
                       </div> */}
                     </div>
-                  </div>           
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="container">
         <div className="row">
-          <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">    
+          <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
            <div className="wrapper-content bg-white pinside40">
               <div className="loan-eligibility-block">
                   <Card>
@@ -50,7 +47,7 @@ export default () => {
                             <Form.Group controlId="exampleForm.ControlInput1">
                               <Form.Label>Wallet address</Form.Label>
                               <Form.Control type="text" placeholder="Please enter your wallet address." />
-                            </Form.Group>                           
+                            </Form.Group>
                             <Form.Group controlId="exampleForm.ControlSelect2">
                               <Form.Label>Example multiple select</Form.Label>
                               <Form.Control as="select" multiple>
@@ -66,16 +63,16 @@ export default () => {
                               <Form.Control as="textarea" rows="3" />
                             </Form.Group>
                             <Button variant="primary">Apply for Loan </Button>
-                          </Form>                      
+                          </Form>
                           </Card.Body>
                         </Card>
                       </Card.Body>
-                    </Card>                          
+                    </Card>
                 </div>
               </div>
             </div>
-          </div>      
+          </div>
         </div>
-      </div>  
+      </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Form, Alert, Button, Spinner } from 'react-bootstrap';
+import { Card, Form, Button, Spinner } from 'react-bootstrap';
 import Header from './Header';
 import { esContract, timeally, network } from '../../../env';
 
@@ -70,7 +70,7 @@ class NewStaking extends Component {
       return (
         <Header>
         <Card>
-          <Form onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <Form onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
 
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 1 of 3</h3>
 
@@ -106,7 +106,7 @@ class NewStaking extends Component {
       return (
         <Header>
         <Card>
-          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 2 of 3</h3>
             <Button onClick={this.onApproveClick} disabled={this.state.spinner}>
               {this.state.spinner ?
@@ -128,7 +128,7 @@ class NewStaking extends Component {
       return (
         <Header>
         <Card>
-          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 3 of 3</h3>
             <p>Please click the following button to confirm your staking.</p>
             <Button onClick={this.stakeNowClick} disabled={this.state.spinner}>
@@ -144,7 +144,7 @@ class NewStaking extends Component {
               {this.state.waiting ? 'Waiting for confirmation' : ( this.state.spinner ? 'Sending transaction' : 'Stake')}
             </Button>
             { this.state.txHash
-              ? <p>You can view your transaction on <a href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank">EtherScan</a>.</p>
+              ? <p>You can view your transaction on <a href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a>.</p>
               : null
             }
           </div>
@@ -155,9 +155,9 @@ class NewStaking extends Component {
       return (
         <Header>
         <Card>
-          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>Staking created!</h3>
-            <p>Your staking is done. You can view your transaction on <a href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank">EtherScan</a></p>
+            <p>Your staking is done. You can view your transaction on <a href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></p>
           </div>
         </Card>
         </Header>

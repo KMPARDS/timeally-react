@@ -1,39 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Card, Button } from 'react-bootstrap';
-
-import { timeally } from '../../env';
-
-const ethers = require('ethers');
 
 class Home extends Component {
 
   render() {
     return (
- <div>     
+ <div>
   <div className="hero-section">
       <div className="container">
         <div className="row">
           <div className="offset-xl-7 col-xl-5 offset-lg-2 col-lg-8 col-md-12 col-sm-12 col-12 ">
             <div className="hero-tab-block">
-               <div class="lead-calculator pinside40">
-                         <div class="row">
-                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb10">
-                             <div class="card-hero-block">
-                                 <h1 class="text-white">Borrow Bonus Cash Back Platinum card</h1>
-                                 <p class="text-white">After you spend $3,000 on purchases in the first 3 months after account opening. </p>                                    
-                                 <div class="mt30">
-                                     <a href="#" class="btn btn-default">find my rate</a>
+               <div className="lead-calculator pinside40">
+                         <div className="row">
+                             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb10">
+                             <div className="card-hero-block">
+                                 <h1 className="text-white">Borrow Bonus Cash Back Platinum card</h1>
+                                 <p className="text-white">After you spend $3,000 on purchases in the first 3 months after account opening. </p>
+                                 <div className="mt30">
+                                     <a className="btn btn-default">find my rate</a>
                                  </div>
-                             </div>   
-                             </div>                            
+                             </div>
+                             </div>
                          </div>
                      </div>
                </div>
           </div>
         </div>
-      </div>      
+      </div>
     </div>
     <div className="rate-table">
         <div className="container">
@@ -55,7 +50,7 @@ class Home extends Component {
                   <small className="rate-title">Available Stakes</small>
                 </div>
               </div>
-            </div>                           
+            </div>
           </div>
         </div>
       </div>
@@ -84,16 +79,16 @@ class Home extends Component {
               <div className="card-hero-block">
                 <h1 className="text-white">Eraswap EcoSystem</h1>
                 <p className="text-white">After you spend $3,000 on purchases in the first 3 months after account opening. </p>
-                <span className="icon rate-done mb10 mr20"><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /> </span> <a href="#" className="btn-link-white">Read all 9,111 reviews</a>
+                <span className="icon rate-done mb10 mr20"><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /><i className="fa fa-star" /> </span> <a className="btn-link-white">Read all 9,111 reviews</a>
                 <div className="mt30">
-                  <a href="#" className="btn btn-default">find my rate</a>
+                  <a className="btn btn-default">find my rate</a>
                 </div>
               </div>
               {/* /.hero-caption */}
             </div>
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-right">
               <div className="mt10">
-                <img src="./images/card-img-1.png" alt className="img-fluid" />
+                <img src="./images/card-img-1.png" alt="back photo" className="img-fluid" />
               </div>
             </div>
           </div>
@@ -169,7 +164,7 @@ class Home extends Component {
           </div>
         </div>
       </div>
-      
+
   </div>
     );
   }

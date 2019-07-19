@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Card, Button, Table } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { timeally } from '../../env';
 
 const ethers = require('ethers');
@@ -63,20 +63,20 @@ class Dashboard extends Component {
                           <div className="col-xl-8 col-lg-8 col-md-3 col-sm-12 col-12">
                             <div className="row">
                               <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div className="btn-action"> 
+                                <div className="btn-action">
                                 <Button className="btn btn-default btn-sm" onClick={() => this.props.history.push('/stakings/new')}>Apply for Loan</Button>
                                 <Button onClick={() => this.props.history.push('/stakings/new')}>New Staking</Button>
-                                </div>                               
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      
+
                     </div>
                   </div>
                 </div>
-              </div>        
+              </div>
           <div>
     <div className="container">
         <div className="row">
@@ -89,19 +89,19 @@ class Dashboard extends Component {
                       <div className="bg-light pinside10 ">
                         <div className="row">
                           <div className="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5" style={{textAlign:'center'}}>
-                             <span> ETHER PRICE</span><br></br>                  
+                             <span> ETHER PRICE</span><br></br>
                             <span style={{fontSize:'12px'}}>$217.61 @ 0.02213 BTC (+7.78%)</span>
-                            <hr />                            
-                            <span>LATEST BLOCK</span><br></br>                  
-                            <span style={{fontSize:'12px'}}>$217.61 @ 0.02213 BTC (+7.78%)</span>                        
+                            <hr />
+                            <span>LATEST BLOCK</span><br></br>
+                            <span style={{fontSize:'12px'}}>$217.61 @ 0.02213 BTC (+7.78%)</span>
                           </div>
                           <div className="vl" />
                           <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" style={{textAlign:'center'}}>
-                            <span>MARKET CAP</span><br></br>                  
+                            <span>MARKET CAP</span><br></br>
                             <span style={{fontSize:'12px'}}>$217.61 @ 0.02213 BTC (+7.78%)</span>
-                            <hr />                            
-                            <span>DIFFICULTY</span><br></br>                  
-                            <span style={{fontSize:'12px'}}>$217.61 @ 0.02213 BTC (+7.78%)</span>                        
+                            <hr />
+                            <span>DIFFICULTY</span><br></br>
+                            <span style={{fontSize:'12px'}}>$217.61 @ 0.02213 BTC (+7.78%)</span>
                           </div>
                         </div>
                       </div>
@@ -111,27 +111,27 @@ class Dashboard extends Component {
                       <div className="row">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                           <div className="bg-light">
-                            <span style={{textAlign:'center', fontSize:'11px'}}>ETHEREUM TRANSACTION HISTORY IN 14 DAYS</span> 
-                            <h2 id="emi" className="pull-right" />
+                            <span style={{textAlign:'center', fontSize:'11px'}}>ETHEREUM TRANSACTION HISTORY IN 14 DAYS</span>
+                            <h2 id="emi" className="pull-right">Graph</h2>
                           </div>
-                        </div>                       
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>                
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className="container">
-       <h2 class="mb20">View All Staking in the World</h2>
-          <div className="row pinside40">      
+       <h2 className="mb20">View All Staking in the World</h2>
+          <div className="row pinside40">
               <div className="tablebg">
-                  <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">   
-                          <table class="table">
+                  <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                          <table className="table">
                               <thead style={{textAlign:'center'}}>
-                                <tr>                      
+                                <tr>
                                   <th>Address</th>
                                   <th>Plan</th>
                                   <th>Amount</th>
@@ -140,7 +140,7 @@ class Dashboard extends Component {
                           {this.state.stakings.map(staking => (
                               <tbody  style={{textAlign:'center'}}>
                                 <tr>
-                                  
+
                                   <td style={{color:'#f51f8a'}}>{staking.address}</td>
                                   <td>{staking.planId ? '2 Year' : '1 Year'}</td>
                                   <td>{staking.amount}</td>

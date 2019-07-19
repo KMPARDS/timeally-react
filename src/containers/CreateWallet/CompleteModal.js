@@ -18,7 +18,7 @@ class CompleteModal extends React.Component {
         </Modal.Header>
         <Modal.Body>
           <p>
-            You can use this wallet on multiple devices. Learn more on <a href="https://www.eraswapwallet.com" target="_blank">www.eraswapwallet.com</a>.
+            You can use this wallet on multiple devices. Learn more on <a href="https://www.eraswapwallet.com" target="_blank" rel="noopener noreferrer">www.eraswapwallet.com</a>.
           </p>
         </Modal.Body>
         <Modal.Footer>

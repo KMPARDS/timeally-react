@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Navbar, Nav, DropdownButton, Dropdown } from 'react-bootstrap';
-import { withRouter, Link } from 'react-router-dom';
+//import { Navbar, Nav, DropdownButton, Dropdown } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
 
 class NavbarComponent extends Component {
   state = {
@@ -57,8 +57,8 @@ class NavbarComponent extends Component {
                 <div className="quick-info">
                   {/* <span className="mr10">Call: 1-800-123-4567</span>
                   <span className="mr10"><a href="#">ATM &amp; Branches</a></span> */}
-                  <span><a onClick={() => this.props.history.push('/create-wallet')} className="btn btn-primary btn-sm">Create Wallet</a></span>  
-                  <span><a href="#" className="btn btn-default btn-sm">Welcome Prafull M</a></span>               
+                  <span><a onClick={() => this.props.history.push('/create-wallet')} className="btn btn-primary btn-sm">Create Wallet</a></span>
+                  <span><a href="#" className="btn btn-default btn-sm">Welcome Prafull M</a></span>
                 </div>
               </div>
             </div>
@@ -88,7 +88,7 @@ class NavbarComponent extends Component {
                         <li><a href="about.html" title="About us" className="animsition-link">About us</a></li>
                         <li><a href="team.html" title="Team" className="animsition-link">Team</a></li>
                       </ul>
-                    </li> */}                  
+                    </li> */}
                   </ul>
                 </div>
                 {/* /.navigation start*/}
@@ -139,9 +139,9 @@ class NavbarComponent extends Component {
       //       }}>Log out</Dropdown.Item> : null}
       //     </DropdownButton>
       //   </Navbar.Collapse>
-      // </Navbar>     
+      // </Navbar>
 
-      
+
     );
   }
 }
