@@ -85,8 +85,8 @@ class NavbarComponent extends Component {
                   {/* navigation start*/}
                   <ul>
                     <li className="active"><a onClick={() => this.props.history.push('/')}>Home</a></li>
-                    <li className="active"><a onClick={() => this.props.history.push('/Dashboard')}>Dashboard</a></li>
-                    <li className="active"><a onClick={() => this.props.history.push('/Wallet')}>Wallet</a></li>
+                    <li className="active"><a onClick={() => this.props.history.push('/dashboard')}>Dashboard</a></li>
+                    <li className="active"><a onClick={() => this.props.history.push('/wallet')}>Wallet</a></li>
                     {/* <li><a onClick={() => this.props.history.push('/Staking')}>Staking</a></li> */}
                     <li><a onClick={() => this.props.history.push('/transactions')}>Transactions</a>
                       <ul>
