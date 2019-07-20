@@ -21,6 +21,21 @@ class NavbarComponent extends Component {
   }
 
   render() {
+    let navbarButtons = (
+      <div>
+        <span><a onClick={() => this.props.history.push('/create-wallet')} className="btn btn-primary btn-sm">Create Wallet</a></span>
+        <span><a onClick={() => this.props.history.push('/load-wallet')} className="btn btn-default btn-sm">Load Wallet</a></span>
+      </div>
+    );
+    if(this.state.userAddress) {
+      navbarButtons = (
+        <span><a className="btn btn-primary btn-sm">Welcome {
+            this.state.userAddress.slice(0,6) + '...' + this.state.userAddress.slice(this.state.userAddress.length - 3, this.state.userAddress.length - 1)
+          }</a></span>
+      );
+    }
+
+
     return (
       <div>
 
@@ -50,15 +65,12 @@ class NavbarComponent extends Component {
               <div className="col-xl-4 col-lg-4 col-md-3 col-sm-6 col-6">
                 {/* logo */}
                 <div className="logo">
-                  <img onClick={() => this.props.history.push('/')} src="/images/logo.png" alt="Time Ally" />
+                  <img onClick={() => this.props.history.push('/')} src="/images/logo.png" alt="TimeAlly" />
                 </div>
               </div>
               <div className="col-xl-8 col-lg-8 col-md-9 col-sm-12 col-12">
                 <div className="quick-info">
-                  {/* <span className="mr10">Call: 1-800-123-4567</span>
-                  <span className="mr10"><a href="#">ATM &amp; Branches</a></span> */}
-                  <span><a onClick={() => this.props.history.push('/create-wallet')} className="btn btn-primary btn-sm">Create Wallet</a></span>
-                  <span><a href="#" className="btn btn-default btn-sm">Welcome Prafull M</a></span>
+                  {navbarButtons}
                 </div>
               </div>
             </div>
