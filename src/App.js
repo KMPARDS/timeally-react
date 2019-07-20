@@ -13,6 +13,7 @@ import WithdrawlTransactions from './containers/Transactions/Withdrawls';
 import Wallet from './containers/Wallet/Wallet';
 import Loans from './containers/Loans/Loans';
 import Staking from './containers/Stakings/Stakings';
+import Mou from './containers/Mou/Mou';
 
 //import { Button } from 'react-bootstrap';
 
@@ -20,17 +21,31 @@ import Staking from './containers/Stakings/Stakings';
 import './App.css';
 
 import provider from './ethereum/provider';
-import { esContract } from './env.js';
+import { esContract, timeally } from './env.js';
 const ethers = require('ethers');
 
 window.redirectHereAfterLoadWallet = '/dashboard';
 
 function App(props) {
 
+  //for dev purpose 24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA
+  setTimeout(() => {
+    if(Object.entries(props.store.walletInstance).length === 0) {
+      //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
+      props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: new ethers.Wallet('0x24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA', provider) });
+    }
+  },1000);
+
   // load es instance
   if(Object.entries(props.store.esInstance).length === 0) {
-    console.log(provider, new ethers.providers.InfuraProvider('kovan'));
+    //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
     props.dispatch({ type: 'LOAD-ES-INSTANCE', payload: new ethers.Contract(esContract.address, esContract.abi, provider) });
+  }
+
+  // load timeally
+  if(Object.entries(props.store.timeallyInstance).length === 0) {
+    //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
+    props.dispatch({ type: 'LOAD-TIMEALLY-INSTANCE', payload: new ethers.Contract(timeally.address, timeally.abi, provider) });
   }
 
   return (
@@ -56,6 +71,7 @@ function App(props) {
             <Route path="/insurance" exact render={
               () => <div>Coming soon</div>
             } />
+          <Route path="/mou" exact component={Mou} />
           </Switch>
         </div>
         <div className="footer section-space20">
@@ -84,7 +100,7 @@ function App(props) {
                   <ul className="listnone">
                     <li><a>Home</a></li>
                     <li><a>Services</a></li>
-                    <li><a>About Us</a></li>                   
+                    <li><a>About Us</a></li>
                   </ul>
                 </div>
                 {/* /.widget footer */}

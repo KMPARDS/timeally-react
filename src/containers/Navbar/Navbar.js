@@ -3,12 +3,24 @@ import { connect } from 'react-redux';
 //import { Navbar, Nav, DropdownButton, Dropdown } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 
+import { esContract, timeally } from '../../env';
+
+const ethers = require('ethers');
+
 class NavbarComponent extends Component {
   state = {
-    userAddress: ''
+    userAddress: '',
+    time: 0
   };
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
+    const time = (await this.props.store.esInstance.functions.mou()).toNumber();
+    this.setState({ time });
+
+    setInterval(() => {
+      this.setState({ time: this.state.time + 1 });
+    }, 1000);
+
     window.updateTheNavbar = async action => {
       if(action.type === 'LOAD-WALLET-INSTANCE') {
         let userAddress = '';
@@ -16,6 +28,12 @@ class NavbarComponent extends Component {
           userAddress = await action.payload.getAddress();
         }
         this.setState({ userAddress });
+
+        // update es instance
+        this.props.dispatch({ type: 'LOAD-ES-INSTANCE', payload: new ethers.Contract(esContract.address, esContract.abi, action.payload) });
+
+        // update timeally
+        this.props.dispatch({ type: 'LOAD-TIMEALLY-INSTANCE', payload: new ethers.Contract(timeally.address, timeally.abi, action.payload) });
       }
     };
   }
@@ -44,7 +62,7 @@ class NavbarComponent extends Component {
         <div className="container">
           <div className="row">
             <div className="col-xl-4 col-lg-5 col-md-4 col-sm-6 col-6 d-none d-xl-block d-lg-block">
-              <p className="mail-text">Welcome to Time Ally</p>
+              <p className="mail-text">{new Date(this.state.time * 1000).toLocaleString()}</p>
             </div>
             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 d-none d-xl-block d-lg-block">
               <p className="mail-text text-center">ES Price: 52445</p>
@@ -95,6 +113,7 @@ class NavbarComponent extends Component {
                         </ul>
                     </li>
                     <li className="active"><a onClick={() => this.props.history.push('/loans')}>Apply for Loan</a></li>
+                    <li className="active"><a onClick={() => this.props.history.push('/mou')}>The mou Time Machine</a></li>
                     {/* <li><a href="about.html" className="animsition-link">About us</a>
                       <ul>
                         <li><a href="about.html" title="About us" className="animsition-link">About us</a></li>

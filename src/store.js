@@ -1,5 +1,6 @@
 import { applyMiddleware, createStore } from "redux";
 
+
 const initialState = {
   walletInstance: {},
   esInstance: {},
