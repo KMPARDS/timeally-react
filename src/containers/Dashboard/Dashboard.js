@@ -16,7 +16,7 @@ class Dashboard extends Component {
 
   showStakings = async () => {
     this.setState({ betsToDisplay: [], betsLoading: true });
-    const newStakingEventSig = ethers.utils.id("NewStaking(address,uint256,uint256)");
+    const newStakingEventSig = ethers.utils.id("NewStaking(address,uint256,uint256,uint256)");
     const topics = [ newStakingEventSig, null, null, null ];
 
     const logs = await this.props.store.providerInstance.getLogs({
@@ -27,11 +27,12 @@ class Dashboard extends Component {
     });
 
     const stakings = [];
-    for(const log of logs) {
+    for(let i = logs.length - 1; i >= 0; i--) {
+      const log = logs[i];
       stakings.push({
         address: log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length),
         planId: ethers.utils.bigNumberify(log.topics[2]).toNumber(),
-        amount: ethers.utils.formatEther(ethers.utils.bigNumberify(log.data)).toString()
+        amount: ethers.utils.formatEther(ethers.utils.bigNumberify(log.data.slice(0,66)))
       });
     }
 
@@ -49,7 +50,7 @@ class Dashboard extends Component {
                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                       <div className="page-breadcrumb">
                         <ol className="breadcrumb">
-                          <li><a href="index.html">Home</a></li>
+                          <li><a>Home</a></li>
                           <li className="active">Dashboard</li>
                         </ol>
                       </div>
@@ -137,28 +138,16 @@ class Dashboard extends Component {
                                   <th>Amount</th>
                                 </tr>
                               </thead>
-                          {this.state.stakings.map(staking => (
-                              <tbody  style={{textAlign:'center'}}>
-                                <tr>
+                            <tbody  style={{textAlign:'center'}}>
 
+                          {this.state.stakings.map(staking => (
+                                <tr>
                                   <td style={{color:'#f51f8a'}}>{staking.address}</td>
                                   <td>{staking.planId ? '2 Year' : '1 Year'}</td>
                                   <td>{staking.amount}</td>
                                 </tr>
-                                {/* <tr>
-                                  <th scope="row">2</th>
-                                  <td>Jacob</td>
-                                  <td>Thornton</td>
-                                  <td>@fat</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">3</th>
-                                  <td>Larry</td>
-                                  <td>the Bird</td>
-                                  <td>@twitter</td>
-                                </tr> */}
-                              </tbody>
                               ))}
+                              </tbody>
                             </table>
                             </div>
                         </div>
