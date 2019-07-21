@@ -38,7 +38,7 @@ class NavbarComponent extends Component {
         this.setState({ time: newTime });
       }
     };
-    
+
     const time = (await this.props.store.esInstance.functions.mou()).toNumber();
     this.setState({ time });
 
@@ -122,6 +122,7 @@ class NavbarComponent extends Component {
                           <li><a onClick={() => this.props.history.push('/transactions/withdrawls')}>Withdrawal Transactions</a></li>
                         </ul>
                     </li>
+                    <li className="active"><a onClick={() => this.props.history.push('/stakings')}>Stakings</a></li>
                     <li className="active"><a onClick={() => this.props.history.push('/loans')}>Apply for Loan</a></li>
                     <li className="active"><a onClick={() => this.props.history.push('/mou')}>The mou Time Machine</a></li>
                     {/* <li><a href="about.html" className="animsition-link">About us</a>

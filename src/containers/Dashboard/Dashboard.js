@@ -15,7 +15,6 @@ class Dashboard extends Component {
   }
 
   showStakings = async () => {
-    this.setState({ betsToDisplay: [], betsLoading: true });
     const newStakingEventSig = ethers.utils.id("NewStaking(address,uint256,uint256,uint256)");
     const topics = [ newStakingEventSig, null, null, null ];
 
@@ -29,11 +28,15 @@ class Dashboard extends Component {
     const stakings = [];
     for(let i = logs.length - 1; i >= 0; i--) {
       const log = logs[i];
+      const address = log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length);
+      const stakingId = Number(log.data.slice(66,130));
+      const staking = await this.props.store.timeallyInstance.functions.viewStaking(address, stakingId);
+      console.log(staking);
       stakings.push({
-        address: log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length),
+        address,
         planId: ethers.utils.bigNumberify(log.topics[2]).toNumber(),
         amount: ethers.utils.formatEther(ethers.utils.bigNumberify(log.data.slice(0,66))),
-        timestamp: ( await this.props.store.providerInstance.getBlock(log.blockNumber) ).timestamp
+        timestamp: staking[1].toNumber()
       });
     }
 

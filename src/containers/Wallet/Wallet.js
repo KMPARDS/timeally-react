@@ -12,7 +12,7 @@ class WalletPage extends Component {
     totalStakingsNext: {},
     shareNow: {},
     shareNext: {}
-  }
+  };
 
   componentDidMount = async () => {
     if(Object.keys(this.props.store.walletInstance).length) {
@@ -61,14 +61,16 @@ class WalletPage extends Component {
           )
         });
 
+        const totalActiveStakings = await this.props.store.timeallyInstance.functions.totalActiveStakings(currentMonth.add(1));
+
         this.setState({
-          shareNext: (await
+          shareNext: totalActiveStakings.eq(0) ? '0' : (await
           this.props.store.timeallyInstance.functions.userEffectiveStakingByMonth(
             this.props.store.walletInstance.address,
             currentMonth.add(1)
           )).mul(await
           this.props.store.timeallyInstance.functions.timeAllyMonthlyNRT(currentMonth))
-          .div(await this.props.store.timeallyInstance.functions.totalActiveStakings(currentMonth.add(1)))
+          .div(totalActiveStakings)
         });
       })();
     }

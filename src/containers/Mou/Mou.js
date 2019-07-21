@@ -21,7 +21,7 @@ class Mou extends Component {
   goToPast = async () => {
     this.setState({ paraMessage: 'Please wait starting time machine...' });
     try {
-      const tx = await this.props.store.esInstance.goToPast( Number(this.state.seconds) );
+      const tx = await this.props.store.esInstance.goToFuture( Number(this.state.seconds) );
       this.setState({ paraMessage: 'Please wait, time travelling back to the past!' });
       await tx.wait();
       this.setState({ paraMessage: 'Done! We\'ve reached destination' });
@@ -35,7 +35,7 @@ class Mou extends Component {
   goToFuture = async () => {
     this.setState({ paraMessage: 'Please wait starting time machine...' });
     try {
-      const tx = await this.props.store.esInstance.goToFuture( Number(this.state.seconds) );
+      const tx = await this.props.store.esInstance.goToPast( Number(this.state.seconds) );
       this.setState({ paraMessage: 'Please wait, time travelling to the future!' });
       await tx.wait();
       this.setState({ paraMessage: 'Done! We\'ve reached destination' });
@@ -48,11 +48,16 @@ class Mou extends Component {
 
   oneMonthPlusNRT = async () => {
     this.setState({ paraMessage: 'Please wait releasing the monthly NRT 🤤 !!!' });
-    await this.props.store.nrtInstance.functions.MonthlyNRTRelease();
-    this.setState({ paraMessage: 'Yay! NRT release is done!!!' });
-    setTimeout(()=>this.setState({ paraMessage: '' }), 1500);
+    try {
+      await this.props.store.nrtInstance.functions.MonthlyNRTRelease();
+      this.setState({ paraMessage: 'Yay! NRT release is done!!!' });
+      setTimeout(()=>this.setState({ paraMessage: '' }), 1500);
+    } catch (err) {
+      this.setState({ paraMessage: '', errorMessage: err.message });
+    }
 
-    this.updateNRTRelease();
+
+    setTimeout(()=>this.updateNRTRelease(), 2000);
   };
 
   render() {

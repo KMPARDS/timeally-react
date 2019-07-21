@@ -16,7 +16,6 @@ class Transactions extends Component {
   }
 
   showStakings = async () => {
-    this.setState({ betsToDisplay: [], betsLoading: true });
     const newStakingEventSig = ethers.utils.id("NewStaking(address,uint256,uint256,uint256)");
     const topics = [ newStakingEventSig, ethers.utils.hexZeroPad(this.props.store.walletInstance.address, 32) ];
 
@@ -30,10 +29,16 @@ class Transactions extends Component {
     const stakings = [];
     for(let i = logs.length - 1; i >= 0; i--) {
       const log = logs[i];
+      const address = log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length);
+      const stakingId = Number(log.data.slice(66,130));
+      const staking = await this.props.store.timeallyInstance.functions.viewStaking(address, stakingId);
+      console.log(staking);
       stakings.push({
-        address: log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length),
+        address,
         planId: ethers.utils.bigNumberify(log.topics[2]).toNumber(),
-        amount: ethers.utils.formatEther(ethers.utils.bigNumberify(log.data.slice(0,66)))
+        amount: ethers.utils.formatEther(ethers.utils.bigNumberify(log.data.slice(0,66))),
+        timestamp: staking[1].toNumber(),
+        hash: log.transactionHash
       });
     }
 
@@ -85,54 +90,35 @@ class Transactions extends Component {
                 <div className="row">
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                   <table className="table table-image">
+
+                    {this.state.stakings.map(staking => (
+                      <div>
                         <thead>
                           <tr>
-                            <th scope="col" style={{fontSize:'11px', fontWeight:'500'}}>f57c2b95cfa2e7e722508ac8e524df5d86a8bd6565ae4b05d28cc2e74bb199d2</th>
+                            <th scope="col" style={{fontSize:'11px', fontWeight:'500'}}>{staking.hash}</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
-                            <th scope="col"  style={{fontSize:'11px', fontWeight:'500', textAlign:'right'}}>2019-07-18 11:52:16</th>
+                            <th scope="col"  style={{fontSize:'11px', fontWeight:'500', textAlign:'right'}}>{new Date(staking.timestamp * 1000).toLocaleString()}</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <th scope="row" style={{fontSize:'14px', fontWeight:'500'}}>No Inputs (Newly Generated Coins)</th>
+                            <th scope="row" style={{fontSize:'14px', fontWeight:'500'}}>
+                              {this.props.store.walletInstance.address}
+                            </th>
                             <td style={{fontSize:'35px', fontWeight:'100', color: '#971802'}}><i className="fa fa-long-arrow-right"></i></td>
                             <td>
-                              <span style={{color: '#007bff'}}>1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY</span><br></br>
-                              <span style={{color: '#971802'}}>Unable to decode output address </span><br></br>
-                              <span style={{color: '#971802'}}>Unable to decode output address </span>
+                              <span style={{color: '#007bff'}}>TimeAlly Smart Contract <br />{this.props.store.timeallyInstance.address}</span><br />
                             </td>
-                            <td style={{textAlign:'right'}}>13.15531269 BTC<br></br>
-                            0 BTC<br></br>
-                            0 BTC<br></br>
-                            <button type="button" className="btn btn-secondary small-btn">13.15531269 BTC</button>
+                            <td style={{textAlign:'right'}}><br></br>
+                            {staking.amount} ES<br></br>
+                            <br></br>
+                            <button type="button" className="btn btn-secondary small-btn">{staking.amount} ES</button>
                             </td>
                           </tr>
                         </tbody>
-                        <thead>
-                          <tr>
-                            <th scope="col" style={{fontSize:'11px', fontWeight:'500'}}>f57c2b95cfa2e7e722508ac8e524df5d86a8bd6565ae4b05d28cc2e74bb199d2</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"  style={{fontSize:'11px', fontWeight:'500', textAlign:'right'}}>2019-07-18 11:52:16</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row" style={{fontSize:'14px', fontWeight:'500'}}>No Inputs (Newly Generated Coins)</th>
-                            <td style={{fontSize:'35px', fontWeight:'100', color: '#971802'}}><i className="fa fa-long-arrow-right"></i></td>
-                            <td>
-                              <span style={{color: '#007bff'}}>1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY</span><br></br>
-                              <span style={{color: '#971802'}}>Unable to decode output address </span><br></br>
-                              <span style={{color: '#971802'}}>Unable to decode output address </span>
-                            </td>
-                            <td style={{textAlign:'right'}}>13.15531269 BTC<br></br>
-                            0 BTC<br></br>
-                            0 BTC<br></br>
-                            <button type="button" className="btn btn-secondary small-btn">13.15531269 BTC</button>
-                            </td>
-                          </tr>
-                        </tbody>
+                      </div>
+                    ))}
                       </table>
                   </div>
                 </div>
