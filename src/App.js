@@ -21,7 +21,7 @@ import Mou from './containers/Mou/Mou';
 import './App.css';
 
 import provider from './ethereum/provider';
-import { esContract, timeally } from './env.js';
+import { esContract, nrtManager, timeally } from './env.js';
 const ethers = require('ethers');
 
 window.redirectHereAfterLoadWallet = '/dashboard';
@@ -40,6 +40,12 @@ function App(props) {
   if(Object.entries(props.store.esInstance).length === 0) {
     //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
     props.dispatch({ type: 'LOAD-ES-INSTANCE', payload: new ethers.Contract(esContract.address, esContract.abi, provider) });
+  }
+
+  // load es instance
+  if(Object.entries(props.store.nrtInstance).length === 0) {
+    //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
+    props.dispatch({ type: 'LOAD-NRT-INSTANCE', payload: new ethers.Contract(nrtManager.address, nrtManager.abi, provider) });
   }
 
   // load timeally

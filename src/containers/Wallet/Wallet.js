@@ -8,36 +8,69 @@ class WalletPage extends Component {
     userAddress: '',
     esBalance: {},
     etherBalance: {},
-    totalStakings: {},
-    share: {}
+    totalStakingsNow: {},
+    totalStakingsNext: {},
+    shareNow: {},
+    shareNext: {}
   }
 
-  async componentDidMount() {
+  componentDidMount = async () => {
     if(Object.keys(this.props.store.walletInstance).length) {
-      const month = await this.props.store.timeallyInstance.functions.getCurrentMonth();
+      const currentMonth = await this.props.store.timeallyInstance.functions.getCurrentMonth();
 
       await this.setState({
         userAddress: this.props.store.walletInstance.address
       });
-      this.setState({
-        esBalance: await this.props.store.esInstance.functions.balanceOf(this.state.userAddress)
-      });
-      this.setState({
-        etherBalance: await this.props.store.providerInstance.getBalance(this.state.userAddress)
-      });
-      this.setState({
-        totalStakings: await this.props.store.timeallyInstance.functions.userActiveStakingByMonth(
-          this.props.store.walletInstance.address,
-          (month).add(1)
-        )
-      });
 
-      this.setState({
-        share: await this.props.store.timeallyInstance.functions.seeShareForUserByMonth(
-          this.props.store.walletInstance.address,
-          month
-        )
-      });
+      (async()=>{
+        this.setState({
+          esBalance: await this.props.store.esInstance.functions.balanceOf(this.state.userAddress)
+        });
+      })();
+
+      (async()=>{
+        this.setState({
+          etherBalance: await this.props.store.providerInstance.getBalance(this.state.userAddress)
+        });
+      })();
+
+      (async()=>{
+        this.setState({
+          totalStakingsNow: await this.props.store.timeallyInstance.functions.userActiveStakingByMonth(
+            this.props.store.walletInstance.address,
+            currentMonth
+          )
+        });
+      })();
+
+      (async()=>{
+        this.setState({
+          shareNow: await this.props.store.timeallyInstance.functions.seeShareForUserByMonth(
+            this.props.store.walletInstance.address,
+            currentMonth
+          )
+        });
+      })();
+
+
+      (async()=>{
+        await this.setState({
+          totalStakingsNext: await this.props.store.timeallyInstance.functions.userActiveStakingByMonth(
+            this.props.store.walletInstance.address,
+            currentMonth.add(1)
+          )
+        });
+
+        this.setState({
+          shareNext: (await
+          this.props.store.timeallyInstance.functions.userEffectiveStakingByMonth(
+            this.props.store.walletInstance.address,
+            currentMonth.add(1)
+          )).mul(await
+          this.props.store.timeallyInstance.functions.timeAllyMonthlyNRT(currentMonth))
+          .div(await this.props.store.timeallyInstance.functions.totalActiveStakings(currentMonth.add(1)))
+        });
+      })();
     }
   }
 
@@ -96,10 +129,14 @@ class WalletPage extends Component {
                             {Object.keys(this.state.esBalance).length ? ethers.utils.formatEther(this.state.esBalance) : null} ES</div>
                           <div className="col-md-6"><b>Your Ether Balance</b>:
                             {Object.keys(this.state.etherBalance).length ? ethers.utils.formatEther(this.state.etherBalance) : null } ETH</div>
-                          <div className="col-md-6"><b>Your Total Active Stakings in Next Month</b>:
-                            {Object.keys(this.state.totalStakings).length ? ethers.utils.formatEther(this.state.totalStakings) : null} ES</div>
+                          <div className="col-md-6"><b>Your Total Active Stakings in this Month</b>:
+                            {Object.keys(this.state.totalStakingsNow).length ? ethers.utils.formatEther(this.state.totalStakingsNow) : null} ES</div>
                           <div className="col-md-6"><b>This Month's Benefit</b>:
-                            {Object.keys(this.state.share).length ? ethers.utils.formatEther(this.state.share) : null} ES</div>
+                            {Object.keys(this.state.shareNow).length ? ethers.utils.formatEther(this.state.shareNow) : null} ES</div>
+                          <div className="col-md-6"><b>Your Total Active Stakings in Next Month</b>:
+                            {Object.keys(this.state.totalStakingsNext).length ? ethers.utils.formatEther(this.state.totalStakingsNext) : null} ES</div>
+                          <div className="col-md-6"><b>Next Month's Projected Benefit</b>:
+                            {Object.keys(this.state.shareNext).length ? ethers.utils.formatEther(this.state.shareNext) : null} ES</div>
                         </div>
                       </div>
                     </div>

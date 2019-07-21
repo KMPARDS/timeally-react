@@ -32,7 +32,8 @@ class Dashboard extends Component {
       stakings.push({
         address: log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length),
         planId: ethers.utils.bigNumberify(log.topics[2]).toNumber(),
-        amount: ethers.utils.formatEther(ethers.utils.bigNumberify(log.data.slice(0,66)))
+        amount: ethers.utils.formatEther(ethers.utils.bigNumberify(log.data.slice(0,66))),
+        timestamp: ( await this.props.store.providerInstance.getBlock(log.blockNumber) ).timestamp
       });
     }
 
@@ -136,6 +137,7 @@ class Dashboard extends Component {
                                   <th>Address</th>
                                   <th>Plan</th>
                                   <th>Amount</th>
+                                  <th>Timestamp</th>
                                 </tr>
                               </thead>
                             <tbody  style={{textAlign:'center'}}>
@@ -145,6 +147,7 @@ class Dashboard extends Component {
                                   <td style={{color:'#f51f8a'}}>{staking.address}</td>
                                   <td>{staking.planId ? '2 Year' : '1 Year'}</td>
                                   <td>{staking.amount}</td>
+                                  <td>{new Date(staking.timestamp * 1000).toLocaleString()}</td>
                                 </tr>
                               ))}
                               </tbody>

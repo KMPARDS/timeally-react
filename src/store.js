@@ -4,6 +4,7 @@ import { applyMiddleware, createStore } from "redux";
 const initialState = {
   walletInstance: {},
   esInstance: {},
+  nrtInstance: {},
   timeallyInstance: {},
   providerInstance: {}
 };
@@ -14,6 +15,8 @@ const reducer = (state, action) => {
       return {...state, walletInstance: action.payload};
     case 'LOAD-ES-INSTANCE':
       return {...state, esInstance: action.payload};
+    case 'LOAD-NRT-INSTANCE':
+      return {...state, nrtInstance: action.payload};
     case 'LOAD-TIMEALLY-INSTANCE':
       return {...state, timeallyInstance: action.payload};
     case 'LOAD-PROVIDER-INSTANCE':
@@ -30,7 +33,7 @@ const walletChangeUpdater = store => next => action => {
   try {
     window.updateTheNavbar(action);
   } catch (e) {
-    //console.log(e.message);
+    console.log(e.message);
   }
 
   console.group(action.type);
