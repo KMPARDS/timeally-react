@@ -113,17 +113,36 @@ class NavbarComponent extends Component {
                   {/* navigation start*/}
                   <ul>
                     <li className="active"><a onClick={() => this.props.history.push('/')}>Home</a></li>
+
+                    { this.props.store.walletInstance.address ?
                     <li className="active"><a onClick={() => this.props.history.push('/dashboard')}>Dashboard</a></li>
+                      : null
+                   }
+
+                  { this.props.store.walletInstance.address ?
                     <li className="active"><a onClick={() => this.props.history.push('/wallet')}>Wallet</a></li>
-                    {/* <li><a onClick={() => this.props.history.push('/Staking')}>Staking</a></li> */}
+                      : null
+                   }
+
+                  { this.props.store.walletInstance.address ?
                     <li><a onClick={() => this.props.history.push('/transactions')}>Transactions</a>
                       <ul>
                           <li><a onClick={() => this.props.history.push('/transactions/stakings')}>Staking Transactions</a></li>
                           <li><a onClick={() => this.props.history.push('/transactions/withdrawls')}>Withdrawal Transactions</a></li>
                         </ul>
                     </li>
+                    : null
+                 }
+
+                    { this.props.store.walletInstance.address ?
                     <li className="active"><a onClick={() => this.props.history.push('/stakings')}>Stakings</a></li>
+                      : null
+                   }
+
+                  { this.props.store.walletInstance.address ?
                     <li className="active"><a onClick={() => this.props.history.push('/loans')}>Apply for Loan</a></li>
+                     : null
+                  }
                     <li className="active"><a onClick={() => this.props.history.push('/mou')}>The mou Time Machine</a></li>
                     {/* <li><a href="about.html" className="animsition-link">About us</a>
                       <ul>
