@@ -8,7 +8,9 @@ class StakingList extends Component {
     stakings: [],
     month: 0,
     benefit: {},
-    errorMessage: ''
+    errorMessage: '',
+    withdrawing: false,
+    withdrawable: true
   }
 
   componentDidMount = async () => {
@@ -49,15 +51,40 @@ class StakingList extends Component {
 
 
   showBenefit = async () => {
+    this.setState({ errorMessage: '',  });
+
     try {
       const benefit = await this.props.store.timeallyInstance.functions.seeShareForUserByMonth(
         this.props.store.walletInstance.address,
         this.state.month
       );
-      this.setState({ benefit });
+      this.setState({ benefit, withdrawable: true });
+    } catch (err) {
+      this.setState({ errorMessage: err.message, benefit: {}, withdrawable: false });
+    }
+  }
+
+  withdrawBenefit = async () => {
+    try {
+      this.setState({ withdrawing: true });
+      const inputs = [
+        this.state.month,
+        50,
+        false,
+        0
+      ];
+      console.log(inputs);
+      const tx = await this.props.store.timeallyInstance.functions.withdrawShareForUserByMonth(
+        ...inputs
+      );
+      console.log(tx);
+      await tx.wait();
+      console.log('done');
     } catch (err) {
       this.setState({ errorMessage: err.message });
+      console.log(err);
     }
+    this.setState({ withdrawing: false });
   }
 
   render() {
@@ -114,7 +141,8 @@ class StakingList extends Component {
                        <p>
                          Your benefit above month is {ethers.utils.formatEther(this.state.benefit)} ES
                          <br />
-                         <button>Withdraw this now</button>
+                         <button disabled={this.state.withdrawing} onClick={this.withdrawBenefit}>
+                           {this.state.withdrawing ? 'Withdrawing...' : 'Withdraw this now'}</button>
                        </p>
 
 
