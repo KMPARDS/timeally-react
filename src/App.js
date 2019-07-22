@@ -93,45 +93,17 @@ function App(props) {
               </div>
             </div>
             <div className="row">
-              <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div className="widget-text mt10">
                   {/* widget text */}
-                  <p style={{color:'#fff'}}>Our goal at Borrow Loan Company is to provide access to personal loans and education loan, car loan, home loan at insight competitive interest rates lorem ipsums. We are the loan provider, you can use our loan product.</p>
+                  <a href="#" className="btn btn-default">Apply for TimeAlly Loan</a>
+                  <a href="#" className="btn btn-default">Apply for TimeAlly Club</a>
+                  <a href="#" className="btn btn-default">Apply for TimeAlly Insurance</a>
                 </div>
                 {/* /.widget text */}
-              </div>
-              <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6">
-                <div className="widget-footer mt40">
-                  {/* widget footer */}
-                  <ul className="listnone">
-                    <li><a>Home</a></li>
-                    <li><a>Services</a></li>
-                    <li><a>About Us</a></li>
-                  </ul>
-                </div>
-                {/* /.widget footer */}
-              </div>
-              <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6">
-                <div className="widget-footer mt40">
-                  {/* widget footer */}
-                  <ul className="listnone">
-                    <li><a href="#">Car Loan</a></li>
-                    <li><a href="#">Personal Loan</a></li>
-                    <li><a href="#">Education Loan</a></li>
-                  </ul>
-                </div>
-                {/* /.widget footer */}
-              </div>
-              <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6">
-                <div className="widget-social mt40">
-                  {/* widget footer */}
-                  <ul className="listnone">
-                    <li><a href="#"><i className="fa fa-facebook" />Facebook</a></li>
-                    <li><a href="#"><i className="fa fa-google-plus" />Google Plus</a></li>
-                  </ul>
-                </div>
-                {/* /.widget footer */}
-              </div>
+              </div>             
+              
+              
             </div>
           </div>
         </div>
