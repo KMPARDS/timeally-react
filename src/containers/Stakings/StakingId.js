@@ -8,7 +8,7 @@ class StakingId extends Component {
     staking: {}
   }
   componentDidMount = async () => {
-    if(this.props.store.walletInstance.address) {
+    if(this.props.store.walletInstance.address && this.props.match.params.id) {
       const staking = await this.props.store.timeallyInstance.functions.viewStaking(
         this.props.store.walletInstance.address,
         this.props.match.params.id
@@ -62,7 +62,7 @@ class StakingId extends Component {
                   <div className="wrapper-content bg-white pinside40">
                    <div className="bg-white section-space80">
                      <div className="container">
-                    
+
                     <p>Staking amount: {this.state.staking[0] ? ethers.utils.formatEther(this.state.staking[0]) : null}</p>
                     <p>Staking time: {new Date(this.state.staking[1] * 1000).toLocaleString()}</p>
                     <p>Staking plan Id: {this.state.staking[2] ? this.state.staking[2].toNumber() : null} ({this.state.staking[2] ? '2 Year' : '1 Year'})</p>
