@@ -6,30 +6,49 @@ import { withRouter } from 'react-router-dom';
 import { esContract, nrtManager, timeally } from '../../env';
 
 const ethers = require('ethers');
+const axios = require('axios');
 
 class NavbarComponent extends Component {
   state = {
     userAddress: '',
-    time: 0
+    time: 0,
+    etherPrice: '',
+    gasPrice: ''
   };
 
   componentDidMount = async () => {
+    (async() => {
+      const response = await axios.get('https://api.coinmarketcap.com/v1/ticker/ethereum/');
+      this.setState({ etherPrice: response.data[0]['price_usd'] });
+      //console.log(response);
+    })();
+
+    (async()=>{
+      const response = await axios.get('https://ethgasstation.info/json/ethgasAPI.json');
+      //console.log(response.data);
+      this.setState({ gasPrice: response.data['fastest'] / 10 });
+
+    })();
+
     window.updateTheNavbar = async action => {
       if(action.type === 'LOAD-WALLET-INSTANCE') {
+
         let userAddress = '';
         if(Object.entries(action.payload).length) {
           userAddress = await action.payload.getAddress();
         }
         this.setState({ userAddress });
 
+        const provider = userAddress ? action.payload : this.props.store.providerInstance;
+
         // update es instance
-        this.props.dispatch({ type: 'LOAD-ES-INSTANCE', payload: new ethers.Contract(esContract.address, esContract.abi, action.payload) });
+        this.props.dispatch({ type: 'LOAD-ES-INSTANCE', payload: new ethers.Contract(esContract.address, esContract.abi, provider) });
 
         // update nrt instance
-        this.props.dispatch({ type: 'LOAD-NRT-INSTANCE', payload: new ethers.Contract(nrtManager.address, nrtManager.abi, action.payload) });
+        this.props.dispatch({ type: 'LOAD-NRT-INSTANCE', payload: new ethers.Contract(nrtManager.address, nrtManager.abi, provider) });
 
         // update timeally
-        this.props.dispatch({ type: 'LOAD-TIMEALLY-INSTANCE', payload: new ethers.Contract(timeally.address, timeally.abi, action.payload) });
+        this.props.dispatch({ type: 'LOAD-TIMEALLY-INSTANCE', payload: new ethers.Contract(timeally.address, timeally.abi, provider) });
       }
 
       if(action.type === 'update time yaar') {
@@ -57,9 +76,17 @@ class NavbarComponent extends Component {
     );
     if(this.state.userAddress) {
       navbarButtons = (
-        <span><a className="btn btn-primary btn-sm">Welcome {
-            this.state.userAddress.slice(0,6) + '...' + this.state.userAddress.slice(this.state.userAddress.length - 3, this.state.userAddress.length - 1)
-          }</a></span>
+        <div>
+          <span><a className="btn btn-primary btn-sm">Welcome {
+              this.state.userAddress.slice(0,6) + '...' + this.state.userAddress.slice(this.state.userAddress.length - 3, this.state.userAddress.length - 1)
+            }</a>
+          </span>
+          <span><a onClick={() => {
+              this.props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: {} });
+              this.props.history.push('/logout');
+            } } className="btn btn-default btn-sm">Logout</a></span>
+
+        </div>
       );
     }
 
@@ -76,13 +103,13 @@ class NavbarComponent extends Component {
                 mou: {this.state.time ? new Date(this.state.time * 1000).toLocaleString(): 'Loading...'}</p>
             </div>
             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 d-none d-xl-block d-lg-block">
-              <p className="mail-text text-center">ES Price: 52445</p>
+              <p className="mail-text text-center">ES Price: Not available</p>
             </div>
             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 d-none d-xl-block d-lg-block">
-              <p className="mail-text text-center">Ether Price: 5747</p>
+              <p className="mail-text text-center">Ether Price: ${this.state.etherPrice}</p>
             </div>
             <div className="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 d-none d-xl-block d-lg-block">
-              <p className="mail-text text-center">Gas Price: 541</p>
+              <p className="mail-text text-center">Gas Price: {this.state.gasPrice} gwei</p>
             </div>
           </div>
         </div>
@@ -145,6 +172,12 @@ class NavbarComponent extends Component {
                      : null
                   }
                     <li className="active"><a onClick={() => this.props.history.push('/mou')}>The mou Time Machine</a></li>
+
+                      { this.props.store.walletInstance.address ?
+                      <li className="active"><a onClick={() => this.props.history.push('/rewards')}>Rewards</a></li>
+                        : null
+                     }
+
                     {/* <li><a href="about.html" className="animsition-link">About us</a>
                       <ul>
                         <li><a href="about.html" title="About us" className="animsition-link">About us</a></li>
