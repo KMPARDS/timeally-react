@@ -72,7 +72,7 @@ function App(props) {
             <Route path="/wallet" exact component={Wallet} />
             <Route path="/stakings" component={Staking} />
             <Route path="/nominee" exact component={nominee} />
-            <Route path="/loans" exact component={Loans} />
+            <Route path="/loans" component={Loans} />
             <Route path="/loans/:id" exact />
             <Route path="/loans" component={Loans} />
             <Route path="/transactions" exact component={Transactions} />
