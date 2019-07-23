@@ -8,10 +8,36 @@ const ethers = require('ethers');
 
 class Dashboard extends Component {
   state = {
-    stakings: []
+    stakings: [],
+    nrtRelease: undefined,
+    totalActiveStakings: undefined,
+    currentMonth: undefined,
+    myActiveStakings: undefined
+
   }
-  componentDidMount() {
+  componentDidMount = async () => {
     this.showStakings();
+
+    const currentMonth = await this.props.store.timeallyInstance.functions.getCurrentMonth();
+    this.setState({ currentMonth: Number(currentMonth) });
+
+    console.log('currentMonth', this.state.currentMonth);
+
+    (async() => {
+      const totalActiveStakings = await this.props.store.timeallyInstance.functions.totalActiveStakings(currentMonth);
+      this.setState({ totalActiveStakings: ethers.utils.formatEther(totalActiveStakings) });
+    })();
+
+    (async() => {
+      const nrtRelease = await this.props.store.timeallyInstance.functions.timeAllyMonthlyNRT(currentMonth);
+      this.setState({ nrtRelease: ethers.utils.formatEther(nrtRelease) });
+    })();
+
+    (async() => {
+      const myActiveStakings = await this.props.store.timeallyInstance.functions.userActiveStakingByMonth(this.props.store.walletInstance.address, currentMonth);
+      this.setState({ myActiveStakings: ethers.utils.formatEther(myActiveStakings) });
+    })();
+
   }
 
   showStakings = async () => {
@@ -31,7 +57,7 @@ class Dashboard extends Component {
       const address = log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length);
       const stakingId = Number(log.data.slice(66,130));
       const staking = await this.props.store.timeallyInstance.functions.viewStaking(address, stakingId);
-      console.log(staking);
+      //console.log(staking);
       stakings.push({
         address,
         planId: ethers.utils.bigNumberify(log.topics[2]).toNumber(),
@@ -94,19 +120,19 @@ class Dashboard extends Component {
                       <div className="bg-light pinside10 ">
                         <div className="row">
                           <div className="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5" style={{textAlign:'center'}}>
-                             <span> ETHER PRICE</span><br></br>
-                            <span style={{fontSize:'12px'}}>$217.61 @ 0.02213 BTC (+7.78%)</span>
+                             <span>Current TimeAlly Month</span><br></br>
+                            <span style={{fontSize:'12px'}}>{this.state.currentMonth}{this.state.currentMonth !== undefined ? null : 'Loading...'}</span>
                             <hr />
-                            <span>LATEST BLOCK</span><br></br>
-                            <span style={{fontSize:'12px'}}>$217.61 @ 0.02213 BTC (+7.78%)</span>
+                            <span>NRT Release this month</span><br></br>
+                            <span style={{fontSize:'12px'}}>{this.state.nrtRelease}{this.state.nrtRelease !== undefined ? ' ES' : 'Loading...'}</span>
                           </div>
                           <div className="vl" />
                           <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" style={{textAlign:'center'}}>
-                            <span>MARKET CAP</span><br></br>
-                            <span style={{fontSize:'12px'}}>$217.61 @ 0.02213 BTC (+7.78%)</span>
+                            <span>Total Active Stakings in the World</span><br></br>
+                            <span style={{fontSize:'12px'}}>{this.state.totalActiveStakings}{this.state.totalActiveStakings !== undefined ? ' ES' : 'Loading...'}</span>
                             <hr />
-                            <span>DIFFICULTY</span><br></br>
-                            <span style={{fontSize:'12px'}}>$217.61 @ 0.02213 BTC (+7.78%)</span>
+                            <span>My Active Stakings</span><br></br>
+                            <span style={{fontSize:'12px'}}>{this.state.myActiveStakings}{this.state.myActiveStakings !== undefined ? ' ES' : 'Loading...'}</span>
                           </div>
                         </div>
                       </div>
@@ -145,8 +171,8 @@ class Dashboard extends Component {
                               </thead>
                             <tbody  style={{textAlign:'center'}}>
 
-                          {this.state.stakings.map(staking => (
-                                <tr>
+                          {this.state.stakings.map( (staking, index) => (
+                                <tr key={`dashboard-${index}`}>
                                   <td style={{color:'#f51f8a'}}>{staking.address}</td>
                                   <td>{staking.planId ? '2 Year' : '1 Year'}</td>
                                   <td>{staking.amount}</td>
