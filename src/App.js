@@ -22,6 +22,7 @@ import './App.css';
 
 import provider from './ethereum/provider';
 import { esContract, nrtManager, timeally } from './env.js';
+import nominee from './containers/nominee/nominee';
 const ethers = require('ethers');
 
 window.redirectHereAfterLoadWallet = '/dashboard';
@@ -69,6 +70,7 @@ function App(props) {
             <Route path="/dashboard" exact component={Dashboard} />
             <Route path="/wallet" exact component={Wallet} />
             <Route path="/stakings" component={Staking} />
+            <Route path="/nominee" exact component={nominee} />
             <Route path="/loans" exact component={Loans} />
             <Route path="/loans/:id" exact />
             <Route path="/transactions" exact component={Transactions} />
