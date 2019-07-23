@@ -68,7 +68,7 @@ h3 { font-size: 20px; line-height: 28px; }
 h4 { font-size: 16px; line-height: 1.6; }
 h5 { font-size: 14px; }
 h6 { font-size: 14px; }
-p { margin: 0 0 26px; line-height: 1.6; font-weight: 400; }
+p { margin: 0 0 26px; line-height: 1.6; font-weight: 100; }
 ul, ol { }
 ul li, ol li { line-height: 1.8 }
 a { color: #f51f8a; text-decoration: none; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; }
@@ -426,6 +426,7 @@ index-1
 .rate-table { background-color: #fff; border-top: 1px solid #dee7f2; border-bottom: 1px solid #dee7f2; margin-top: -21px; }
 .loan-rate { font-size: 32px; color: #414855; margin-bottom: 0px; font-weight: 600; line-height: 1; }
 .rate-counter-block { border-right: 1px solid #dee7f2; padding-top: 20px; padding-bottom: 20px; }
+.rate-counter-block-second { padding-top: 20px; padding-bottom: 20px; }
 .rate-counter-block:first-child { }
 .rate-icon { float: left; padding-top: 5px; padding-right: 20px; padding-left: 20px; }
 .rate-box { }
@@ -1410,3 +1411,40 @@ Landing Page Template
 .btn-light{
   margin: 5px 10px;
 }
+.read-more-state {
+  display: none;
+}
+
+.read-more-target {
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  transition: .25s ease;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+  content: 'Show more';
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+  content: 'Show less';
+}
+
+.read-more-trigger {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 .5em;
+  color: #fff;
+  font-size: .9em;
+  line-height: 2;
+  border: 1px solid #ddd;
+  border-radius: .25em;
+  text-align: justify
+}
+

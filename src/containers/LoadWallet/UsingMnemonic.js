@@ -103,6 +103,35 @@ class UsingMnemonic extends Component {
   render() {
     return (
       <div>
+        <div className="page-header">
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div className="page-breadcrumb">
+                  <ol className="breadcrumb">
+                    <li><a onClick={() => this.props.history.push('/')}>Home</a></li>
+                    <li className="active">Unlock Wallet</li>
+                  </ol>
+                </div>
+              </div>
+              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div className="bg-white pinside30">
+                  <div className="row">
+                    <div className="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12">
+                      <h1 className="page-title">Unlock Wallet</h1>
+                    </div>                    
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+<div className="container">
+<div className="row">
+<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+ <div className="wrapper-content bg-white pinside40">
+    <div className="loan-eligibility-block">  
         <Card>
           <Card.Body align="center">
             <h4>Unlock wallet using Mnemonic</h4>
@@ -138,8 +167,6 @@ class UsingMnemonic extends Component {
             </Form>
           </Card.Body>
         </Card>
-
-
         {this.state.wallets.length ?
         <Card style={{margin: '15px 0'}}>
           <Card.Body align="left">
@@ -175,7 +202,12 @@ class UsingMnemonic extends Component {
           </Card.Body>
         </Card>
         :null}
+     </div>
       </div>
+    </div>
+  </div>
+</div>
+</div>
     );
   }
 }

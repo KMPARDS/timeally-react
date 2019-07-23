@@ -176,7 +176,7 @@ class CreateWalletPage extends Component {
                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                       <div className="page-breadcrumb">
                         <ol className="breadcrumb">
-                          <li><a href="index.html">Home</a></li>
+                          <li><a onClick={() => this.props.history.push('/')}>Home</a></li>
                           <li className="active">Create Wallet</li>
                         </ol>
                       </div>

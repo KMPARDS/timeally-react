@@ -73,11 +73,41 @@ class UsingKeystoreFile extends Component {
 
   render() {
     return (
+      <div>
+      <div className="page-header">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div className="page-breadcrumb">
+                <ol className="breadcrumb">
+                  <li><a onClick={() => this.props.history.push('/')}>Home</a></li>
+                  <li className="active">Using Keystore</li>
+                </ol>
+              </div>
+            </div>
+            <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div className="bg-white pinside30">
+                <div className="row">
+                  <div className="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12">
+                    <h1 className="page-title">Using Keystore</h1>
+                  </div>                    
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+<div className="container">
+<div className="row">
+<div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+<div className="wrapper-content bg-white pinside40">
+  <div className="loan-eligibility-block">  
       <Card>
       {console.log(this.props)}
         <Card.Body align="center">
           <h4>Unlock wallet using keystore file</h4>
-          <Form onSubmit={this.onKeystoreSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px', width: '400px'}}>
+          <Form onSubmit={this.onKeystoreSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '20px 40px', width: '400px'}}>
             <Form.Group controlId="keystoreFile" >
               <Form.Control onChange={e => this.handleFileChosen(e.target.files[0])} type="file" placeholder="load your keystore file" style={{width: 'auto',border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px'}} />
             </Form.Group>
@@ -112,6 +142,12 @@ class UsingKeystoreFile extends Component {
           </Form>
         </Card.Body>
       </Card>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
     );
   }
 }
