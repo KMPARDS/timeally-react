@@ -71,6 +71,7 @@ class NavbarComponent extends Component {
       <div>
         <span><a onClick={() => this.props.history.push('/create-wallet')} className="btn btn-primary btn-sm">Create Wallet</a></span>
         <span><a onClick={() => this.props.history.push('/load-wallet')} className="btn btn-default btn-sm">Load Wallet</a></span>
+        <span><a onClick={() => this.props.history.push('/nominee')} className="btn btn-default" style={{backgroundColor: '#55a903'}}>Nominee</a></span>
       </div>
     );
     if(this.state.userAddress) {
