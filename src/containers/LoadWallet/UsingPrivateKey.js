@@ -44,11 +44,49 @@ class UsingPrivateKey extends Component {
 
   render() {
     return (
+      <div>
+      <div className="page-header">
+            <div className="container">
+              <div className="row">
+                <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div className="page-breadcrumb">
+                    <ol className="breadcrumb">
+                      <li><a onClick={() => this.props.history.push('/')}>Home</a></li>
+                      <li className="active">Unlock Wallet</li>
+                    </ol>
+                  </div>
+                </div>
+                <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div className="bg-white pinside30">
+                    <div className="row">
+                      <div className="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12">
+                        <h1 className="page-title">Unlock Wallet</h1>
+                      </div>
+                      {/* <div className="col-xl-8 col-lg-8 col-md-3 col-sm-12 col-12">
+                        <div className="row">
+                          <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div className="btn-action"> <a href="#" className="btn btn-default">How To Apply</a> </div>
+                          </div>
+                        </div>
+                      </div> */}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+<div className="container">
+    <div className="row">
+      <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+       <div className="wrapper-content bg-white pinside40">
+          <div className="loan-eligibility-block">  
       <Card>
         <Card.Body align="center">
           <h4>Unlock wallet using your Private Key</h4>
 
-          <Form onSubmit={this.onPrivateKeySubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px', width: '400px'}}>
+          <Form onSubmit={this.onPrivateKeySubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '20px 40px', width: '400px'}}>
 
             <Form.Group controlId="privateKey">
               <Form.Control onKeyUp={this.onPrivateKeyUpdate} type="text" placeholder="Enter your Private Key" style={{width: '325px'}} />
@@ -81,6 +119,12 @@ class UsingPrivateKey extends Component {
           </Form>
         </Card.Body>
       </Card>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
     );
   }
 }
