@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import { Card, Form, Button, ProgressBar, Alert, Row, Col, Spinner } from 'react-bootstrap';
 import CompleteModal from './CompleteModal';
 
+import { network } from '../../env';
+
 const bip39 = require('bip39');
 const ethereumjs = require('ethereumjs-wallet');
 const hdkey = require('ethereumjs-wallet/hdkey');
@@ -145,7 +147,7 @@ class CreateWalletPage extends Component {
     const firstWallet = ethereumjs.fromPrivateKey(firstPrivateKey);
     console.log('address from ethereum js',firstWallet.getAddress().toString('hex'));
 
-    const ethersWallet = new ethers.Wallet(firstPrivateKey, new ethers.providers.InfuraProvider('rinkeby'));
+    const ethersWallet = new ethers.Wallet(firstPrivateKey, new ethers.providers.InfuraProvider(network));
     console.log('address from ethers js', await ethersWallet.getAddress());
     //const firstWallet = hdWallet.derivePath("m/44'/60'/0'/0/0").getWallet();
     const keystore = firstWallet.toV3(this.state.password1);

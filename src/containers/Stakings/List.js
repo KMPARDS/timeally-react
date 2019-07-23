@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'react-bootstrap';
 import { timeally } from '../../env';
 const ethers = require('ethers');
 
@@ -20,7 +21,7 @@ class StakingList extends Component {
 
   showStakings = async () => {
     const newStakingEventSig = ethers.utils.id("NewStaking(address,uint256,uint256,uint256)");
-    const topics = [ newStakingEventSig, null, null, null ];
+    const topics = [ newStakingEventSig, ethers.utils.hexZeroPad(this.props.store.walletInstance.address, 32) ];
 
     const logs = await this.props.store.providerInstance.getLogs({
       address: timeally.address,
@@ -107,13 +108,15 @@ class StakingList extends Component {
                         <div className="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12">
                           <h1 className="page-title">Stakings</h1>
                         </div>
-                        {/* <div className="col-xl-8 col-lg-8 col-md-3 col-sm-12 col-12">
+                        <div className="col-xl-8 col-lg-8 col-md-3 col-sm-12 col-12">
                           <div className="row">
                             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                              <div className="btn-action"> <a href="#" className="btn btn-default">How To Apply</a> </div>
+                              <div className="btn-action">
+                                <Button onClick={() => this.props.history.push('/stakings/new')}>New Staking</Button>
+                              </div>
                             </div>
                           </div>
-                        </div> */}
+                        </div>
                       </div>
                     </div>
                   </div>

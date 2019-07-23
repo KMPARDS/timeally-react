@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, Form, Button, Alert, Spinner } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
+
+import { network } from '../../env';
+
 const ethers = require('ethers');
 
 class UsingPrivateKey extends Component {
@@ -81,7 +84,7 @@ class UsingPrivateKey extends Component {
     <div className="row">
       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
        <div className="wrapper-content bg-white pinside40">
-          <div className="loan-eligibility-block">  
+          <div className="loan-eligibility-block">
       <Card>
         <Card.Body align="center">
           <h4>Unlock wallet using your Private Key</h4>

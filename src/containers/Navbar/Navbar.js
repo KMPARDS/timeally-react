@@ -16,20 +16,23 @@ class NavbarComponent extends Component {
   componentDidMount = async () => {
     window.updateTheNavbar = async action => {
       if(action.type === 'LOAD-WALLET-INSTANCE') {
+
         let userAddress = '';
         if(Object.entries(action.payload).length) {
           userAddress = await action.payload.getAddress();
         }
         this.setState({ userAddress });
 
+        const provider = userAddress ? action.payload : this.props.store.providerInstance;
+
         // update es instance
-        this.props.dispatch({ type: 'LOAD-ES-INSTANCE', payload: new ethers.Contract(esContract.address, esContract.abi, action.payload) });
+        this.props.dispatch({ type: 'LOAD-ES-INSTANCE', payload: new ethers.Contract(esContract.address, esContract.abi, provider) });
 
         // update nrt instance
-        this.props.dispatch({ type: 'LOAD-NRT-INSTANCE', payload: new ethers.Contract(nrtManager.address, nrtManager.abi, action.payload) });
+        this.props.dispatch({ type: 'LOAD-NRT-INSTANCE', payload: new ethers.Contract(nrtManager.address, nrtManager.abi, provider) });
 
         // update timeally
-        this.props.dispatch({ type: 'LOAD-TIMEALLY-INSTANCE', payload: new ethers.Contract(timeally.address, timeally.abi, action.payload) });
+        this.props.dispatch({ type: 'LOAD-TIMEALLY-INSTANCE', payload: new ethers.Contract(timeally.address, timeally.abi, provider) });
       }
 
       if(action.type === 'update time yaar') {
@@ -56,9 +59,17 @@ class NavbarComponent extends Component {
     );
     if(this.state.userAddress) {
       navbarButtons = (
-        <span><a className="btn btn-primary btn-sm">Welcome {
-            this.state.userAddress.slice(0,6) + '...' + this.state.userAddress.slice(this.state.userAddress.length - 3, this.state.userAddress.length - 1)
-          }</a></span>
+        <div>
+          <span><a className="btn btn-primary btn-sm">Welcome {
+              this.state.userAddress.slice(0,6) + '...' + this.state.userAddress.slice(this.state.userAddress.length - 3, this.state.userAddress.length - 1)
+            }</a>
+          </span>
+          <span><a onClick={() => {
+              this.props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: {} });
+              this.props.history.push('/logout');
+            } } className="btn btn-default btn-sm">Logout</a></span>
+
+        </div>
       );
     }
 

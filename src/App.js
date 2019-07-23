@@ -15,6 +15,7 @@ import Loans from './containers/Loans/Loans';
 import Staking from './containers/Stakings/Stakings';
 import Mou from './containers/Mou/Mou';
 import Rewards from './containers/Rewards/Rewards';
+import Logout from './containers/Logout/Logout';
 
 //import { Button } from 'react-bootstrap';
 
@@ -70,12 +71,12 @@ function App(props) {
             <Route path="/dashboard" exact component={Dashboard} />
             <Route path="/wallet" exact component={Wallet} />
             <Route path="/stakings" component={Staking} />
-            <Route path="/loans" exact component={Loans} />
-            <Route path="/loans/:id" exact />
+            <Route path="/loans" component={Loans} />
             <Route path="/transactions" exact component={Transactions} />
             <Route path="/transactions/stakings" exact component={StakingTransactions} />
             <Route path="/transactions/withdrawls" exact component={WithdrawlTransactions} />
             <Route path="/rewards" exact component={Rewards} />
+            <Route path="/logout" exact component={Logout} />
             <Route path="/insurance" exact render={
               () => <div>Coming soon</div>
             } />
@@ -103,9 +104,9 @@ function App(props) {
                   <a href="#" className="btn btn-default">Apply for TimeAlly Insurance</a>
                 </div>
                 {/* /.widget text */}
-              </div>             
-              
-              
+              </div>
+
+
             </div>
           </div>
         </div>
