@@ -5,15 +5,15 @@ const timeAllyJSON = require('./ethereum/compiledContracts/TimeAlly_0.json');
 module.exports = {
   network: 'kovan',
   esContract: {
-    address: '0x0269f9BE76A6e55A3c8dC099e7c157bA60Cb3F16',
+    address: '0x430aa05aFaE25F08180fb82C9155270A6c9ecB24',
     abi: eraSwapTokenJSON.abi
   },
   nrtManager: {
-    address: '0x4CdEC678773c79a4dBE995aDaa857Da3D10c04c1',
+    address: '0x5aba1E60351db825Ab983406588fF8977F6EDbDe',
     abi: nrtManagerJSON.abi
   },
   timeally: {
-    address: '0x4B0a6D7f5460CcDF76fE4acc251228D568c2a2dd',
+    address: '0xe11e6B7bcDcbeB0D654a8f8C52a4B1DeEbe36F56',
     abi: timeAllyJSON.abi
   }
 };

@@ -14,6 +14,7 @@ import Wallet from './containers/Wallet/Wallet';
 import Loans from './containers/Loans/Loans';
 import Staking from './containers/Stakings/Stakings';
 import Mou from './containers/Mou/Mou';
+import Rewards from './containers/Rewards/Rewards';
 
 //import { Button } from 'react-bootstrap';
 
@@ -29,12 +30,12 @@ window.redirectHereAfterLoadWallet = '/dashboard';
 function App(props) {
 
   //for dev purpose 24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA
-  // setTimeout(() => {
-  //   if(Object.entries(props.store.walletInstance).length === 0) {
-  //     //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
-  //     props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: new ethers.Wallet('0x24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA', provider) });
-  //   }
-  // },50);
+  setTimeout(() => {
+    if(Object.entries(props.store.walletInstance).length === 0) {
+      //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
+      props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: new ethers.Wallet('0x24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA', provider) });
+    }
+  },50);
 
   // load es instance
   if(Object.entries(props.store.esInstance).length === 0) {
@@ -74,6 +75,7 @@ function App(props) {
             <Route path="/transactions" exact component={Transactions} />
             <Route path="/transactions/stakings" exact component={StakingTransactions} />
             <Route path="/transactions/withdrawls" exact component={WithdrawlTransactions} />
+            <Route path="/rewards" exact component={Rewards} />
             <Route path="/insurance" exact render={
               () => <div>Coming soon</div>
             } />

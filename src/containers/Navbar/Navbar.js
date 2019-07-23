@@ -144,6 +144,12 @@ class NavbarComponent extends Component {
                      : null
                   }
                     <li className="active"><a onClick={() => this.props.history.push('/mou')}>The mou Time Machine</a></li>
+
+                      { this.props.store.walletInstance.address ?
+                      <li className="active"><a onClick={() => this.props.history.push('/rewards')}>Rewards</a></li>
+                        : null
+                     }
+
                     {/* <li><a href="about.html" className="animsition-link">About us</a>
                       <ul>
                         <li><a href="about.html" title="About us" className="animsition-link">About us</a></li>
