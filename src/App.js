@@ -61,7 +61,6 @@ function App(props) {
 
     <BrowserRouter>
       <div className="App">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <Navbar />
         <div style={{margin:'0px'}}>
           <Switch>
@@ -73,7 +72,7 @@ function App(props) {
             <Route path="/wallet" exact component={Wallet} />
             <Route path="/stakings" component={Staking} />
             <Route path="/nominee" exact component={nominee} />
-            {/* <Route path="/loans" exact component={Loans} /> */}
+            <Route path="/loans" exact component={Loans} />
             <Route path="/loans/:id" exact />
             <Route path="/loans" component={Loans} />
             <Route path="/transactions" exact component={Transactions} />
