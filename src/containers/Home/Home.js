@@ -22,7 +22,7 @@ class Home extends Component {
                              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb10">
                              <div class="card-hero-block">
                                  <h1 class="text-white" style={{fontSize:'30px'}}>TimeAlly Smart Contract</h1>
-                                 <p class="text-white">Controls Volatility, Reward Distribution from NRT and simply increase user's Digital Assets (ES) without getting in to the hassle of day trading.</p>
+                                 <p class="text-white">TimeAlly Smart Contract - Controls Volatility, Reward Distribution from ES NRT and simply increase TA Holder’s Era Swap (ES) counts based on their vesting periods without getting in to the hassle of day trading. </p>
                                  <div class="mt30">
                                      <a  onClick={() => this.props.history.push('create-wallet')} class="btn btn-default">Vest Now</a>
                                  </div>
@@ -65,13 +65,14 @@ class Home extends Component {
         <div className=" col-xl-12 col-lg-8 col-md-12 col-sm-12 col-12">
           <div className="section-title text-center mb60">
             <h1>What is TimeAlly</h1>
-            <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the distribution from NRT and hence increasing the value of the Assets (ES) which they hold. <br></br><br></br>
-TimeAlly Smart Contract Controls Volatility, Reward Distribution from NRT and simply increase user's Digital Assets (ES) without getting in to the hassle of day trading. You can vest and stake your ES on TimeAlly now.</p>
-            <video width={400} controls poster="./images/poster.jpg" style={{boxShadow:'10px 10px 10px #ccc'}}>
-          <source src="./images/timeAlly.mp4" type="video/mp4" />
-          <source src="mov_bbb.ogg" type="video/ogg" />
-          Your browser does not support HTML5 video.
-        </video>
+            <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users; govern the distribution from ES NRT and increase Era Swap count for TA Holders which they hold over a period of time. TimeAlly is a DApp ( Decentralized Application ). </p>
+            <video  className="mb60" width={400} controls poster="./images/poster.jpg" style={{boxShadow:'10px 10px 10px #ccc'}}>
+              <source src="./images/timeAlly.mp4" type="video/mp4" />
+              <source src="mov_bbb.ogg" type="video/ogg" />
+              Your browser does not support HTML5 video.
+            </video>
+           <h1>What is DApp</h1>
+            <p>Decentralized Applications (DApps) run on a P2P network of computers and are decentralized in nature. They have existed since the advent of P2P networks. DApps uses distributed ledger technology which is neither stored in a centralized location nor managed by any single entity.</p>
           </div>
         </div>
       </div>
@@ -83,8 +84,8 @@ TimeAlly Smart Contract Controls Volatility, Reward Distribution from NRT and si
             <div className="offset-xl-2 col-xl-8 offset-md-2 col-md-8 offset-md-2 col-md-8 col-sm-12 col-12">
               <div className="mb100 text-center section-title">
                 {/* section title start*/}
-                <h1>Benefits of TimeAlly for EraSwap Community</h1>
-                <p>TimeAlly is a Decentralised App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the distribution from NRT and hence increasing the value of the Assets  (ES) which they hold .</p>
+                <h1>Features of TimeAlly DApp</h1>
+                <p>TimeAlly is a DApp which refers to a suite of protocols that define distribution of Newly Released Tokens in a decentralized way. TimeAlly uses Ethereum Virtual Machine (“EVM”), which can execute code of arbitrary algorithmic complexity with no downtimes and keeping all created objects safe from modifying. Every transaction triggered by user are recorded transparently & irreversibly in block confirmation so that old transactions are preserved forever for all to see. TimeAlly is an open source application & can work even without any web interface. </p>
               </div>
               {/* /.section title start*/}
             </div>
@@ -92,48 +93,48 @@ TimeAlly Smart Contract Controls Volatility, Reward Distribution from NRT and si
           <div className="row">
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
               <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">
-                <div className="circle"><img src="./images/loan.png"/></div>
-                <h3 className="number-title">Flexible Credit Line</h3>
-                <p>TimeAlly users can apply for a loan upto 50% of the amount of ES staked in TimeAlly Smart Contract.</p>
+                <div className="circle"><img src="./images/nomination.png"/></div>
+                <h3 className="number-title">Nomination</h3>
+                <p>TimeAlly users can nominate beneficiaries as nominee, who will receive all the benefits of TimeAlly.</p>
               </div>
             </div>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
               <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">
-              <div className="circle"><img src="./images/interest.png"/></div>
-                <h3 className="number-title">Competitive Interest Rate</h3>
-                <p>TimeAlly Smart Contract offers only 1% Rate of Interest to it's users for a duration of 60 days.</p>
+              <div className="circle"><img src="./images/anonimity.png"/></div>
+                <h3 className="number-title">Anonymity</h3>
+                <p>TimeAlly Smart Contract provides anonymity to TimeAlly holder offering privacy to users.</p>
               </div>
             </div>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
               <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">
-              <div className="circle"><img src="./images/medal.png"/></div>
-                <h3 className="number-title">Interest back to Community</h3>
-                <p>The Interest amount collected from TimeAlly will be distributed via Luck-pool to the Community.</p>
+              <div className="circle"><img src="./images/box.png"/></div>
+                <h3 className="number-title">ES NRT Distribution</h3>
+                <p>TimeAlly governs the distribution of ES from NRT pool to users based on their work.</p>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
               <div className="bg-white pinside40 number-block outline mb20 bg-boxshadow">
-              <div className="circle"><img src="./images/stocks.png"/></div>
-                <h3 className="number-title">Controlling Volatility</h3>
-                <p>TimeAlly controls the volatility by controlling the demand and supply dynamics of Era Swap Ecosystems.</p>
+              <div className="circle"><img src="./images/control.png"/></div>
+                <h3 className="number-title">Control</h3>
+                <p>Nobody can access to user's funds without the private keys which stays with them only.</p>
               </div>
             </div>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
               <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">
-              <div className="circle"><img src="./images/premium.png"/></div>
+              <div className="circle"><img src="./images/less-users.png"/></div>
               
-                <h3 className="number-title">Reward Distribution</h3>
-                <p>TimeAlly governs the Reward Distribution from NRT based on Ecosystem user's contribution.</p>
+                <h3 className="number-title">In case of Less Users</h3>
+                <p>ES count per user will increase as there will be less users for fixed ES to distribut for staking.</p>
               </div>
             </div>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
               <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">
               
-              <div className="circle"><img src="./images/fire.png"/></div>
-                <h3 className="number-title">Loan Default</h3>
-                <p>In case of Loan Default by the user, remaining 50% of the staked tokens will be burnt permanently.</p>
+              <div className="circle"><img src="./images/team.png"/></div>
+                <h3 className="number-title">In case of More Users</h3>
+                <p>The Value of ES holded by user wil go up as more users will lead to more uses increasing the value.</p>
               </div>
             </div>
           </div>
@@ -149,11 +150,21 @@ TimeAlly Smart Contract Controls Volatility, Reward Distribution from NRT and si
                   {/* hero-caption */}
                   <div className="card-hero-block text-center">
                     <h1 className="text-white">How TimeAlly works</h1>
-                    <p className="text-white">TimeAlly is one of the most important aspect of the Era Swap Ecosystem which meticulously controls the demand and supply dynamics. TimeAlly is a set of Smart Contracts created for vesting and rewards distribution from NRT to each and every user of Era swap Ecosystem platform.<br></br><br></br>
-                    TimeAlly rewards token holders for locking their tokens in smart contract for one or two years as per the duration they choose. As these tokens are locked, there are fewer tokens in the circulating supply which will create a scarcity of the ES and will increase the demand.</p>
+                    <p className="text-white">TimeAlly rewards TA holders for locking their tokens in TA smart contract (TA Time Vault) for the duration of one or two years as per their choice. Currently, there are 2 types of plans available in TimeAlly smart contract i.e. 1 year & 2 years vesting plan for vesting.<br></br><br></br>
+                    <ul style={{textAlign:'left'}}>
+                      <li>Vesting for 1 Year: 13% 91.08% per month) of ES Tokens from NRT pool is allocated to be distributed among TA Vestors who vest tokens for 1 year.</li>
+                      <li>Vesting for 2 Year: 15% (1.25% per month) of ES Tokens from NRT pool is allocated  to be distributed among TA Vestors who vest tokens for 2 year.</li>
+                    </ul><br/>
+                    There is a fixed number of ES rewarded every month to users which is governed by TA smart contract. Total number of ES tokens to be distributed among TA holders is pre-defined, but which user will get how many ES tokens is not defined. It depends on total number of vestors vs total number of token available for TA vesting rewards.</p>
                     <div className="row">
-                      <div className="col-md-6"><img src="./images/a.png"></img></div>
-                      <div className="col-md-6"><img src="./images/b.png"></img></div>    
+                      <div className="col-md-6">
+                        <p className="text-white">If more users opt for TimeAlly vesting then there will be scarcity of liquid tokens which will create more demand of ES. This way the value of ES holded by users is expected to go up as the price per ES shall increase with increasing demand.</p>
+                        <img src="./images/a.png"></img>
+                      </div>
+                      <div className="col-md-6">
+                        <p className="text-white">If fewer users opt for TimeAlly vesting then more tokens per user will be received. As the number of tokens to be distributed every month is fixed but the no. of receivers is reduced. This way more ES will be received to these fewer members.</p>
+                        <img src="./images/b.png"></img>
+                      </div>    
                     </div>         
                   </div>
                   {/* /.hero-caption */}
@@ -212,7 +223,7 @@ TimeAlly Smart Contract Controls Volatility, Reward Distribution from NRT and si
                 <div className="loan-products-content">
                   <h3>TimeAlly Insurance</h3>
                   <input type="checkbox" class="read-more-state" id="post-3" />
-                  <p class="read-more-wrap">The insurance policy issued will be based on efficient underwriting norms of smart contract removing middleman and physical processes. No dilution on mortality. <span class="read-more-target">  TimeAlly will create provision for users to get their premium adjustment from TimeAlly payouts, TimeAlly Rewards & TimeAlly Power. TimeAlly insurance will be launched soon as per roadmap.</span></p>  
+                  <p class="read-more-wrap">The insurance policy issued will be based on efficient underwriting norms of smart contract removing middleman and physical processes. No dilution on mortality. <span class="read-more-target">  TimeAlly will create provision for users to get their premium adjustment from TimeAlly payouts, TimeAlly Rewards & TimeAlly Power. TimeAlly insurance will be launched soon for community.</span></p>  
                     <label for="post-3"  class="btn btn-default read-more-trigger"></label>
                 </div>
               </div>
@@ -224,17 +235,20 @@ TimeAlly Smart Contract Controls Volatility, Reward Distribution from NRT and si
       <div className="card-hero-section ">
         <div className="container">
           <div className="row">
-            <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
+            <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               {/* hero-caption */}
-              <div className="card-hero-block">
-                <h1 className="text-white">How to vest in TimeAlly</h1>
-                <p className="text-white">Currently, there are 2 types of plans available in TimeAlly smart contract i.e. 1 year & 2 years vesting plan for vesting. You will get more details about staking through this video. <br></br><br></br>
-                <a href="#" className="btn-link-white">Watch the video to know TimeAlly</a> 
-                <div className="mt30">
-                  <a href="https://www.youtube.com/watch?v=m3WyMh43ns8&t=6s" target="_blank" className="btn btn-default">Watch Now</a>
-                </div> 
-                <br></br>
-                Community members who choose to lock their tokens will be rewarded from NRT pool every month based on their stake and duration selected. With the reduced circulating supply, the worth of ES is expected to go up as well. So, community members who wish to just hold will be benefitted by an increase in the number of tokens as well as the value. </p>        
+              <div className="card-hero-block text-center">
+                <h1 className="text-white">Invest now in TimeAlly</h1>
+                <p className="text-white">TimeAlly is a smart contract driven DApp, where anyone can vest ES tokens to receive rewards. These rewards are in the format of ES based on the vesting duration (1 or 2 years). <br></br><br></br>For 1 year the holders are rewarded with the distribution of 13% ES NRT and for 2 years holding, the users receive 15% from ES NRT.<br></br><br></br>
+                <a className="btn-link-white">Watch the video for TimeAlly activation</a> 
+                <br></br> <br></br>
+                <video  className="mb60" width={400} controls poster="./images/poster.jpg">
+                  <source src="./images/timeAlly.mp4" type="video/mp4" />
+                  <source src="mov_bbb.ogg" type="video/ogg" />
+                  Your browser does not support HTML5 video.
+                </video>
+                <h2 className="text-white">Power Token</h2>  
+                TimeAlly is a simple plan based on vesting where users receive an additional benefits of Power Token which they can distribute among the ES community on TimeSwappers platform. The amont of Power token receive by each TimeAlly holder is directly proportional the amount of ES he holds in TA smart contract. <br></br><br></br>To know more about power token the user can read Era Swap White Paper</p>        
               </div>
               {/* /.hero-caption */}
               

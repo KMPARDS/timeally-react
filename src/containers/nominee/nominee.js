@@ -39,9 +39,8 @@ export default () => {
           <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
            <div className="wrapper-content bg-white pinside40">
               <div className="loan-eligibility-block">
-                 <p>TimeAlly holders have the advantage of adding nominee. TimeAlly User nominee is a person who is nominated in TimeAlly smart contract by user to receive the benefit of TimeAlly smart contract in case he no longer exists. This TimeAlly contract holder will have the option to appoint the nominee.<br></br><br></br>
-The nominee can claim the benefits in case the TimeAlly owner does not remain active for (staked year/s + 12 Months).</p><br></br><br></br>
-<a href="#" className="btn btn-default">Apply for Nominee</a>
+                 <p>TimeAlly DApp supports nomination for TA smart contract holders. TimeAlly holders can nominate their beneficiary in case of any unforeseen or unexpected event with him/her. TimeAlly holder can both appoint or change nominee<br></br><br></br>This beneficiary is the <b>nominee</b>, nominated by TimeAlly holder to receive the benefit of TimeAlly smart contract in case he no longer exists. The nominee can claim the benefits in case the TimeAlly owner does not remain active for (staked year/s + 12 Months).</p><br></br><br></br>
+<a href="#" className="btn btn-default">Nominate Nominee</a>
                 </div>
               </div>
             </div>

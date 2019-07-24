@@ -110,7 +110,7 @@ class NavbarComponent extends Component {
             </div>
             <div className="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 d-none d-xl-block d-lg-block">
               <p className="mail-text text-center">Gas Price: {this.state.gasPrice} gwei</p>
-            </div>
+            </div>           
           </div>
         </div>
       </div>
