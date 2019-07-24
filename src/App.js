@@ -32,12 +32,12 @@ window.redirectHereAfterLoadWallet = '/dashboard';
 function App(props) {
 
   //for dev purpose 24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA
-  setTimeout(() => {
-    if(Object.entries(props.store.walletInstance).length === 0) {
-      //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
-      props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: new ethers.Wallet('0x24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA', provider) });
-    }
-  },50);
+  // setTimeout(() => {
+  //   if(Object.entries(props.store.walletInstance).length === 0) {
+  //     //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
+  //     props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: new ethers.Wallet('0x24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA', provider) });
+  //   }
+  // },50);
 
   // load es instance
   if(Object.entries(props.store.esInstance).length === 0) {
@@ -64,7 +64,7 @@ function App(props) {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
       
-        <Navbar />
+        
         <div style={{margin:'0px'}}>
           <Switch>
             {/* <Route path="/" exact render={() => <p>Home page</p>} /> */}
@@ -75,7 +75,7 @@ function App(props) {
             <Route path="/wallet" exact component={Wallet} />
             <Route path="/stakings" component={Staking} />
             <Route path="/nominee" exact component={nominee} />
-            {/* <Route path="/loans" exact component={Loans} /> */}
+            <Route path="/loans" component={Loans} />
             <Route path="/loans/:id" exact />
             <Route path="/loans" component={Loans} />
             <Route path="/transactions" exact component={Transactions} />
