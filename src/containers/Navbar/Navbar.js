@@ -132,6 +132,7 @@ class NavbarComponent extends Component {
             </div>
           </div>
         </div>
+        
         <div className="bg-light-blue">
           <div className="container">
             <div className="row">
