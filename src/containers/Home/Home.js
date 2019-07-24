@@ -67,7 +67,7 @@ class Home extends Component {
             <h1>What is TimeAlly</h1>
             <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the distribution from NRT and hence increasing the value of the Assets (ES) which they hold. <br></br><br></br>
 TimeAlly Smart Contract Controls Volatility, Reward Distribution from NRT and simply increase user's Digital Assets (ES) without getting in to the hassle of day trading. You can vest and stake your ES on TimeAlly now.</p>
-            <video width={100} controls poster="./images/poster.jpg" style={{boxShadow:'10px 10px 10px #ccc'}}>
+            <video width={400} controls poster="./images/poster.jpg" style={{boxShadow:'10px 10px 10px #ccc'}}>
           <source src="./images/timeAlly.mp4" type="video/mp4" />
           <source src="mov_bbb.ogg" type="video/ogg" />
           Your browser does not support HTML5 video.
