@@ -29,7 +29,7 @@ class UsingPrivateKey extends Component {
     event.preventDefault();
     await this.setState({ unlocking: true, passwordErrorDisplay: false });
     try {
-      const wallet = new ethers.Wallet(this.state.privateKeyContent, new ethers.providers.InfuraProvider('rinkeby'));
+      const wallet = new ethers.Wallet(this.state.privateKeyContent, new ethers.providers.InfuraProvider(network));
       console.log(wallet.address);
       this.props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: wallet });
       await this.setState({ unlocking: false, success: true });
