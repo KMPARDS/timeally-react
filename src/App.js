@@ -64,7 +64,7 @@ function App(props) {
       <div className="App">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
       {/* <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" /> */}
-      
+
         <Navbar/>
         <div style={{margin:'0px'}}>
           <Switch>
@@ -107,7 +107,7 @@ function App(props) {
               <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div className="widget-text mt10">
                   {/* widget text */}
-                  
+
                   <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank"  className="btn btn-primary">Era Swap White Paper</a>
                 </div>
                 {/* /.widget text */}
@@ -128,7 +128,7 @@ function App(props) {
               <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 text-right">
                 <p style={{color:'#fff'}}><a href="/images/TimeAlly_Terms_Use.pdf" target="_blank">Terms of use</a> | <a href="/images/TimeAlly_Privacy.pdf" target="_blank">Privacy Policy</a></p>
               </div>
-              
+
             </div>
           </div>
         </div>

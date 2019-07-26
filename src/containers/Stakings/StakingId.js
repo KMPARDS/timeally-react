@@ -88,10 +88,10 @@ class StakingId extends Component {
                     <p>Staking time: {new Date(this.state.staking[1] * 1000).toLocaleString()}</p>
                     <p>Staking plan Id: {this.state.staking[2] ? this.state.staking[2].toNumber() : null} ({this.state.staking[2] && this.state.staking[2].eq(1) ? '2 Year' : '1 Year'})</p>
                     <p>Status: {this.state.staking[3] ? this.state.staking[3].toNumber() : null}</p>
-                    <p>Accrued amount: {this.state.staking[4] ? ethers.utils.formatEther(this.state.staking[4]) : null}</p>
+                    {/*<p>Accrued amount: {this.state.staking[4] ? ethers.utils.formatEther(this.state.staking[4]) : null}</p>*/}
                     {this.state.staking[3] && this.state.staking[3].eq(2) ? <p>Loan id: {this.state.staking[5] ? this.state.staking[5].toNumber() : null}</p> : null}
-
-                    <button onClick={this.restakeAccrued} disabled={this.state.staking[4] && this.state.staking[4].eq(0)}>Restake Accrued</button>
+                    {console.log(this.props)}
+                    <button onClick={()=>this.props.history.push(`${this.props.match.url}/nominees`)}>View Nominees</button>
 
                     <br />
                     <br />
