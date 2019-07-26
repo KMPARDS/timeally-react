@@ -158,7 +158,7 @@ class Dashboard extends Component {
       <div className="container">
        <h2 className="mb20">View All Staking in the World</h2>
           <div className="row pinside40">
-              <div className="tablebg">
+              <div className="tablebg" style={{overflow:'hidden',}}>
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
                           <table className="table">
                               <thead style={{textAlign:'center'}}>

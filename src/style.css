@@ -1447,4 +1447,11 @@ Landing Page Template
   border-radius: .25em;
   text-align: justify
 }
+.accordion>.card .card-header {
+  margin-bottom: -1px;
+  border-bottom: 0px;
+}
+card.body{
+  color: #888
+}
 

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Accordion } from 'react-bootstrap';
 
 import { timeally } from '../../env';
+
 
 const ethers = require('ethers');
 
@@ -143,7 +144,7 @@ class Home extends Component {
           </div> */}
         </div>
       </div>
-      <div className="card-hero-section" style={{paddingBottom:'10px'}}>
+      <div className="card-hero-section" style={{paddingBottom:'50px'}}>
             <div className="container">
               <div className="row">
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -152,18 +153,20 @@ class Home extends Component {
                     <h1 className="text-white">How TimeAlly works</h1>
                     <p className="text-white">TimeAlly rewards TA holders for locking their tokens in TA smart contract (TA Time Vault) for the duration of one or two years as per their choice. Currently, there are 2 types of plans available in TimeAlly smart contract i.e. 1 year & 2 years vesting plan for vesting.<br></br><br></br>
                     <ul style={{textAlign:'left'}}>
-                      <li>Vesting for 1 Year: 13% 91.08% per month) of ES Tokens from NRT pool is allocated to be distributed among TA Vestors who vest tokens for 1 year.</li>
+                      <li>Vesting for 1 Year: 13% (1.08% per month) of ES Tokens from NRT pool is allocated to be distributed among TA Vestors who vest tokens for 1 year.</li>
                       <li>Vesting for 2 Year: 15% (1.25% per month) of ES Tokens from NRT pool is allocated  to be distributed among TA Vestors who vest tokens for 2 year.</li>
                     </ul><br/>
                     There is a fixed number of ES rewarded every month to users which is governed by TA smart contract. Total number of ES tokens to be distributed among TA holders is pre-defined, but which user will get how many ES tokens is not defined. It depends on total number of vestors vs total number of token available for TA vesting rewards.</p>
                     <div className="row">
                       <div className="col-md-6">
-                        <p className="text-white">If more users opt for TimeAlly vesting then there will be scarcity of liquid tokens which will create more demand of ES. This way the value of ES holded by users is expected to go up as the price per ES shall increase with increasing demand.</p>
+                        <h2 className="text-white">In case of more users</h2>
                         <img src="./images/a.png"></img>
+                        <p className="text-white">If more users opt for TimeAlly vesting then there will be scarcity of liquid tokens which will create more demand of ES. This way the value of ES holded by users is expected to go up as the price per ES shall increase with increasing demand.</p>
                       </div>
                       <div className="col-md-6">
-                        <p className="text-white">If fewer users opt for TimeAlly vesting then more tokens per user will be received. As the number of tokens to be distributed every month is fixed but the no. of receivers is reduced. This way more ES will be received to these fewer members.</p>
+                        <h2 className="text-white">In case of more users</h2>                         
                         <img src="./images/b.png"></img>
+                        <p className="text-white">If fewer users opt for TimeAlly vesting then more tokens per user will be received. As the number of tokens to be distributed every month is fixed but the no. of receivers is reduced. This way more ES will be received to these fewer members.</p>
                       </div>    
                     </div>         
                   </div>
@@ -242,7 +245,7 @@ class Home extends Component {
                 <p className="text-white">TimeAlly is a smart contract driven DApp, where anyone can vest ES tokens to receive rewards. These rewards are in the format of ES based on the vesting duration (1 or 2 years). <br></br><br></br>For 1 year the holders are rewarded with the distribution of 13% ES NRT and for 2 years holding, the users receive 15% from ES NRT.<br></br><br></br>
                 <a className="btn-link-white">Watch the video for TimeAlly activation</a> 
                 <br></br> <br></br>
-                <video  className="mb60" width={400} controls poster="./images/poster.jpg">
+                <video  className="mb10" width={400} controls poster="./images/poster.jpg">
                   <source src="./images/timeAlly.mp4" type="video/mp4" />
                   <source src="mov_bbb.ogg" type="video/ogg" />
                   Your browser does not support HTML5 video.
@@ -258,6 +261,123 @@ class Home extends Component {
                 {/* <img src="./images/TimeAlly-Info-wp.png" alt className="img-fluid" /> */}
               </div>
              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="section-space80 bg-white">
+        <div className="container">
+          <div className="row">
+            <div className="offset-xl-2 col-xl-8 offset-md-2 col-md-8 offset-md-2 col-md-8 col-sm-12 col-12">
+              <div className="mb60 text-center section-title">
+                {/* section title start*/}
+                <h1>FAQ's</h1>
+                <hr></hr>               
+              </div>
+              {/* /.section title start*/}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div className="bg-white">
+                    <Accordion defaultActiveKey="0" style={{textAlign:'left'}}>
+                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', borderTop:'0px', padding: '10px 0px 10px 30px'}}>
+                        <Accordion.Toggle as={Card.Header} eventKey="0">
+                          Q-1. &nbsp; What is Era Swap Token?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="0">
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap Token or ES is a decentralized utility token currently based on Ethereum blockchain (ERC20) which will be used on multiple platforms for exchange of services(P2P), avail discounts, get rewards and many more utility.</Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                        <Accordion.Toggle as={Card.Header} eventKey="1">
+                        Q-2. &nbsp; How anyone can vest in TimeAlly?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="1">
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Anyone can vest in TimeAlly just by locking up ES in TimeAlly smart contract for a vesting period of 1 year or 2 year</Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                      <Card style={{color:'#3c4d6b', marginBottom:'0px',fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                        <Accordion.Toggle as={Card.Header} eventKey="2">
+                        Q-3. &nbsp; What benefit user gets on locking up their ES in TimeAlly?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="2">
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
+                            <p>Vestors get the below mentioned benefits<br></br>
+                            Vesting for 1 Year: 13% 91.08% per month) of ES Tokens from NRT pool is allocated to be distributed among TA Vestors who vest tokens for 1 year.<br></br>
+                            Vesting for 2 Year: 15% (1.25% per month) of ES Tokens from NRT pool is allocated for TA Vestors who vest tokens for 2 year.
+                              </p>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                        <Accordion.Toggle as={Card.Header} eventKey="3">
+                        Q-4. &nbsp; How rewards are distributed through TimeAlly?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="3">
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap ecosystem users receive rewards for the tasks they perform. The rewards are always distributed in 50% ES liquid and 50% ES TimeAlly locked to every user in Era Swap ecosystem.</Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                        <Accordion.Toggle as={Card.Header} eventKey="4">
+                        Q-5. &nbsp; How TimeAlly vestors get rewarded in TimeAlly?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="4">
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap (ES) has to be claimed by the users based on the work performed in the ecosystem or vesting done in TimeAlly. As per preset rules, if the user has performed tasks, then they are eligible for rewards. User can trigger and withdraw once they have received rewards.</Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                        <Accordion.Toggle as={Card.Header} eventKey="5">
+                        Q-6. &nbsp; Is TimeAlly a guaranteed return plan?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="5">
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>No, TimeAlly doesn’t given any guarantee of any return. however, it gives a guaranteed number of Era Swap tokens (ES) from ES NRT pool to users according to their vesting periods.</Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                        <Accordion.Toggle as={Card.Header} eventKey="6">
+                        Q-7. &nbsp; Does ES give guaranteed return?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="6">
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>ES doesn’t give any guaranteed return however the value of Era Swap depends on demand and supply dynamics of the ecosystem which depends on usage and users.</Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                        <Accordion.Toggle as={Card.Header} eventKey="7">
+                        Q-8. &nbsp; What is ponzi and guaranteed scheme?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="7">
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>You can always guarantee something which you control or hold. If you guarantee something which is not under your control then it becomes ponzi scheme.</Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                        <Accordion.Toggle as={Card.Header} eventKey="8">
+                        Q-9. &nbsp; How Time Vaults increases the ES count for TimeAlly vestor?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="8">
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Time Vault holds the token allocated from NRT every month. The Smart Contract releases ES token from NRT Pool over next 50 years under pre-defined set of rules.<br></br>
+                          All ES tokens which are to be released in future are stored in Time Vault and are distributed based on the work performed by the users among them.
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                        <Accordion.Toggle as={Card.Header} eventKey="9">
+                        Q-10. &nbsp; Does Era Swap guarantee Fiat or other crypto?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="9">
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap doesn’t guarantee any Fiat or Crypto because Era Swap doesn’t control any Fiat or any other cryptocurrency.</Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                      <Card style={{color:'#3c4d6b', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                        <Accordion.Toggle as={Card.Header} eventKey="10">
+                        Q-11. &nbsp; Can Era Swap token be used outside the system?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="10">
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>No, Era Swap token can only be used in the Eco System. ES cannot be used outside Era swap Ecosystem.</Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                    </Accordion>
+              </div>
             </div>
           </div>
         </div>
