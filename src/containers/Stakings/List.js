@@ -35,7 +35,7 @@ class StakingList extends Component {
       const log = logs[i];
       const address = log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length);
       const stakingId = Number(log.data.slice(66,130));
-      const staking = await this.props.store.timeallyInstance.functions.viewStaking(address, stakingId);
+      const staking = await this.props.store.timeallyInstance.functions.stakings(address, stakingId);
       console.log(staking);
       stakings.push({
         address,
@@ -158,40 +158,7 @@ class StakingList extends Component {
                           </p>
                       </div>
                     ))}
-                    <table className="table table-striped" border="1">
-                        <thead>
-                          <tr>
-                            <th>Month ID</th>
-                            <th>Staking ID <button className="btn query btn-primary">Query All</button></th>
-                            <th>Plan</th>
-                            <th>Email</th>
-                            <th>Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>John</td>
-                            <td>555252147s52s4dsdsd <button className="btn query btn-primary">Query</button></td>
-                            <td>john@example.com</td>
-                            <td>john@example.com</td>
-                            <td><button className="btn query btn-primary">DEPOSITE</button> <button className="btn query btn-primary">WITHDRAW</button> <button className="btn query btn-primary">TRANSFER</button></td>
-                          </tr>                          
-                          <tr>
-                            <td>John</td>
-                            <td>555252147s52s4dsdsd <button className="btn query btn-primary">Query</button></td>
-                            <td>john@example.com</td>
-                            <td>john@example.com</td>
-                            <td><button className="btn query btn-primary">DEPOSITE</button> <button className="btn query btn-primary">WITHDRAW</button> <button className="btn query btn-primary">TRANSFER</button></td>
-                          </tr>
-                          <tr>
-                            <td>John</td>
-                            <td>555252147s52s4dsdsd <button className="btn query btn-primary">Query</button></td>
-                            <td>john@example.com</td>
-                            <td>john@example.com</td>
-                            <td><button className="btn query btn-primary">DEPOSITE</button> <button className="btn query btn-primary">WITHDRAW</button> <button className="btn query btn-primary">TRANSFER</button></td>
-                          </tr>
-                        </tbody>
-                      </table>
+                    
                       <div className="pagination">
                           <a href="#">«</a>
                           <a className="active" href="#">1</a>

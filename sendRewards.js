@@ -21,8 +21,9 @@ const timeallyInstance = new ethers.Contract(timeally.address, timeally.abi, wal
 //console.log(esInstance, timeallyInstance);
 
 const addressObj = {
-  '0xb2d0ff1108086063e6E4FF0171D7Bfa279FeCa25': ethers.utils.parseEther('10000'),
-  '0xC8e1F3B9a0CdFceF9fFd2343B943989A22517b26': ethers.utils.parseEther('1000')
+  '0xb2d0ff1108086063e6E4FF0171D7Bfa279FeCa25': ethers.utils.parseEther('100'),
+  '0xC8e1F3B9a0CdFceF9fFd2343B943989A22517b26': ethers.utils.parseEther('100'),
+  '0xC9082b2B3c4b099aDCE27afa079699D3e65d7527': ethers.utils.parseEther('100'),
   // '0x1031a1C7Cc8edc64Cae561DcEA4285f8ab97e02F': ethers.utils.parseEther('40'),
   // '0x3D2bB9D34D96307942b7cCe133bBF1aAd361C529': ethers.utils.parseEther('50')
 }

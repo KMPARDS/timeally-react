@@ -30,7 +30,7 @@ class Withdrawls extends Component {
       const log = logs[i];
       const address = log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length);
       const stakingId = Number(log.data.slice(66,130));
-      const staking = await this.props.store.timeallyInstance.functions.viewStaking(address, stakingId);
+      const staking = await this.props.store.timeallyInstance.functions.stakings(address, stakingId);
       console.log(staking);
       stakings.push({
         address,

@@ -12,19 +12,40 @@ class Dashboard extends Component {
     nrtRelease: undefined,
     totalActiveStakings: undefined,
     currentMonth: undefined,
-    myActiveStakings: undefined
-
+    myActiveStakings: undefined,
+    stakingsInLast24Hours: undefined
   }
   componentDidMount = async () => {
     this.showStakings();
 
-    const currentMonth = await this.props.store.timeallyInstance.functions.getCurrentMonth();
-    this.setState({ currentMonth: Number(currentMonth) });
+    (async() => {
+      const newStakingEventSig = ethers.utils.id("NewStaking(address,uint256,uint256,uint256)");
+      const topics = [ newStakingEventSig, null, null, null ];
+
+      const logs = await this.props.store.providerInstance.getLogs({
+        address: timeally.address,
+        fromBlock: (await this.props.store.providerInstance.getBlockNumber()) - 5760,
+        toBlock: 'latest',
+        topics
+      });
+      let stakingsInLast24Hours = ethers.utils.bigNumberify(0);
+      for(const log of logs) {
+        stakingsInLast24Hours = stakingsInLast24Hours.add(ethers.utils.bigNumberify(log.data.slice(0,66)));
+      }
+      // console.log('24 hrs logs', logs);
+      // console.log(ethers.utils.formatEther(stakingsInLast24Hours));
+
+      this.setState({ stakingsInLast24Hours: ethers.utils.formatEther(stakingsInLast24Hours) });
+    })();
+
+    const currentMonth = Number(await this.props.store.timeallyInstance.functions.getCurrentMonth());
+    this.setState({ currentMonth: currentMonth });
 
     console.log('currentMonth', this.state.currentMonth);
 
     (async() => {
-      const totalActiveStakings = await this.props.store.timeallyInstance.functions.totalActiveStakings(currentMonth);
+      const totalActiveStakings = await this.props.store.timeallyInstance.functions.totalActiveStakings(currentMonth+1);
+
       this.setState({ totalActiveStakings: ethers.utils.formatEther(totalActiveStakings) });
     })();
 
@@ -34,7 +55,32 @@ class Dashboard extends Component {
     })();
 
     (async() => {
-      const myActiveStakings = await this.props.store.timeallyInstance.functions.userActiveStakingByMonth(this.props.store.walletInstance.address, currentMonth);
+      // const myActiveStakings = await this.props.store.timeallyInstance.functions.userActiveStakingByMonth(this.props.store.walletInstance.address, currentMonth);
+
+      const numberOfStakings = Number(await this.props.store.timeallyInstance.functions
+        .getNumberOfStakingsByUser(this.props.store.walletInstance.address));
+      console.log('numberOfStakings',numberOfStakings);
+      let myActiveStakings = ethers.utils.bigNumberify(0);
+      if(numberOfStakings) {
+        for(let stakingId = 0; stakingId < numberOfStakings; stakingId++) {
+          // if(await this.props.store.timeallyInstance.functions.isStakingActive(
+          //   this.props.store.walletInstance.address,
+          //   stakingId,
+          //   currentMonth
+          // )) {
+            const staking = await this.props.store.timeallyInstance.functions.stakings(
+              this.props.store.walletInstance.address,
+              stakingId
+            );
+            if(Number(staking[4]) === 1) {
+              myActiveStakings = myActiveStakings.add(staking[0]);
+            }
+
+            // console.log(ethers.utils.formatEther(staking[0]))
+          // }
+        }
+      }
+
       this.setState({ myActiveStakings: ethers.utils.formatEther(myActiveStakings) });
     })();
 
@@ -56,7 +102,7 @@ class Dashboard extends Component {
       const log = logs[i];
       const address = log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length);
       const stakingId = Number(log.data.slice(66,130));
-      const staking = await this.props.store.timeallyInstance.functions.viewStaking(address, stakingId);
+      const staking = await this.props.store.timeallyInstance.functions.stakings(address, stakingId);
       //console.log(staking);
       stakings.push({
         address,
@@ -128,7 +174,7 @@ class Dashboard extends Component {
                           </div>
                           <div className="vl" />
                           <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" style={{textAlign:'center'}}>
-                            <span>Total Active Stakings in the World</span><br></br>
+                            <span>Total Next Month Active Stakings in the World</span><br></br>
                             <span style={{fontSize:'12px'}}>{this.state.totalActiveStakings}{this.state.totalActiveStakings !== undefined ? ' ES' : 'Loading...'}</span>
                             <hr />
                             <span>My Active Stakings</span><br></br>
@@ -144,7 +190,7 @@ class Dashboard extends Component {
                           <div className="bg-light">
                             <span style={{textAlign:'center'}}>TOTAL STAKED IN 24 HOURS</span>
                             {/* <h2 id="emi" className="pull-right">Graph</h2> */}<br></br><br></br>
-                            <h2>245125885 ES</h2>
+                          <h2>{this.state.stakingsInLast24Hours ? this.state.stakingsInLast24Hours + ' ES' : 'Loading...'}</h2>
                           </div>
                         </div>
                       </div>

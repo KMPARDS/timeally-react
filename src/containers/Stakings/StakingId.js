@@ -6,18 +6,30 @@ const ethers = require('ethers');
 class StakingId extends Component {
   state = {
     staking: {},
+    currentMonth: 0,
     canWithdraw: false,
     withdrawing: false,
-    errorMessage: ''
+    errorMessage: '',
+    stakingMonth: 0,
+    planMonths: 0,
+    monthlyBenefit: {},
+    spinner: {}
   }
   componentDidMount = async () => {
+    const currentMonth = Number(await this.props.store.timeallyInstance.functions.getCurrentMonth());
+    this.setState({ currentMonth });
+
     if(this.props.store.walletInstance.address && this.props.match.params.id) {
-      const staking = await this.props.store.timeallyInstance.functions.viewStaking(
+      const staking = await this.props.store.timeallyInstance.functions.stakings(
         this.props.store.walletInstance.address,
         this.props.match.params.id
       );
 
-      this.setState({ staking });
+      const stakingPlan = await this.props.store.timeallyInstance.functions.stakingPlans(
+        Number(staking[2])
+      );
+
+      this.setState({ staking, stakingMonth: Number(staking[2]), planMonths: Number(stakingPlan[0]) });
 
       const currentMouTimestamp = (await this.props.store.esInstance.functions.mou()).toNumber();
       const stakingStartTime = this.state.staking[1].toNumber();
@@ -28,6 +40,23 @@ class StakingId extends Component {
       this.setState({ canWithdraw });
     }
   };
+
+  fetchBenefit = async month => {
+    const spinner = {...this.state.spinner};
+    spinner[month] = true;
+    this.setState({ spinner });
+
+    console.log(month)
+
+    const benefit = await this.props.store.timeallyInstance.functions.seeBenefitOfAStakingByMonths(
+      this.props.store.walletInstance.address,
+      this.props.match.params.id,
+      [month]
+    );
+
+    console.log(benefit);
+
+  }
 
   withdrawStaking = async () => {
     this.setState({ withdrawing: true, errorMessage: '' });
@@ -43,6 +72,28 @@ class StakingId extends Component {
     if(!this.props.store.walletInstance.address) {
       return (<p>User not found, please load wallet</p>);
     }
+    const monthsTableRows = [];
+
+    for(let i = this.state.stakingMonth; i < this.state.currentMonth; i++) {
+      monthsTableRows.push(
+        <tr>
+          <td>{i + 1}</td>
+          <td>
+            {this.state.monthlyBenefit[i + 1]}
+            <button
+              onClick={() => this.fetchBenefit(i+1)}
+              className="btn query btn-primary"
+            >
+              Query
+            </button>
+          </td>
+          <td>john@example.com</td>
+          <td>john@example.com</td>
+          <td> <button className="btn query btn-primary">WITHDRAW</button> </td>
+        </tr>
+      );
+    }
+
     return (
       <div>
             <div className="page-header">
@@ -104,6 +155,25 @@ class StakingId extends Component {
                         <p>Error from Blockchain: {this.state.errorMessage}</p></div>
                         : null
                       }
+
+                      <table className="table table-striped" border="1">
+                          <thead>
+                            <tr>
+                              <th>Month ID</th>
+                              <th>Total Benefit</th>
+                              <th>Liquid Benefit</th>
+                              <th>Reward Benefit</th>
+                              <th>Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+
+                              {monthsTableRows}
+
+                          </tbody>
+                        </table>
+
+
                 </div>
                 </div>
               </div>

@@ -30,7 +30,7 @@ class Stakings extends Component {
       const log = logs[i];
       const address = log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length);
       const stakingId = Number(log.data.slice(66,130));
-      const staking = await this.props.store.timeallyInstance.functions.viewStaking(address, stakingId);
+      const staking = await this.props.store.timeallyInstance.functions.stakings(address, stakingId);
       console.log(staking);
       stakings.push({
         address,
@@ -86,7 +86,7 @@ class Stakings extends Component {
       <div className="row">
         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
           <div className="wrapper-content bg-white pinside10">
-         
+
             <div className="row">
               <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <table className="table table-image">
