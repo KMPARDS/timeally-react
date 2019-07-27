@@ -148,21 +148,51 @@ class StakingList extends Component {
                            {this.state.withdrawing ? 'Withdrawing...' : 'Withdraw this now'}</button>
                        </p>
 
-
                    :null}
 
                    {this.state.errorMessage ? <p>Error from blockchain: {this.state.errorMessage}</p> : null}
-
                     {this.state.stakings.map((staking, index) => (
                       <div onClick={() => this.props.history.push('/stakings/'+index)}>
-                        <p><strong>StakingId:</strong> {index} - <strong>Plan:</strong> {staking.planId ? '2 Year' : '1 Year'} and <strong>Amount:</strong> {staking.amount} ES at <strong>Time:</strong> {new Date(staking.timestamp * 1000).toLocaleString()}</p>
-
+                          <p>
+                             <strong>StakingId:</strong> {index} - <strong>Plan:</strong> {staking.planId ? '2 Year' : '1 Year'} and <strong>Amount:</strong> {staking.amount} ES at <strong>Time:</strong> {new Date(staking.timestamp * 1000).toLocaleString()}
+                          </p>
                       </div>
                     ))}
-
-
-
-                </div>
+                    <table className="table">
+                        <thead>
+                          <tr>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                            <th>Email</th>
+                            <th>Email</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>john@example.com</td>
+                            <td>john@example.com</td>
+                            <td>john@example.com</td>
+                          </tr>
+                          <tr>
+                            <td>Mary</td>
+                            <td>Moe</td>
+                            <td>mary@example.com</td>
+                            <td>john@example.com</td>
+                            <td>john@example.com</td>
+                          </tr>
+                          <tr>
+                            <td>July</td>
+                            <td>Dooley</td>
+                            <td>july@example.com</td>
+                            <td>john@example.com</td>
+                            <td>john@example.com</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                   </div>
                 </div>
               </div>
             </div>
