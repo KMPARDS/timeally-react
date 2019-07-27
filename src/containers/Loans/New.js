@@ -102,17 +102,23 @@ class Loan extends Component {
       screen = (
         <div>
           <p>You can take loan of {this.state.maxLoanAmount} ES currently</p>
-          <input type="text" placeholder="Enter amount to loan" onKeyUp={ e => this.setState({ loaningAmount: e.target.value }) } /><br/>
-          <select>
+          <input className="form-control input-md" type="number" placeholder="Enter amount to loan" onKeyUp={ e => this.setState({ loaningAmount: e.target.value }) } /><br/>
+            <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Control as="select" onChange={this.onPlanChange}>
+                <option value="0">2 months with 1%</option>
+                </Form.Control>
+              </Form.Group>
+          {/* <select>
             <option value="0">2 months with 1%</option>
-          </select><br/>
+          </select> */}
+          <br/>
           {
             this.state.errorMessage
             ? <div><br />
             <p>Error from Blockchain: {this.state.errorMessage}</p></div>
             : null
           }
-          <button onClick={this.takeLoan} disabled={this.state.loanProcessing}>{!this.state.loanProcessing ? 'Take Loan' : 'Please wait taking loan...'}</button>
+          <button className="btn btn-primary " onClick={this.takeLoan} disabled={this.state.loanProcessing}>{!this.state.loanProcessing ? 'Take Loan' : 'Please wait taking loan...'}</button>
         </div>
       );
     }

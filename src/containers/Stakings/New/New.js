@@ -84,7 +84,8 @@ class NewStaking extends Component {
       return (
         
         <Header>
-           <Modal open={this.state.open} onClose={this.onCloseModal}>
+           {/* <button className="btn" onClick={this.onOpenModal}>Open modal</button> */}
+           <Modal open={this.state.open}>
                   <h2>Terms & Conditions</h2>
                   <div style={{overflowY:'scroll', height:'500px'}}>
                   <p style={{fontSize:'12px'}}>
@@ -158,9 +159,9 @@ class NewStaking extends Component {
                     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
                     CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
                     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE<br></br><br></br>
-                    <a  class="btn btn-primary btn-sm">Create Wallet</a>
+                    <a onClick={this.onCloseModal}  class="btn btn-primary btn-sm"><span className="text-white">I agree, let's apply for staking.</span></a>
                   </p>
-                  </div>
+                  </div> 
                 </Modal>
         <Card>
           <Form onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>

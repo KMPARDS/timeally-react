@@ -25,7 +25,7 @@ const ListOfLoadMethods = props => {
 
       <Card style={{margin: '15px 0'}} onClick={() => props.history.push('/load-wallet/using-mnemonic')}>
         <Card.Body align="center">
-          Use Memonic to unlock wallet
+          Use Mnemonic to unlock wallet
         </Card.Body>
       </Card>
     </div>
