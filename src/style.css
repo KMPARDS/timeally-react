@@ -1055,7 +1055,7 @@ EMI Calculator
 .table-bordered { border: 1px solid transparent; color: #333; }
 .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th { border: 1px solid #dee4ee; color: #3c4d6b; }
 .table-striped>tbody>tr:nth-of-type(odd) { background-color: #fafcfd; }
-.table>thead>tr>th { padding: 12px 43px 12px; line-height: 1.42857143; vertical-align: top; border-top: 0px solid #ddd; text-align: center; }
+.table>thead>tr>th {  line-height: 1.42857143; vertical-align: top; border-top: 0px solid #ddd; text-align: center; }
 
 /*--------------------------------
 Card Listing Page
@@ -1396,6 +1396,22 @@ Landing Page Template
   width: 100%;
 }
 
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+
 .small-btn{
   margin: 0px 0px;
   font-size: 11px !important;
@@ -1455,3 +1471,29 @@ card.body{
   color: #888
 }
 
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.query{
+  font-size: 10px !important;
+  padding: 10px !important;
+  float: right;
+  color: #000000;  
+  border: 1px solid #007bff !important;
+  background-color: white;
+}

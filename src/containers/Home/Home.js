@@ -44,7 +44,7 @@ class Home extends Component {
                 <div className="icon rate-icon  "> <img src="images/deposit.png" alt="" className="icon-svg-1x" /></div>
                 <div className="rate-box">
                   <h1 className="loan-rate">8,85,854</h1>
-                  <small className="rate-title">Staking Amount</small>
+                  <small className="rate-title">Total Stakes in next month</small>
                 </div>
               </div>
             </div>
@@ -53,7 +53,7 @@ class Home extends Component {
               <div className="icon rate-icon  "> <img src="images/tank-truck.png" alt="" className="icon-svg-1x" /></div>
                 <div className="rate-box">
                   <h1 className="loan-rate">21,21,558</h1>
-                  <small className="rate-title">Available Stakes</small>
+                  <small className="rate-title">NRT Released for the year</small>
                 </div>
               </div>
             </div>
@@ -166,7 +166,7 @@ class Home extends Component {
                       <div className="col-md-6">
                         <h2 className="text-white">In case of more users</h2>                         
                         <img src="./images/b.png"></img>
-                        <p className="text-white">If fewer users opt for TimeAlly vesting then more tokens per user will be received. As the number of tokens to be distributed every month is fixed but the no. of receivers is reduced. This way more ES will be received to these fewer members.</p>
+                        <p className="text-white">If few users opt for TimeAlly vesting then more tokens per user will be received. As the number of tokens to be distributed every month is fixed but the no. of receivers is reduced. This way more ES will be received to these fewer members.</p>
                       </div>    
                     </div>         
                   </div>
