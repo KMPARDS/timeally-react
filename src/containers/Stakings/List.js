@@ -130,14 +130,13 @@ class StakingList extends Component {
                   <div className="wrapper-content bg-white pinside40">
                    <div className="bg-white section-space80">
                      <div className="container">
-
-                       See total monthly benefit by month: <input type="text" placeholder="enter month id" value={this.state.month ? this.state.month : undefined} onChange={
+                       See total monthly benefit by month: <input style={{height: '52px', padding: '6px 16px', fontSize: '14px', lineHeight: '1.42857143', color: '#555', borderRadius: '4px', boxShadow: 'inset 0 0px 0px rgba(0, 0, 0, .075)', marginBottom: '10px', border: '2px solid #e6ecef'}} type="text" placeholder="enter month id" value={this.state.month ? this.state.month : undefined} onChange={
                          event => {
                            console.log(+event.target.value);
                            this.setState({ month: +event.target.value });
                          } } />
-                       <button onClick={this.showBenefit}>Query</button>
-
+                       <button className="btn" onClick={this.showBenefit}>Query</button>
+                         <br></br><br></br>
                      {Object.keys(this.state.benefit).length
                        ?
 
@@ -158,7 +157,48 @@ class StakingList extends Component {
                           </p>
                       </div>
                     ))}
+<<<<<<< HEAD
                     
+=======
+                    <table className="table table-striped" border="1">
+                        <thead>
+                          <tr>
+                            <th>Month ID</th>
+                            <th>Staking ID <button className="btn query btn-primary">Query All</button></th>
+                            <th>Plan</th>
+                            <th>Amount</th>
+                            <th>Time</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>John</td>
+                            <td>555252147s52s4dsdsd <button className="btn query btn-primary">Query</button></td>
+                            <td>1 year</td>
+                            <td>50055</td>
+                            <td>25/07/2019, 17:32:08</td>
+                            <td> <button className="btn query btn-primary">WITHDRAW</button></td>
+                          </tr>                          
+                          <tr>
+                            <td>John</td>
+                            <td>555252147s52s4dsdsd <button className="btn query btn-primary">Query</button></td>
+                            <td>1 year</td>
+                            <td>4578455</td>
+                            <td>25/07/2019, 17:32:08</td>
+                            <td> <button className="btn query btn-primary">WITHDRAW</button></td>
+                          </tr>
+                          <tr>
+                            <td>John</td>
+                            <td>555252147s52s4dsdsd <button className="btn query btn-primary">Query</button></td>
+                            <td>1 year</td>
+                            <td>578755</td>
+                            <td>25/07/2019, 17:32:08</td>
+                            <td> <button className="btn query btn-primary">WITHDRAW</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+>>>>>>> 788cb1bd88fc77eb815b9e349fbdb22521698069
                       <div className="pagination">
                           <a href="#">«</a>
                           <a className="active" href="#">1</a>

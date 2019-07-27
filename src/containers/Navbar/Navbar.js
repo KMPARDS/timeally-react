@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-//import { Navbar, Nav, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Navbar, Nav, DropdownButton, Dropdown, NavDropdown, Form, Button, FormControl } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 
 import { esContract, nrtManager, timeally } from '../../env';
@@ -90,10 +90,8 @@ class NavbarComponent extends Component {
       );
     }
 
-
     return (
       <div>
-
       <div className="top-bar">
         {/* top-bar */}
         <div className="container">
@@ -131,62 +129,66 @@ class NavbarComponent extends Component {
               </div>
             </div>
           </div>
-        </div>
-        
+        </div>        
         <div className="bg-light-blue">
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
               {/* logo */}
               <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div id="navigation">
-                  {/* navigation start*/}
-                  <ul>
-                    <li className="active"><a onClick={() => this.props.history.push('/')}>Home</a></li>
+                  <Navbar expand="lg">
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                      <Nav className="mr-auto">
+                        <Nav.Link onClick={() => this.props.history.push('/')}><span style={{color:'#fff'}}>Home</span></Nav.Link>
+                        { this.props.store.walletInstance.address ?
+                          <Nav.Link  onClick={() => this.props.history.push('/dashboard')}><span style={{color:'#fff'}}>Dashboard</span></Nav.Link>
+                          : null
+                          }     
+                        { this.props.store.walletInstance.address ?
+                         <Nav.Link  onClick={() => this.props.history.push('/wallet')}><span style={{color:'#fff'}}>Wallet</span></Nav.Link>                          
+                            : null
+                        }
 
-                    { this.props.store.walletInstance.address ?
-                    <li className="active"><a onClick={() => this.props.history.push('/dashboard')}>Dashboard</a></li>
-                      : null
-                   }
-
-                  { this.props.store.walletInstance.address ?
-                    <li className="active"><a onClick={() => this.props.history.push('/wallet')}>Wallet</a></li>
-                      : null
-                   }
-
-                  { this.props.store.walletInstance.address ?
-                    <li><a onClick={() => this.props.history.push('/transactions')}>Transactions</a>
-                      <ul>
-                          <li><a onClick={() => this.props.history.push('/transactions/stakings')}>Staking Transactions</a></li>
-                          <li><a onClick={() => this.props.history.push('/transactions/withdrawls')}>Withdrawal Transactions</a></li>
-                        </ul>
-                    </li>
+                    {/* { this.props.store.walletInstance.address ?
+                    
+                          <li><a onClick={() => this.props.history.push('/transactions')}>Transactions</a>
+                            <ul>
+                                <li><a onClick={() => this.props.history.push('/transactions/stakings')}>Staking Transactions</a></li>
+                                <li><a onClick={() => this.props.history.push('/transactions/withdrawls')}>Withdrawal Transactions</a></li>
+                              </ul>
+                          </li>
                     : null
-                 }
-
-                    { this.props.store.walletInstance.address ?
-                    <li className="active"><a onClick={() => this.props.history.push('/stakings')}>Stakings</a></li>
+                     } */}
+                   { this.props.store.walletInstance.address ?
+                   <Nav.Link  onClick={() => this.props.history.push('/stakings')}><span style={{color:'#fff'}}>Stakings</span></Nav.Link>  
                       : null
                    }
 
                   { this.props.store.walletInstance.address ?
-                    <li className="active"><a onClick={() => this.props.history.push('/loans-info')}>Apply for Loan</a></li>
+                   <Nav.Link  onClick={() => this.props.history.push('/loans-info')}><span style={{color:'#fff'}}>Apply for Loan</span></Nav.Link>  
+                    // <li className="active"><a onClick={() => this.props.history.push('/loans-info')}>Apply for Loan</a></li>
                      : null
                   }
-                    <li className="active"><a onClick={() => this.props.history.push('/mou')}>The mou Time Machine</a></li>
+                   <Nav.Link  onClick={() => this.props.history.push('/mou')}><span style={{color:'#fff'}}>The mou Time Machine</span></Nav.Link>  
 
-                      { this.props.store.walletInstance.address ?
-                      <li className="active"><a onClick={() => this.props.history.push('/rewards')}>Rewards</a></li>
-                        : null
-                     }
+                  { this.props.store.walletInstance.address ?
+                    <Nav.Link  onClick={() => this.props.history.push('/rewards')}><span style={{color:'#fff'}}>Rewards</span></Nav.Link>                      
+                    : null
+                  }
+                   
+                   <Nav.Link  href="/pdf/TimeAlly_Terms_Use.pdf" target="_blank" ><span style={{color:'#fff'}}>T & C</span></Nav.Link>  
 
-                    {/* <li><a href="about.html" className="animsition-link">About us</a>
-                      <ul>
-                        <li><a href="about.html" title="About us" className="animsition-link">About us</a></li>
-                        <li><a href="team.html" title="Team" className="animsition-link">Team</a></li>
-                      </ul>
-                    </li> */}
-                  </ul>
-                </div>
+                        {/* <Nav.Link href="#link">Link</Nav.Link> */}
+                        {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                          <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                          <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                          <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                          <NavDropdown.Divider />
+                          <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                        </NavDropdown> */}
+                      </Nav>                 
+                    </Navbar.Collapse>
+                  </Navbar>
                 {/* /.navigation start*/}
               </div>
             </div>
