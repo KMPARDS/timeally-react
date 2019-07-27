@@ -159,7 +159,7 @@ class NewStaking extends Component {
                     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
                     CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
                     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE<br></br><br></br>
-                    <a onClick={this.onCloseModal}  class="btn btn-primary btn-sm"><span className="text-white">I agree, let's apply for staking.</span></a>
+                    <a onClick={this.onCloseModal}  class="btn btn-primary btn-sm"><span className="text-white">Proceed</span></a>
                   </p>
                   </div> 
                 </Modal>

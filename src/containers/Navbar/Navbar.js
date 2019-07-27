@@ -139,13 +139,13 @@ class NavbarComponent extends Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                       <Nav className="mr-auto">
-                        <Nav.Link onClick={() => this.props.history.push('/')}>Home</Nav.Link>
+                        <Nav.Link onClick={() => this.props.history.push('/')}><span style={{color:'#fff'}}>Home</span></Nav.Link>
                         { this.props.store.walletInstance.address ?
-                          <Nav.Link  onClick={() => this.props.history.push('/dashboard')}>Dashboard</Nav.Link>
+                          <Nav.Link  onClick={() => this.props.history.push('/dashboard')}><span style={{color:'#fff'}}>Dashboard</span></Nav.Link>
                           : null
                           }     
                         { this.props.store.walletInstance.address ?
-                         <Nav.Link  onClick={() => this.props.history.push('/wallet')}>Wallet</Nav.Link>                          
+                         <Nav.Link  onClick={() => this.props.history.push('/wallet')}><span style={{color:'#fff'}}>Wallet</span></Nav.Link>                          
                             : null
                         }
 
@@ -160,23 +160,23 @@ class NavbarComponent extends Component {
                     : null
                      } */}
                    { this.props.store.walletInstance.address ?
-                   <Nav.Link  onClick={() => this.props.history.push('/stakings')}>Stakings</Nav.Link>  
+                   <Nav.Link  onClick={() => this.props.history.push('/stakings')}><span style={{color:'#fff'}}>Stakings</span></Nav.Link>  
                       : null
                    }
 
                   { this.props.store.walletInstance.address ?
-                   <Nav.Link  onClick={() => this.props.history.push('/loans-info')}>Apply for Loan</Nav.Link>  
+                   <Nav.Link  onClick={() => this.props.history.push('/loans-info')}><span style={{color:'#fff'}}>Apply for Loan</span></Nav.Link>  
                     // <li className="active"><a onClick={() => this.props.history.push('/loans-info')}>Apply for Loan</a></li>
                      : null
                   }
-                   <Nav.Link  onClick={() => this.props.history.push('/mou')}>The mou Time Machine</Nav.Link>  
+                   <Nav.Link  onClick={() => this.props.history.push('/mou')}><span style={{color:'#fff'}}>The mou Time Machine</span></Nav.Link>  
 
                   { this.props.store.walletInstance.address ?
-                    <Nav.Link  onClick={() => this.props.history.push('/rewards')}>Rewards</Nav.Link>                      
+                    <Nav.Link  onClick={() => this.props.history.push('/rewards')}><span style={{color:'#fff'}}>Rewards</span></Nav.Link>                      
                     : null
                   }
                    
-                   <Nav.Link  href="/pdf/TimeAlly_Terms_Use.pdf" target="_blank" >T & C</Nav.Link>  
+                   <Nav.Link  href="/pdf/TimeAlly_Terms_Use.pdf" target="_blank" ><span style={{color:'#fff'}}>T & C</span></Nav.Link>  
 
                         {/* <Nav.Link href="#link">Link</Nav.Link> */}
                         {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
