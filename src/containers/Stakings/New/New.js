@@ -87,6 +87,8 @@ class NewStaking extends Component {
            {/* <button className="btn" onClick={this.onOpenModal}>Open modal</button> */}
            <Modal open={this.state.open}>
                   <h2>Terms & Conditions</h2>
+                  <h5>Please scroll and read the complete document carefully to proceed.</h5>
+                  <hr></hr>
                   <div style={{overflowY:'scroll', height:'500px'}}>
                   <p style={{fontSize:'12px'}}>
                   The Eraswapfoundation OU is a group of developers and technology professionals who are passionate
