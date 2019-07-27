@@ -169,7 +169,7 @@ class NavbarComponent extends Component {
                    }
 
                   { this.props.store.walletInstance.address ?
-                    <li className="active"><a onClick={() => this.props.history.push('/loans')}>Apply for Loan</a></li>
+                    <li className="active"><a onClick={() => this.props.history.push('/loans-info')}>Apply for Loan</a></li>
                      : null
                   }
                     <li className="active"><a onClick={() => this.props.history.push('/mou')}>The mou Time Machine</a></li>

@@ -54,7 +54,10 @@ class LoansInfo extends Component {
               <div className="mb100 text-center section-title">
                 {/* section title start*/}
                 <h1>TimeAlly Loan for TimeAlly holders</h1>
-                <p>TimeAlly offers TA loan to the holders of TimeAlly Smart Contract. The maximum loan amount can be 50% of the TimeAlly holding. The features of TA loan are outline below</p>
+                <p>TimeAlly offers TA loan to the holders of TimeAlly Smart Contract. The maximum loan amount can be 50% of the TimeAlly holding.<br></br><br></br>
+                 <span style={{fontWeight:'bold'}}>Initial offer</span>: TimeAlly holders will get opportunity to avail loan  upto 50% after consuming 75% of contract period.  More plan options will be introduced after deployment of 1 year & 2 year vesting initial plans.<br></br><br></br>
+                  
+                  The features of TA loan are outline below</p>
               </div>
               {/* /.section title start*/}
             </div>
@@ -94,8 +97,8 @@ class LoansInfo extends Component {
               <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
               <div className="circle"><img src="./images/premium.png"/></div>
               
-                <h3 className="number-title">Reward Distribution</h3>
-                <p>TimeAlly governs the Reward Distribution from NRT based on Ecosystem user's contribution.</p>
+                <h3 className="number-title">Convenient and Paperless</h3>
+                <p>TimeAlly holders can apply for TA Loan, after consuming 75% of contract period in paperless mode.</p>
               </div>
             </div>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">

@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { Card, Form, Button, ProgressBar, Alert, Row, Col, Spinner } from 'react-bootstrap';
 import CompleteModal from './CompleteModal';
+import Modal from "react-responsive-modal";
 
 import { network } from '../../env';
 
@@ -31,8 +32,13 @@ class CreateWalletPage extends Component {
     keystoreSpinner: false,
     keystore: {},
     keystoreFileName: '',
-    userDownloadedKeystore: false
+    userDownloadedKeystore: false,
+    open: false
   };
+
+  componentDidMount=()=>{
+    this.onOpenModal();
+  }
 
   updatepassword1 = event => {
     console.log(event.target.value)
@@ -168,6 +174,15 @@ class CreateWalletPage extends Component {
 
   modalClose = () => this.setState({ userDownloadedKeystore: false });
 
+  onOpenModal = () => {
+    this.setState({ open: true });
+  };
+
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
+
+
   render() {
 
     return (
@@ -203,10 +218,13 @@ class CreateWalletPage extends Component {
                   </div>
                 </div>
               </div>
-
+              
+             
     <div className="container">
+
         <div className="row">
           <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+          
            <div className="wrapper-content bg-white pinside40">
               <div className="loan-eligibility-block">
               <Card>
@@ -303,6 +321,19 @@ class CreateWalletPage extends Component {
                   onHide={this.modalClose}
                 />
               </div>
+              {/* <button className="btn" onClick={this.onOpenModal}>Open modal</button> */}
+                <Modal open={this.state.open} onClose={this.onCloseModal}>
+                  <h2>Terms & Conditions</h2>
+                  <div style={{overflowY:'scroll', height:'200px'}}>
+                  <p style={{fontSize:'12px'}}>
+                  TimeAlly is a free, open-source, client-side interface. TimeAlly allows you to interact directly with the blockchain, while you remain in full control of your keys and funds.
+                    <br></br><br></br>
+                    Please think about this carefully. YOU are the one who is in control. TimeAlly is not a bank or exchange. We don't hold your keys, your funds, or your information. This means we can't access accounts, recover keys, reset passwords, or reverse transactions.<br></br><br></br>
+
+                    <a  class="btn btn-primary btn-sm">Create Wallet</a>
+                  </p>
+                  </div>
+                </Modal>
             </div>
           </div>
         </div>

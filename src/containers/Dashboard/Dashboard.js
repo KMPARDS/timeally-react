@@ -95,7 +95,7 @@ class Dashboard extends Component {
                             <div className="row">
                               <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div className="btn-action">
-                                <Button className="btn btn-default btn-sm" onClick={() => this.props.history.push('/stakings/new')}>Apply for Loan</Button>
+                                {/* <Button className="btn btn-default btn-sm" onClick={() => this.props.history.push('/stakings/new')}>Apply for Loan</Button> */}
                                 <Button onClick={() => this.props.history.push('/stakings/new')}>New Staking</Button>
                                 </div>
                               </div>
@@ -142,8 +142,9 @@ class Dashboard extends Component {
                       <div className="row">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                           <div className="bg-light">
-                            <span style={{textAlign:'center', fontSize:'11px'}}>ETHEREUM TRANSACTION HISTORY IN 14 DAYS</span>
-                            <h2 id="emi" className="pull-right">Graph</h2>
+                            <span style={{textAlign:'center'}}>TOTAL STAKED IN 24 HOURS</span>
+                            {/* <h2 id="emi" className="pull-right">Graph</h2> */}<br></br><br></br>
+                            <h2>245125885 ES</h2>
                           </div>
                         </div>
                       </div>
@@ -158,9 +159,9 @@ class Dashboard extends Component {
       <div className="container">
        <h2 className="mb20">View All Staking in the World</h2>
           <div className="row pinside40">
-              <div className="tablebg">
+              <div className="tablebg" style={{overflow:'hidden',}}>
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                          <table className="table">
+                          <table className="table" border="1">
                               <thead style={{textAlign:'center'}}>
                                 <tr>
                                   <th>Address</th>
@@ -181,6 +182,16 @@ class Dashboard extends Component {
                               ))}
                               </tbody>
                             </table>
+                            <div className="pagination">
+                                <a href="#">«</a>
+                                <a className="active" href="#">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">6</a>
+                                <a href="#">»</a>
+                            </div>
                             </div>
                         </div>
                     </div>
