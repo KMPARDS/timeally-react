@@ -84,7 +84,7 @@ class Rewards extends Component {
               <div className="wrapper-content bg-white pinside10">
                 <div className="row">
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <button className="btn btn-default btn-sm" onClick={this.checkReward}>Check for rewards</button>
+                    <button className="btn btn-default btn-sm" onClick={this.checkReward}>Check for vesting rewards</button>
                     {rewardComponent}
                   </div>
                 </div>

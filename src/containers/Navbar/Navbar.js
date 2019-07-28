@@ -108,7 +108,7 @@ class NavbarComponent extends Component {
             </div>
             <div className="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 d-none d-xl-block d-lg-block">
               <p className="mail-text text-center">Gas Price: {this.state.gasPrice} gwei</p>
-            </div>           
+            </div>
           </div>
         </div>
       </div>
@@ -129,7 +129,7 @@ class NavbarComponent extends Component {
               </div>
             </div>
           </div>
-        </div>        
+        </div>
         <div className="bg-light-blue">
           <div className="container-fluid">
             <div className="row">
@@ -143,14 +143,14 @@ class NavbarComponent extends Component {
                         { this.props.store.walletInstance.address ?
                           <Nav.Link  onClick={() => this.props.history.push('/dashboard')}><span style={{color:'#fff'}}>Dashboard</span></Nav.Link>
                           : null
-                          }     
+                          }
                         { this.props.store.walletInstance.address ?
-                         <Nav.Link  onClick={() => this.props.history.push('/wallet')}><span style={{color:'#fff'}}>Wallet</span></Nav.Link>                          
+                         <Nav.Link  onClick={() => this.props.history.push('/wallet')}><span style={{color:'#fff'}}>Wallet</span></Nav.Link>
                             : null
                         }
 
                     {/* { this.props.store.walletInstance.address ?
-                    
+
                           <li><a onClick={() => this.props.history.push('/transactions')}>Transactions</a>
                             <ul>
                                 <li><a onClick={() => this.props.history.push('/transactions/stakings')}>Staking Transactions</a></li>
@@ -160,23 +160,23 @@ class NavbarComponent extends Component {
                     : null
                      } */}
                    { this.props.store.walletInstance.address ?
-                   <Nav.Link  onClick={() => this.props.history.push('/stakings')}><span style={{color:'#fff'}}>Stakings</span></Nav.Link>  
+                   <Nav.Link  onClick={() => this.props.history.push('/stakings')}><span style={{color:'#fff'}}>Stakings</span></Nav.Link>
                       : null
                    }
 
                   { this.props.store.walletInstance.address ?
-                   <Nav.Link  onClick={() => this.props.history.push('/loans-info')}><span style={{color:'#fff'}}>Apply for Loan</span></Nav.Link>  
+                   <Nav.Link  onClick={() => this.props.history.push('/loans-info')}><span style={{color:'#fff'}}>Apply for Loan</span></Nav.Link>
                     // <li className="active"><a onClick={() => this.props.history.push('/loans-info')}>Apply for Loan</a></li>
                      : null
                   }
-                   <Nav.Link  onClick={() => this.props.history.push('/mou')}><span style={{color:'#fff'}}>The mou Time Machine</span></Nav.Link>  
+                   <Nav.Link  onClick={() => this.props.history.push('/mou')}><span style={{color:'#fff'}}>The mou Time Machine</span></Nav.Link>
 
                   { this.props.store.walletInstance.address ?
-                    <Nav.Link  onClick={() => this.props.history.push('/rewards')}><span style={{color:'#fff'}}>Rewards</span></Nav.Link>                      
+                    <Nav.Link  onClick={() => this.props.history.push('/rewards')}><span style={{color:'#fff'}}>Vesting Rewards</span></Nav.Link>                      
                     : null
                   }
-                   
-                   <Nav.Link  href="/pdf/TimeAlly_Terms_Use.pdf" target="_blank" ><span style={{color:'#fff'}}>T & C</span></Nav.Link>  
+
+                   <Nav.Link  href="/pdf/TimeAlly_Terms_Use.pdf" target="_blank" ><span style={{color:'#fff'}}>T & C</span></Nav.Link>
 
                         {/* <Nav.Link href="#link">Link</Nav.Link> */}
                         {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
@@ -186,7 +186,7 @@ class NavbarComponent extends Component {
                           <NavDropdown.Divider />
                           <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                         </NavDropdown> */}
-                      </Nav>                 
+                      </Nav>
                     </Navbar.Collapse>
                   </Navbar>
                 {/* /.navigation start*/}

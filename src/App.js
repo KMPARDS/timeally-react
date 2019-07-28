@@ -95,23 +95,60 @@ function App(props) {
           {/* footer */}
           <div className="container">
             <div className="row">
-              <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                <div className="footer-logo">
+              <div className="col-12">
+                <div className="footer-logo" style={{ fontSize: '30px'}}>
                   {/* Footer Logo */}
                   {/* <img src="images/ft-logo.png" alt="Borrow - Loan Company Website Templates" />  */}
+                  <ul className="list-unstyled list-inline social2 text-center text-white">
+									<li className="list-inline-item">
+										<a href="https://github.com/KMPARDS" target="_blank"><i className="fa fa-github"></i></a>
+									</li>
+									<li className="list-inline-item telegram">
+										<a href="https://t.me/eraswap" target="_blank"><i className="fa fa-telegram"></i></a>
+									</li>
+									<li className="list-inline-item">
+										<a href="https://twitter.com/eraswaptec" target="_blank"><i className="fa fa-twitter"></i></a>
+									</li>
+									<li className="list-inline-item">
+										<a href="https://www.facebook.com/eraswap" target="_blank"><i className="fa fa-facebook"></i></a>
+									</li>
+									<li className="list-inline-item">
+										<a href="https://www.instagram.com/eraswap/?hl=en" target="_blank"><i className="fa fa-instagram"></i></a>
+									</li>
+									<li className="list-inline-item">
+										<a href="https://www.youtube.com/channel/UCGCP4f5DF1W6sbCjS6y3T1g?view_as=subscriber" target="_blank"><i className="fa fa-youtube"></i></a>
+									</li>
+									<li className="list-inline-item">
+										<a href="https://www.linkedin.com/company/eraswap/" target="_blank"><i className="fa fa-linkedin"></i></a>
+									</li>
+									<li className="list-inline-item">
+										<a href="https://plus.google.com/u/2/107638861216745114245" target="_blank"><i className="fa fa-google-plus"></i></a>
+									</li>
+									<li className="list-inline-item">
+										<a href="https://www.reddit.com/user/EraSwap" target="_blank"><i className="fa fa-reddit"></i></a>
+									</li>
+									<li className="list-inline-item">
+										<a href="https://medium.com/@eraswap" target="_blank"><i className="fa fa-medium"></i></a>
+									</li>
+									<li className="list-inline-item">
+										<a href="https://eraswap.tumblr.com/" target="_blank"><i className="fa fa-tumblr"></i></a>
+									</li>
+									<li className="list-inline-item">
+										<a href="https://mix.com/eraswap" target="_blank"><i className="fa fa-stumbleupon"></i></a>
+									</li>
+									<li className="list-inline-item">
+									<a href="https://www.pinterest.com/eraswapt" target="_blank"><i className="fa fa-pinterest"></i></a>
+									</li>
+									<li className="list-inline-item">
+										<a href="https://bitcointalk.org/index.php?topic=5025979.msg45502457" target="_blank"><i className="fa fa-btc"></i></a>
+									</li>
+								</ul>
                   </div>
                 {/* /.Footer Logo */}
               </div>
             </div>
             <div className="row">
-              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div className="widget-text mt10">
-                  {/* widget text */}
-                  <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank"  className="btn btn-primary">Era Swap White Paper</a>
-                  <a href="https://eraswaptoken.io/era-swap-howey-test-letter-august7-2018.php" target="_blank"  className="btn btn-primary">Howey Test</a>
-                </div>
-                {/* /.widget text */}
-              </div>
+
 
 
             </div>
@@ -122,11 +159,15 @@ function App(props) {
           {/* tiny footer */}
           <div className="container">
             <div className="row">
-              <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-                <p style={{color:'#fff'}}>© Copyright 2019 | Time Ally</p>
-              </div>
-              <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 text-right">
-                <p style={{color:'#fff'}}><a href="/pdf/TimeAlly_Terms_Use.pdf" target="_blank">Terms of use</a> | <a href="/pdf/TimeAlly_Privacy.pdf" target="_blank">Privacy Policy</a></p>
+              {/*<div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                <p style={{color:'#fff'}}>Time Ally</p>
+              </div>*/}
+              <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" style={{ margin: '0 auto' }}>
+                <p style={{color:'#fff'}}>
+                  <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank"  >Era Swap White Paper</a> &nbsp; | &nbsp;
+                  <a href="https://eraswaptoken.io/era-swap-howey-test-letter-august7-2018.php" target="_blank"  >Howey Test</a> &nbsp; | &nbsp;
+                  <a href="/pdf/TimeAlly_Terms_Use.pdf" target="_blank">Terms of use</a> &nbsp; | &nbsp; <a href="/pdf/TimeAlly_Privacy.pdf" target="_blank">Privacy Policy</a>
+                </p>
               </div>
 
             </div>

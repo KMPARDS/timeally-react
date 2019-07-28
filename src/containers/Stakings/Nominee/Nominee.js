@@ -99,6 +99,8 @@ class Nominee extends Component {
                    <div className="bg-white section-space80">
                      <div className="container">
 
+                       {!this.state.nominees.length ? 'There are no nominees associated with this staking' : null}
+
                     {this.state.nominees.map((nominee, index) => (
                       <div>
                         <p>

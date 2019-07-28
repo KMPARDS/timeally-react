@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Spinner } from 'react-bootstrap';
+
 const ethers = require('ethers');
 
 class StakingId extends Component {
@@ -12,8 +14,9 @@ class StakingId extends Component {
     errorMessage: '',
     stakingMonth: 0,
     planMonths: 0,
-    monthlyBenefit: {},
-    spinner: {}
+    monthlyBenefits: {},
+    monthlyBenefitSpinner: {},
+    selectedMonths: []
   }
   componentDidMount = async () => {
     const currentMonth = Number(await this.props.store.timeallyInstance.functions.getCurrentMonth());
@@ -41,22 +44,41 @@ class StakingId extends Component {
     }
   };
 
-  fetchBenefit = async month => {
-    const spinner = {...this.state.spinner};
-    spinner[month] = true;
-    this.setState({ spinner });
+  query = async month => {
+    (()=>{
+      const monthlyBenefitSpinner = {...this.state.monthlyBenefitSpinner};
+      monthlyBenefitSpinner[month] = true;
+      this.setState({ monthlyBenefitSpinner });
+    })();
 
-    console.log(month)
+    console.log('month', month);
+    const monthlyBenefits = {...this.state.monthlyBenefits};
 
-    const benefit = await this.props.store.timeallyInstance.functions.seeBenefitOfAStakingByMonths(
-      this.props.store.walletInstance.address,
-      this.props.match.params.id,
-      [month]
-    );
+    try {
+      const monthlyBenefit = await this.props.store.timeallyInstance.functions.seeBenefitOfAStakingByMonths(
+        this.props.store.walletInstance.address,
+        this.props.match.params.id,
+        [month]
+      );
+      console.log(monthlyBenefit);
+      let lessDecimals = ethers.utils.formatEther(monthlyBenefit).split('.');
+      if(lessDecimals[1].length >= 2) {
+        lessDecimals[1] = lessDecimals[1].slice(0,2);
+      }
+      monthlyBenefits[month] = lessDecimals.join('.');
+    } catch (err) {
+      console.log('error from bl chain', err.message);
+    }
 
-    console.log(benefit);
+    (()=>{
+      const monthlyBenefitSpinner = {...this.state.monthlyBenefitSpinner};
+      monthlyBenefitSpinner[month] = false;
+      this.setState({ monthlyBenefitSpinner, monthlyBenefits });
+    })();
 
-  }
+  };
+
+
 
   withdrawStaking = async () => {
     this.setState({ withdrawing: true, errorMessage: '' });
@@ -74,22 +96,43 @@ class StakingId extends Component {
     }
     const monthsTableRows = [];
 
-    for(let i = this.state.stakingMonth; i < this.state.currentMonth; i++) {
+    for(let i = this.state.stakingMonth + 1; i <= this.state.stakingMonth + this.state.planMonths; i++) {
+      // if(i > this.state.currentMonth) show grey
       monthsTableRows.push(
         <tr>
-          <td>{i + 1}</td>
+          <td>{i}</td>
           <td>
-            {this.state.monthlyBenefit[i + 1]}
+
+            {
+                this.state.monthlyBenefits[i]
+                  ? this.state.monthlyBenefits[i] + ' ES'
+                  : (
+                    this.state.monthlyBenefitSpinner[i]
+                    ? <Spinner animation="border" />
+                    : <button
+                        disabled={i > this.state.currentMonth}
+                        onClick={() => this.query(i)}
+                        className="btn query btn-outline-primary"
+                      >
+                        {i > this.state.currentMonth ? 'Cannot Query as NRT not released' : 'Query'}
+                      </button>
+                  )
+                }
+
+
+
+          </td>
+          {/*<td></td>
+          <td></td>*/}
+          <td>
             <button
-              onClick={() => this.fetchBenefit(i+1)}
-              className="btn query btn-primary"
+              disabled={i > this.state.currentMonth}
+              className="btn query btn-outline-primary"
+
             >
-              Query
+              {i > this.state.currentMonth ? 'Cannot Select' : 'Select'}
             </button>
           </td>
-          <td>john@example.com</td>
-          <td>john@example.com</td>
-          <td> <button className="btn query btn-primary">WITHDRAW</button> </td>
         </tr>
       );
     }
@@ -159,10 +202,10 @@ class StakingId extends Component {
                       <table className="table table-striped" border="1">
                           <thead>
                             <tr>
-                              <th>Month ID</th>
-                              <th>Total Benefit</th>
-                              <th>Liquid Benefit</th>
-                              <th>Reward Benefit</th>
+                              <th>NRT Month</th>
+                              <th>Monthly Benefit</th>
+                              {/*<th>Liquid Benefit</th>
+                              <th>Reward Benefit</th>*/}
                               <th>Actions</th>
                             </tr>
                           </thead>

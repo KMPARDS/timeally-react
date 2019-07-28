@@ -165,7 +165,7 @@ class Dashboard extends Component {
                       <div className="bg-light pinside10 ">
                         <div className="row">
                           <div className="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5" style={{textAlign:'center'}}>
-                             <span>Current TimeAlly Month</span><br></br>
+                             <span>Current NRT Month</span><br></br>
                             <span style={{fontSize:'12px'}}>{this.state.currentMonth}{this.state.currentMonth !== undefined ? null : 'Loading...'}</span>
                             <hr />
                             <span>NRT Release this month</span><br></br>
@@ -227,7 +227,7 @@ class Dashboard extends Component {
                               ))}
                               </tbody>
                             </table>
-                            <div className="pagination">
+                            {/*<div className="pagination">
                                 <a href="#">«</a>
                                 <a className="active" href="#">1</a>
                                 <a href="#">2</a>
@@ -236,7 +236,7 @@ class Dashboard extends Component {
                                 <a href="#">5</a>
                                 <a href="#">6</a>
                                 <a href="#">»</a>
-                            </div>
+                            </div>*/}
                             </div>
                         </div>
                     </div>

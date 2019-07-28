@@ -9,6 +9,24 @@ import { timeally } from '../../env';
 const ethers = require('ethers');
 
 class Home extends Component {
+  state = {
+    nrt: '',
+    totalActiveStakingsNextMonth: ''
+  }
+
+  componentDidMount = async () => {
+    const currentMonth = await this.props.store.timeallyInstance.functions.getCurrentMonth();
+    (async()=>{
+      const totalActiveStakingsNextMonth = await this.props.store.timeallyInstance.functions.totalActiveStakings(currentMonth.add(1));
+
+      this.setState({ totalActiveStakingsNextMonth: ethers.utils.commify(ethers.utils.formatEther(totalActiveStakingsNextMonth)) });
+    })();
+    (async()=>{
+      const nrt = await this.props.store.timeallyInstance.functions.timeAllyMonthlyNRT(currentMonth);
+
+      this.setState({ nrt: ethers.utils.commify(ethers.utils.formatEther(nrt)) });
+    })();
+  };
 
   render() {
     return (
@@ -43,8 +61,8 @@ class Home extends Component {
               <div className="rate-counter-block">
                 <div className="icon rate-icon  "> <img src="images/deposit.png" alt="" className="icon-svg-1x" /></div>
                 <div className="rate-box">
-                  <h1 className="loan-rate">8,85,854</h1>
-                  <small className="rate-title">Total Stakes in next month</small>
+                  <h1 className="loan-rate">{this.state.nrt ? this.state.nrt + ' ES' : 'Loading...'}</h1>
+                  <small className="rate-title">NRT Released in this month</small>
                 </div>
               </div>
             </div>
@@ -52,8 +70,8 @@ class Home extends Component {
               <div className="rate-counter-block-second">
               <div className="icon rate-icon  "> <img src="images/tank-truck.png" alt="" className="icon-svg-1x" /></div>
                 <div className="rate-box">
-                  <h1 className="loan-rate">21,21,558</h1>
-                  <small className="rate-title">NRT Released for the year</small>
+                  <h1 className="loan-rate">{this.state.totalActiveStakingsNextMonth ? this.state.totalActiveStakingsNextMonth + ' ES' : 'Loading...'}</h1>
+                  <small className="rate-title">Total Stakes in next month</small>
                 </div>
               </div>
             </div>
@@ -164,11 +182,11 @@ class Home extends Component {
                         <p className="text-white">If more users opt for TimeAlly vesting then there will be scarcity of liquid tokens which will create more demand of ES. This way the value of ES holded by users is expected to go up as the price per ES shall increase with increasing demand.</p>
                       </div>
                       <div className="col-md-6">
-                        <h2 className="text-white">In case of more users</h2>                         
+                        <h2 className="text-white">In case of more users</h2>
                         <img src="./images/b.png"></img>
                         <p className="text-white">If few users opt for TimeAlly vesting then more tokens per user will be received. As the number of tokens to be distributed every month is fixed but the no. of receivers is reduced. This way more ES will be received to these fewer members.</p>
-                      </div>    
-                    </div>         
+                      </div>
+                    </div>
                   </div>
                   {/* /.hero-caption */}
 
@@ -202,7 +220,7 @@ class Home extends Component {
                 <div className="loan-products-content">
                   <h3>TimeAlly Loan</h3>
                   <input type="checkbox" class="read-more-state" id="post-1" />
-                  <p class="read-more-wrap">TimeAlly holders will get opportunity to avail loan upto 50% for a duration of 2 months after consuming 75% of contract period. More plan options will be introduced after <span class="read-more-target"> deployment of 1 year & 2 year vesting initial plans. The borrower has to pay 1% additional of the borrowed ES for 60 days. The additional 1% will be collected in luck pool and distributed back to the community. In case a borrower fails to pay back within 60 days and 12 hours, remaining staked tokens in TimeAlly contract will be burnt. 
+                  <p class="read-more-wrap">TimeAlly holders will get opportunity to avail loan upto 50% for a duration of 2 months after consuming 75% of contract period. More plan options will be introduced after <span class="read-more-target"> deployment of 1 year & 2 year vesting initial plans. The borrower has to pay 1% additional of the borrowed ES for 60 days. The additional 1% will be collected in luck pool and distributed back to the community. In case a borrower fails to pay back within 60 days and 12 hours, remaining staked tokens in TimeAlly contract will be burnt.
  </span></p>
                     <label for="post-1"  class="btn btn-default read-more-trigger"></label>
                 </div>
@@ -272,7 +290,7 @@ class Home extends Component {
               <div className="mb60 text-center section-title">
                 {/* section title start*/}
                 <h1>FAQ's</h1>
-                <hr></hr>               
+                <hr></hr>
               </div>
               {/* /.section title start*/}
             </div>
@@ -304,7 +322,7 @@ class Home extends Component {
                         <Accordion.Collapse eventKey="2">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
                             <p>Vestors get the below mentioned benefits<br></br>
-                            Vesting for 1 Year: 13% newly release token from NRT will be allocated for TimeAlly vestors.<br></br> 
+                            Vesting for 1 Year: 13% newly release token from NRT will be allocated for TimeAlly vestors.<br></br>
                             {/* Vesting for 1 Year: 13% (1.08% per month) of ES Tokens from NRT pool is allocated to be distributed among TA Vestors who vest tokens for 1 year.<br></br> */}
                             Vesting for 2 Year: 15% (1.25% per month) of ES Tokens from NRT pool is allocated for TA Vestors.
                               </p>
@@ -343,7 +361,7 @@ class Home extends Component {
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>ES doesn’t give any guaranteed return however the value of Era Swap depends on demand and supply dynamics of the ecosystem which depends on usage and users.</Card.Body>
                         </Accordion.Collapse>
                       </Card>
-                      
+
                       <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
                         <Accordion.Toggle as={Card.Header} eventKey="8">
                         Q-8. &nbsp; How Time Vaults increases the ES count for TimeAlly vestor?
