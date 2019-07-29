@@ -164,29 +164,30 @@ class Dashboard extends Component {
                     <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
                       <div className="bg-light pinside10 ">
                         <div className="row">
-                          <div className="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5" style={{textAlign:'center'}}>
-                             <span>Current NRT Month</span><br></br>
+                          <div className="col-xl-5 col-lg-5 col-md-5 col-sm-5 " style={{textAlign:'center'}}>
+                             <span>Current NRT Month</span><br></br><br></br>
                             <span style={{fontSize:'12px'}}>{this.state.currentMonth}{this.state.currentMonth !== undefined ? null : 'Loading...'}</span>
                             <hr />
-                            <span>NRT Release this month</span><br></br>
+                            <span>NRT Release this month</span><br></br><br></br>
                             <span style={{fontSize:'12px'}}>{this.state.nrtRelease}{this.state.nrtRelease !== undefined ? ' ES' : 'Loading...'}</span>
                           </div>
                           <div className="vl" />
-                          <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" style={{textAlign:'center'}}>
-                            <span>Total Next Month Active Stakings in the World</span><br></br>
+                          <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 " style={{textAlign:'center'}}>
+                            <span>Next Month Active Stakings in the World</span><br></br><br></br>
                             <span style={{fontSize:'12px'}}>{this.state.totalActiveStakings}{this.state.totalActiveStakings !== undefined ? ' ES' : 'Loading...'}</span>
                             <hr />
-                            <span>My Active Stakings</span><br></br>
+                            <span>My Active Stakings</span><br></br><br></br>
                             <span style={{fontSize:'12px'}}>{this.state.myActiveStakings}{this.state.myActiveStakings !== undefined ? ' ES' : 'Loading...'}</span>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="vl" />
+                    <div className="v2" />                    
                     <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
                       <div className="row">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                           <div className="bg-light">
+                          <hr />
                             <span style={{textAlign:'center'}}>TOTAL STAKED IN 24 HOURS</span>
                             {/* <h2 id="emi" className="pull-right">Graph</h2> */}<br></br><br></br>
                           <h2>{this.state.stakingsInLast24Hours ? this.state.stakingsInLast24Hours + ' ES' : 'Loading...'}</h2>
@@ -203,8 +204,8 @@ class Dashboard extends Component {
       </div>
       <div className="container">
        <h2 className="mb20">View All Staking in the World</h2>
-          <div className="row pinside40">
-              <div className="tablebg" style={{overflow:'hidden',}}>
+          <div className="row pinside40 maintable">
+              <div className="tablebg">
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
                           <table className="table" border="1">
                               <thead style={{textAlign:'center'}}>

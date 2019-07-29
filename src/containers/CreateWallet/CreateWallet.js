@@ -228,7 +228,7 @@ class CreateWalletPage extends Component {
            <div className="wrapper-content bg-white pinside40">
               <div className="loan-eligibility-block">
               <Card>
-                  <Card.Body align="center">
+                  <Card.Body className="createWallet" align="center">
                     <Row>
                       <Col style={{textAlign: 'left'}}>
                         <Button variant="secondary" style={{display: this.state.currentScreen === 0 ? 'none' : 'inline'}} onClick={this.goBackScreen}>Back</Button>
@@ -237,10 +237,10 @@ class CreateWalletPage extends Component {
                       <Col></Col>
                     </Row>
 
-                    <Card style={{margin: '15px 0', maxWidth: '500px', display: this.state.currentScreen === 0 ? 'block' : 'none'}}>
-                      <Card.Body align="center">
-                        <Form>
-                          <Form.Group controlId="password1">
+                    <Card  className="mnemonics"  style={{margin: '15px 0', maxWidth: '500px', display: this.state.currentScreen === 0 ? 'block' : 'none'}}>
+                      <Card.Body className="createWallet" align="center">
+                        <Form >
+                          <Form.Group controlId="password1"  className="stakingInput" >
                             <Form.Control isValid={this.state.doPasswordsMatch} isInvalid={this.state.password2 && !this.state.doPasswordsMatch} onKeyUp={this.updatepassword1} required type="password" placeholder="Create a strong password" />
                           </Form.Group>
                           <Form.Group controlId="password2">
@@ -297,8 +297,8 @@ class CreateWalletPage extends Component {
                         <ol>
                           <li>A keystore file contains the password encrypted version of your private key. Generation process takes your private key through AES-128-CTR and KDF-SCRIPT encryption algorithms. <u>It can take from 20 seconds to over a minute depending on your computer to encrypt your private key.</u> After some time if your browser prompts that web page is not responding, <u>then please click on wait.</u></li>
                           <li>To spend the cryptocurrencies in your wallet, you need to have your keystore file as well as your password.</li>
-                          <li>If you misplaced your keystore file or forgot your password or both, then you will not be able to spend your funds.</li>
-                          <li>Then only way to unlock your funds is your mnemonic phrase. So keep it super safe.</li>
+                          <li>If you misplaced your keystore file or forgot your password or both, then you will not be able to spend your holdings.</li>
+                          <li>Then only way to unlock your holdings is your mnemonic phrase. So keep it super safe.</li>
                         </ol>
                         <Card style={{fontWeight: '700', textAlign: 'center', backgroundColor: '#0001', maxWidth: '400px', margin: '0 auto', padding: '20px'}}>{this.state.mnemonic}</Card>
                         <Button style={{display: 'block', textAlign:'center', margin: '10px auto'}} disabled={this.state.keystoreSpinner} onClick={this.downloadKeystore}>
@@ -326,9 +326,9 @@ class CreateWalletPage extends Component {
                   <h2>Terms & Conditions</h2>
                   <div style={{overflowY:'scroll', height:'200px'}}>
                   <p style={{fontSize:'12px'}}>
-                  TimeAlly is a free, open-source, client-side interface. TimeAlly allows you to interact directly with the blockchain, while you remain in full control of your keys and funds.
+                  TimeAlly is a free, open-source, client-side interface. TimeAlly allows you to interact directly with the blockchain, while you remain in full control of your keys and holdings.
                     <br></br><br></br>
-                    Please think about this carefully. YOU are the one who is in control. TimeAlly is not a bank or exchange. We don't hold your keys, your funds, or your information. This means we can't access accounts, recover keys, reset passwords, or reverse transactions.<br></br><br></br>
+                    Please think about this carefully. YOU are the one who is in control. TimeAlly is not a bank or exchange. We don't hold your keys, your holdings, or your information. This means we can't access accounts, recover keys, reset passwords, or reverse transactions.<br></br><br></br>
                     {/* <a  class="btn btn-primary btn-sm">Create Wallet</a> */}
                     <a onClick={this.onCloseModal}  class="btn btn-primary btn-sm"><span className="text-white">Proceed</span></a>
                   </p>

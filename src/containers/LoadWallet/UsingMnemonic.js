@@ -135,9 +135,9 @@ class UsingMnemonic extends Component {
         <Card>
           <Card.Body align="center">
             <h4>Unlock wallet using Mnemonic</h4>
-            <Form onSubmit={this.onMnemonicSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px', width: '400px', padding:'20px 40px'}}>
+            <Form className="mnemonics" onSubmit={this.onMnemonicSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px', width: '400px', padding:'20px 40px'}}>
               <Form.Group controlId="mnemonic">
-                <Form.Control onKeyUp={this.onMnemonicUpdate} type="text" placeholder="Enter your mnemonic" style={{width: '325px'}} />
+                <Form.Control onKeyUp={this.onMnemonicUpdate} type="text" placeholder="Enter your mnemonic" />
               </Form.Group>
 
               {this.state.mnemonicErrorDisplay ?
