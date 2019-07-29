@@ -19,7 +19,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import provider from './ethereum/provider';
-import { esContract } from './env.js';
+import { esContract, network } from './env.js';
 const ethers = require('ethers');
 
 window.redirectHereAfterLoadWallet = '/dashboard';
@@ -28,20 +28,20 @@ function App(props) {
 
   // load es instance
   if(Object.entries(props.store.esInstance).length === 0) {
-    console.log(provider, new ethers.providers.InfuraProvider('kovan'));
+    console.log(provider, new ethers.providers.InfuraProvider(network));
     props.dispatch({ type: 'LOAD-ES-INSTANCE', payload: new ethers.Contract(esContract.address, esContract.abi, provider) });
   }
 
   return (
-    
+
     <BrowserRouter>
       <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"></link>
       <div className="App">
         <Navbar />
-       
+
         <div style={{margin:'15px'}}>
           <Switch>
-            
+
             {/* <Route path="/" exact render={() => <p>Home page</p>} /> */}
             <Route path="/home" exact component={Home} />
             <Route path="/create-wallet" exact component={CreateWallet} />

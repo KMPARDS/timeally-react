@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Navbar, Nav, DropdownButton, Dropdown, NavDropdown, Form, Button, FormControl } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 
-import { esContract, nrtManager, timeally } from '../../env';
+import { esContract, nrtManager, timeally, network } from '../../env';
 
 const ethers = require('ethers');
 const axios = require('axios');
@@ -70,9 +70,9 @@ class NavbarComponent extends Component {
     let navbarButtons = (
      <div>
         <span><a onClick={() => this.props.history.push('/create-wallet')} className="btn main-btn btn-primary btn-sm">Create Wallet</a></span>
-     
+
         <span><a onClick={() => this.props.history.push('/load-wallet')} className="btn main-btn btn-default btn-sm">Load Wallet</a></span>
-     
+
         <span><a onClick={() => this.props.history.push('/nominee')} className="btn main-btn btn-default btn-sm" style={{backgroundColor: '#55a903'}}>Nominee</a></span>
     </div>
     );
@@ -171,10 +171,10 @@ class NavbarComponent extends Component {
                     // <li className="active"><a onClick={() => this.props.history.push('/loans-info')}>Apply for Loan</a></li>
                      : null
                   }
-                   <Nav.Link  onClick={() => this.props.history.push('/mou')}><span style={{color:'#fff'}}>The mou Time Machine</span></Nav.Link>
+                   {network === 'homestead' ? null : <Nav.Link  onClick={() => this.props.history.push('/mou')}><span style={{color:'#fff'}}>The mou Time Machine</span></Nav.Link>}
 
                   { this.props.store.walletInstance.address ?
-                    <Nav.Link  onClick={() => this.props.history.push('/rewards')}><span style={{color:'#fff'}}>Vesting Rewards</span></Nav.Link>                      
+                    <Nav.Link  onClick={() => this.props.history.push('/rewards')}><span style={{color:'#fff'}}>Vesting Rewards</span></Nav.Link>
                     : null
                   }
 

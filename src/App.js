@@ -24,7 +24,7 @@ import Logout from './containers/Logout/Logout';
 import './App.css';
 
 import provider from './ethereum/provider';
-import { esContract, nrtManager, timeally } from './env.js';
+import { esContract, nrtManager, timeally, network } from './env.js';
 import nominee from './containers/nominee/nominee';
 const ethers = require('ethers');
 

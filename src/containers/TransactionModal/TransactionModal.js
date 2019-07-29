@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Modal, Button, InputGroup, FormControl, Spinner, Alert, Badge, Card, ListGroup, Row, Col, Form } from 'react-bootstrap';
 import axios from 'axios';
-
+import { network } from '../../env';
 const ethers = require('ethers');
 
 class TransactionModal extends Component {
@@ -274,7 +274,7 @@ class TransactionModal extends Component {
                 )
               )
             )}</p>
-          <p>You can view your transaction on <a href={`https://kovan.etherscan.io/tx/${this.state.hash}`} style={{color: 'black'}} rel="noopener noreferrer">EtherScan</a></p>
+          <p>You can view your transaction on <a href={`https://${network === 'homestead' ? '' : 'kovan.' }etherscan.io/tx/${this.state.hash}`} style={{color: 'black'}} target="_blank" rel="noopener noreferrer">EtherScan</a></p>
 
         {this.state.transactionStatus === 3 ? <Button style={{margin:'0'}} variant="primary" size="lg" block onClick={() => this.props.history.push('/stakings')}>Go to Stakings Page</Button> : null}
         </Modal.Body>
