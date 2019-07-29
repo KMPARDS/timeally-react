@@ -19,12 +19,12 @@ class Home extends Component {
     (async()=>{
       const totalActiveStakingsNextMonth = await this.props.store.timeallyInstance.functions.totalActiveStakings(currentMonth.add(1));
 
-      this.setState({ totalActiveStakingsNextMonth: ethers.utils.commify(ethers.utils.formatEther(totalActiveStakingsNextMonth)) });
+      this.setState({ totalActiveStakingsNextMonth: ethers.utils.commify(window.lessDecimals(totalActiveStakingsNextMonth)) });
     })();
     (async()=>{
       const nrt = await this.props.store.timeallyInstance.functions.timeAllyMonthlyNRT(currentMonth);
 
-      this.setState({ nrt: ethers.utils.commify(ethers.utils.formatEther(nrt)) });
+      this.setState({ nrt: ethers.utils.commify(window.lessDecimals(nrt)) });
     })();
   };
 
