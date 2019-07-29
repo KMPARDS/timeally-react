@@ -119,7 +119,7 @@ class UsingMnemonic extends Component {
                   <div className="row">
                     <div className="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12">
                       <h1 className="page-title">Unlock Wallet</h1>
-                    </div>                    
+                    </div>
                   </div>
                 </div>
               </div>
@@ -131,13 +131,13 @@ class UsingMnemonic extends Component {
 <div className="row">
 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
  <div className="wrapper-content bg-white pinside40">
-    <div className="loan-eligibility-block">  
+    <div className="loan-eligibility-block">
         <Card>
           <Card.Body align="center">
             <h4>Unlock wallet using Mnemonic</h4>
             <Form onSubmit={this.onMnemonicSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px', width: '400px', padding:'20px 40px'}}>
               <Form.Group controlId="mnemonic">
-                <Form.Control onKeyUp={this.onMnemonicUpdate} type="text" placeholder="Enter your mnemonic" style={{width: '325px'}} />
+                <Form.Control autocomplete="off" onKeyUp={this.onMnemonicUpdate} type="text" placeholder="Enter your mnemonic" style={{width: '325px'}} />
               </Form.Group>
 
               {this.state.mnemonicErrorDisplay ?

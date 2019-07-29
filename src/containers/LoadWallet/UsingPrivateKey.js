@@ -92,7 +92,7 @@ class UsingPrivateKey extends Component {
           <Form onSubmit={this.onPrivateKeySubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '20px 40px', width: '400px'}}>
 
             <Form.Group controlId="privateKey">
-              <Form.Control onKeyUp={this.onPrivateKeyUpdate} type="text" placeholder="Enter your Private Key" style={{width: '325px'}} />
+              <Form.Control autocomplete="off" onKeyUp={this.onPrivateKeyUpdate} type="text" placeholder="Enter your Private Key" style={{width: '325px'}} />
             </Form.Group>
 
             {this.state.privateKeyErrorDisplay ?
