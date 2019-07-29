@@ -58,7 +58,9 @@ class NavbarComponent extends Component {
       }
     };
 
-    const time = (await this.props.store.esInstance.functions.mou()).toNumber();
+    const time = network === 'homestead'
+      ? Date.now() / 1000
+      : (await this.props.store.esInstance.functions.mou()).toNumber();
     this.setState({ time });
 
     setInterval(() => {
@@ -99,8 +101,13 @@ class NavbarComponent extends Component {
         <div className="container">
           <div className="row">
             <div className="col-xl-4 col-lg-5 col-md-4 col-sm-6 d-none d-xl-block d-lg-block">
-              <p className="mail-text" onClick={() => this.props.history.push('/mou')}>
-                mou: {this.state.time ? new Date(this.state.time * 1000).toLocaleString(): 'Loading...'}</p>
+              <p className="mail-text" onClick={() => {
+                  if(network !== 'homestead') {
+                    this.props.history.push('/mou');
+                  }
+                }
+              }>
+                {network === 'homestead' ? 'Current Time:' : 'mou:'} {this.state.time ? new Date(this.state.time * 1000).toLocaleString(): 'Loading...'}</p>
             </div>
             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3  d-none d-xl-block d-lg-block">
               <p className="mail-text text-center">ES Price: Not available</p>
