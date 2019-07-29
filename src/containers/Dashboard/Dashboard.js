@@ -35,7 +35,7 @@ class Dashboard extends Component {
       // console.log('24 hrs logs', logs);
       // console.log(ethers.utils.formatEther(stakingsInLast24Hours));
 
-      this.setState({ stakingsInLast24Hours: ethers.utils.formatEther(stakingsInLast24Hours) });
+      this.setState({ stakingsInLast24Hours: window.lessDecimals(stakingsInLast24Hours) });
     })();
 
     const currentMonth = Number(await this.props.store.timeallyInstance.functions.getCurrentMonth());
@@ -46,12 +46,12 @@ class Dashboard extends Component {
     (async() => {
       const totalActiveStakings = await this.props.store.timeallyInstance.functions.totalActiveStakings(currentMonth+1);
 
-      this.setState({ totalActiveStakings: ethers.utils.formatEther(totalActiveStakings) });
+      this.setState({ totalActiveStakings: window.lessDecimals(totalActiveStakings) });
     })();
 
     (async() => {
       const nrtRelease = await this.props.store.timeallyInstance.functions.timeAllyMonthlyNRT(currentMonth);
-      this.setState({ nrtRelease: ethers.utils.formatEther(nrtRelease) });
+      this.setState({ nrtRelease: window.lessDecimals(nrtRelease) });
     })();
 
     (async() => {
@@ -81,7 +81,7 @@ class Dashboard extends Component {
         }
       }
 
-      this.setState({ myActiveStakings: ethers.utils.formatEther(myActiveStakings) });
+      this.setState({ myActiveStakings: window.lessDecimals(myActiveStakings) });
     })();
 
   }
@@ -107,7 +107,7 @@ class Dashboard extends Component {
       stakings.push({
         address,
         planId: ethers.utils.bigNumberify(log.topics[2]).toNumber(),
-        amount: ethers.utils.formatEther(ethers.utils.bigNumberify(log.data.slice(0,66))),
+        amount: window.lessDecimals(ethers.utils.bigNumberify(log.data.slice(0,66))),
         timestamp: staking[1].toNumber()
       });
     }

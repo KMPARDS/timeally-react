@@ -30,6 +30,14 @@ const ethers = require('ethers');
 
 window.redirectHereAfterLoadWallet = '/dashboard';
 
+window.lessDecimals = (ethersBigNumber, decimals = 2) => {
+  let lessDecimals = ethers.utils.formatEther(ethersBigNumber).split('.');
+  if(lessDecimals[1].length >= decimals) {
+    lessDecimals[1] = lessDecimals[1].slice(0, decimals);
+  }
+  return lessDecimals.join('.');
+}
+
 function App(props) {
 
   //for dev purpose 24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA

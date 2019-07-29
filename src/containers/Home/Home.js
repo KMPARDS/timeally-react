@@ -19,12 +19,12 @@ class Home extends Component {
     (async()=>{
       const totalActiveStakingsNextMonth = await this.props.store.timeallyInstance.functions.totalActiveStakings(currentMonth.add(1));
 
-      this.setState({ totalActiveStakingsNextMonth: ethers.utils.commify(ethers.utils.formatEther(totalActiveStakingsNextMonth)) });
+      this.setState({ totalActiveStakingsNextMonth: ethers.utils.commify(window.lessDecimals(totalActiveStakingsNextMonth)) });
     })();
     (async()=>{
       const nrt = await this.props.store.timeallyInstance.functions.timeAllyMonthlyNRT(currentMonth);
 
-      this.setState({ nrt: ethers.utils.commify(ethers.utils.formatEther(nrt)) });
+      this.setState({ nrt: ethers.utils.commify(window.lessDecimals(nrt)) });
     })();
   };
 
@@ -84,12 +84,17 @@ class Home extends Component {
         <div className=" col-xl-12 col-lg-8 col-md-12 col-sm-12 col-12">
           <div className="section-title text-center mb60">
             <h1>What is TimeAlly?</h1>
-            <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users; govern the distribution from ES NRT and increase Era Swap count for TA Holders which they hold over a period of time. TimeAlly is a DApp ( Decentralized Application ). </p>
-            <video  className="mb60" width={400} controls poster="./images/poster.jpg" style={{boxShadow:'10px 10px 10px #ccc'}}>
-              <source src="./images/timeAlly.mp4" type="video/mp4" />
-              <source src="mov_bbb.ogg" type="video/ogg" />
-              Your browser does not support HTML5 video.
-            </video>
+            <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the distribution from ES NRT and increase Era Swap count for TA Holders which they hold over a period of time. TimeAlly is a DApp ( Decentralized Application ). </p>
+              <video  className="mb60" width={400} controls poster="./images/poster.jpg" style={{boxShadow:'10px 10px 10px #ccc'}}>
+                <source src="./images/timeAlly.mp4" type="video/mp4" />
+                <source src="mov_bbb.ogg" type="video/ogg" />
+                Your browser does not support HTML5 video.
+              </video>
+              <video style={{marginLeft: '10px'}} className="mb60" width={400} controls poster="./images/poster.jpg" style={{boxShadow:'10px 10px 10px #ccc'}}>
+                <source src="./images/Video_TimeAlly.mp4" type="video/mp4" />
+                <source src="mov_bbb.ogg" type="video/ogg" />
+                Your browser does not support HTML5 video.
+              </video>
            <h1>What is DApp?</h1>
             <p>Decentralized Applications (DApps) run on a P2P network of computers and are decentralized in nature. They have existed since the advent of P2P networks. DApps uses distributed ledger technology which is neither stored in a centralized location nor managed by any single entity.</p>
           </div>
