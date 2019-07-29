@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Card, Form, Spinner, Row, Col } from 'react-bootstrap';
-import { timeally } from '../../../env';
+import { timeally, network } from '../../../env';
 const ethers = require('ethers');
 
 class NewNominee extends Component {
@@ -117,7 +117,7 @@ class NewNominee extends Component {
             </Row>
             {
               this.state.txHash
-              ? <p>You can view the transaction on <a href={`https://kovan.etherscan.io/tx/${this.state.txHash}`} rel="noopener noreferrer">EtherScan</a></p>
+              ? <p>You can view the transaction on <a href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} rel="noopener noreferrer" style={{color: 'black'}}>EtherScan</a></p>
               : null
             }
           </Form>
@@ -128,7 +128,7 @@ class NewNominee extends Component {
         <Card>
           <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '500px', padding:'20px 40px', margin: '15px auto'}}>
             <h3>Nominee is added to your staking!</h3>
-            <p>You can view the transaction on <a href={`https://kovan.etherscan.io/tx/${this.state.txHash}`} rel="noopener noreferrer" target="_blank">EtherScan</a></p>
+            <p>You can view the transaction on <a href={`https://${network === 'homestead' ? '' : 'kovan.' }etherscan.io/tx/${this.state.txHash}`} rel="noopener noreferrer" target="_blank" style={{color: 'black'}}>EtherScan</a></p>
           </div>
         </Card>
       );

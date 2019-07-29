@@ -93,7 +93,8 @@ class Rewards extends Component {
               <div className="wrapper-content bg-white pinside10">
                 <div className="row">
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <button className="btn btn-default btn-sm" onClick={this.checkReward}>Check for vesting rewards</button>
+                    <p>Note: <strong>You need some amount of Ether in your wallet address to proceed with your claim. Having at least 0.01 ETH is good</strong>. The network fee is generally pretty less than this, you can view exact amount of network gas fee when you will proceed. It depends on how much crowded Ethereum network is currently. This fee is paid to the miners of Ethereum blockchain network who contribute their resources to keep this network decentralized, immutable and safe from corruption. If you don't have sufficient amount of Ether, your transaction would not be proceed. Ether is a popular cryptocurrency and you can get it from almost any cryptocurrency exchange.</p>
+                    {this.state.reward ? null : <button className="btn btn-default btn-sm" onClick={this.checkReward}>Check for vesting rewards</button>}
                     {rewardComponent}
                   </div>
                 </div>

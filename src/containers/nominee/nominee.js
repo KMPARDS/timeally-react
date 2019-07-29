@@ -48,8 +48,9 @@ export default () => {
                 <li>TimeAlly holder can change the Nominee/s also anytime, anywhere.</li>
                 <li>The nominee can claim the benefits in case the TimeAlly owner does not remain active for (staked year/s + 12 Months).</li>
               </ul>
-                  
-                <a href="#" className="btn btn-default">Nominate Nominee</a>
+
+                  <p>To nominate a nominee for your staking, please load your wallet and go to the stakings page. You will see list of all stakings you own. Click on the View Staking button of the staking you want to add a nominee to. In that click on View Nominees. You can see list of nominees and you can add Nominees there.</p>
+                {/*<a href="#" className="btn btn-default">Nominate Nominee</a>*/}
                 </div>
               </div>
             </div>

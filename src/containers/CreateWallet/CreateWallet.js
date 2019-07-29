@@ -218,13 +218,13 @@ class CreateWalletPage extends Component {
                   </div>
                 </div>
               </div>
-              
-             
+
+
     <div className="container">
 
         <div className="row">
           <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-          
+
            <div className="wrapper-content bg-white pinside40">
               <div className="loan-eligibility-block">
               <Card>
@@ -248,9 +248,12 @@ class CreateWalletPage extends Component {
                           </Form.Group>
                           <ProgressBar variant={this.state.progressBarColor} now={this.state.progressBarValue} />
                           <Alert variant="danger" style={{marginTop: '15px', marginBottom: '0', display: this.state.passwordIssueOnSubmit ? 'block' : 'none'}}>
-                            You need to enter and confirm password before generating a mnemonic
+                            You need to enter password and confirm password before generating a mnemonic
                           </Alert>
-                          <Button onClick={this.submitPassword} style={{marginTop: '15px'}}>
+                          <Button
+                            disabled={!this.state.doPasswordsMatch}
+                            onClick={this.submitPassword}
+                            style={{marginTop: '15px'}} >
                           <Spinner style={{display: this.state.mnemonicGenerateSpinner ? 'inline-block' : 'none', marginRight: '2px'}}
                             as="span"
                             animation="border"
