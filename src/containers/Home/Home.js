@@ -281,7 +281,7 @@ class Home extends Component {
                   Your browser does not support HTML5 video.
                 </video>
                 <h2 className="text-white">Power Token</h2>
-                TimeAlly is a simple plan based on vesting where users receive an additional benefits of Power Token which they can distribute among the ES community on TimeSwappers platform. The amont of Power token receive by each TimeAlly holder is directly proportional the amount of ES he holds in TA smart contract. <br></br><br></br>To know more about power token the user can read Era Swap White Paper</p>
+                TimeAlly is a simple plan based on vesting where users receive an additional benefits of Power Token which they can distribute among the ES community on TimeSwappers platform. The amount of Power token receive by each TimeAlly holder is directly proportional the amount of ES he holds in TA smart contract. <br></br><br></br>To know more about power token the user can read Era Swap White Paper</p>
               </div>
               {/* /.hero-caption */}
 
