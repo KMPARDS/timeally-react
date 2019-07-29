@@ -123,7 +123,7 @@ class TransactionModal extends Component {
 
   render() {
     let screenContent;
-
+    console.log(this.props);
     if(Object.entries(this.props.store.walletInstance).length === 0) {
       screenContent = (
         <Modal.Body style={{textAlign: 'center'}}>
@@ -202,14 +202,15 @@ class TransactionModal extends Component {
             </span>
             <span onClick={()=>this.setState({currentScreen: 2})} style={{display: 'inline-block', float:'right', fontSize: '0.8rem'}}>Advanced settings</span>
           </Card>
-          <Row style={{marginTop: '12px'}}>
+          <Button style={{margin:'0'}}variant="primary" size="lg" block onClick={this.sendTransaction}>Proceed</Button>
+          {/*<Row style={{marginTop: '12px'}}>
             <Col style={{paddingRight: '6px'}}>
               <Button variant="secondary" size="lg" block>Reject</Button>
             </Col>
-            <Col style={{paddingLeft: '6px'}}>
-              <Button variant="primary" size="lg" block onClick={this.sendTransaction}>Proceed</Button>
+            <Col>
+
             </Col>
-          </Row>
+          </Row>*/}
         </Modal.Body>
       );
     }
@@ -273,7 +274,9 @@ class TransactionModal extends Component {
                 )
               )
             )}</p>
-            <p>You can view your transaction on <a href={`https://kovan.etherscan.io/tx/${this.state.hash}`} rel="noopener noreferrer">EtherScan</a></p>
+          <p>You can view your transaction on <a href={`https://kovan.etherscan.io/tx/${this.state.hash}`} style={{color: 'black'}} rel="noopener noreferrer">EtherScan</a></p>
+
+        {this.state.transactionStatus === 3 ? <Button style={{margin:'0'}} variant="primary" size="lg" block onClick={() => this.props.history.push('/stakings')}>Go to Stakings Page</Button> : null}
         </Modal.Body>
       );
     }
@@ -330,4 +333,4 @@ class TransactionModal extends Component {
     );
   }
 }
-export default connect(state => {return{store: state}})(TransactionModal);
+export default connect(state => {return{store: state}})(withRouter(TransactionModal));
