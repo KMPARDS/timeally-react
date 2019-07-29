@@ -3,13 +3,17 @@ import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { timeally } from '../../env';
 
+import TransactionModal from '../TransactionModal/TransactionModal';
+
 const ethers = require('ethers');
 
 class Rewards extends Component {
   state = {
     reward: '',
     status: 0,
-    claiming: false
+    claiming: false,
+    stakingPlan: undefined,
+    showTransactionModal: false
   }
 
   checkReward = async() => {
@@ -42,7 +46,12 @@ class Rewards extends Component {
       rewardComponent = (
         <div>
           <p>Hey! A reward of {this.state.reward} ES is available!</p>
-          <button onClick={this.claimReward.bind(this, 0)} disabled={this.state.claiming}>{this.state.claiming ? 'Claiming...' : 'Claim this into a staking'}</button>
+          {/*<select onChange={event => this.setState({ stakingPlan: event.target.value })}>
+            <option value={undefined} selected disabled>Click to select your staking plan</option>
+            <option value={0}>1 Year</option>
+            <option value={1}>2 Year</option>
+          </select>*/}<br /><br />
+        <button className="btn btn-default btn-sm" onClick={()=>this.setState({ showTransactionModal: true})} disabled={this.state.claiming}>{this.state.claiming ? 'Claiming...' : 'Claim this into a staking'}</button>
         </div>
       );
     }
@@ -94,6 +103,19 @@ class Rewards extends Component {
         </div>
 
             </div>
+
+          <TransactionModal
+            show={this.state.showTransactionModal}
+            hideFunction={() => this.setState({ showTransactionModal: false })}
+            ethereum={{
+              transactor: this.props.store.timeallyInstance.functions.claimLaunchReward,
+              estimator: this.props.store.timeallyInstance.estimate.claimLaunchReward,
+              contract: this.props.store.timeallyInstance,
+              arguments: [this.state.stakingPlan],
+              reward: this.state.reward
+              //minimumBetInEs: this.state.minimumBetInExaEs!==undefined ? (new BigNumber(ethers.utils.bigNumberify(this.state.minimumBetInExaEs))).dividedBy(10**18).toFixed() : undefined
+            }}
+          />
 
          </div>
     );
