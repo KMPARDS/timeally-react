@@ -41,14 +41,14 @@ class UsingMnemonic extends Component {
       this.state.hdWallet = hdWallet;
       const privateKeys = [
         hdWallet.derivePath("m/44'/60'/0'/0/0")._hdkey._privateKey,
-        hdWallet.derivePath("m/44'/60'/0'/0/1")._hdkey._privateKey,
-        hdWallet.derivePath("m/44'/60'/0'/0/2")._hdkey._privateKey
+        // hdWallet.derivePath("m/44'/60'/0'/0/1")._hdkey._privateKey,
+        // hdWallet.derivePath("m/44'/60'/0'/0/2")._hdkey._privateKey
       ];
 
       const ethersWalletArray = [
         new ethers.Wallet(privateKeys[0], new ethers.providers.InfuraProvider(network)),
-        new ethers.Wallet(privateKeys[1], new ethers.providers.InfuraProvider(network)),
-        new ethers.Wallet(privateKeys[2], new ethers.providers.InfuraProvider(network))
+        // new ethers.Wallet(privateKeys[1], new ethers.providers.InfuraProvider(network)),
+        // new ethers.Wallet(privateKeys[2], new ethers.providers.InfuraProvider(network))
       ]
 
       console.log(ethersWalletArray);
@@ -171,7 +171,8 @@ class UsingMnemonic extends Component {
         <Card style={{margin: '15px 0'}}>
           <Card.Body align="left">
             <span></span>
-            <Card.Title>Select the account you want to use with TimeAlly</Card.Title>
+            <Card.Title>Select the account you want to use with TimeAlly.</Card.Title>
+            <Card.Subtitle>Note: If you are copy pasting your {this.state.mnemonic.split(' ').length} word mnemonic, please check any space character errors.</Card.Subtitle>
             {this.state.wallets.map(walletDetail => {
               return (
                 <Card key={walletDetail.address} style={{margin: '5px 0'}}>
