@@ -4,24 +4,16 @@ const path = require('path');
 const ethers = require('ethers');
 
 console.log('\nPlease wait reading csv file and converting information into JavaScript Object');
-const filePath = path.join(__dirname, 'TA.csv');
+const filePath = path.join(__dirname, 'addresses.csv');
 
 const contents = fs.readFileSync(filePath, {encoding: 'utf-8'});
 const addressObj = {};
 
-//console.log('con', contents.length);
-
 for(const content of contents.split('\n')) {
   const addressAndAmount = content.split(',');
-  //if(addressAndAmount.length === 2) {
-    //console.log(addressAndAmount[1]);
-
-    try{addressObj[addressAndAmount[0].split(' ').join('').split('"').join('')] = ethers.utils.parseEther(addressAndAmount[1].split(' ').join('').split('"').join(''));}
-    catch (e) {
-      console.log('error', addressAndAmount[1]);
-      console.log(content);
-    }
-  //}
+  if(addressAndAmount.length === 2) {
+    addressObj[addressAndAmount[0]] = ethers.utils.parseEther(addressAndAmount[1]);
+  }
 }
 console.log('done');
 // console.log('\nAddress vs ES tokens');
@@ -76,16 +68,7 @@ console.log('[');
 // for(const address of Object.keys(addressObj)) {
 //   console.log(`"${address}",`);
 // }
-
-const start = 100;
-const end = 220;
-
-
-for(
-  let i = start;
-  i < end;
-  i++
-) {
+for(let i = 0; i < Object.keys(addressObj).length; i++) {
   const address = Object.keys(addressObj)[i];
   console.log(`"${address}"${i !== Object.keys(addressObj).length - 1 ? ',' : ''}`);
 }
@@ -95,43 +78,37 @@ console.log('[');
 // for(const address of Object.values(addressObj)) {
 //   console.log(`"${address}",`);
 // }
-let sumOfValue = ethers.utils.bigNumberify(0);
-for(
-  let i = start;
-  i < end;
-  i++
-) {
-  const value = Object.values(addressObj)[i];
-  console.log(`"${value}"${i !== Object.values(addressObj).length - 1 ? ',' : ''}`);
-  sumOfValue = sumOfValue.add(value);
+for(let i = 0; i < Object.values(addressObj).length; i++) {
+  const address = Object.values(addressObj)[i];
+  console.log(`"${address}"${i !== Object.values(addressObj).length - 1 ? ',' : ''}`);
 }
 console.log(']');
 
-console.log('total being sent', ethers.utils.formatEther(sumOfValue));
-// let tx;
-// (async()=>{
-//
-//   console.log('\nWallet Balance Currently:', ethers.utils.formatEther(await esInstance.functions.balanceOf(wallet.address)), 'ES');
-//
-//   console.log(`\nPlease wait giving allowance of ${ethers.utils.formatEther(sum)} ES by owner to timeally`);
-//   tx = await esInstance.functions.approve( timeallyInstance.address, sum );
-//   await tx.wait();
-//   console.log('done');
-//
-//   console.log('\nPlease wait transferring this amount from owner to timeally');
-//   tx = await timeallyInstance.functions.topupRewardBucket( sum );
-//   await tx.wait();
-//   console.log('done');
-//
-//   console.log('\nPlease wait alloting rewards for users');
-//   const args = [
-//     Object.keys(addressObj),
-//     Object.values(addressObj)
-//   ];
-//   console.log(args);
-//   tx = await timeallyInstance.functions.giveLaunchReward( ...args );
-//   await tx.wait();
-//   console.log('done');
-//
-//   console.log('\nWallet Balance Currently:', ethers.utils.formatEther(await esInstance.functions.balanceOf(wallet.address)), 'ES');
-// })();
+
+let tx;
+(async()=>{
+
+  console.log('\nWallet Balance Currently:', ethers.utils.formatEther(await esInstance.functions.balanceOf(wallet.address)), 'ES');
+
+  console.log(`\nPlease wait giving allowance of ${ethers.utils.formatEther(sum)} ES by owner to timeally`);
+  tx = await esInstance.functions.approve( timeallyInstance.address, sum );
+  await tx.wait();
+  console.log('done');
+
+  console.log('\nPlease wait transferring this amount from owner to timeally');
+  tx = await timeallyInstance.functions.topupRewardBucket( sum );
+  await tx.wait();
+  console.log('done');
+
+  console.log('\nPlease wait alloting rewards for users');
+  const args = [
+    Object.keys(addressObj),
+    Object.values(addressObj)
+  ];
+  console.log(args);
+  tx = await timeallyInstance.functions.giveLaunchReward( ...args );
+  await tx.wait();
+  console.log('done');
+
+  console.log('\nWallet Balance Currently:', ethers.utils.formatEther(await esInstance.functions.balanceOf(wallet.address)), 'ES');
+})();
