@@ -82,7 +82,7 @@ class NewStaking extends Component {
 
     if(this.state.currentScreen === 0) {
       return (
-        
+
         <Header>
            {/* <button className="btn" onClick={this.onOpenModal}>Open modal</button> */}
            <Modal open={this.state.open}>
@@ -163,7 +163,7 @@ class NewStaking extends Component {
                     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE<br></br><br></br>
                     <a onClick={this.onCloseModal}  class="btn btn-primary btn-sm"><span className="text-white">Proceed</span></a>
                   </p>
-                  </div> 
+                  </div>
                 </Modal>
         <Card>
           <Form className="mnemonics" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
@@ -240,7 +240,7 @@ class NewStaking extends Component {
               {this.state.waiting ? 'Waiting for confirmation' : ( this.state.spinner ? 'Sending transaction' : 'Stake')}
             </Button>
             { this.state.txHash
-              ? <p>You can view your transaction on <a href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a>.</p>
+              ? <p>You can view your transaction on <a style={{color: 'black'}} href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a>.</p>
               : null
             }
           </div>
@@ -253,7 +253,7 @@ class NewStaking extends Component {
         <Card>
           <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>Staking created!</h3>
-            <p>Your staking is done. You can view your transaction on <a href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></p>
+            <p>Your staking is done. You can view your transaction on <a style={{color: 'black'}} href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></p>
           </div>
         </Card>
         </Header>
