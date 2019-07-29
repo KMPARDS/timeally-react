@@ -1227,6 +1227,17 @@ Landing Page Template
   .header { padding-top: 5px; padding-bottom: 5px; }
   .logo { }
 
+  /* .pinside40{padding: 0px !important; } */
+  .loan-eligibility-block {padding: 0px !important; background: none !important; }
+  .btn{font-size: 12px !important;}
+  .mnemonics{width: 100% !important; border: none !important; padding: 0px !important;}
+  .stakingInput{width: 100% !important;}
+  .main-btn{ padding: 10px 11px !important; font-weight: 400 !important; margin: 0px 2px; }
+  p{text-align: justify !important;}
+  .tablebg{overflow:scroll; }
+  .maintable{padding: 0px !important}
+  .v2{display: none !important}
+  .createWallet{padding: 0px !important;}
   /*--------------- slider for mobile view ( for mobile view  )---------- */
   .slider-captions { position: absolute; bottom: 28px; text-align: center; }
   .slider-title { color: #fff; font-size: 22px; text-transform: uppercase; font-weight: 700; line-height: 26px; }
@@ -1345,7 +1356,7 @@ Landing Page Template
   .overlay-section { margin-top: 0px; }
   .overlay-section .card { margin-bottom: 20px; }
   .hover-tabs.st-tabs .nav-link { display: block; padding: 0px 39px 3px 0px; }
-  .quick-info span:nth-child(2){display: none;}
+  /* .quick-info span:nth-child(2){display: none;} */
 /*--------------- borrow-life-saving  ---------- */
 .bank-account-tabs.st-tabs .nav-link {
 
@@ -1382,6 +1393,10 @@ Landing Page Template
   border-left: 1px solid #ccc;
   height: 150px;
 }
+.v2{
+  border-left: 1px solid #ccc;
+  height: 150px;
+}
 
 .table td{
   font-size: 12px;
@@ -1394,6 +1409,7 @@ Landing Page Template
   border: 1px solid #ccc;
   padding: 30px;
   width: 100%;
+  
 }
 
 table {
@@ -1500,3 +1516,12 @@ card.body{
 
 .styles_closeIcon__1QwbI{display: none !important;}
 
+.navbar-light .navbar-toggler{ background: white !important}
+
+/* video resposive */
+video {
+	margin: 30px;
+	width: 500px;
+	max-width: 85%;
+}
+/* video resposive end */

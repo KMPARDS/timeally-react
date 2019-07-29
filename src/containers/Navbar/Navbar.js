@@ -68,11 +68,13 @@ class NavbarComponent extends Component {
 
   render() {
     let navbarButtons = (
-      <div>
-        <span><a onClick={() => this.props.history.push('/create-wallet')} className="btn btn-primary btn-sm">Create Wallet</a></span>
-        <span><a onClick={() => this.props.history.push('/load-wallet')} className="btn btn-default btn-sm">Load Wallet</a></span>
-        <span><a onClick={() => this.props.history.push('/nominee')} className="btn btn-default" style={{backgroundColor: '#55a903'}}>Nominee</a></span>
-      </div>
+     <div>
+        <span><a onClick={() => this.props.history.push('/create-wallet')} className="btn main-btn btn-primary btn-sm">Create Wallet</a></span>
+     
+        <span><a onClick={() => this.props.history.push('/load-wallet')} className="btn main-btn btn-default btn-sm">Load Wallet</a></span>
+     
+        <span><a onClick={() => this.props.history.push('/nominee')} className="btn main-btn btn-default btn-sm" style={{backgroundColor: '#55a903'}}>Nominee</a></span>
+    </div>
     );
     if(this.state.userAddress) {
       navbarButtons = (
@@ -96,11 +98,11 @@ class NavbarComponent extends Component {
         {/* top-bar */}
         <div className="container">
           <div className="row">
-            <div className="col-xl-4 col-lg-5 col-md-4 col-sm-6 col-6 d-none d-xl-block d-lg-block">
+            <div className="col-xl-4 col-lg-5 col-md-4 col-sm-6 d-none d-xl-block d-lg-block">
               <p className="mail-text" onClick={() => this.props.history.push('/mou')}>
                 mou: {this.state.time ? new Date(this.state.time * 1000).toLocaleString(): 'Loading...'}</p>
             </div>
-            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 d-none d-xl-block d-lg-block">
+            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3  d-none d-xl-block d-lg-block">
               <p className="mail-text text-center">ES Price: Not available</p>
             </div>
             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 d-none d-xl-block d-lg-block">

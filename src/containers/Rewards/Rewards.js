@@ -39,7 +39,7 @@ class Rewards extends Component {
     } else if(this.state.status === 2 && this.state.reward === '0.0') {
       rewardComponent = (
         <div>
-          <p>Sorry there is no reward currently, please try letter.</p>
+          <p>Sorry there is no reward currently, please try later.</p>
         </div>
       );
     } else if(this.state.status === 2) {

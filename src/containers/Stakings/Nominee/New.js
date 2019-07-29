@@ -45,7 +45,7 @@ class NewNominee extends Component {
           <h3 style={{marginBottom: '15px'}}>New Nominee - Step 1 of 2</h3>
 
           <p>
-            Adding a nominee to your staking gives a partial access to your staking funds to the nominee after 1 year of expiry of your staking plan and you havent withdrawn your funds.
+            Adding a nominee to your staking gives a partial access to your staking holdings to the nominee after 1 year of expiry of your staking plan and you havent withdrawn your holdings.
             And adding more nominees dilutes their partial access to your staking.&nbsp;
             <span onClick={() => this.props.history.push('/nominee')}>
               Please click here for more information.

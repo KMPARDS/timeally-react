@@ -107,12 +107,12 @@ class UsingKeystoreFile extends Component {
       {console.log(this.props)}
         <Card.Body align="center">
           <h4>Unlock wallet using keystore file</h4>
-          <Form onSubmit={this.onKeystoreSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '20px 40px', width: '400px'}}>
+          <Form className="mnemonics" onSubmit={this.onKeystoreSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '20px 40px', width: '400px'}}>
             <Form.Group controlId="keystoreFile" >
-              <Form.Control onChange={e => this.handleFileChosen(e.target.files[0])} type="file" placeholder="load your keystore file" style={{width: 'auto',border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px'}} />
+              <Form.Control className="stakingInput" onChange={e => this.handleFileChosen(e.target.files[0])} type="file" placeholder="load your keystore file" style={{width: 'auto',border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '10px'}} />
             </Form.Group>
             <Form.Group controlId="keystorePassword">
-              <Form.Control onKeyUp={this.onPasswordUpdate} type="password" placeholder="Enter Keystore Password" style={{width: '325px'}} />
+              <Form.Control className="stakingInput" onKeyUp={this.onPasswordUpdate} type="password" placeholder="Enter Keystore Password" style={{width: '325px'}} />
             </Form.Group>
 
             {this.state.passwordErrorDisplay ?

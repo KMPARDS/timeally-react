@@ -57,7 +57,7 @@ class Home extends Component {
     <div className="rate-table">
         <div className="container">
           <div className="row">
-            <div className="col-6">
+            <div className="col-md-6">
               <div className="rate-counter-block">
                 <div className="icon rate-icon  "> <img src="images/deposit.png" alt="" className="icon-svg-1x" /></div>
                 <div className="rate-box">
@@ -66,7 +66,7 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-6">
+            <div className="col-md-6">
               <div className="rate-counter-block-second">
               <div className="icon rate-icon  "> <img src="images/tank-truck.png" alt="" className="icon-svg-1x" /></div>
                 <div className="rate-box">
@@ -85,16 +85,23 @@ class Home extends Component {
           <div className="section-title text-center mb60">
             <h1>What is TimeAlly?</h1>
             <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the distribution from ES NRT and increase Era Swap count for TA Holders which they hold over a period of time. TimeAlly is a DApp ( Decentralized Application ). </p>
-              <video  className="mb60" width={400} controls poster="./images/poster.jpg" style={{boxShadow:'10px 10px 10px #ccc'}}>
-                <source src="./images/timeAlly.mp4" type="video/mp4" />
-                <source src="mov_bbb.ogg" type="video/ogg" />
-                Your browser does not support HTML5 video.
-              </video>
-              <video style={{marginLeft: '10px'}} className="mb60" width={400} controls poster="./images/poster.jpg" style={{boxShadow:'10px 10px 10px #ccc'}}>
-                <source src="./images/Video_TimeAlly.mp4" type="video/mp4" />
-                <source src="mov_bbb.ogg" type="video/ogg" />
-                Your browser does not support HTML5 video.
-              </video>
+            <div class="row">
+                <div className="col-md-6">
+                    <video  className="mb60" controls poster="./images/poster.jpg" style={{boxShadow:'10px 10px 10px #ccc'}}>
+                      <source src="./images/Video_TimeAlly.mp4" type="video/mp4" />
+                      <source src="mov_bbb.ogg" type="video/ogg" />
+                      Your browser does not support HTML5 video.
+                    </video>
+                </div>
+                <div className="col-md-6">
+                     <video  className="mb60" width={400} controls poster="./images/poster.jpg" style={{boxShadow:'10px 10px 10px #ccc'}}>
+                      <source src="./images/timeAlly.mp4" type="video/mp4" />
+                      <source src="mov_bbb.ogg" type="video/ogg" />
+                      Your browser does not support HTML5 video.
+                    </video>
+                </div>
+              </div>
+            
            <h1>What is DApp?</h1>
             <p>Decentralized Applications (DApps) run on a P2P network of computers and are decentralized in nature. They have existed since the advent of P2P networks. DApps uses distributed ledger technology which is neither stored in a centralized location nor managed by any single entity.</p>
           </div>
@@ -142,7 +149,7 @@ class Home extends Component {
               <div className="bg-white pinside40 number-block outline mb20 bg-boxshadow">
               <div className="circle"><img src="./images/control.png"/></div>
                 <h3 className="number-title">Control</h3>
-                <p>Nobody can access to user's funds without the private keys which stays with them only.</p>
+                <p>Nobody can access to user's holdings without the private keys which stays with them only.</p>
               </div>
             </div>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
@@ -158,7 +165,7 @@ class Home extends Component {
 
               <div className="circle"><img src="./images/team.png"/></div>
                 <h3 className="number-title">In case of More Users</h3>
-                <p>The Value of ES holded by user wil go up as more users will lead to more uses increasing the value.</p>
+                <p>The Value of ES holded by user will go up as more users will lead to more uses increasing the value.</p>
               </div>
             </div>
           </div>

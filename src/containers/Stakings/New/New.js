@@ -166,12 +166,12 @@ class NewStaking extends Component {
                   </div> 
                 </Modal>
         <Card>
-          <Form onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <Form className="mnemonics" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
 
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 1 of 3</h3>
 
             <Form.Group controlId="stakingAmount">
-              <Form.Control onKeyUp={this.onAmountUpdate} type="text" placeholder="Enter amount to stake" style={{width: '325px'}} />
+              <Form.Control className="stakingInput" onKeyUp={this.onAmountUpdate} type="text" placeholder="Enter amount to stake" style={{width: '325px'}} />
 
               <Form.Group controlId="exampleForm.ControlSelect1">
                 <Form.Control as="select" onChange={this.onPlanChange}>
@@ -202,7 +202,7 @@ class NewStaking extends Component {
       return (
         <Header>
         <Card>
-          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 2 of 3</h3>
             <Button onClick={this.onApproveClick} disabled={this.state.spinner}>
               {this.state.spinner ?
