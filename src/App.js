@@ -99,7 +99,7 @@ function App(props) {
           <Route path="/mou" exact component={Mou} />
           </Switch>
         </div>
-        <div className="footer section-space20">
+        <div className="footer section-space20" style={{ paddingBottom: '0px'}}>
           {/* footer */}
           <div className="container">
             <div className="row">
@@ -172,6 +172,7 @@ function App(props) {
               </div>*/}
               <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" style={{ margin: '0 auto' }}>
                 <p style={{color:'#fff'}}>
+                <a href="https://etherscan.io/address/0x5630ee5f247bd6b61991fbb2f117bbeb45990876" target="_blank"  >TA Smart Contract Address</a> &nbsp; | &nbsp;
                   <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank"  >Era Swap White Paper</a> &nbsp; | &nbsp;
                   <a href="https://eraswaptoken.io/era-swap-howey-test-letter-august7-2018.php" target="_blank"  >Howey Test</a> &nbsp; | &nbsp;
                   <a href="/pdf/TimeAlly_Terms_Use.pdf" target="_blank">Terms of use</a> &nbsp; | &nbsp; <a href="/pdf/TimeAlly_Privacy.pdf" target="_blank">Privacy Policy</a>

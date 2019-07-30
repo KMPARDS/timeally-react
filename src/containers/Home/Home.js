@@ -93,18 +93,10 @@ class Home extends Component {
             <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the distribution from ES NRT and increase Era Swap count for TA Holders which they hold over a period of time. TimeAlly is a DApp ( Decentralized Application ). </p>
             <div class="row">
                 <div className="col-md-6">
-                    <video  className="mb60" controls poster="./images/poster.jpg" style={{boxShadow:'10px 10px 10px #ccc'}}>
-                      <source src="./images/Video_TimeAlly.mp4" type="video/mp4" />
-                      <source src="mov_bbb.ogg" type="video/ogg" />
-                      Your browser does not support HTML5 video.
-                    </video>
+                <iframe width="500" height="315" src="https://www.youtube.com/embed/srsL3_UIsvE?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div className="col-md-6">
-                     <video  className="mb60" width={400} controls poster="./images/poster.jpg" style={{boxShadow:'10px 10px 10px #ccc'}}>
-                      <source src="./images/timeAlly.mp4" type="video/mp4" />
-                      <source src="mov_bbb.ogg" type="video/ogg" />
-                      Your browser does not support HTML5 video.
-                    </video>
+                    <iframe width="500" height="315" src="https://www.youtube.com/embed/pSqL72YYOOs?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
               </div>
 
@@ -281,13 +273,10 @@ class Home extends Component {
                 <p className="text-white">TimeAlly is a smart contract driven DApp, where anyone can vest ES tokens to receive rewards. These rewards are in the format of ES based on the vesting duration (1 or 2 years). <br></br><br></br>For 1 year the holders are rewarded with the distribution of 13% ES NRT and for 2 years holding, the users are rewarded with 15% from ES NRT.<br></br><br></br>
                 <a className="btn-link-white">Watch the video for TimeAlly activation</a>
                 <br></br> <br></br>
-                <video  className="mb10" width={400} controls poster="./images/poster.jpg">
-                  <source src="./images/timeAlly.mp4" type="video/mp4" />
-                  <source src="mov_bbb.ogg" type="video/ogg" />
-                  Your browser does not support HTML5 video.
-                </video>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/pSqL72YYOOs?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
                 <h2 className="text-white">Power Token</h2>
-                TimeAlly is a simple plan based on vesting where users receive an additional benefits of Power Token which they can distribute among the ES community on TimeSwappers platform. The amont of Power token receive by each TimeAlly holder is directly proportional the amount of ES he holds in TA smart contract. <br></br><br></br>To know more about power token the user can read Era Swap White Paper</p>
+                TimeAlly is a simple plan based on vesting where users receive an additional benefits of Power Token which they can distribute among the ES community on TimeSwappers platform. The amount of Power token receive by each TimeAlly holder is directly proportional the amount of ES he holds in TA smart contract. <br></br><br></br>To know more about power token the user can read Era Swap White Paper</p>
               </div>
               {/* /.hero-caption */}
 

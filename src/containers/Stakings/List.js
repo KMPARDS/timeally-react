@@ -210,11 +210,11 @@ class StakingList extends Component {
                   <div className="wrapper-content bg-white pinside40">
                    <div className="bg-white section-space80">
                      <div className="container">
-
+           
                     {this.state.loadingStakings ? <p>Please wait loading your stakings</p> : (
                       <>
                         <p>Note: Your benefit withdrawls are sent 50% to your wallet address and 50% to your rewards. Please go to Rewards section and click on check your rewards to see all your rewards</p>
-
+                     <div className="tablebg">
                       {this.state.stakings.length
                       ? <table className="table table-striped" border="1">
                         <thead>
@@ -284,8 +284,9 @@ class StakingList extends Component {
                             </tr>
                           ))}
                         </tbody>
-                      </table> : <p>There are no stakings to show. <span onClick={() => this.props.history.push('/stakings/new')}>You can create a new staking by clicking here.</span></p>
-                      }</>
+                      </table> 
+                      : <p>There are no stakings to show. <span onClick={() => this.props.history.push('/stakings/new')}>You can create a new staking by clicking here.</span></p>
+                      } </div></>
                       )
                     }
                       {/*<div className="pagination">
@@ -298,6 +299,7 @@ class StakingList extends Component {
                           <a href="#">6</a>
                           <a href="#">»</a>
                       </div>*/}
+                     
                    </div>
                 </div>
               </div>
