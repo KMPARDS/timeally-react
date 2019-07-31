@@ -181,7 +181,7 @@ function App(props) {
                 <a href="https://etherscan.io/address/0x5630ee5f247bd6b61991fbb2f117bbeb45990876" target="_blank"  >TA Smart Contract Address</a> &nbsp; | &nbsp;
                   <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank"  >Era Swap White Paper</a> &nbsp; | &nbsp;
                   <a href="https://eraswaptoken.io/era-swap-howey-test-letter-august7-2018.php" target="_blank"  >Howey Test</a> &nbsp; | &nbsp;
-                  <a href="/pdf/TimeAlly_Terms_Use.pdf" target="_blank">Terms of use</a> &nbsp; | &nbsp; <a href="/pdf/TimeAlly_Privacy.pdf" target="_blank">Privacy Policy</a>
+                  <a href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank">Terms of use</a> &nbsp; | &nbsp; <a href="/pdf/TimeAlly-Privacy.pdf" target="_blank">Privacy Policy</a>
                 </p>
               </div>
 
