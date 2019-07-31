@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'; // this is for accessing the store\
+import {Dropdown } from 'react-bootstrap';
 
 import Navbar from './containers/Navbar/Navbar';
 import Home from './containers/Home/Home';
@@ -72,9 +73,11 @@ function App(props) {
       <div className="App">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
       {/* <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" /> */}
-
+      
         <Navbar/>
+        
         <div style={{margin:'0px'}}>
+          
           <Switch>
             {/* <Route path="/" exact render={() => <p>Home page</p>} /> */}
             <Route path="/" exact component={Home} />
@@ -178,7 +181,7 @@ function App(props) {
                 <a href="https://etherscan.io/address/0x5630ee5f247bd6b61991fbb2f117bbeb45990876" target="_blank"  >TA Smart Contract Address</a> &nbsp; | &nbsp;
                   <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank"  >Era Swap White Paper</a> &nbsp; | &nbsp;
                   <a href="https://eraswaptoken.io/era-swap-howey-test-letter-august7-2018.php" target="_blank"  >Howey Test</a> &nbsp; | &nbsp;
-                  <a href="/pdf/TimeAlly_Terms_Use.pdf" target="_blank">Terms of use</a> &nbsp; | &nbsp; <a href="/pdf/TimeAlly_Privacy.pdf" target="_blank">Privacy Policy</a>
+                  <a href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank">Terms of use</a> &nbsp; | &nbsp; <a href="/pdf/TimeAlly-Privacy.pdf" target="_blank">Privacy Policy</a>
                 </p>
               </div>
 
