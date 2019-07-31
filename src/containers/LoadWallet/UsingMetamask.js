@@ -17,7 +17,9 @@ class UsingMetamask extends Component {
       const metamaskWeb3Provider = new ethers.providers.Web3Provider(window.web3.currentProvider);
       this.props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: metamaskWeb3Provider.getSigner() });
 
-      this.setState({ displayText: `Connected to Metamask! Your address is ${this.props.walletInstance.address}` });
+      setTimeout(() => {
+        this.setState({ displayText: `Connected to Metamask! Your address is ${this.props.store.walletInstance.address}` });
+      }, 100);
     } else {
       this.setState({ displayText: 'Metamask is not found. If you have Metamask installed, you can try updating it. EIP 1102 proposed a communication protocol between dApps and Ethereum-enabled DOM environments like Metamask.' });
     }
