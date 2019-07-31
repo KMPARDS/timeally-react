@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
 
+import { network } from '../../env';
+
 const ethers = require('ethers');
 
 class UsingMetamask extends Component {
@@ -11,15 +13,21 @@ class UsingMetamask extends Component {
   componentDidMount = async () => {
     this.setState({ displayText: 'Please wait connecting to metamask...' });
     if(window.ethereum) {
-      const eth = await window.ethereum.enable();
+      await window.ethereum.enable();
       console.log(window.web3.currentProvider);
 
-      const metamaskWeb3Provider = new ethers.providers.Web3Provider(window.web3.currentProvider);
-      this.props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: metamaskWeb3Provider.getSigner() });
+      const onCorrectNetwork = window.web3.currentProvider.networkVersion === (network === 'homestead' ? '1' : '42');
+      console.log('onCorrectNetwork', onCorrectNetwork);
+      if(!onCorrectNetwork) {
+        this.setState({ displayText: `You are on different network in MetaMask. Please select ${network === 'homestead' ? 'Mainnet' : network}` });
+      } else {
+        const metamaskWeb3Provider = new ethers.providers.Web3Provider(window.web3.currentProvider);
+        this.props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: metamaskWeb3Provider.getSigner() });
 
-      setTimeout(() => {
-        this.setState({ displayText: `Connected to Metamask! Your address is ${this.props.store.walletInstance.address}` });
-      }, 100);
+        setTimeout(() => {
+          this.setState({ displayText: `Connected to Metamask! Your address is ${this.props.store.walletInstance.address}` });
+        }, 100);
+      }
     } else {
       this.setState({ displayText: 'Metamask is not found. If you have Metamask installed, you can try updating it. EIP 1102 proposed a communication protocol between dApps and Ethereum-enabled DOM environments like Metamask.' });
     }
