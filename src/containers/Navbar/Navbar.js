@@ -35,7 +35,21 @@ class NavbarComponent extends Component {
 
         let userAddress = '';
         if(Object.entries(action.payload).length) {
-          userAddress = await action.payload.getAddress();
+          try {
+            userAddress = await action.payload.getAddress();
+            action.payload['address'] = userAddress;
+            console.log('address from metamask', userAddress);
+          } catch (err) {
+            console.log(err.message);
+            // try {
+            //
+            //   this.props.store.walletInstance.address = userAddress;
+            //   window.metamaskprov = action.payload;
+            //
+            // } catch (err) {
+            //   console.log(err.message);
+            // }
+          }
         }
         this.setState({ userAddress });
 
