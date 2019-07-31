@@ -28,6 +28,12 @@ const ListOfLoadMethods = props => {
           Use Mnemonic to unlock wallet
         </Card.Body>
       </Card>
+
+      <Card style={{margin: '15px 0'}} onClick={() => props.history.push('/load-wallet/using-metamask')}>
+        <Card.Body align="center">
+          Connect to Metamask
+        </Card.Body>
+      </Card>
     </div>
   );
 }

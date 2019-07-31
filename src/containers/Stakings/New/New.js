@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Form, Button, Spinner } from 'react-bootstrap';
+import { Card, Form, Button, Spinner, Alert } from 'react-bootstrap';
 import Header from './Header';
 import { esContract, timeally, network } from '../../../env';
 import Modal from "react-responsive-modal";
@@ -17,7 +17,8 @@ class NewStaking extends Component {
     spinner: false,
     waiting: false,
     txHash: '',
-    open: false
+    open: false,
+    errorMessage: ''
   }
 
   componentDidMount=()=>{
@@ -49,25 +50,39 @@ class NewStaking extends Component {
     const contractWithSigner = new ethers.Contract(
       this.props.store.esInstance.address,
       esContract.abi, this.props.store.walletInstance);
-    await this.setState({ spinner: true });
-    const tx = await contractWithSigner.functions.approve(timeally.address, ethers.utils.parseEther(this.state.userAmount), {gasPrice: 10000000000});
-    console.log(tx);
-    await this.setState({ waiting: true });
-    await tx.wait();
-    this.setState({ spinner: false, waiting: false, currentScreen: 2 });
+    await this.setState({ spinner: true, errorMessage: '' });
+    try {
+      const tx = await contractWithSigner.functions.approve(timeally.address, ethers.utils.parseEther(this.state.userAmount), {gasPrice: 10000000000});
+      console.log(tx);
+      await this.setState({ waiting: true });
+      await tx.wait();
+      this.setState({ spinner: false, waiting: false, currentScreen: 2 });
+    } catch (err) {
+      this.setState({
+        spinner: false, waiting: false,
+        errorMessage: 'Error from blockchain: ' + err.message
+      });
+    }
   }
 
   stakeNowClick = async() => {
     const contractWithSigner = new ethers.Contract(
       timeally.address,
       timeally.abi, this.props.store.walletInstance);
-    await this.setState({ spinner: true });
-    const tx = await contractWithSigner.functions.newStaking(
-      ethers.utils.parseEther(this.state.userAmount), this.state.plan, {gasLimit: 7000000, gasPrice: 10000000000});
-    console.log(tx);
-    await this.setState({ waiting: true, txHash: tx.hash });
-    await tx.wait();
-    this.setState({ spinner: false, waiting: false, currentScreen: 3 });
+    await this.setState({ spinner: true, errorMessage: '' });
+    try {
+      const tx = await contractWithSigner.functions.newStaking(
+        ethers.utils.parseEther(this.state.userAmount), this.state.plan, {gasLimit: 7000000, gasPrice: 10000000000});
+      console.log(tx);
+      await this.setState({ waiting: true, txHash: tx.hash });
+      await tx.wait();
+      this.setState({ spinner: false, waiting: false, currentScreen: 3 });
+    } catch (err) {
+      this.setState({
+        spinner: false, waiting: false,
+        errorMessage: 'Error from blockchain' + err.message
+      });
+    }
   }
 
   onOpenModal = () => {
@@ -204,6 +219,13 @@ class NewStaking extends Component {
         <Card>
           <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 2 of 3</h3>
+            {
+              this.state.errorMessage
+              ? <Alert variant="danger">
+                  {this.state.errorMessage}
+                </Alert>
+              : null
+            }
             <Button onClick={this.onApproveClick} disabled={this.state.spinner}>
               {this.state.spinner ?
               <Spinner
@@ -227,6 +249,13 @@ class NewStaking extends Component {
           <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 3 of 3</h3>
             <p>Please click the following button to confirm your staking.</p>
+              {
+                this.state.errorMessage
+                ? <Alert variant="danger">
+                    {this.state.errorMessage}
+                  </Alert>
+                : null
+              }
             <Button onClick={this.stakeNowClick} disabled={this.state.spinner}>
               {this.state.spinner ?
               <Spinner

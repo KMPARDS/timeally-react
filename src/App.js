@@ -99,7 +99,10 @@ function App(props) {
             <Route path="/insurance" exact render={
               () => <div>Coming soon</div>
             } />
-          <Route path="/mou" exact component={Mou} />
+            <Route path="/mou" exact component={Mou} />
+            <Route render={
+                () => <div>404 Page not found</div>
+              } />
           </Switch>
         </div>
         <div className="footer section-space20" style={{ paddingBottom: '0px'}}>

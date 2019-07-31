@@ -43,7 +43,13 @@ class Home extends Component {
                                  <h1 class="text-white" style={{fontSize:'30px'}}>TimeAlly Smart Contract</h1>
                                  <p class="text-white">TimeAlly Smart Contract - Controls Volatility, Reward Distribution from ES NRT and simply increase TA Holder’s Era Swap (ES) counts based on their vesting periods without getting in to the hassle of day trading. </p>
                                  <div class="mt30">
-                                     <a  onClick={() => this.props.history.push('create-wallet')} class="btn btn-default">Vest Now</a>
+                                     <a  onClick={() => {
+                                         if(this.props.store.walletInstance.address) {
+                                           this.props.history.push('stakings/new')
+                                         } else {
+                                           this.props.history.push('create-wallet')
+                                         }
+                                       }} class="btn btn-default">Vest Now</a>
                                  </div>
                              </div>
                              </div>
@@ -62,7 +68,7 @@ class Home extends Component {
                 <div className="icon rate-icon  "> <img src="images/deposit.png" alt="" className="icon-svg-1x" /></div>
                 <div className="rate-box">
                   <h1 className="loan-rate">{this.state.nrt ? this.state.nrt + ' ES' : 'Loading...'}</h1>
-                  <small className="rate-title">NRT Released in this month</small>
+                  <small className="rate-title">NRT Released in this month for TimeAlly</small>
                 </div>
               </div>
             </div>
@@ -71,7 +77,7 @@ class Home extends Component {
               <div className="icon rate-icon  "> <img src="images/tank-truck.png" alt="" className="icon-svg-1x" /></div>
                 <div className="rate-box">
                   <h1 className="loan-rate">{this.state.totalActiveStakingsNextMonth ? this.state.totalActiveStakingsNextMonth + ' ES' : 'Loading...'}</h1>
-                  <small className="rate-title">Total Stakes in next month</small>
+                  <small className="rate-title">Total Active Stakes in next month</small>
                 </div>
               </div>
             </div>
@@ -97,7 +103,7 @@ class Home extends Component {
                   </div>
                 </div>
               </div>
-            
+
            <h1>What is DApp?</h1>
             <p>Decentralized Applications (DApps) run on a P2P network of computers and are decentralized in nature. They have existed since the advent of P2P networks. DApps uses distributed ledger technology which is neither stored in a centralized location nor managed by any single entity.</p>
           </div>
