@@ -26,7 +26,7 @@ class NavbarComponent extends Component {
     (async()=>{
       const response = await axios.get('https://ethgasstation.info/json/ethgasAPI.json');
       //console.log(response.data);
-      this.setState({ gasPrice: response.data['fastest'] / 10 });
+      this.setState({ gasPrice: response.data['fast'] / 10 });
 
     })();
 
