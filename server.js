@@ -6,6 +6,14 @@ const app = express();
 
 app.use(helmet());
 
+app.use((req, res, next) => {
+  res.set({
+    'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+    'Strict-Transport-Security': 'max-age=31536000; preload'
+  });
+  return next();
+});
+
 app.use(function(req,res,next) {
   if(req.headers["x-forwarded-proto"] == "http") {
     res.redirect("https://www.timeally.io" + req.url);
