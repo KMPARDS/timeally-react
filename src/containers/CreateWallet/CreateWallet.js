@@ -241,17 +241,17 @@ class CreateWalletPage extends Component {
                       <Card.Body className="createWallet" align="center">
                         <Form >
                           <Form.Group controlId="password1"  className="stakingInput" >
-                            <Form.Control isValid={this.state.doPasswordsMatch} isInvalid={this.state.password2 && !this.state.doPasswordsMatch} onKeyUp={this.updatepassword1} required type="password" placeholder="Create a strong password" />
+                            <Form.Control isValid={this.state.progressBarColor === 'success' && this.state.doPasswordsMatch} isInvalid={this.state.password2 && !this.state.doPasswordsMatch} onKeyUp={this.updatepassword1} required type="password" placeholder="Create a strong password" />
                           </Form.Group>
                           <Form.Group controlId="password2">
-                            <Form.Control isValid={this.state.doPasswordsMatch} isInvalid={this.state.password2 && !this.state.doPasswordsMatch} onKeyUp={this.updatepassword2} required type="password" placeholder="Confirm password" />
+                            <Form.Control isValid={this.state.progressBarColor === 'success' && this.state.doPasswordsMatch} isInvalid={this.state.password2 && !this.state.doPasswordsMatch} onKeyUp={this.updatepassword2} required type="password" placeholder="Confirm password" />
                           </Form.Group>
                           <ProgressBar variant={this.state.progressBarColor} now={this.state.progressBarValue} />
                           <Alert variant="danger" style={{marginTop: '15px', marginBottom: '0', display: this.state.passwordIssueOnSubmit ? 'block' : 'none'}}>
                             You need to enter password and confirm password before generating a mnemonic
                           </Alert>
                           <Button
-                            disabled={!this.state.doPasswordsMatch}
+                            disabled={this.state.progressBarColor !== 'success' && !this.state.doPasswordsMatch}
                             onClick={this.submitPassword}
                             style={{marginTop: '15px'}} >
                           <Spinner style={{display: this.state.mnemonicGenerateSpinner ? 'inline-block' : 'none', marginRight: '2px'}}
@@ -261,7 +261,7 @@ class CreateWalletPage extends Component {
                             role="status"
                             aria-hidden="true"
                           />
-                          {this.state.mnemonicGenerateSpinner ? 'Generating mnemonic...' : 'Generate mnemonic'}
+                        {this.state.password1 ? (this.state.progressBarColor === 'success' ? (this.state.mnemonicGenerateSpinner ? 'Generating mnemonic...' : 'Generate mnemonic') : 'Please enter a longer password') : 'Please enter a long password'}
                           </Button>
                         </Form>
                       </Card.Body>
