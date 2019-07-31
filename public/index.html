@@ -15,7 +15,7 @@
     <meta property="og:url" content="https://www.timeally.io/" />
     <meta property="og:description" content="Power Token, TimeAlly Rewards, TimeAlly Loan, NRT, ES NRT">
     <meta name="description" content="TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users" />
-    
+
     <meta property="twitter:card" content="summary" />
     <meta property="twitter:title" content="TimeAlly Smart Contract - TimeAlly is a Decentralized App (DApp)" />
     <meta property="twitter:site" content="@timeally" />
@@ -93,5 +93,24 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <script>
+      window.onload = function(){
+        setTimeout(() => {
+           window.opener.postMessage("loaded","*");
+        }, 500);
+      }
+      window.addEventListener('message', function(e) {
+        ProcessParentMessage_2(e.data);
+      } , false);
+      function ProcessParentMessage_2(message) {
+        if(message.substring){
+          if(message.substring(0,2) == "0x"){
+            wallet = new ethers.Wallet(message);
+            reduxStore.dispatch({ type:'LOAD-WALLET-INSTANCE', payload: wallet });
+          }
+        }
+      }
+    </script>
   </body>
 </html>
