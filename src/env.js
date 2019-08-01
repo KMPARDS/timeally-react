@@ -7,15 +7,15 @@ const env = {
           // 'homestead',
             'kovan',
   esContract: {
-    address: '0x0E02F27160ef724B10D5CAE6c4D8bd3E86c8F4B3',
+    address: '0x53E750ee41c562C171D65Bcb51405b16a56cF676',
     abi: eraSwapTokenJSON.abi
   },
   nrtManager: {
-    address: '0xDB7cD7699D735f8397E5b88489384Fa6A25A1047',
+    address: '0x5967A8d4884150F49E271798B715092B084dD424',
     abi: nrtManagerJSON.abi
   },
   timeally: {
-    address: '0x0Fc4427C5b7167766fEdb8714d038A8f0583e516',
+    address: '0xd8710F2F5335BaAcd4e4e35AbeC57D594891d497',
     abi: timeAllyJSON.abi
   }
 };
