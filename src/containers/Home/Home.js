@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Card, Button, Accordion } from 'react-bootstrap';
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import { timeally } from '../../env';
 
+// import Loader from 'react-loader-spinner';
+// export default class App extends React.Component {
 
 const ethers = require('ethers');
 
@@ -30,6 +33,7 @@ class Home extends Component {
 
   render() {
     return (
+    
  <div>
   <div className="hero-section">
       <div className="container">
@@ -97,9 +101,10 @@ class Home extends Component {
                     <iframe src="https://www.youtube.com/embed/srsL3_UIsvE?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                   </div>               
                 </div>
+                
                 <div className="col-md-6">
                   <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                    <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/srsL3_UIsvE?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/m3WyMh43ns8?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                 </div>
               </div>
@@ -273,13 +278,14 @@ class Home extends Component {
             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               {/* hero-caption */}
               <div className="card-hero-block text-center">
-                <h1 className="text-white">Invest now in TimeAlly</h1>
+                <h1 className="text-white">Stake now in TimeAlly</h1>
                 <p className="text-white">TimeAlly is a smart contract driven DApp, where anyone can vest ES tokens to receive rewards. These rewards are in the format of ES based on the vesting duration (1 or 2 years). <br></br><br></br>For 1 year the holders are rewarded with the distribution of 13% ES NRT and for 2 years holding, the users are rewarded with 15% from ES NRT.<br></br><br></br>
-                <a className="btn-link-white">Watch the video for TimeAlly activation</a>
+                {/* <a className="btn-link-white">Watch the video for TimeAlly activation</a> */}
+                {/* <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
+                    <iframe width="560" height="315" style={{position: 'absolute', top: 0, left: 0,}} src="https://www.youtube.com/embed/X0SV9pGQls4?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div> */}
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/X0SV9pGQls4?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <br></br> <br></br>
-                <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                    <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/srsL3_UIsvE?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>                
                 <h2 className="text-white">Power Token</h2>
                 TimeAlly is a simple plan based on vesting where users receive an additional benefits of Power Token which they can distribute among the ES community on TimeSwappers platform. The amount of Power token receive by each TimeAlly holder is directly proportional the amount of ES he holds in TA smart contract. <br></br><br></br>To know more about power token the user can read Era Swap White Paper</p>
               </div>
