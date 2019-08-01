@@ -5,8 +5,8 @@
     <link rel="shortcut icon" href="https://www.timeallyclub.com/images/favicon.png" />
     <meta name="google-site-verification" content="uxS1ST7RHUWjADtD-6I4J1AnpsfsGzb-6COQ8x7ybDE" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />   .
-    <meta name="keyword" content="TimeAlly,Dapp, Decentralised Application, Dapps, Blockchain Dapp, Blockchain Dapps, TimeAlly Smart Contract, Era Swap, Era Swap Token, ES, Era Swap Technologies, Power Token, TimeAlly Rewards, TimeAlly Loan, NRT, ES NRT">
+    <meta name="theme-color" content="#000000" />   
+    <meta name="keyword" content="TimeAlly, Dapp, Decentralised Application, Blockchain Dapp, Blockchain Dapps, TimeAlly Smart Contract, Dapps, Era Swap, Era Swap Token, ES, Era Swap Technologies, Power Token, TimeAlly Rewards, TimeAlly Loan, NRT, ES NRT">
     <meta name="description" content="TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users" />
 
     <meta property="og:site_name" content="TimeAlly Smart Contract - TimeAlly is a Decentralized App (DApp)" />
@@ -15,7 +15,7 @@
     <meta property="og:url" content="https://www.timeally.io/" />
     <meta property="og:description" content="Power Token, TimeAlly Rewards, TimeAlly Loan, NRT, ES NRT">
     <meta name="description" content="TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users" />
-
+    
     <meta property="twitter:card" content="summary" />
     <meta property="twitter:title" content="TimeAlly Smart Contract - TimeAlly is a Decentralized App (DApp)" />
     <meta property="twitter:site" content="@timeally" />
@@ -74,10 +74,10 @@
                     http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
         <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-        <url>
+        <!-- <url>
           <loc>https://www.timeally.io/</loc>
           <lastmod>2019-07-30T07:26:38+00:00</lastmod>
-        </url>
+        </url> -->
       </urlset>
   </head>
   <body>
@@ -93,28 +93,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-
-    <script>
-      window.onload = function(){
-        setTimeout(() => {
-           try {
-             window.opener.postMessage("loaded","*");
-           } catch (err) {
-             console.log(err.message);
-           }
-        }, 500);
-      }
-      window.addEventListener('message', function(e) {
-        ProcessParentMessage_2(e.data);
-      } , false);
-      function ProcessParentMessage_2(message) {
-        if(message.substring){
-          if(message.substring(0,2) == "0x"){
-            wallet = new ethers.Wallet(message);
-            reduxStore.dispatch({ type:'LOAD-WALLET-INSTANCE', payload: wallet });
-          }
-        }
-      }
-    </script>
   </body>
+
 </html>
