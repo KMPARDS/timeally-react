@@ -41,7 +41,60 @@
     -->
     <title>TimeAlly Smart Contract - TimeAlly is a Decentralized App (DApp)</title>
 
+     <style>
+          .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('http://www.downgraf.com/wp-content/uploads/2014/09/01-progress.gif?e44397') 50% 50% no-repeat rgb(249,249,249);
+          }
 
+
+          .box{
+            width:45%;
+          background: rgba(226,226,226,1);
+          background: -moz-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 10%, rgba(209,209,209,1) 98%, rgba(254,254,254,1) 100%);
+          background: -webkit-gradient(left top, right top, color-stop(0%, rgba(226,226,226,1)), color-stop(10%, rgba(219,219,219,1)), color-stop(98%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+          background: -webkit-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 10%, rgba(209,209,209,1) 98%, rgba(254,254,254,1) 100%);
+          background: -o-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 10%, rgba(209,209,209,1) 98%, rgba(254,254,254,1) 100%);
+          background: -ms-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 10%, rgba(209,209,209,1) 98%, rgba(254,254,254,1) 100%);
+          background: linear-gradient(to right, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 10%, rgba(209,209,209,1) 98%, rgba(254,254,254,1) 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=1 );
+
+          }
+          /* p{
+            padding:40px;
+          }
+          .outer-box{
+            margin-top:60px;
+            margin-left:450px;
+          } */
+          .float{
+            position:fixed;
+            width:60px;
+            height:60px;
+            bottom:40px;
+            right:40px;
+            /* background-color:#0C9; */
+            color:#971802;
+            border-radius:50px;
+            text-align:center;
+            box-shadow: 2px 2px 3px #999;
+          }
+          a{
+            color: #971802;
+          }
+          a:focus, a:hover {
+              text-decoration: none;
+              color: #971802 !important;
+          }
+          /* .my-float{
+            margin-top:22px;
+          } */
+      </style>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org/",
@@ -80,8 +133,18 @@
         </url> -->
       </urlset>
   </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+  <body >
+    <noscript>You need to enable JavaScript to run this app.</noscript>    
+    <!-- <div class="loader"></div> -->
+    <!-- <script>
+        $(window).load(function(){
+            $('.loader').fadeOut();
+        });
+    </script> -->
+    <a href="https://t.me/eraswap" target="https://t.me/eraswap" class="float">
+        <i class="fa fa-telegram" style="font-size: 60px;" aria-hidden="true"></i>
+        <!-- <i class="fa fa-plus my-float"></i> -->
+        </a>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -93,6 +156,8 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+   
+    
   </body>
 
 </html>

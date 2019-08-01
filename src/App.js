@@ -19,6 +19,7 @@ import Mou from './containers/Mou/Mou';
 import Rewards from './containers/Rewards/Rewards';
 import Logout from './containers/Logout/Logout';
 
+
 //import { Button } from 'react-bootstrap';
 
 //import logo from './logo.svg';
@@ -106,6 +107,7 @@ function App(props) {
           </Switch>
         </div>
         <div className="footer section-space20" style={{ paddingBottom: '0px'}}>
+
           {/* footer */}
           <div className="container">
             <div className="row">
