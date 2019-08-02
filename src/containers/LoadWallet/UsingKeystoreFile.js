@@ -51,7 +51,15 @@ class UsingKeystoreFile extends Component {
     await this.setState({ unlocking: true, passwordErrorDisplay: false });
     setTimeout(async () => {
       try {
-        const hdWallet =  ethereumjs.fromV3(this.state.keystoreContent, this.state.password);
+        // console.log(this.state.keystoreContent);
+
+        let hdWallet;
+        if(JSON.parse(this.state.keystoreContent).version === 3) {
+          hdWallet = ethereumjs.fromV3(this.state.keystoreContent, this.state.password);
+        } else {
+          hdWallet = ethereumjs.fromV1(this.state.keystoreContent, this.state.password);
+        }
+         
         const privateKey = hdWallet.getPrivateKey().toString('hex');
         const wallet = new ethers.Wallet(privateKey, new ethers.providers.InfuraProvider(network));
         console.log(wallet.address);
@@ -90,7 +98,7 @@ class UsingKeystoreFile extends Component {
                 <div className="row">
                   <div className="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12">
                     <h1 className="page-title">Using Keystore</h1>
-                  </div>                    
+                  </div>
                 </div>
               </div>
             </div>
@@ -102,7 +110,7 @@ class UsingKeystoreFile extends Component {
 <div className="row">
 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 <div className="wrapper-content bg-white pinside40">
-  <div className="loan-eligibility-block">  
+  <div className="loan-eligibility-block">
       <Card>
       {console.log(this.props)}
         <Card.Body align="center">
