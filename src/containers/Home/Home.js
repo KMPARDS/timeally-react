@@ -282,7 +282,25 @@ class Home extends Component {
               {/* hero-caption */}
               <div className="card-hero-block text-center">
                 <h1 className="text-white">Power <img src="./images/pt.png" /> Tokens</h1>
-                <p className="text-white">Power Tokens are additional 10% of NRT allocated every month to TimeAlly vestors. The Power Tokens can be uses to encourage, appreciate, donate to friends, family, collegues on Swappers Wall and services on Time Swappers & Buzcafe.<br></br><br></br>To know more about power token the user can read Era Swap White Paper</p><br></br><br></br>
+                <p className="text-white">Power Tokens are additional 10% of NRT allocated every month to TimeAlly vestors. Power Tokens are allocated to the TimeAlly members in a ratio 10:1 per year. The Power Tokens can be uses to encourage, appreciate, donate to friends, family, collegues on Swappers Wall and services on Time Swappers & Buzcafe.<br></br>To know more about power token the user can read <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank" >Era Swap White Paper</a><br></br><br></br>
+                <strong>Use Power Tokens on below platforms</strong>
+                </p>                
+                 <div className="col-md-12">
+                    <span style={{marginLeft:'10px'}}>
+                      <a href="http://timeswappers.com/home" target="_blank" >
+                       <img src="./images/swp_bz-01.png" style={{ height:'80px'}}></img> 
+                      </a> 
+                    </span>
+                    <span style={{marginLeft:'10px'}}>
+                      <a href="http://timeswappers.com/marketplace" target="_blank" >
+                       <img src="./images/ts.png" style={{ height:'80px'}}></img> 
+                      </a> 
+                    </span>
+                    <span style={{marginLeft:'10px'}}>                      
+                       <img src="./images/swp_bz-02.png" style={{ height:'80px'}}></img>                       
+                    </span>
+                  </div>
+                  <br></br>
                 <div class="row">
                   <div className="offset-md-2 col-md-4">
                     <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
@@ -300,11 +318,7 @@ class Home extends Component {
                   {/* <div className="col-md-4">
                     <img src="./images/swp_bz-01.png"></img> 
                   </div> */}
-                  <div className="col-md-12">
-                  <a href="http://timeswappers.com/home" target="_blank" >
-                  <img src="./images/ts.png"></img> 
-                  </a>  
-                  </div>
+                 
                   {/* <div className="col-md-4">
                   <img src="./images/swp_bz-02.png"></img> 
                   </div> */}
