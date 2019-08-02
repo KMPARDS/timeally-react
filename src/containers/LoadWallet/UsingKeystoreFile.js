@@ -27,7 +27,7 @@ class UsingKeystoreFile extends Component {
   };
 
   handleFileRead = event => {
-    const content = this.fileReader.result;
+    let content = this.fileReader.result.toLowerCase();
     this.setState({ keystoreContent: content });
   }
 
@@ -59,7 +59,7 @@ class UsingKeystoreFile extends Component {
         } else {
           hdWallet = ethereumjs.fromV1(this.state.keystoreContent, this.state.password);
         }
-         
+
         const privateKey = hdWallet.getPrivateKey().toString('hex');
         const wallet = new ethers.Wallet(privateKey, new ethers.providers.InfuraProvider(network));
         console.log(wallet.address);
