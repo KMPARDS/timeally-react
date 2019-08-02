@@ -17,7 +17,8 @@ class StakingId extends Component {
     monthlyBenefits: {},
     monthlyBenefitSpinner: {},
     selectedMonths: []
-  }
+  };
+
   componentDidMount = async () => {
     const currentMonth = Number(await this.props.store.timeallyInstance.functions.getCurrentMonth());
     this.setState({ currentMonth });

@@ -5,6 +5,8 @@ import Header from './Header';
 import { esContract, timeally, network } from '../../../env';
 import Modal from "react-responsive-modal";
 
+import TransactionModal from '../../TransactionModal/TransactionModal';
+
 const ethers = require('ethers');
 
 
@@ -18,7 +20,9 @@ class NewStaking extends Component {
     waiting: false,
     txHash: '',
     open: false,
-    errorMessage: ''
+    errorMessage: '',
+    showApproveTransactionModal: false,
+    showStakeTransactionModal: false
   }
 
   componentDidMount=()=>{
@@ -94,9 +98,10 @@ class NewStaking extends Component {
   };
 
   render() {
+    let screen;
 
     if(this.state.currentScreen === 0) {
-      return (
+      screen = (
 
         <Header>
            {/* <button className="btn" onClick={this.onOpenModal}>Open modal</button> */}
@@ -214,7 +219,7 @@ class NewStaking extends Component {
         </Header>
       );
     } else if(this.state.currentScreen === 1) {
-      return (
+      screen = (
         <Header>
         <Card>
           <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
@@ -226,7 +231,7 @@ class NewStaking extends Component {
                 </Alert>
               : null
             }
-            <Button onClick={this.onApproveClick} disabled={this.state.spinner}>
+            <Button onClick={() => this.setState({ showApproveTransactionModal: true }) } disabled={this.state.spinner}>
               {this.state.spinner ?
               <Spinner
                 as="span"
@@ -243,7 +248,7 @@ class NewStaking extends Component {
         </Header>
       );
     } else if(this.state.currentScreen === 2) {
-      return (
+      screen = (
         <Header>
         <Card>
           <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
@@ -277,17 +282,52 @@ class NewStaking extends Component {
         </Header>
       );
     } else {
-      return (
+      screen = (
         <Header>
-        <Card>
-          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
-            <h3 style={{marginBottom: '15px'}}>Staking created!</h3>
-            <p>Your staking is done. You can view your transaction on <a style={{color: 'black'}} href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></p>
-          </div>
-        </Card>
+          <Card>
+            <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+              <h3 style={{marginBottom: '15px'}}>Staking created!</h3>
+              <p>Your staking is done. You can view your transaction on <a style={{color: 'black'}} href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></p>
+            </div>
+          </Card>
+
         </Header>
       );
     }
+
+    return (
+      <>
+        {screen}
+        {console.log(this.state)}
+        <TransactionModal
+          show={this.state.showApproveTransactionModal}
+          hideFunction={() => this.setState({ showApproveTransactionModal: false })}
+          ethereum={{
+            transactor: this.props.store.esInstance.functions.approve,
+            estimator: this.props.store.esInstance.estimate.approve,
+            contract: this.props.store.esInstance,
+            arguments: [this.props.store.timeallyInstance.address, this.state.userAmount],
+            ESAmount: this.state.userAmount,
+            headingName: 'New Staking',
+            functionName: 'Approve',
+            stakingPlan: this.state.plan,
+            directGasScreen: true
+          }}
+        />
+      {/*<TransactionModal
+            show={this.state.showStakeTransactionModal}
+            hideFunction={() => this.setState({ showStakeTransactionModal: false })}
+            ethereum={{
+              transactor: this.props.store.timeallyInstance.functions.claimLaunchReward,
+              estimator: this.props.store.timeallyInstance.estimate.claimLaunchReward,
+              contract: this.props.store.timeallyInstance,
+              arguments: [this.state.stakingPlan],
+              reward: this.state.reward
+              //minimumBetInEs: this.state.minimumBetInExaEs!==undefined ? (new BigNumber(ethers.utils.bigNumberify(this.state.minimumBetInExaEs))).dividedBy(10**18).toFixed() : undefined
+            }}
+          />*/}
+      </>
+    )
   }
 }
 
