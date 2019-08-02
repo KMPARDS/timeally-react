@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Card, Button, Accordion } from 'react-bootstrap';
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import { timeally } from '../../env';
 
+// import Loader from 'react-loader-spinner';
+// export default class App extends React.Component {
 
 const ethers = require('ethers');
 
@@ -30,6 +33,7 @@ class Home extends Component {
 
   render() {
     return (
+    
  <div>
   <div className="hero-section">
       <div className="container">
@@ -90,16 +94,17 @@ class Home extends Component {
         <div className=" col-xl-12 col-lg-8 col-md-12 col-sm-12 col-12">
           <div className="section-title text-center mb60">
             <h1>What is TimeAlly?</h1>
-            <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the distribution from ES NRT and increase Era Swap count for TA Holders which they hold over a period of time. TimeAlly is a DApp ( Decentralized Application ). </p>
+            <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the distribution from ES NRT and increase Era Swap count for TA Holders which they hold over a period of time. </p>
             <div class="row">
-                <div className="col-md-6">
+                <div className="offset-md-2 col-md-4">
                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
                     <iframe src="https://www.youtube.com/embed/srsL3_UIsvE?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                   </div>               
                 </div>
-                <div className="col-md-6">
+                
+                <div className="col-md-4">
                   <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                    <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/srsL3_UIsvE?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/m3WyMh43ns8?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                 </div>
               </div>
@@ -114,60 +119,61 @@ class Home extends Component {
   <div className="section-space80 mb10">
         <div className="container">
           <div className="row">
-            <div className="offset-xl-2 col-xl-8 offset-md-2 col-md-8 offset-md-2 col-md-8 col-sm-12 col-12">
+            <div className="col-xl-12 col-md-12 col-md-12 col-sm-12 col-12">
               <div className="mb100 text-center section-title">
                 {/* section title start*/}
-                <h1>Features of TimeAlly DApp</h1>
+                <h1>Features of TimeAlly</h1>
                 <p>TimeAlly is a DApp which refers to a suite of protocols that define distribution of Newly Released Tokens in a decentralized way. TimeAlly uses Ethereum Virtual Machine (“EVM”), which can execute code of arbitrary algorithmic complexity with no downtimes and keeping all created objects safe from modifying. Every transaction triggered by user are recorded transparently & irreversibly in block confirmation so that old transactions are preserved forever for all to see. TimeAlly is an open source application & can work even without any web interface. </p>
+                <a class="btn btn-default" href="https://etherscan.io/address/0x5630ee5f247bd6b61991fbb2f117bbeb45990876#code" target="_blank" ><p style={{color:'#fff'}}>View TA Smart Contract</p></a>
               </div>
               {/* /.section title start*/}
             </div>
           </div>
           <div className="row">
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-              <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">
+              <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
                 <div className="circle"><img src="./images/nomination.png"/></div>
                 <h3 className="number-title">Nomination</h3>
-                <p>TimeAlly users can nominate beneficiaries as nominee, who will receive all the benefits of TimeAlly.</p>
+                <p>Appoint nominee, who will receive all the benefits of TimeAlly.</p>
               </div>
             </div>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-              <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">
+              <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
               <div className="circle"><img src="./images/anonimity.png"/></div>
                 <h3 className="number-title">Privacy</h3>
-                <p>TimeAlly Smart Contract provides anonymity to TimeAlly holder offering privacy to users.</p>
+                <p>TimeAlly Smart Contract provides privacy to TimeAlly holder.</p>
               </div>
             </div>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-              <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">
+              <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
               <div className="circle"><img src="./images/box.png"/></div>
                 <h3 className="number-title">ES NRT Distribution</h3>
-                <p>TimeAlly governs the distribution of ES from NRT pool to users based on their work.</p>
+                <p>Governs the distribution of ES from NRT pool to users.</p>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-              <div className="bg-white pinside40 number-block outline mb20 bg-boxshadow">
+              <div className="bg-white pinside30 number-block outline mb20 bg-boxshadow">
               <div className="circle"><img src="./images/control.png"/></div>
                 <h3 className="number-title">Control</h3>
-                <p>Nobody can access to user's holdings without the private keys which stays with them only.</p>
+                <p>The private keys stays with the user only giving control.</p>
               </div>
             </div>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-              <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">
+              <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
               <div className="circle"><img src="./images/less-users.png"/></div>
 
                 <h3 className="number-title">In case of Less Users</h3>
-                <p>ES count per user will increase as there will be less users for fixed ES to distribute for staking.</p>
+                <p>ES count per user will increase for less users to distribute for staking.</p>
               </div>
             </div>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-              <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">
+              <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
 
               <div className="circle"><img src="./images/team.png"/></div>
                 <h3 className="number-title">In case of More Users</h3>
-                <p>The Value of ES holded by user will go up as more users will lead to more uses increasing the value.</p>
+                <p>The Value of ES holded may go up as more usage increases value.</p>
               </div>
             </div>
           </div>
@@ -183,12 +189,14 @@ class Home extends Component {
                   {/* hero-caption */}
                   <div className="card-hero-block text-center">
                     <h1 className="text-white">How TimeAlly works</h1>
-                    <p className="text-white">TimeAlly rewards TA holders for locking their tokens in TA smart contract (TA Time Vault) for the duration of one or two years as per their choice. Currently, there are 2 types of plans available in TimeAlly smart contract i.e. 1 year & 2 years vesting plan for vesting.<br></br><br></br>
+                    <p className="text-white">TimeAlly rewards TA holders for locking their tokens in TA smart contract (TA Time Vault) for the duration of one or two years as per their choice. <br></br><br></br>
                     <ul style={{textAlign:'left'}}>
-                      <li>Vesting for 1 Year: 13% (1.08% per month) of ES Tokens from NRT pool is allocated to be distributed among TA Vestors who vest tokens for 1 year.</li>
-                      <li>Vesting for 2 Year: 15% (1.25% per month) of ES Tokens from NRT pool is allocated  to be distributed among TA Vestors who vest tokens for 2 year.</li>
-                    </ul><br/>
-                    There is a fixed number of ES rewarded every month to users which is governed by TA smart contract. Total number of ES tokens to be distributed among TA holders is pre-defined, but which user will get how many ES tokens is not defined. It depends on total number of vestors vs total number of token available for TA vesting rewards.</p>
+                      <li>Vesting for 1 Year: 13% (1.08% per month) of ES Tokens from NRT pool is allocated to be distributed among TA Vestors. </li>
+                      <li>Vesting for 2 Year: 15% (1.25% per month) of ES Tokens from NRT pool is allocated  to be distributed among TA Vestors.</li>
+                      <li>All the Rewards will be distributed 50% in TimeAlly & 50 % in Liquid.</li>
+                    </ul>
+                   
+                    There is a fixed number of ES rewarded every month to users which is governed by TA smart contract. Total number of ES tokens to be distributed among TA holders is pre-defined, but which user will get how many ES tokens is not defined. It depends on number of token staked in proportion to their vesting plans.</p>
                     <div className="row">
                       <div className="col-md-6">
                         <h2 className="text-white">In case of more users</h2>
@@ -198,7 +206,7 @@ class Home extends Component {
                       <div className="col-md-6">
                         <h2 className="text-white">In case of few users</h2>
                         <img src="./images/b.png"></img>
-                        <p className="text-white">If few users opt for TimeAlly vesting then more tokens per user will be received. As the number of tokens to be distributed every month is fixed but the no. of receivers is reduced. This way more ES will be received to these fewer members.</p>
+                        <p className="text-white">If few users opt for TimeAlly vesting then more tokens per user will be received. As the number of tokens to be distributed every month is fixed but the number of receivers is reduced. This way more ES will be received to these fewer members.</p>
                       </div>
                     </div>
                   </div>
@@ -273,19 +281,42 @@ class Home extends Component {
             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               {/* hero-caption */}
               <div className="card-hero-block text-center">
-                <h1 className="text-white">Invest now in TimeAlly</h1>
-                <p className="text-white">TimeAlly is a smart contract driven DApp, where anyone can vest ES tokens to receive rewards. These rewards are in the format of ES based on the vesting duration (1 or 2 years). <br></br><br></br>For 1 year the holders are rewarded with the distribution of 13% ES NRT and for 2 years holding, the users are rewarded with 15% from ES NRT.<br></br><br></br>
-                <a className="btn-link-white">Watch the video for TimeAlly activation</a>
-                <br></br> <br></br>
-                <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                    <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/srsL3_UIsvE?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>                
-                <h2 className="text-white">Power Token</h2>
-                TimeAlly is a simple plan based on vesting where users receive an additional benefits of Power Token which they can distribute among the ES community on TimeSwappers platform. The amount of Power token receive by each TimeAlly holder is directly proportional the amount of ES he holds in TA smart contract. <br></br><br></br>To know more about power token the user can read Era Swap White Paper</p>
+                <h1 className="text-white">Power <img src="./images/pt.png" /> Tokens</h1>
+                <p className="text-white">Power Tokens are additional 10% of NRT allocated every month to TimeAlly vestors. The Power Tokens can be uses to encourage, appreciate, donate to friends, family, collegues on Swappers Wall and services on Time Swappers & Buzcafe.<br></br><br></br>To know more about power token the user can read Era Swap White Paper</p><br></br><br></br>
+                <div class="row">
+                  <div className="offset-md-2 col-md-4">
+                    <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
+                        <iframe src="https://www.youtube.com/embed/X0SV9pGQls4?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                      </div>               
+                  </div>
+                  
+                  <div className="col-md-4">
+                    <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
+                      <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/pCsg5betihY?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">                  
+                  {/* <div className="col-md-4">
+                    <img src="./images/swp_bz-01.png"></img> 
+                  </div> */}
+                  <div className="col-md-12">
+                  <a href="http://timeswappers.com/home" target="_blank" >
+                  <img src="./images/ts.png"></img> 
+                  </a>  
+                  </div>
+                  {/* <div className="col-md-4">
+                  <img src="./images/swp_bz-02.png"></img> 
+                  </div> */}
+                </div>
+                {/* <a className="btn-link-white">Watch the video for TimeAlly activation</a> */}
+                {/* <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
+                    <iframe width="560" height="315" style={{position: 'absolute', top: 0, left: 0,}} src="https://www.youtube.com/embed/X0SV9pGQls4?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div> */}                
               </div>
               {/* /.hero-caption */}
-
             </div>
+
             <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12 text-right">
               <div className="mt10">
                 {/* <img src="./images/TimeAlly-Info-wp.png" alt className="img-fluid" /> */}
@@ -299,7 +330,7 @@ class Home extends Component {
         <div className="container">
           <div className="row">
             <div className="offset-xl-2 col-xl-8 offset-md-2 col-md-8 offset-md-2 col-md-8 col-sm-12 col-12">
-              <div className="mb60 text-center section-title">
+              <div className="text-center section-title">
                 {/* section title start*/}
                 <h1>FAQ's</h1>
                 <hr></hr>
