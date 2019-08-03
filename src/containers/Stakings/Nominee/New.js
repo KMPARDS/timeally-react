@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Card, Form, Spinner, Row, Col } from 'react-bootstrap';
+import TransactionModal from '../../TransactionModal/TransactionModal';
 import { timeally, network } from '../../../env';
 const ethers = require('ethers');
 
@@ -9,9 +10,10 @@ class NewNominee extends Component {
     currentScreen: 0,
     nomineeAddress: '',
     nomineeShares: '',
-    spinner: 0,
+    spinner: false,
     errorMessage: '',
-    txHash: ''
+    txHash: '',
+    showNomineeTransactionModal: false
   };
 
   onFirstSubmit = async event => {
@@ -93,7 +95,7 @@ class NewNominee extends Component {
                   variant="primary"
                   id="firstSubmit"
                   disabled={!this.state.nomineeAddress || !this.state.nomineeShares || this.state.spinner}
-                  onClick={this.confirmNomination}
+                  onClick={() => this.setState({ showNomineeTransactionModal: true, spinner: true })}
                 >
                   {this.state.spinner ?
                   <Spinner
@@ -105,13 +107,8 @@ class NewNominee extends Component {
                     style={{marginRight: '2px'}}
                   /> : null}
                   {
-                    this.state.spinner === 0 ? 'Confirm New Nominee'
-                      : (
-                        this.state.spinner === 1 ? 'Sending transaction...'
-                          : (
-                            this.state.spinner === 2 ? 'Waiting for confirmation...' : null
-                          )
-                      )}
+                    this.state.spinner ? 'Please wait...' : 'Confirm New Nominee'
+                  }
                 </Button>
               </Col>
             </Row>
@@ -182,6 +179,32 @@ class NewNominee extends Component {
             </div>
           </div>
         </div>
+        <TransactionModal
+            show={this.state.showNomineeTransactionModal}
+            hideFunction={() => this.setState({ showNomineeTransactionModal: false, spinner: false })}
+            ethereum={{
+              transactor: this.props.store.timeallyInstance.functions.addNominee,
+              estimator: this.props.store.timeallyInstance.estimate.addNominee,
+              contract: this.props.store.timeallyInstance,
+              contractName: 'TimeAlly',
+              arguments: [
+                this.props.match.params.id,
+                this.state.nomineeAddress,
+                this.state.nomineeShares
+              ],
+              ESAmount: '0',
+              headingName: 'New Nominee',
+              functionName: 'New Nominee',
+              stakingPlan: this.state.plan,
+              directGasScreen: true,
+              continueFunction: txHash => this.setState({
+                spinner: false,
+                currentScreen: 2,
+                showNomineeTransactionModal: false,
+                txHash
+              })
+            }}
+          />
       </div>
     );
   }

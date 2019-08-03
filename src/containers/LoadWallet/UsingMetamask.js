@@ -26,6 +26,7 @@ class UsingMetamask extends Component {
 
         setTimeout(() => {
           this.setState({ displayText: `Connected to Metamask! Your address is ${this.props.store.walletInstance.address}` });
+          window.connectedToMetamask = true;
         }, 100);
       }
     } else {
