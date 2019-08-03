@@ -94,7 +94,7 @@ class Home extends Component {
         <div className=" col-xl-12 col-lg-8 col-md-12 col-sm-12 col-12">
           <div className="section-title text-center mb60">
           <h1>What is DApp?</h1>
-            <p>Decentralized Applications (DApps) run on a P2P network of computers and are decentralized in nature. They have existed since the advent of P2P networks. DApps uses distributed ledger technology which is neither stored in a centralized location nor managed by any single entity.</p>           
+            <p>Decentralized Applications (DApp) is open source application that runs autonomously on decentralized public blockchain. They have existed since the advent of P2P network. DApp uses distributed ledger technology which is neither stored in centralized location nor can be controlled by single entity. It generates & uses tokens by following a standard cryptographic algorithm. </p>           
             <div class="row">
                 <div className="offset-md-2 col-md-4">
                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
@@ -109,7 +109,7 @@ class Home extends Component {
                 </div>
               </div>
               <h1>What is TimeAlly?</h1>
-            <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the distribution from ES NRT and increase Era Swap count for TA Holders which they hold over a period of time. </p>
+            <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the generation & distribution of ES Newly released Token. TimeAlly increase Era Swap count for TimeAlly contract holders for holding tokens over a period of time.</p>
           </div>
         </div>
       </div>
@@ -122,7 +122,7 @@ class Home extends Component {
               <div className="mb100 text-center section-title">
                 {/* section title start*/}
                 <h1>Features of TimeAlly</h1>
-                <p>TimeAlly is a DApp which refers to a suite of protocols that define distribution of Newly Released Tokens in a decentralized way. TimeAlly uses Ethereum Virtual Machine (“EVM”), which can execute code of arbitrary algorithmic complexity with no downtimes and keeping all created objects safe from modifying. Every transaction triggered by user are recorded transparently & irreversibly in block confirmation so that old transactions are preserved forever for all to see. TimeAlly is an open source application & can work even without any web interface. </p>
+                <p>TimeAlly is a DApp which refers to a suite of protocols that define distribution of Newly Released Era Swap (ES) Tokens in a decentralized way. TimeAlly uses Ethereum Virtual Machine (“EVM”), which can execute code of arbitrary algorithmic complexity following standard cryptography with no downtime and keeping all created objects safe from modifying. Every transaction triggered by users are recorded transparently & irreversibly in block confirmation so that old transactions are preserved forever for all to see. TimeAlly is an open source application & can work even without any web interface.</p>
                 <a class="btn btn-default" href="https://etherscan.io/address/0x5630ee5f247bd6b61991fbb2f117bbeb45990876#code" target="_blank" ><p style={{color:'#fff'}}>View TA Smart Contract</p></a>
               </div>
               {/* /.section title start*/}
