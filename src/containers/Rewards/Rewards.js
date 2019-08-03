@@ -51,7 +51,13 @@ class Rewards extends Component {
             <option value={0}>1 Year</option>
             <option value={1}>2 Year</option>
           </select>*/}<br /><br />
-        <button className="btn btn-default btn-sm" onClick={()=>this.setState({ showTransactionModal: true})} disabled={this.state.claiming}>{this.state.claiming ? 'Claiming...' : 'Claim this into a staking'}</button>
+        <button className="btn btn-default btn-sm" onClick={()=>{
+            if(window.connectedToMetamask) {
+              this.claimReward();
+            } else {
+              this.setState({ showTransactionModal: true});
+            }
+          }} disabled={this.state.claiming}>{this.state.claiming ? 'Claiming...' : 'Claim this into a staking'}</button>
         </div>
       );
     }

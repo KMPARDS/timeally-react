@@ -28,7 +28,7 @@ class StakingId extends Component {
         this.props.store.walletInstance.address,
         this.props.match.params.id
       );
-
+      console.log(staking);
       const stakingPlan = await this.props.store.timeallyInstance.functions.stakingPlans(
         Number(staking[2])
       );
@@ -100,7 +100,7 @@ class StakingId extends Component {
     for(let i = this.state.stakingMonth + 1; i <= this.state.stakingMonth + this.state.planMonths; i++) {
       // if(i > this.state.currentMonth) show grey
       monthsTableRows.push(
-        <tr>
+        <tr key={'month-'+i}>
           <td>{i}</td>
           <td>
 
@@ -185,7 +185,6 @@ class StakingId extends Component {
                     <p>Status: {this.state.staking[3] ? this.state.staking[3].toNumber() : null}</p>
                     {/*<p>Accrued amount: {this.state.staking[4] ? ethers.utils.formatEther(this.state.staking[4]) : null}</p>*/}
                     {this.state.staking[3] && this.state.staking[3].eq(2) ? <p>Loan id: {this.state.staking[5] ? this.state.staking[5].toNumber() : null}</p> : null}
-                    {console.log(this.props)}
                     <button onClick={()=>this.props.history.push(`${this.props.match.url}/nominees`)}>View Nominees</button>
 
                     <br />

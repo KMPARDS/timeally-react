@@ -14,8 +14,8 @@ const ethers = require('ethers');
 class NewStaking extends Component {
   state = {
     currentScreen: 0,
-    userAmount: 0,
-    plan:0,
+    userAmount: undefined,
+    plan: undefined,
     spinner: false,
     waiting: false,
     txHash: '',
@@ -42,9 +42,18 @@ class NewStaking extends Component {
     event.preventDefault();
 
     await this.setState({ spinner: true });
-    setTimeout(()=>{
+    const allowance = await this.props.store.esInstance.functions.allowance(
+      this.props.store.walletInstance.address,
+      this.props.store.timeallyInstance.address
+    );
+
+    console.log('allowance', allowance, allowance.gte(this.state.userAmount));
+
+    if(allowance.gte(this.state.userAmount)) {
+      this.setState({ spinner: false, currentScreen: 2 });
+    } else {
       this.setState({ spinner: false, currentScreen: 1 });
-    }, 300);
+    }
   }
 
   onApproveClick = async() => {
@@ -191,18 +200,19 @@ class NewStaking extends Component {
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 1 of 3</h3>
 
             <Form.Group controlId="stakingAmount">
-              <Form.Control className="stakingInput" onKeyUp={this.onAmountUpdate} type="text" placeholder="Enter amount to stake" style={{width: '325px'}} />
+              <Form.Control className="stakingInput" onChange={this.onAmountUpdate} value={this.state.userAmount} type="text" placeholder="Enter amount to stake" style={{width: '325px'}} />
 
               <Form.Group controlId="exampleForm.ControlSelect1">
                 <Form.Control as="select" onChange={this.onPlanChange}>
-                  <option value="0">1 Year</option>
-                  <option value="1">2 Year</option>
+                  <option disabled selected={this.state.plan === undefined}>Select Staking Plan</option>
+                  <option value="0" selected={this.state.plan === 0}>1 Year</option>
+                  <option value="1" selected={this.state.plan === 1}>2 Year</option>
                 </Form.Control>
               </Form.Group>
             </Form.Group>
 
 
-            <Button variant="primary" id="firstSubmit" type="submit" disabled={!this.state.userAmount || this.state.spinner}>
+            <Button variant="primary" id="firstSubmit" type="submit" disabled={!this.state.userAmount || !this.state.plan || this.state.spinner}>
               {this.state.spinner ?
               <Spinner
                 as="span"
@@ -224,6 +234,7 @@ class NewStaking extends Component {
         <Card>
           <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 2 of 3</h3>
+            <p>This step is for approving TimeAlly Smart Contract to collect {this.state.userAmount} ES from your account. <strong>No funds will not be debited from your account in this step.</strong> Funds will be debited in Step 3 and sent into TimeAlly when you do New Staking transaction.</p>
             {
               this.state.errorMessage
               ? <Alert variant="danger">
@@ -231,7 +242,7 @@ class NewStaking extends Component {
                 </Alert>
               : null
             }
-            <Button onClick={() => this.setState({ showApproveTransactionModal: true }) } disabled={this.state.spinner}>
+            <Button onClick={() => this.setState({ showApproveTransactionModal: true, spinner: true }) } disabled={this.state.spinner}>
               {this.state.spinner ?
               <Spinner
                 as="span"
@@ -241,8 +252,9 @@ class NewStaking extends Component {
                 aria-hidden="true"
                 style={{marginRight: '2px'}}
               /> : null}
-              {this.state.waiting ? 'Waiting for confirmation' : ( this.state.spinner ? 'Sending transaction' : 'Approve TimeAlly')}
+              {this.state.spinner ? 'Please wait...' : 'Approve TimeAlly'}
             </Button>
+            <Button variant="secondary" onClick={() => this.setState({ currentScreen: this.state.currentScreen - 1, spinner: false })}>Back</Button>
           </div>
         </Card>
         </Header>
@@ -261,7 +273,7 @@ class NewStaking extends Component {
                   </Alert>
                 : null
               }
-            <Button onClick={this.stakeNowClick} disabled={this.state.spinner}>
+            <Button onClick={() => this.setState({ showStakeTransactionModal: true, spinner: true }) } disabled={this.state.spinner}>
               {this.state.spinner ?
               <Spinner
                 as="span"
@@ -288,6 +300,7 @@ class NewStaking extends Component {
             <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
               <h3 style={{marginBottom: '15px'}}>Staking created!</h3>
               <p>Your staking is done. You can view your transaction on <a style={{color: 'black'}} href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></p>
+              <Button onClick={() => this.props.history.push('/stakings')}>Go to stakings</Button>
             </div>
           </Card>
 
@@ -301,31 +314,43 @@ class NewStaking extends Component {
         {console.log(this.state)}
         <TransactionModal
           show={this.state.showApproveTransactionModal}
-          hideFunction={() => this.setState({ showApproveTransactionModal: false })}
+          hideFunction={() => this.setState({ showApproveTransactionModal: false, spinner: false })}
           ethereum={{
             transactor: this.props.store.esInstance.functions.approve,
             estimator: this.props.store.esInstance.estimate.approve,
             contract: this.props.store.esInstance,
-            arguments: [this.props.store.timeallyInstance.address, this.state.userAmount],
+            contractName: 'EraSwap',
+            arguments: [this.props.store.timeallyInstance.address, ethers.utils.parseEther(this.state.userAmount?this.state.userAmount:'0')],
             ESAmount: this.state.userAmount,
-            headingName: 'New Staking',
+            headingName: 'Approve Function',
             functionName: 'Approve',
             stakingPlan: this.state.plan,
-            directGasScreen: true
+            directGasScreen: true,
+            continueFunction: () => this.setState({ spinner: false, currentScreen: 2, showApproveTransactionModal: false })
           }}
         />
-      {/*<TransactionModal
+        <TransactionModal
             show={this.state.showStakeTransactionModal}
-            hideFunction={() => this.setState({ showStakeTransactionModal: false })}
+            hideFunction={() => this.setState({ showStakeTransactionModal: false, spinner: false })}
             ethereum={{
-              transactor: this.props.store.timeallyInstance.functions.claimLaunchReward,
-              estimator: this.props.store.timeallyInstance.estimate.claimLaunchReward,
+              transactor: this.props.store.timeallyInstance.functions.newStaking,
+              estimator: this.props.store.timeallyInstance.estimate.newStaking,
               contract: this.props.store.timeallyInstance,
-              arguments: [this.state.stakingPlan],
-              reward: this.state.reward
-              //minimumBetInEs: this.state.minimumBetInExaEs!==undefined ? (new BigNumber(ethers.utils.bigNumberify(this.state.minimumBetInExaEs))).dividedBy(10**18).toFixed() : undefined
+              contractName: 'TimeAlly',
+              arguments: [ethers.utils.parseEther(this.state.userAmount?this.state.userAmount:'0'), this.state.plan],
+              ESAmount: this.state.userAmount,
+              headingName: 'New Staking',
+              functionName: 'New Staking',
+              stakingPlan: this.state.plan,
+              directGasScreen: true,
+              continueFunction: txHash => this.setState({
+                spinner: false,
+                currentScreen: 3,
+                showStakeTransactionModal: false,
+                txHash
+              })
             }}
-          />*/}
+          />
       </>
     )
   }
