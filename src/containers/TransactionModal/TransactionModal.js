@@ -23,35 +23,44 @@ class TransactionModal extends Component {
     transactionError: '',
     hash: ''
   }
-  // componentDidUpdate = async prevProps => {
-  //   if(this.props.show && ( prevProps.show != this.props.show )) {
-  //     // const estimatedGas = (await this.props.ethereum.estimator(...this.props.ethereum.arguments)).toNumber();
-  //     // const ethGasStationResponse = (await axios.get('https://ethgasstation.info/json/ethgasAPI.json')).data;
-  //     // console.log(ethGasStationResponse);
-  //     // this.setState({
-  //     //   ethGasStation: [
-  //     //     ethGasStationResponse['safeLow'],
-  //     //     ethGasStationResponse['average'],
-  //     //     ethGasStationResponse['fast'],
-  //     //     ethGasStationResponse['fastest']
-  //     //   ],
-  //     //   estimatedGas
-  //     // });
+
+  // componentDidUpdate = () => {
+  //   console.log(this.props);
+  //   if(this.props.ethereum.directGasScreen) {
+  //     this.setState({ currentScreen: 1 });
   //   }
-  //
-  //   //console.log(await this.props.estimator() );
-  //
-  //   //
-  //   // let data = ethers.utils.hexDataSlice(ethers.utils.id('fee()'), 0, 4);
-  //   //
-  //   // let transaction = {
-  //   //     to: address,
-  //   //     data: data
-  //   // }
-  //   //
-  //   // let callPromise = defaultProvider.call(transaction);
-  //
+  //   if(this.props.ethereum.stakingPlan) {
+  //     console.log('soham', this.props.ethereum.stakingPlan);
+  //     this.setState({ stakingPlan: this.props.ethereum.stakingPlan });
+  //   }
   // }
+
+  componentDidUpdate = async prevProps => {
+    if(this.props.show && ( prevProps.show != this.props.show )) {
+      console.log(this.props);
+      if(this.props.ethereum.directGasScreen) {
+        // this.setState({ currentScreen: 1 });
+        this.showEstimateGasScreen();
+      }
+      if(this.props.ethereum.stakingPlan !== undefined) {
+        console.log('soham', this.props.ethereum.stakingPlan);
+        this.setState({ stakingPlan: this.props.ethereum.stakingPlan });
+      }
+    }
+
+    //console.log(await this.props.estimator() );
+
+    //
+    // let data = ethers.utils.hexDataSlice(ethers.utils.id('fee()'), 0, 4);
+    //
+    // let transaction = {
+    //     to: address,
+    //     data: data
+    // }
+    //
+    // let callPromise = defaultProvider.call(transaction);
+
+  }
 
   showEstimateGasScreen = async () => {
     this.setState({
@@ -81,8 +90,8 @@ class TransactionModal extends Component {
       // this.state.exaEsTokensToBet = betTokensInExaEsString;
       //
       // const betTokensInExaEs = ethers.utils.bigNumberify(this.state.exaEsTokensToBet)//.mul(10**15).mul(10**3);
-
-      const estimatedGas = (await this.props.ethereum.estimator(this.state.stakingPlan)).toNumber();
+      const args =  this.props.ethereum.directGasScreen ? this.props.ethereum.arguments : [this.state.stakingPlan];
+      const estimatedGas = (await this.props.ethereum.estimator( ...args )).toNumber();
       const ethGasStationResponse = (await axios.get('https://ethgasstation.info/json/ethgasAPI.json')).data;
       console.log(ethGasStationResponse);
       this.setState({
@@ -137,13 +146,13 @@ class TransactionModal extends Component {
     }
     else if(this.state.currentScreen === 0) {
       screenContent = (
-        <Modal.Body>Confirm
-          <h5>Please select a staking plan to create a new staking.</h5>
+        <Modal.Body>
+          {this.props.ethereum.directGasScreen ? null : <><h5>Please select a staking plan to create a new staking.</h5>
           <Form.Control as="select" onChange={event =>this.setState({ stakingPlan: event.target.value })}>
             <option selected disabled>Please click to select a plan</option>
             <option value="0">1 Year</option>
             <option value="1">2 Year</option>
-          </Form.Control>
+          </Form.Control></>}
           {
             this.state.estimationError
             ? <Alert variant="danger">
@@ -194,7 +203,7 @@ class TransactionModal extends Component {
                 </Badge>
             &nbsp;using Vesting Rewards balance:
             <span style={{display: 'block', fontSize: '1.8rem'}}>
-              {this.props.ethereum.reward}<strong>ES</strong>
+              {this.props.ethereum.reward || this.props.ethereum.ESAmount}<strong>ES</strong>
             </span>
             + network fee of Ethereum
             <span style={{display: 'block', fontSize: '1.8rem'}}>
@@ -325,7 +334,7 @@ class TransactionModal extends Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            New Staking
+            {this.props.ethereum.headingName}
           </Modal.Title>
         </Modal.Header>
         {screenContent}
