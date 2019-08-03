@@ -242,7 +242,13 @@ class NewStaking extends Component {
                 </Alert>
               : null
             }
-            <Button onClick={() => this.setState({ showApproveTransactionModal: true, spinner: true }) } disabled={this.state.spinner}>
+            <Button onClick={() => {
+                if(window.connectedToMetamask) {
+                  this.onApproveClick();
+                } else {
+                  this.setState({ showApproveTransactionModal: true, spinner: true });
+                }
+              }} disabled={this.state.spinner}>
               {this.state.spinner ?
               <Spinner
                 as="span"
@@ -273,7 +279,13 @@ class NewStaking extends Component {
                   </Alert>
                 : null
               }
-            <Button onClick={() => this.setState({ showStakeTransactionModal: true, spinner: true }) } disabled={this.state.spinner}>
+            <Button onClick={() => {
+                if(window.connectedToMetamask) {
+                  this.onApproveClick();
+                } else {
+                  this.setState({ showStakeTransactionModal: true, spinner: true });
+                }
+              }} disabled={this.state.spinner}>
               {this.state.spinner ?
               <Spinner
                 as="span"

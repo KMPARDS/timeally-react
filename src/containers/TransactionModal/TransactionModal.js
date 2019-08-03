@@ -269,7 +269,7 @@ class TransactionModal extends Component {
     } else if(this.state.currentScreen === 3) {
       screenContent = (
         <Modal.Body style={{padding: '15px'}}>
-          <p>{this.state.errorMessage ? 'Error from blockchain: ' + this.state.errorMessage : (this.state.transactionStatus === 0
+          <p>{this.state.transactionError ? <Alert variant="danger">{this.state.transactionError}</Alert> : (this.state.transactionStatus === 0
             ? 'Your transaction is being prepared...'
             : (
               this.state.transactionStatus === 1

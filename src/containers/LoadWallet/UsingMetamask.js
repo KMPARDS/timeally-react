@@ -27,7 +27,7 @@ class UsingMetamask extends Component {
         setTimeout(() => {
           this.setState({ displayText: `Connected to Metamask! Your address is ${this.props.store.walletInstance.address}` });
           window.connectedToMetamask = true;
-        }, 100);
+        }, 300);
       }
     } else {
       this.setState({ displayText: 'Metamask is not found. If you have Metamask installed, you can try updating it. EIP 1102 proposed a communication protocol between dApps and Ethereum-enabled DOM environments like Metamask.' });
