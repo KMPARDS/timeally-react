@@ -113,11 +113,12 @@ class TransactionModal extends Component {
   }
 
   sendTransaction = async () => {
-    this.setState({ currentScreen: 3, transactionStatus: 1 });
+    this.setState({ currentScreen: 3, transactionStatus: 1, transactionError: '' });
     const start = new Date();
     // const betTokensInExaEs = ethers.utils.bigNumberify(this.state.exaEsTokensToBet);
     try {
-      const response = await this.props.ethereum.transactor(this.state.stakingPlan);
+      const args =  this.props.ethereum.directGasScreen ? this.props.ethereum.arguments : [this.state.stakingPlan];
+      const response = await this.props.ethereum.transactor( ...args );
       console.log(response, `time taken: ${new Date() - start}`);
       this.setState({ transactionStatus: 2, hash: response.hash });
       await response.wait();
@@ -160,7 +161,7 @@ class TransactionModal extends Component {
               </Alert>
             : null
           }
-          <div style={{display:'block', textAlign: 'center'}}>
+          {this.state.estimationError && this.props.ethereum.directGasScreen ? null : <div style={{display:'block', textAlign: 'center'}}>
             <Button onClick={this.showEstimateGasScreen} disabled={this.state.estimating || this.state.stakingPlan === undefined}>
             {this.state.estimating ?
             <Spinner
@@ -177,7 +178,7 @@ class TransactionModal extends Component {
                 : 'Estimate Network Fees'
               )}
             </Button>
-          </div>
+          </div>}
         </Modal.Body>
       );
     }
@@ -185,9 +186,9 @@ class TransactionModal extends Component {
       screenContent = (
         <Modal.Body style={{padding: '15px'}}>
           From: Your address <strong>{this.state.userAddress.slice(0,6) + '..' + this.state.userAddress.slice(this.state.userAddress.length - 3)}</strong><br />
-          To: TimeAlly address <strong>{this.state.contractAddress.slice(0,6) + '..' + this.state.contractAddress.slice(this.state.contractAddress.length - 3)}</strong>
+        To: {this.props.ethereum.contractName ? this.props.ethereum.contractName : 'TimeAlly'} address <strong>{this.state.contractAddress.slice(0,6) + '..' + this.state.contractAddress.slice(this.state.contractAddress.length - 3)}</strong>
           <Card style={{display:'block', padding: '15px 15px 30px', marginTop: '5px'}}>
-            New Staking on&nbsp;
+            { this.props.ethereum.functionName && this.props.ethereum.functionName !== 'New Staking' ? <Badge variant="dark">{this.props.ethereum.functionName}</Badge> : <><Badge variant="dark">New Staking</Badge> with&nbsp;
             <Badge variant={
                 this.state.stakingPlan == 0
                 ? 'success'
@@ -201,7 +202,7 @@ class TransactionModal extends Component {
                   : 'Plan Id ' + this.state.stakingPlan
                 )}
                 </Badge>
-            &nbsp;using Vesting Rewards balance:
+            {this.props.ethereum.directGasScreen ? null :'using Vesting Rewards balance:'}</>}
             <span style={{display: 'block', fontSize: '1.8rem'}}>
               {this.props.ethereum.reward || this.props.ethereum.ESAmount}<strong>ES</strong>
             </span>
@@ -268,7 +269,7 @@ class TransactionModal extends Component {
     } else if(this.state.currentScreen === 3) {
       screenContent = (
         <Modal.Body style={{padding: '15px'}}>
-          <p>{this.state.transactionStatus === 0
+          <p>{this.state.transactionError ? <Alert variant="danger">{this.state.transactionError}</Alert> : (this.state.transactionStatus === 0
             ? 'Your transaction is being prepared...'
             : (
               this.state.transactionStatus === 1
@@ -282,10 +283,11 @@ class TransactionModal extends Component {
                   : null
                 )
               )
-            )}</p>
+            )
+          )}</p>
           <p>You can view your transaction on <a href={`https://${network === 'homestead' ? '' : 'kovan.' }etherscan.io/tx/${this.state.hash}`} style={{color: 'black'}} target="_blank" rel="noopener noreferrer">EtherScan</a></p>
 
-        {this.state.transactionStatus === 3 ? <Button style={{margin:'0'}} variant="primary" size="lg" block onClick={() => this.props.history.push('/stakings')}>Go to Stakings Page</Button> : null}
+        {this.state.transactionStatus === 3 ? <Button style={{margin:'0'}} variant="primary" size="lg" block onClick={this.props.ethereum.continueFunction ? this.props.ethereum.continueFunction.bind(this, this.state.hash) : () => this.props.history.push('/stakings')}>{this.props.ethereum.continueFunction ? 'Continue' : 'Go to Stakings Page'}</Button> : null}
         </Modal.Body>
       );
     }
@@ -334,7 +336,7 @@ class TransactionModal extends Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            {this.props.ethereum.headingName}
+            {this.props.ethereum.headingName || 'New Staking'}
           </Modal.Title>
         </Modal.Header>
         {screenContent}

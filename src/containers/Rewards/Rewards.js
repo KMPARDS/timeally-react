@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap';
+import { Button, Alert } from 'react-bootstrap';
 import { timeally } from '../../env';
 
 import TransactionModal from '../TransactionModal/TransactionModal';
@@ -13,7 +13,9 @@ class Rewards extends Component {
     status: 0,
     claiming: false,
     stakingPlan: undefined,
-    showTransactionModal: false
+    showTransactionModal: false,
+    errorMessage: '',
+    successDisplay: false
   }
 
   checkReward = async() => {
@@ -22,9 +24,14 @@ class Rewards extends Component {
     this.setState({ status: 2, reward: ethers.utils.formatEther(reward) });
   };
 
-  claimReward = async stakingPlanId => {
-    this.setState({ claiming: true });
-    const reward = await this.props.store.timeallyInstance.functions.claimLaunchReward(stakingPlanId);
+  claimReward = async () => {
+    this.setState({ claiming: true, errorMessage: '' });
+    try {
+      const reward = await this.props.store.timeallyInstance.functions.claimLaunchReward(this.state.stakingPlan);
+      this.setState({ successDisplay: true });
+    } catch (e) {
+      this.setState({ errorMessage: e.message });
+    }
     this.setState({ claiming: false });
   };
 
@@ -46,12 +53,20 @@ class Rewards extends Component {
       rewardComponent = (
         <div>
           <p>Hey! A reward of {this.state.reward} ES is available!</p>
-          {/*<select onChange={event => this.setState({ stakingPlan: event.target.value })}>
+          {window.connectedToMetamask ? <select onChange={event => this.setState({ stakingPlan: event.target.value })}>
             <option value={undefined} selected disabled>Click to select your staking plan</option>
             <option value={0}>1 Year</option>
             <option value={1}>2 Year</option>
-          </select>*/}<br /><br />
-        <button className="btn btn-default btn-sm" onClick={()=>this.setState({ showTransactionModal: true})} disabled={this.state.claiming}>{this.state.claiming ? 'Claiming...' : 'Claim this into a staking'}</button>
+          </select> : null}<br /><br />
+        {this.state.errorMessage ? <Alert variant="danger">{this.state.errorMessage}</Alert> : null}
+        {this.state.successDisplay ? <Alert variant="success">Success! You can go to your stakings page to see your new staking!</Alert> : null}
+        <button className="btn btn-default btn-sm" onClick={()=>{
+            if(window.connectedToMetamask) {
+              this.claimReward();
+            } else {
+              this.setState({ showTransactionModal: true});
+            }
+          }} disabled={this.state.claiming}>{this.state.claiming ? 'Claiming...' : 'Claim this into a staking'}</button>
         </div>
       );
     }
