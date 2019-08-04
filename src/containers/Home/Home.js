@@ -93,23 +93,46 @@ class Home extends Component {
       <div className="row">
         <div className=" col-xl-12 col-lg-8 col-md-12 col-sm-12 col-12">
           <div className="section-title text-center mb60">
-          <h1>What is DApp?</h1>
-            <p>Decentralized Applications (DApp) is open source application that runs autonomously on decentralized public blockchain. They have existed since the advent of P2P network. DApp uses distributed ledger technology which is neither stored in centralized location nor can be controlled by single entity. It generates & uses tokens by following a standard cryptographic algorithm. </p>
+          <h1>What is DApp</h1>
+            <p>Decentralized Applications (DApp) is open source application that runs autonomously on decentralized public blockchain. They have existed since the advent of P2P network. DApp uses distributed ledger technology which is neither stored in centralized location nor can be controlled by single entity. It generates & uses tokens by following a standard cryptographic algorithm. <br></br>
+           <b> TimeAlly DApp Walkthrough</b>
+              </p> 
+
+            <div class="row">
+                <div className="offset-md-4 col-md-4">
+                <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
+                    <iframe src="/images/dapp_walkthrough.mp4" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                  </div>
+                </div>
+                {/* <div className="col-md-4">
+                  <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
+                    <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/m3WyMh43ns8?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                </div> */}
+              </div>
+              <h1>What is TimeAlly</h1>
+            <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the generation & distribution of ES Newly released Token. TimeAlly increase Era Swap count for TimeAlly contract holders for holding tokens over a period of time.</p>
             <div class="row">
                 <div className="offset-md-2 col-md-4">
                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
                     <iframe src="https://www.youtube.com/embed/srsL3_UIsvE?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                   </div>
                 </div>
-
                 <div className="col-md-4">
                   <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
                     <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/m3WyMh43ns8?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                 </div>
               </div>
-              <h1>What is TimeAlly?</h1>
-            <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the generation & distribution of ES Newly released Token. TimeAlly increase Era Swap count for TimeAlly contract holders for holding tokens over a period of time.</p>
+              <h1>How to claim your stakings in TimeAlly</h1>
+            {/* <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the generation & distribution of ES Newly released Token. TimeAlly increase Era Swap count for TimeAlly contract holders for holding tokens over a period of time.</p> */}
+            <div class="row">
+                <div className="offset-md-4 col-md-4">
+                <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
+                <iframe src="/images/How_to_claim_your_stakings_in_TimeAlly.mp4" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
       </div>
@@ -329,12 +352,10 @@ class Home extends Component {
               </div>
               {/* /.hero-caption */}
             </div>
-
             <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12 text-right">
               <div className="mt10">
                 {/* <img src="./images/TimeAlly-Info-wp.png" alt className="img-fluid" /> */}
               </div>
-
             </div>
           </div>
         </div>
