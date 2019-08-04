@@ -96,12 +96,15 @@ class Home extends Component {
           <h1>What is DApp</h1>
             <p>Decentralized Applications (DApp) is open source application that runs autonomously on decentralized public blockchain. They have existed since the advent of P2P network. DApp uses distributed ledger technology which is neither stored in centralized location nor can be controlled by single entity. It generates & uses tokens by following a standard cryptographic algorithm. <br></br>
            <b> TimeAlly DApp Walkthrough</b>
-              </p> 
+              </p>
 
             <div class="row">
                 <div className="offset-md-4 col-md-4">
                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                    <iframe src="/images/dapp_walkthrough.mp4" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                    {/*<iframe src="/images/dapp_walkthrough.mp4" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />*/}
+                    <video width="100%" controls>
+                      <source src="/images/dapp_walkthrough.mp4" type="video/mp4" />
+                    </video>
                   </div>
                 </div>
                 {/* <div className="col-md-4">
@@ -129,8 +132,11 @@ class Home extends Component {
             <div class="row">
                 <div className="offset-md-4 col-md-4">
                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                <iframe src="/images/How_to_claim_your_stakings_in_TimeAlly.mp4" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
-                  </div>
+                  {/*<iframe src="/images/How_to_claim_your_stakings_in_TimeAlly.mp4" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />*/}
+                  <video width="100%" controls>
+                    <source src="/images/How_to_claim_your_stakings_in_TimeAlly.mp4" type="video/mp4" />
+                  </video>
+                </div>
                 </div>
               </div>
           </div>
