@@ -152,7 +152,7 @@ class Home extends Component {
                 {/* section title start*/}
                 <h1>Features of TimeAlly</h1>
                 <p>TimeAlly is a DApp which refers to a suite of protocols that define distribution of Newly Released Era Swap (ES) Tokens in a decentralized way. TimeAlly uses Ethereum Virtual Machine (“EVM”), which can execute code of arbitrary algorithmic complexity following standard cryptography with no downtime and keeping all created objects safe from modifying. Every transaction triggered by users are recorded transparently & irreversibly in block confirmation so that old transactions are preserved forever for all to see. TimeAlly is an open source application & can work even without any web interface.</p>
-                <a class="btn btn-default" href="https://etherscan.io/address/0x5630ee5f247bd6b61991fbb2f117bbeb45990876#code" target="_blank" ><p style={{color:'#fff'}}>View TA Smart Contract</p></a>
+                <a rel="noopener noreferrer" className="btn btn-default" href="https://etherscan.io/address/0x5630ee5f247bd6b61991fbb2f117bbeb45990876#code" target="_blank" ><p style={{color:'#fff'}}>View TA Smart Contract</p></a>
               </div>
               {/* /.section title start*/}
             </div>
