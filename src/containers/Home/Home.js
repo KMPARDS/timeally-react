@@ -33,7 +33,7 @@ class Home extends Component {
 
   render() {
     return (
-    
+
  <div>
   <div className="hero-section">
       <div className="container">
@@ -96,14 +96,17 @@ class Home extends Component {
           <h1>What is DApp</h1>
             <p>Decentralized Applications (DApp) is open source application that runs autonomously on decentralized public blockchain. They have existed since the advent of P2P network. DApp uses distributed ledger technology which is neither stored in centralized location nor can be controlled by single entity. It generates & uses tokens by following a standard cryptographic algorithm. <br></br>
            <b> TimeAlly DApp Walkthrough</b>
-              </p> 
-            
+              </p>
+
             <div class="row">
                 <div className="offset-md-4 col-md-4">
                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                    <iframe src="/images/dapp_walkthrough.mp4" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                    {/*<iframe src="/images/dapp_walkthrough.mp4" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />*/}
+                    <video width="100%" controls>
+                      <source src="/images/dapp_walkthrough.mp4" type="video/mp4" />
+                    </video>
                   </div>
-                </div>                
+                </div>
                 {/* <div className="col-md-4">
                   <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
                     <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/m3WyMh43ns8?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -117,10 +120,10 @@ class Home extends Component {
                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
                     <iframe src="https://www.youtube.com/embed/srsL3_UIsvE?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                   </div>
-                </div>                
+                </div>
                 <div className="col-md-4">
                   <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                    <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/m3WyMh43ns8?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/m3WyMh43ns8?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                 </div>
               </div>
@@ -129,9 +132,12 @@ class Home extends Component {
             <div class="row">
                 <div className="offset-md-4 col-md-4">
                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                <iframe src="/images/How_to_claim_your_stakings_in_TimeAlly.mp4" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
-                  </div>
-                </div>    
+                  {/*<iframe src="/images/How_to_claim_your_stakings_in_TimeAlly.mp4" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />*/}
+                  <video width="100%" controls>
+                    <source src="/images/How_to_claim_your_stakings_in_TimeAlly.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                </div>
               </div>
           </div>
         </div>
@@ -217,7 +223,7 @@ class Home extends Component {
                       <li>Vesting for 2 Year: 15% (1.25% per month) of ES Tokens from NRT pool is allocated  to be distributed among TA Vestors.</li>
                       <li>All the Rewards will be distributed 50% in TimeAlly & 50 % in Liquid.</li>
                     </ul>
-                   
+
                     There is a fixed number of ES rewarded every month to users which is governed by TA smart contract. Total number of ES tokens to be distributed among TA holders is pre-defined, but which user will get how many ES tokens is not defined. It depends on number of token staked in proportion to their vesting plans.</p>
                     <div className="row">
                       <div className="col-md-6">
@@ -306,20 +312,20 @@ class Home extends Component {
                 <h1 className="text-white">Power <img src="./images/pt.png" style={{height:'69px'}} /> Tokens</h1>
                 <p className="text-white">Power Tokens are additional 10% of NRT allocated every month to TimeAlly vestors. Power Tokens are allocated to the TimeAlly members in a ratio 10:1 per year. The Power Tokens can be uses to encourage, appreciate, donate to friends, family, collegues on Swappers Wall and services on Time Swappers & Buzcafe.<br></br>To know more about power token the user can read <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank" >Era Swap White Paper</a><br></br><br></br>
                 <strong>Use Power Tokens on below platforms</strong>
-                </p>                
+                </p>
                  <div className="col-md-12">
                     <span style={{marginLeft:'10px'}}>
                       <a href="http://timeswappers.com/home" target="_blank" >
-                       <img src="./images/swp_bz-01.png" style={{ height:'80px'}}></img> 
-                      </a> 
+                       <img src="./images/swp_bz-01.png" style={{ height:'80px'}}></img>
+                      </a>
                     </span>
                     <span style={{marginLeft:'10px'}}>
                       <a href="http://timeswappers.com/marketplace" target="_blank" >
-                       <img src="./images/ts.png" style={{ height:'80px'}}></img> 
-                      </a> 
+                       <img src="./images/ts.png" style={{ height:'80px'}}></img>
+                      </a>
                     </span>
-                    <span style={{marginLeft:'10px'}}>                      
-                       <img src="./images/swp_bz-02.png" style={{ height:'80px'}}></img>                       
+                    <span style={{marginLeft:'10px'}}>
+                       <img src="./images/swp_bz-02.png" style={{ height:'80px'}}></img>
                     </span>
                   </div>
                   <br></br>
@@ -327,28 +333,28 @@ class Home extends Component {
                   <div className="offset-md-2 col-md-4">
                     <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
                         <iframe src="https://www.youtube.com/embed/X0SV9pGQls4?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
-                      </div>               
+                      </div>
                   </div>
-                  
+
                   <div className="col-md-4">
                     <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                      <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/pCsg5betihY?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/pCsg5betihY?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                   </div>
                 </div>
-                <div className="row">                  
+                <div className="row">
                   {/* <div className="col-md-4">
-                    <img src="./images/swp_bz-01.png"></img> 
+                    <img src="./images/swp_bz-01.png"></img>
                   </div> */}
-                 
+
                   {/* <div className="col-md-4">
-                  <img src="./images/swp_bz-02.png"></img> 
+                  <img src="./images/swp_bz-02.png"></img>
                   </div> */}
                 </div>
                 {/* <a className="btn-link-white">Watch the video for TimeAlly activation</a> */}
                 {/* <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
                     <iframe width="560" height="315" style={{position: 'absolute', top: 0, left: 0,}} src="https://www.youtube.com/embed/X0SV9pGQls4?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                  </div> */}                
+                  </div> */}
               </div>
               {/* /.hero-caption */}
             </div>
