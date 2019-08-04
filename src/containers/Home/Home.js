@@ -303,7 +303,7 @@ class Home extends Component {
             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               {/* hero-caption */}
               <div className="card-hero-block text-center">
-                <h1 className="text-white">Power <img src="./images/pt.png" /> Tokens</h1>
+                <h1 className="text-white">Power <img src="./images/pt.png" style={{height:'69px'}} /> Tokens</h1>
                 <p className="text-white">Power Tokens are additional 10% of NRT allocated every month to TimeAlly vestors. Power Tokens are allocated to the TimeAlly members in a ratio 10:1 per year. The Power Tokens can be uses to encourage, appreciate, donate to friends, family, collegues on Swappers Wall and services on Time Swappers & Buzcafe.<br></br>To know more about power token the user can read <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank" >Era Swap White Paper</a><br></br><br></br>
                 <strong>Use Power Tokens on below platforms</strong>
                 </p>                
