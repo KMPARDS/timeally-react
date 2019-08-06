@@ -166,7 +166,7 @@ class CreateWalletPage extends Component {
     const element = document.createElement("a");
     const file = new Blob([JSON.stringify(this.state.keystore)], {type: 'text/plain'});
     element.href = URL.createObjectURL(file);
-    element.download = this.state.keystoreFileName; //"keystore.txt";
+    element.download = this.state.keystoreFileName+'.json' ; //"keystore.txt";
     document.body.appendChild(element); // Required for this to work in FireFox
     element.click();
     this.setState({ keystoreSpinner: false, userDownloadedKeystore: true });
