@@ -137,9 +137,9 @@ function App(props) {
 									<li className="list-inline-item">
 										<a href="https://www.linkedin.com/company/eraswap/" target="_blank"><i className="fa fa-linkedin"></i></a>
 									</li>
-									<li className="list-inline-item">
+									{/* <li className="list-inline-item">
 										<a href="https://plus.google.com/u/2/107638861216745114245" target="_blank"><i className="fa fa-google-plus"></i></a>
-									</li>
+									</li> */}
 									<li className="list-inline-item">
 										<a href="https://www.reddit.com/user/EraSwap" target="_blank"><i className="fa fa-reddit"></i></a>
 									</li>
