@@ -24,7 +24,8 @@ class NewStaking extends Component {
     errorMessage: '',
     showApproveTransactionModal: false,
     showStakeTransactionModal: false,
-    approveSuccess: false
+    approveSuccess: false,
+    approveAlreadyDone: false
   }
 
   componentDidMount=()=>{
@@ -52,7 +53,11 @@ class NewStaking extends Component {
     console.log('allowance', allowance, allowance.gte(this.state.userAmount));
 
     if(allowance.gte(ethers.utils.parseEther(this.state.userAmount))) {
-      this.setState({ spinner: false, currentScreen: 2 });
+      this.setState({
+        spinner: false,
+        currentScreen: 1,
+        approveAlreadyDone: true
+      });
     } else {
       this.setState({ spinner: false, currentScreen: 1 });
     }
@@ -236,39 +241,46 @@ class NewStaking extends Component {
         <Card>
           <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 2 of 3</h3>
-            <p>This step is for approving TimeAlly Smart Contract to collect {this.state.userAmount} ES from your account. <strong>No funds will not be debited from your account in this step.</strong> Funds will be debited in Step 3 and sent into TimeAlly when you do New Staking transaction.</p>
-            {
-              this.state.errorMessage
-              ? <Alert variant="danger">
-                  {this.state.errorMessage}
-                </Alert>
-              : null
-            }
-            {this.state.approveSuccess
-              ? <>
-                <Alert variant="warning">Your approve tx is confirmed! <strong>Note: Your {this.state.userAmount} ES has not been staked in TimeAlly yet.</strong> Please go to third step to do your staking transaction.</Alert>
-                <Button onClick={() => this.setState({ currentScreen: 2 })}>
-                  Go to 3rd Step
-                </Button>
-              </>
-              : <Button onClick={() => {
-                if(window.connectedToMetamask) {
-                  this.onApproveClick();
-                } else {
-                  this.setState({ showApproveTransactionModal: true, spinner: true });
-                }
-              }} disabled={this.state.spinner}>
-              {this.state.spinner ?
-              <Spinner
-                as="span"
-                animation="border"
-                size="sm"
-                role="status"
-                aria-hidden="true"
-                style={{marginRight: '2px'}}
-              /> : null}
-              {this.state.spinner ? 'Please wait...' : 'Approve TimeAlly'}
-            </Button>}
+            {!this.state.approveAlreadyDone ? <>
+              <p>This step is for approving TimeAlly Smart Contract to collect {this.state.userAmount} ES from your account. <strong>No funds will not be debited from your account in this step.</strong> Funds will be debited in Step 3 and sent into TimeAlly when you do New Staking transaction.</p>
+              {
+                this.state.errorMessage
+                ? <Alert variant="danger">
+                    {this.state.errorMessage}
+                  </Alert>
+                : null
+              }
+              {this.state.approveSuccess
+                ? <>
+                  <Alert variant="warning">Your approve tx is confirmed! <strong>Note: Your {this.state.userAmount} ES has not been staked in TimeAlly yet.</strong> Please go to third step to do your staking transaction.</Alert>
+                  <Button onClick={() => this.setState({ currentScreen: 2 })}>
+                    Go to 3rd Step
+                  </Button>
+                </>
+                : <Button onClick={() => {
+                  if(window.connectedToMetamask) {
+                    this.onApproveClick();
+                  } else {
+                    this.setState({ showApproveTransactionModal: true, spinner: true });
+                  }
+                }} disabled={this.state.spinner}>
+                {this.state.spinner ?
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                  style={{marginRight: '2px'}}
+                /> : null}
+                {this.state.spinner ? 'Please wait...' : 'Approve TimeAlly'}
+              </Button>}
+            </> : <>
+              <Alert variant="primary">This dApp just noticed that you already have enough allowance. You can directly continue to the third step and do your staking transaction.</Alert>
+              <Button onClick={() => this.setState({ currentScreen: 2 })}>
+                Go to 3rd Step
+              </Button>
+            </>}
             <Button variant="secondary" onClick={() => this.setState({ currentScreen: this.state.currentScreen - 1, spinner: false })}>Back</Button>
           </div>
         </Card>
