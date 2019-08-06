@@ -18,11 +18,13 @@ class NewStaking extends Component {
     plan: undefined,
     spinner: false,
     waiting: false,
+    approveTxHash: '',
     txHash: '',
     open: false,
     errorMessage: '',
     showApproveTransactionModal: false,
-    showStakeTransactionModal: false
+    showStakeTransactionModal: false,
+    approveSuccess: false
   }
 
   componentDidMount=()=>{
@@ -49,7 +51,7 @@ class NewStaking extends Component {
 
     console.log('allowance', allowance, allowance.gte(this.state.userAmount));
 
-    if(allowance.gte(this.state.userAmount)) {
+    if(allowance.gte(ethers.utils.parseEther(this.state.userAmount))) {
       this.setState({ spinner: false, currentScreen: 2 });
     } else {
       this.setState({ spinner: false, currentScreen: 1 });
@@ -67,9 +69,9 @@ class NewStaking extends Component {
     try {
       const tx = await contractWithSigner.functions.approve(timeally.address, ethers.utils.parseEther(this.state.userAmount), {gasPrice: 10000000000});
       console.log(tx);
-      await this.setState({ waiting: true });
+      await this.setState({ waiting: true, approveTxHash: tx.hash });
       await tx.wait();
-      this.setState({ spinner: false, waiting: false, currentScreen: 2 });
+      this.setState({ spinner: false, waiting: false, approveSuccess: true });
     } catch (err) {
       this.setState({
         spinner: false, waiting: false,
@@ -242,7 +244,14 @@ class NewStaking extends Component {
                 </Alert>
               : null
             }
-            <Button onClick={() => {
+            {this.state.approveSuccess
+              ? <>
+                <Alert variant="warning">Your approve tx is confirmed! <strong>Note: Your {this.state.userAmount} ES has not been staked in TimeAlly yet.</strong> Please go to third step to do your staking transaction.</Alert>
+                <Button onClick={() => this.setState({ currentScreen: 2 })}>
+                  Go to 3rd Step
+                </Button>
+              </>
+              : <Button onClick={() => {
                 if(window.connectedToMetamask) {
                   this.onApproveClick();
                 } else {
@@ -259,7 +268,7 @@ class NewStaking extends Component {
                 style={{marginRight: '2px'}}
               /> : null}
               {this.state.spinner ? 'Please wait...' : 'Approve TimeAlly'}
-            </Button>
+            </Button>}
             <Button variant="secondary" onClick={() => this.setState({ currentScreen: this.state.currentScreen - 1, spinner: false })}>Back</Button>
           </div>
         </Card>
@@ -311,7 +320,7 @@ class NewStaking extends Component {
           <Card>
             <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
               <h3 style={{marginBottom: '15px'}}>Staking created!</h3>
-              <p>Your staking is done. You can view your transaction on <a style={{color: 'black'}} href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></p>
+              <Alert variant="success">Your staking is done. You can view your transaction on <a style={{color: 'black'}} href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></Alert>
               <Button onClick={() => this.props.history.push('/stakings')}>Go to stakings</Button>
             </div>
           </Card>
