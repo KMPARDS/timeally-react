@@ -97,11 +97,15 @@ class Dashboard extends Component {
       topics
     });
 
+    console.log('fetching logs from the ethereum blockchain', logs);
+
     const stakings = [];
     for(let i = logs.length - 1; i >= 0; i--) {
       const log = logs[i];
+      // console.log(log);
       const address = log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length);
-      const stakingId = Number(log.data.slice(66,130));
+      const stakingId = Number('0x'+log.data.slice(66,130));
+      console.log(stakingId);
       const staking = await this.props.store.timeallyInstance.functions.stakings(address, stakingId);
       //console.log(staking);
       stakings.push({
@@ -113,8 +117,6 @@ class Dashboard extends Component {
     }
 
     this.setState({ stakings });
-
-    console.log('fetching logs from the ethereum blockchain', logs);
   }
 
   render() {
@@ -182,7 +184,7 @@ class Dashboard extends Component {
                         </div>
                       </div>
                     </div>
-                    <div className="v2" />                    
+                    <div className="v2" />
                     <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
                       <div className="row">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
