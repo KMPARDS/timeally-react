@@ -199,7 +199,7 @@ class NavbarComponent extends Component {
                     : null
                   }
 
-                   <Nav.Link  href="/pdf/TimeAlly_Terms_Use.pdf" target="_blank" ><span style={{color:'#fff'}}>T & C</span></Nav.Link>
+                   <Nav.Link  href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank" ><span style={{color:'#fff'}}>T & C</span></Nav.Link>
 
                         {/* <Nav.Link href="#link">Link</Nav.Link> */}
                         {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
