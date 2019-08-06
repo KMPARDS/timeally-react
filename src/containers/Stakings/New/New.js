@@ -281,7 +281,7 @@ class NewStaking extends Component {
               }
             <Button onClick={() => {
                 if(window.connectedToMetamask) {
-                  this.onApproveClick();
+                  this.stakeNowClick();
                 } else {
                   this.setState({ showStakeTransactionModal: true, spinner: true });
                 }
