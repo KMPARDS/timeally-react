@@ -50,7 +50,7 @@ class NewStaking extends Component {
       this.props.store.timeallyInstance.address
     );
 
-    console.log('allowance', allowance, allowance.gte(this.state.userAmount));
+    console.log('allowance', allowance, allowance.gte(ethers.utils.parseEther(this.state.userAmount)));
 
     if(allowance.gte(ethers.utils.parseEther(this.state.userAmount))) {
       this.setState({
@@ -59,7 +59,7 @@ class NewStaking extends Component {
         approveAlreadyDone: true
       });
     } else {
-      this.setState({ spinner: false, currentScreen: 1 });
+      this.setState({ spinner: false, currentScreen: 1, approveAlreadyDone: false });
     }
   }
 
