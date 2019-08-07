@@ -38,7 +38,7 @@ class StakingList extends Component {
     for(let i = logs.length - 1; i >= 0; i--) {
       const log = logs[i];
       const address = log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length);
-      const stakingId = Number(log.data.slice(66,130));
+      const stakingId = Number('0x'+log.data.slice(66,130));
       const staking = await this.props.store.timeallyInstance.functions.stakings(address, stakingId);
       console.log(staking);
       stakings.push({
@@ -210,7 +210,7 @@ class StakingList extends Component {
                   <div className="wrapper-content bg-white pinside40">
                    <div className="bg-white section-space80">
                      <div className="container">
-           
+
                     {this.state.loadingStakings ? <p>Please wait loading your stakings</p> : (
                       <>
                         <p>Note: Your benefit withdrawls are sent 50% to your wallet address and 50% to your rewards. Please go to Rewards section and click on check your rewards to see all your rewards</p>
@@ -284,7 +284,7 @@ class StakingList extends Component {
                             </tr>
                           ))}
                         </tbody>
-                      </table> 
+                      </table>
                       : <p>There are no stakings to show. <span onClick={() => this.props.history.push('/stakings/new')}>You can create a new staking by clicking here.</span></p>
                       } </div></>
                       )
@@ -299,7 +299,7 @@ class StakingList extends Component {
                           <a href="#">6</a>
                           <a href="#">»</a>
                       </div>*/}
-                     
+
                    </div>
                 </div>
               </div>
