@@ -14,6 +14,7 @@ class StakingList extends Component {
     benefitSpinner: {},
     withdraw: {},
     withdrawSpinner: {},
+    time: {}
   }
 
   componentDidMount = async () => {
@@ -40,16 +41,34 @@ class StakingList extends Component {
       const address = log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length);
       const stakingId = Number('0x'+log.data.slice(66,130));
       const staking = await this.props.store.timeallyInstance.functions.stakings(address, stakingId);
+      const timestamp = staking[1].toNumber();
       console.log(staking);
       stakings.push({
         address,
         planId: ethers.utils.bigNumberify(log.topics[2]).toNumber(),
         amount: ethers.utils.formatEther(ethers.utils.bigNumberify(log.data.slice(0,66))),
-        timestamp: staking[1].toNumber()
+        timestamp
       });
+      const mou = (await this.props.store.esInstance.functions.mou()).toNumber();
+      const time = {...this.state.time}; let factor = 0;
+      while(!(time[stakingId] > 0)) {
+        time[stakingId] = (timestamp + 2629744 * factor++) - mou || Math.floor(Date.now()/1000);
+      }
+
+      console.log(stakingId, timestamp, factor, time[stakingId]);
+
+      this.setState({ time });
     }
 
     this.setState({ stakings, loadingStakings: false });
+
+    setInterval(() => {
+      const time = {...this.state.time};
+      for (const stakingId in time) {
+        time[stakingId]--;
+      }
+      this.setState({ time });
+    }, 1000);
 
     console.log('fetching logs from the ethereum blockchain', logs);
   }
@@ -223,20 +242,25 @@ class StakingList extends Component {
                             <th>Staking Amount</th>
                             <th>Plan</th>
                             <th>Time</th>
-                            <th>Claimed Benefits</th>
+                            <th>Estimated Next benefit time</th>
                             <th>Unclaimed Benefits</th>
                             <th>Details</th>
                             {/*<th>Actions</th>*/}
                           </tr>
                         </thead>
                         <tbody>
-                          {this.state.stakings.map((staking, index) => (
+                          {this.state.stakings.map((staking, index) => {
+                            const days = Math.floor(this.state.time[this.state.stakings.length - index - 1]/60/60/24);
+                            const hours = Math.floor((this.state.time[this.state.stakings.length - index - 1] - days * 60 * 60 * 24) / 60 / 60);
+                            const minutes = Math.floor((this.state.time[this.state.stakings.length - index - 1] - days * 60 * 60 * 24 - hours * 60 * 60) / 60);
+                            const seconds = this.state.time[this.state.stakings.length - index - 1] - days * 60 * 60 * 24 - hours * 60 * 60 - minutes * 60;
+                            return (
                             <tr>
                               <td>{this.state.stakings.length - index - 1}</td>
                               <td>{staking.amount} ES</td>
                               <td>{staking.planId ? '2 Year' : '1 Year'}</td>
                               <td>{new Date(staking.timestamp * 1000).toLocaleString()}</td>
-                              <td></td>
+                              <td>{days} days, {hours} hours, {minutes} minutes and {seconds} seconds</td>
                               <td>{
                                   this.state.benefits[this.state.stakings.length - index - 1]
                                     ? (
@@ -282,7 +306,8 @@ class StakingList extends Component {
                               <td><button onClick={() => this.props.history.push('/stakings/'+ (this.state.stakings.length - index - 1))} className="btn query btn-primary">View Staking</button></td>
                               {/*<td><button className="btn query btn-primary">WITHDRAW</button></td>*/}
                             </tr>
-                          ))}
+                          );
+                          })}
                         </tbody>
                       </table>
                       : <p>There are no stakings to show. <span onClick={() => this.props.history.push('/stakings/new')}>You can create a new staking by clicking here.</span></p>
