@@ -359,7 +359,12 @@ class NewStaking extends Component {
             functionName: 'Approve',
             stakingPlan: this.state.plan,
             directGasScreen: true,
-            continueFunction: () => this.setState({ spinner: false, currentScreen: 2, showApproveTransactionModal: false })
+            continueFunction: () => this.setState({
+              spinner: false,
+              // currentScreen: 2,
+              approveSuccess: true,
+              showApproveTransactionModal: false
+            })
           }}
         />
         <TransactionModal
