@@ -8,6 +8,7 @@ import Home from './containers/Home/Home';
 import CreateWallet from './containers/CreateWallet/CreateWallet';
 import LoadWallet from './containers/LoadWallet/LoadWallet';
 import Dashboard from './containers/Dashboard/Dashboard';
+import ViewAllWorldStakings from './containers/Dashboard/ViewAllWorldStakings';
 import Transactions from './containers/Transactions/Transactions';
 import StakingTransactions from './containers/Transactions/Stakings';
 import WithdrawlTransactions from './containers/Transactions/Withdrawls';
@@ -107,6 +108,7 @@ function App(props) {
             <Route path="/create-wallet" exact component={CreateWallet} />
             <Route path="/load-wallet" component={LoadWallet} />
             <Route path="/dashboard" exact component={Dashboard} />
+            <Route path="/view-all-world-staking" exact component={ViewAllWorldStakings} />
             <Route path="/wallet" exact component={Wallet} />
             <Route path="/stakings" component={Staking} />
             <Route path="/nominee" exact component={nominee} />
