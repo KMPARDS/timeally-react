@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { timeally } from '../../env';
 
+import StakingEntry from './StakingEntry';
+
 const ethers = require('ethers');
 
 class Dashboard extends Component {
@@ -109,13 +111,14 @@ class Dashboard extends Component {
       const address = log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length);
       const stakingId = Number('0x'+log.data.slice(66,130));
       console.log(stakingId);
-      const staking = await this.props.store.timeallyInstance.functions.stakings(address, stakingId);
+      // const staking = await this.props.store.timeallyInstance.functions.stakings(address, stakingId);
       //console.log(staking);
       stakings.push({
         address,
+        stakingId,
         planId: ethers.utils.bigNumberify(log.topics[2]).toNumber(),
         amount: window.lessDecimals(ethers.utils.bigNumberify(log.data.slice(0,66))),
-        timestamp: staking[1].toNumber()
+        transactionHash: log.transactionHash
       });
     }
 
@@ -208,31 +211,43 @@ class Dashboard extends Component {
         </div>
       </div>
       <div className="container">
-       <h2 className="mb20">View All Staking in the World</h2>
+       <h2 className="mb20">View Recent Stakings in the World</h2>
           <div className="row pinside40 maintable">
               <div className="tablebg">
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                          <table className="table" border="1">
+                          {this.state.stakings.length ? <table className="table" border="1">
                               <thead style={{textAlign:'center'}}>
                                 <tr>
                                   <th>Address</th>
                                   <th>Plan</th>
                                   <th>Amount</th>
+                                  <th>Staking Type</th>
                                   <th>Timestamp</th>
                                 </tr>
                               </thead>
                             <tbody  style={{textAlign:'center'}}>
 
                           {this.state.stakings.map( (staking, index) => (
-                                <tr key={`dashboard-${index}`}>
+                              <>
+                                {/*<tr key={`dashboard-${index}`}>
                                   <td style={{color:'#f51f8a'}}>{staking.address}</td>
                                   <td>{staking.planId ? '2 Year' : '1 Year'}</td>
                                   <td>{staking.amount}</td>
                                   <td>{new Date(staking.timestamp * 1000).toLocaleString()}</td>
-                                </tr>
+                                </tr>*/}
+                                  <StakingEntry
+                                    address={staking.address}
+                                    stakingId={staking.stakingId}
+                                    planId={staking.planId}
+                                    amount={staking.amount}
+                                    transactionHash={staking.transactionHash}
+                                  />
+                                </>
                               ))}
                               </tbody>
-                            </table>
+                            </table>: 'Please wait loading recent stakings...'}
+                            <br />
+                            <Button onClick={() => this.props.history.push('/view-all-world-staking')}>View all stakings in the world</Button>
                             {/*<div className="pagination">
                                 <a href="#">«</a>
                                 <a className="active" href="#">1</a>
