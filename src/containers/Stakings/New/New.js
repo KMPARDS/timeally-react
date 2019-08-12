@@ -4,12 +4,8 @@ import { Card, Form, Button, Spinner, Alert } from 'react-bootstrap';
 import Header from './Header';
 import { esContract, timeally, network } from '../../../env';
 import Modal from "react-responsive-modal";
-
 import TransactionModal from '../../TransactionModal/TransactionModal';
-
 const ethers = require('ethers');
-
-
 
 class NewStaking extends Component {
   state = {
@@ -100,7 +96,6 @@ class NewStaking extends Component {
       });
     }
   }
-
   stakeNowClick = async() => {
     const contractWithSigner = new ethers.Contract(
       timeally.address,
@@ -380,7 +375,7 @@ class NewStaking extends Component {
             contractName: 'EraSwap',
             arguments: [this.props.store.timeallyInstance.address, ethers.utils.parseEther(this.state.userAmount?this.state.userAmount:'0')],
             ESAmount: this.state.userAmount,
-            headingName: 'Approve Function',
+            headingName: 'Approval Status',
             functionName: 'Approve',
             stakingPlan: this.state.plan,
             directGasScreen: true,
