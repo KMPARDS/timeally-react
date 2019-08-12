@@ -18,25 +18,25 @@ class Dashboard extends Component {
   componentDidMount = async () => {
     this.showStakings();
 
-    (async() => {
-      const newStakingEventSig = ethers.utils.id("NewStaking(address,uint256,uint256,uint256)");
-      const topics = [ newStakingEventSig, null, null, null ];
-
-      const logs = await this.props.store.providerInstance.getLogs({
-        address: timeally.address,
-        fromBlock: (await this.props.store.providerInstance.getBlockNumber()) - 5760,
-        toBlock: 'latest',
-        topics
-      });
-      let stakingsInLast24Hours = ethers.utils.bigNumberify(0);
-      for(const log of logs) {
-        stakingsInLast24Hours = stakingsInLast24Hours.add(ethers.utils.bigNumberify(log.data.slice(0,66)));
-      }
-      // console.log('24 hrs logs', logs);
-      // console.log(ethers.utils.formatEther(stakingsInLast24Hours));
-
-      this.setState({ stakingsInLast24Hours: window.lessDecimals(stakingsInLast24Hours) });
-    })();
+    // (async() => {
+    //   const newStakingEventSig = ethers.utils.id("NewStaking(address,uint256,uint256,uint256)");
+    //   const topics = [ newStakingEventSig, null, null, null ];
+    //
+    //   const logs = await this.props.store.providerInstance.getLogs({
+    //     address: timeally.address,
+    //     fromBlock: (await this.props.store.providerInstance.getBlockNumber()) - 5760,
+    //     toBlock: 'latest',
+    //     topics
+    //   });
+    //   let stakingsInLast24Hours = ethers.utils.bigNumberify(0);
+    //   for(const log of logs) {
+    //     stakingsInLast24Hours = stakingsInLast24Hours.add(ethers.utils.bigNumberify(log.data.slice(0,66)));
+    //   }
+    //   // console.log('24 hrs logs', logs);
+    //   // console.log(ethers.utils.formatEther(stakingsInLast24Hours));
+    //
+    //   this.setState({ stakingsInLast24Hours: window.lessDecimals(stakingsInLast24Hours) });
+    // })();
 
     const currentMonth = Number(await this.props.store.timeallyInstance.functions.getCurrentMonth());
     this.setState({ currentMonth: currentMonth });
@@ -92,17 +92,20 @@ class Dashboard extends Component {
 
     const logs = await this.props.store.providerInstance.getLogs({
       address: timeally.address,
-      fromBlock: 0,
+      fromBlock: (await this.props.store.providerInstance.getBlockNumber()) - 5760,
       toBlock: 'latest',
       topics
     });
 
     console.log('fetching logs from the ethereum blockchain', logs);
 
+    let stakingsInLast24Hours = ethers.utils.bigNumberify(0);
     const stakings = [];
     for(let i = logs.length - 1; i >= 0; i--) {
       const log = logs[i];
-      // console.log(log);
+
+      stakingsInLast24Hours = stakingsInLast24Hours.add(ethers.utils.bigNumberify(log.data.slice(0,66)));
+
       const address = log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length);
       const stakingId = Number('0x'+log.data.slice(66,130));
       console.log(stakingId);
@@ -116,7 +119,7 @@ class Dashboard extends Component {
       });
     }
 
-    this.setState({ stakings });
+    this.setState({ stakings, stakingsInLast24Hours: window.lessDecimals(stakingsInLast24Hours) });
   }
 
   render() {

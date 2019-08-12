@@ -44,6 +44,10 @@ window.lessDecimals = (ethersBigNumber, decimals = 2) => {
 // one app login
 window.onload = function(){
   !window.opener || window.opener.postMessage("loaded","*");
+
+  document.getElementById('start-loader').style.display = 'none';
+  // const element = document.getElementById('start-loader');
+  // element.parentElement.removeChild(element);
 }
 window.addEventListener('message', function(e) {
   setTimeout(() => window.ProcessParentMessage_2(e.data), 0);
