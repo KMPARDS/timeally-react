@@ -4,20 +4,30 @@ const path = require('path');
 const ethers = require('ethers');
 
 console.log('\nPlease wait reading csv file and converting information into JavaScript Object');
-const filePath = path.join(__dirname, 'TAgivenFromMam.csv');
+const filePath = path.join(__dirname, 'Book6.1mac.csv');
 
 const contents = fs.readFileSync(filePath, {encoding: 'utf-8'});
 const addressObj = {};
 
 //console.log('con', contents.length);
 
-for(const content of contents.split('\n')) {
+// for(const content of contents.split('\n')) {
+
+const contentArray = contents.split('\n');
+for(let i = 0;
+  // i < 100;
+  i < contentArray.length;
+  i++) {
+  const content = contentArray[i];
   (async ()=>{const addressAndAmount = content.split(',');
   //if(addressAndAmount.length === 2) {
-    //console.log(addressAndAmount[1]);
+    // console.log(addressAndAmount);
 
-    try{addressObj[addressAndAmount[0].split(' ').join('').split('"').join('')] = ethers.utils.parseEther(addressAndAmount[1].split(' ').join('').split('"').join(''));}
+    try{
+      addressObj[addressAndAmount[0].split(' ').join('').split('"').join('')] = ethers.utils.parseEther(addressAndAmount[1].split(' ').join('').split('"').join(''));
+    }
     catch (e) {
+      console.log(e.message);
       console.log('error', addressAndAmount[1]);
 
     }
@@ -33,7 +43,7 @@ for(const content of contents.split('\n')) {
 }
 // console.log('done');
 // // console.log('\nAddress vs ES tokens');
-// // console.log(addressObj);
+console.log(addressObj);
 //
 // const { esContract, timeally } = require('./src/env');
 //
@@ -66,12 +76,12 @@ for(const content of contents.split('\n')) {
 //
 // //console.log(Object.keys(addressObj), Object.values(addressObj));
 //
-// let sum = ethers.utils.bigNumberify(0);
-// //console.log(ethers.utils.formatEther(sum));
-// for(const key in addressObj) {
-//   sum = sum.add(addressObj[key]);
-//   //console.log(ethers.utils.formatEther(sum));
-// }
+let sum = ethers.utils.bigNumberify(0);
+//console.log(ethers.utils.formatEther(sum));
+for(const key in addressObj) {
+  sum = sum.add(addressObj[key]);
+  //console.log(ethers.utils.formatEther(sum));
+}
 //
 // console.log('total ES to send as rewards', ethers.utils.formatEther(sum));
 //
@@ -80,43 +90,43 @@ for(const content of contents.split('\n')) {
 // //   Object.values(addressObj)
 // // );
 //
-// console.log('[');
-// // for(const address of Object.keys(addressObj)) {
-// //   console.log(`"${address}",`);
-// // }
-//
-// let start = 0;//100;
-// let end = 0;
-//       //Object.keys(addressObj).length;
-//       //220;
-// start--;
-// end--;
-//
-// for(
-//   let i = start;
-//   i <= end;
-//   i++
-// ) {
-//   const address = Object.keys(addressObj)[i];
-//   console.log(`"${address}"${i !== Object.keys(addressObj).length - 1 ? ',' : ''}`);
+console.log('[');
+// for(const address of Object.keys(addressObj)) {
+//   console.log(`"${address}",`);
 // }
-// console.log(']');
-//
-// console.log('[');
-// // for(const address of Object.values(addressObj)) {
-// //   console.log(`"${address}",`);
-// // }
-// let sumOfValue = ethers.utils.bigNumberify(0);
-// for(
-//   let i = start;
-//   i <= end;
-//   i++
-// ) {
-//   const value = Object.values(addressObj)[i];
-//   console.log(`"${value}"${i !== Object.values(addressObj).length - 1 ? ',' : ''}`);
-//   sumOfValue = sumOfValue.add(value);
+
+let start = 0;//100;
+let end = 0;
+      //Object.keys(addressObj).length;
+      //220;
+start--;
+end--;
+
+for(
+  let i = start;
+  i <= end;
+  i++
+) {
+  const address = Object.keys(addressObj)[i];
+  console.log(`"${address}"${i !== Object.keys(addressObj).length - 1 ? ',' : ''}`);
+}
+console.log(']');
+
+console.log('[');
+// for(const address of Object.values(addressObj)) {
+//   console.log(`"${address}",`);
 // }
-// console.log(']');
+let sumOfValue = ethers.utils.bigNumberify(0);
+for(
+  let i = start;
+  i <= end;
+  i++
+) {
+  const value = Object.values(addressObj)[i];
+  console.log(`"${value}"${i !== Object.values(addressObj).length - 1 ? ',' : ''}`);
+  sumOfValue = sumOfValue.add(value);
+}
+console.log(']');
 //
 // console.log('total being sent', ethers.utils.formatEther(sumOfValue));
 // // let tx;

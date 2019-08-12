@@ -25,15 +25,31 @@ class NewStaking extends Component {
     showApproveTransactionModal: false,
     showStakeTransactionModal: false,
     approveSuccess: false,
-    approveAlreadyDone: false
+    approveAlreadyDone: false,
+    userLiquidEsBalance: undefined,
+    insufficientBalance: false
   }
 
-  componentDidMount=()=>{
+  componentDidMount= async() => {
     this.onOpenModal();
+
+    // if(this.props.store.walletInstance) this.props.history.push('/load-wallet');
+
+    if(this.props.store.walletInstance) {
+      const userLiquidEsBalance = await this.props.store.esInstance.functions.balanceOf(this.props.store.walletInstance.address);
+      this.setState({ userLiquidEsBalance });
+    }
   }
 
-  onAmountUpdate = event => {
-    this.setState({ userAmount: event.target.value });
+  onAmountUpdate = async event => {
+    if(this.state.userLiquidEsBalance) {
+      await this.setState({
+        userAmount: event.target.value,
+        insufficientBalance: ethers.utils.parseEther(event.target.value).gt(this.state.userLiquidEsBalance) });
+    } else {
+      await this.setState({ userAmount: event.target.value });
+    }
+    // console.log('this.state.userLiquidEsBalance', this.state.userLiquidEsBalance, this.state.insufficientBalance);
   }
 
   onPlanChange = event => {
@@ -207,7 +223,16 @@ class NewStaking extends Component {
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 1 of 3</h3>
 
             <Form.Group controlId="stakingAmount">
-              <Form.Control className="stakingInput" onChange={this.onAmountUpdate} value={this.state.userAmount} type="text" placeholder="Enter amount to stake" style={{width: '325px'}} />
+              <Form.Control
+                className="stakingInput"
+                onChange={this.onAmountUpdate}
+                value={this.state.userAmount}
+                type="text"
+                placeholder="Enter amount to stake"
+                style={{width: '325px'}}
+                isInvalid={this.state.insufficientBalance}
+              />
+              {this.state.insufficientBalance ? <p style={{color: 'red', textAlign: 'left'}}>Insufficient balance ES balance</p> : null}
 
               <Form.Group controlId="exampleForm.ControlSelect1">
                 <Form.Control as="select" onChange={this.onPlanChange}>
@@ -359,7 +384,12 @@ class NewStaking extends Component {
             functionName: 'Approve',
             stakingPlan: this.state.plan,
             directGasScreen: true,
-            continueFunction: () => this.setState({ spinner: false, currentScreen: 2, showApproveTransactionModal: false })
+            continueFunction: () => this.setState({
+              spinner: false,
+              // currentScreen: 2,
+              approveSuccess: true,
+              showApproveTransactionModal: false
+            })
           }}
         />
         <TransactionModal
