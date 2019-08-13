@@ -49,13 +49,18 @@ class StakingList extends Component {
         amount: ethers.utils.formatEther(ethers.utils.bigNumberify(log.data.slice(0,66))),
         timestamp
       });
-      const mou = (await this.props.store.esInstance.functions.mou()).toNumber();
+      let currentTime;
+      try {
+        currentTime = (await this.props.store.esInstance.functions.mou()).toNumber();
+      } catch (e) {
+        currentTime = Math.floor(Date.now()/1000);
+      }
       const time = {...this.state.time}; let factor = 0;
       while(!(time[stakingId] > 0)) {
-        time[stakingId] = (timestamp + 2629744 * factor++) - mou || Math.floor(Date.now()/1000);
+        time[stakingId] = (timestamp + 2629744 * factor++) - currentTime;
       }
 
-      console.log(stakingId, timestamp, factor, time[stakingId]);
+      // console.log(stakingId, timestamp, factor, time[stakingId]);
 
       this.setState({ time });
     }
