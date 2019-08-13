@@ -424,15 +424,12 @@ class Home extends Component {
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="4">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
-                            
-                          
                             <div className="col-md-4 offset-md-4">  
                             <strong style={{textAlign:'center'}}>Please watch this video on how to do staking of TimeAlly on Etherscan.</strong> <br></br><br></br>                          
                               <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
                                 <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/NMATG-aP2zM?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
                               </div>
-                            </div>
-                          
+                            </div>                          
                             <br></br>
                           </Card.Body>
                         </Accordion.Collapse>
