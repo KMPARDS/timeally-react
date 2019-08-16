@@ -181,7 +181,7 @@ class Dashboard extends Component {
                           </div>
                           <div className="vl" />
                           <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 " style={{textAlign:'center'}}>
-                            <span>Next Month Active Stakings in the World</span><br></br><br></br>
+                            <span>Next Month Active Stakings in the Blockchain</span><br></br><br></br>
                             <span style={{fontSize:'12px'}}>{this.state.totalActiveStakings}{this.state.totalActiveStakings !== undefined ? ' ES' : 'Loading...'}</span>
                             <hr />
                             <span>My Active Stakings</span><br></br><br></br>
