@@ -424,15 +424,12 @@ class Home extends Component {
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="4">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
-                            
-                          
                             <div className="col-md-4 offset-md-4">  
                             <strong style={{textAlign:'center'}}>Please watch this video on how to do staking of TimeAlly on Etherscan.</strong> <br></br><br></br>                          
                               <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
                                 <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/NMATG-aP2zM?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
                               </div>
-                            </div>
-                          
+                            </div>                          
                             <br></br>
                           </Card.Body>
                         </Accordion.Collapse>
@@ -502,7 +499,7 @@ class Home extends Component {
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap doesn’t guarantee any Fiat or Crypto because Era Swap doesn’t control any Fiat or any other cryptocurrency.</Card.Body>
                         </Accordion.Collapse>
                       </Card>
-                      <Card style={{color:'#3c4d6b', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
                         <Accordion.Toggle as={Card.Header} eventKey="12">
                         Q-13. &nbsp; Can Era Swap token be used outside the system?
                         </Accordion.Toggle>
@@ -510,6 +507,31 @@ class Home extends Component {
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>No, Era Swap token can only be used in the Eco System. ES cannot be used outside Era swap Ecosystem.</Card.Body>
                         </Accordion.Collapse>
                       </Card>
+                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                        <Accordion.Toggle as={Card.Header} eventKey="13">
+                        Q-14. &nbsp; Do you store my private keys, Keystore or mnemonic?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="13">
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>When you load Wallet in the TimeAlly ÐApp, your private keys stay only on your computer. The TimeAlly ÐApp directly talks with blockchain hence any centralized intermediate server is not at all required and hence any of your data is NOT sent to our servers (we are also not recording any usage data). Your computer signs any transactions you authorise and only the signed transaction is submitted to blockchain for being included in blocks by miners who are mining in Ethereum. When you logout or even refresh page your private keys are erased from computer’s memory. The TimeAlly ÐApp source code is open source and anyone can check what is happening.</Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                        <Accordion.Toggle as={Card.Header} eventKey="14">
+                        Q-15. &nbsp; What is Gas Fee / Network Fee?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="14">
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Ethereum is a decentralized and immutable platform. Tens of thousands of miners dedicate their computers to maintain the Ethereum network. For compensation, the concept of the gas fee is there. All transactions on Ethereum Network cost gas and this fee is transferred to miners in ETH. Users can choose to pay less or more gas to miners. A miner can choose which transactions to mine, and generally, they give priority to those transactions which give them more fees. You can customize your gas fees in the advanced settings while making staking, withdrawal or any transaction.</Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                      <Card style={{color:'#3c4d6b', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                        <Accordion.Toggle as={Card.Header} eventKey="15">
+                        Q-16. &nbsp; What is GitHub link of TimeAlly.io?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="15">
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>TimeAlly: https://github.com/KMPARDS/timeally-react</Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                      
                     </Accordion>
               </div>
             </div>
