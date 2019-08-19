@@ -92,15 +92,26 @@ class TransactionModal extends Component {
       // const betTokensInExaEs = ethers.utils.bigNumberify(this.state.exaEsTokensToBet)//.mul(10**15).mul(10**3);
       const args =  this.props.ethereum.directGasScreen ? this.props.ethereum.arguments : [this.state.stakingPlan];
       const estimatedGas = (await this.props.ethereum.estimator( ...args )).toNumber();
-      const ethGasStationResponse = (await axios.get('https://ethgasstation.info/json/ethgasAPI.json')).data;
-      console.log(ethGasStationResponse);
+      let ethGasStationResponse;
+      try {
+        ethGasStationResponse = (await axios.get('https://ethgasstation.info/json/ethgasAPI.json')).data;
+        console.log(ethGasStationResponse);
+        this.setState({ ethGasStation: [
+          ethGasStationResponse['safeLow'] / 10,
+          ethGasStationResponse['average'] / 10,
+          ethGasStationResponse['fast'] / 10,
+          ethGasStationResponse['fastest'] / 10
+        ] });
+      } catch (err) {
+        console.log('Eth Gas Station API error:', err.message);
+        this.setState({ ethGasStation: [
+          10,
+          15,
+          20,
+          25
+        ] });
+      }
       this.setState({
-        ethGasStation: [
-          ethGasStationResponse['safeLow'],
-          ethGasStationResponse['average'],
-          ethGasStationResponse['fast'],
-          ethGasStationResponse['fastest']
-        ],
         estimatedGas,
         selectedGwei: ethGasStationResponse['fast'] / 10,
         currentScreen: 1
@@ -118,7 +129,7 @@ class TransactionModal extends Component {
     // const betTokensInExaEs = ethers.utils.bigNumberify(this.state.exaEsTokensToBet);
     try {
       const args =  this.props.ethereum.directGasScreen ? this.props.ethereum.arguments : [this.state.stakingPlan];
-      const response = await this.props.ethereum.transactor( ...args );
+      const response = await this.props.ethereum.transactor(...args, { gasPrice: ethers.utils.parseUnits(String(this.state.selectedGwei), 'gwei') });
       console.log(response, `time taken: ${new Date() - start}`);
       this.setState({ transactionStatus: 2, hash: response.hash });
       await response.wait();
@@ -229,10 +240,10 @@ class TransactionModal extends Component {
         <Modal.Body style={{padding: '15px'}}>
           <h5>Advanced gas settings</h5>
           {[
-            {name: 'Slow', gwei: this.state.ethGasStation[0] / 10, time: 'around 30 mins to confirm'},
-            {name: 'Average', gwei: this.state.ethGasStation[1] / 10, time: 'around 10 mins to confirm' },
-            {name: 'Fast', gwei: this.state.ethGasStation[2] / 10, time: 'around 2 mins to confirm' },
-            {name: 'Faster', gwei: this.state.ethGasStation[3] / 10, time: 'around 30 secs to confirm'}
+            {name: 'Slow', gwei: this.state.ethGasStation[0], time: 'around 30 mins to confirm'},
+            {name: 'Average', gwei: this.state.ethGasStation[1], time: 'around 10 mins to confirm' },
+            {name: 'Fast', gwei: this.state.ethGasStation[2], time: 'around 2 mins to confirm' },
+            {name: 'Faster', gwei: this.state.ethGasStation[3], time: 'around 30 secs to confirm'}
           ].map(plan => (
             <Card key={'advanced-'+plan.name} style={{margin: '10px 0', padding:'10px'}} onClick={() => {
               // update the gwei being used
