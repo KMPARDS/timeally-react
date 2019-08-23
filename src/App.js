@@ -131,7 +131,6 @@ function App(props) {
           </Switch>
         </div>
         <div className="footer section-space20" style={{ paddingBottom: '0px'}}>
-
           {/* footer */}
           <div className="container">
             <div className="row">
@@ -188,9 +187,6 @@ function App(props) {
               </div>
             </div>
             <div className="row">
-
-
-
             </div>
           </div>
         </div>
