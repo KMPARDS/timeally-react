@@ -11,7 +11,7 @@ const ListOfLoadMethods = props => {
         </Card.Body>
       </Card>*/}
 
-      <Card style={{margin: '15px 0'}} onClick={() => props.history.push('/load-wallet/using-keystore')}>
+      {/* <Card style={{margin: '15px 0'}} onClick={() => props.history.push('/load-wallet/using-keystore')}>
         <Card.Body align="center">
           Use Keystore to unlock wallet
         </Card.Body>
@@ -27,9 +27,15 @@ const ListOfLoadMethods = props => {
         <Card.Body align="center">
           Use Mnemonic to unlock wallet
         </Card.Body>
+      </Card> */}
+
+      <Card style={{margin: '15px 0', cursor: 'pointer'}} onClick={() => window.open('https://eraswap.life/','','width=1001,height=650')}>
+        <Card.Body align="center">
+          Load Wallet using <strong>Era Swap Life</strong>
+        </Card.Body>
       </Card>
 
-      <Card style={{margin: '15px 0'}} onClick={() => props.history.push('/load-wallet/using-metamask')}>
+      <Card style={{margin: '15px 0', cursor: 'pointer'}} onClick={() => props.history.push('/load-wallet/using-metamask')}>
         <Card.Body align="center">
           Connect to Metamask (supports many hardware wallets like Trezor and Ledger)
         </Card.Body>

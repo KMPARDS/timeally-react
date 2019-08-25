@@ -51,7 +51,9 @@ window.onload = function(){
   // element.parentElement.removeChild(element);
 }
 window.addEventListener('message', function(e) {
-  setTimeout(() => window.ProcessParentMessage_2(e.data), 0);
+  setTimeout(() => {
+    window.ProcessParentMessage_2(e.data);
+  }, 0);
 } , false);
 
 function App(props) {
@@ -61,6 +63,7 @@ function App(props) {
       if(message.substring(0,2) == "0x"){
         // wallet = new ethers.Wallet(message);
         props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: new ethers.Wallet(message, provider) });
+        window.zHistory && window.zHistory.push('/dashboard');
       }
     }
   }

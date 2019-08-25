@@ -30,6 +30,8 @@ class NavbarComponent extends Component {
 
     })();
 
+    window.zHistory = this.props.history;
+
     window.updateTheNavbar = async action => {
       if(action.type === 'LOAD-WALLET-INSTANCE') {
 
