@@ -37,7 +37,7 @@ const ListOfLoadMethods = props => {
 
       <Card style={{margin: '15px 0', cursor: 'pointer'}} onClick={() => props.history.push('/load-wallet/using-metamask')}>
         <Card.Body align="center">
-          Connect to Metamask (supports many hardware wallets like Trezor and Ledger)
+          Connect to <strong>Metamask</strong> (supports many hardware wallets like Trezor and Ledger)
         </Card.Body>
       </Card>
     </div>
