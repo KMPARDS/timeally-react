@@ -178,7 +178,7 @@ class StakingId extends Component {
                   <div className="wrapper-content bg-white pinside40">
                    <div className="bg-white section-space80">
                      <div className="container">
-                        <p>This page is under construction. You will be able to view your stakings benefits here, claim your staking monthly received benefits in liquid and rewards and withdraw your staking's principal amount once the plan period is over.</p>
+                        <p style={{padding: '10px'}}>This page is under construction. You will be able to view your stakings benefits here, claim your staking monthly received benefits in liquid and rewards and withdraw your staking's principal amount once the plan period is over.</p>
                         {/* <>
                     <p>Staking amount: {this.state.staking[0] ? ethers.utils.formatEther(this.state.staking[0]) : null}</p>
                     <p>Staking time: {new Date(this.state.staking[1] * 1000).toLocaleString()}</p>
