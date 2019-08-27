@@ -31,7 +31,7 @@ const ListOfLoadMethods = props => {
 
       <Card style={{margin: '15px 0', cursor: 'pointer'}} onClick={() => window.open('https://eraswap.life/','','width=1001,height=650')}>
         <Card.Body align="center">
-          Load Wallet using <strong>Era Swap Life</strong>
+          Connect using <strong>Era Swap Life</strong>
         </Card.Body>
       </Card>
 
