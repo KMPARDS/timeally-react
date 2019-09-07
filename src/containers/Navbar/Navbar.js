@@ -88,7 +88,8 @@ class NavbarComponent extends Component {
     let navbarButtons = (
      <div>
         {/* <span><a onClick={() => this.props.history.push('/create-wallet')} className="btn main-btn btn-primary btn-sm">Create Wallet</a></span> */}
-
+        <span><a href="/pdf/TimeAlly_Stakers.pdf" target="_blank" className="btn main-btn btn-default btn-sm" >Announcement</a></span>
+        
         <span><a onClick={() => this.props.history.push('/load-wallet')} className="btn main-btn btn-default btn-sm">Connect to a Wallet</a></span>
 
         <span><a onClick={() => this.props.history.push('/nominee')} className="btn main-btn btn-default btn-sm" style={{backgroundColor: '#55a903'}}>Nominee</a></span>
@@ -141,13 +142,13 @@ class NavbarComponent extends Component {
         <div className="top-header">
           <div className="container">
             <div className="row">
-              <div className="col-xl-4 col-lg-4 col-md-3 col-sm-6 col-6">
+              <div className="col-xl-2 col-lg-1 col-md-10 col-sm-6 col-6">
                 {/* logo */}
                 <div className="logo">
                   <img onClick={() => this.props.history.push('/')} src="/images/logo.png" alt="TimeAlly" />
                 </div>
               </div>
-              <div className="col-xl-8 col-lg-8 col-md-9 col-sm-12 col-12">
+              <div className="col-xl-10 col-lg-11 col-md-10 col-sm-12 col-12">
                 <div className="quick-info">
                   {navbarButtons}
                 </div>
