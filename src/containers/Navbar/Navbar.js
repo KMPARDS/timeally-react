@@ -87,7 +87,7 @@ class NavbarComponent extends Component {
   render() {
     let navbarButtons = (
      <div>
-        <span><a href="/pdf/TimeAlly_Stakers.pdf" target="_blank" className="btn main-btn btn-default btn-sm" style={{backgroundColor: '#a95503'}}>Announcement</a></span>
+        <span><a href="/pdf/TimeAlly_Stakers.pdf" target="_blank" className="btn main-btn btn-default btn-sm" >Announcement</a></span>
 
         <span><a onClick={() => this.props.history.push('/create-wallet')} className="btn main-btn btn-primary btn-sm">Create Wallet</a></span>
 
