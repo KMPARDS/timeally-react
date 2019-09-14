@@ -9,7 +9,8 @@ app.use(helmet());
 app.use((req, res, next) => {
   res.set({
     'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
-    'Strict-Transport-Security': 'max-age=31536000; preload'
+    'Strict-Transport-Security': 'max-age=31536000; preload',
+    'X-Frame-Options': 'deny'
   });
   return next();
 });
