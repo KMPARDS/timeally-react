@@ -360,7 +360,7 @@ class Home extends Component {
                           Q-1. &nbsp; What is Era Swap Token?
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Please watch this video to understand "TimeAlly Test - Staking via Etherscan on Ethereum Blockchain"</Card.Body>
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap Token or ES is a decentralized utility token currently based on Ethereum blockchain (ERC20) which will be used on multiple platforms for exchange of services(P2P), avail discounts, get rewards and many more utility.</Card.Body>
                         </Accordion.Collapse>
                       </Card>  
                       <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', borderTop:'1px solid #ccc', padding: '10px 0px 10px 30px'}}>
