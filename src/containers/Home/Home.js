@@ -539,25 +539,10 @@ class Home extends Component {
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Ethereum is a decentralized and immutable platform. Tens of thousands of miners dedicate their computers to maintain the Ethereum network. For compensation, the concept of the gas fee is there. All transactions on Ethereum Network cost gas and this fee is transferred to miners in ETH. Users can choose to pay less or more gas to miners. A miner can choose which transactions to mine, and generally, they give priority to those transactions which give them more fees. You can customize your gas fees in the advanced settings while making staking, withdrawal or any transaction.</Card.Body>
                         </Accordion.Collapse>
                       </Card>
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="17">
-                          Q-16. &nbsp; How to do Staking" via Etherscan on Ethereum Blockchain?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="17">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Please watch this video to understand "TimeAlly Test - Staking via Etherscan on Ethereum Blockchain
-                          <div class="row">
-                            <div className="offset-md-4 col-md-4" >
-                                <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px', marginTop:'20px'}}>
-                                    <iframe src="https://www.youtube.com/embed/NMATG-aP2zM?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
-                                </div>
-                             </div>
-                           </div>  
-                          </Card.Body>
-                         </Accordion.Collapse>
-                      </Card>  
+                        
                       <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
                         <Accordion.Toggle as={Card.Header} eventKey="18">
-                          Q-17. &nbsp; How To Stake Your Era Swap Tokens In TimeAlly Using Keystore/ Mnemonics/Private Key?
+                          Q-16. &nbsp; How To Stake Your Era Swap Tokens In TimeAlly Using Keystore/ Mnemonics/Private Key?
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="18">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Please watch this video to understand "How To Stake Your Era Swap Tokens In TimeAlly Using Keystore/ Mnemonics/Private Key"
@@ -573,7 +558,7 @@ class Home extends Component {
                       </Card> 
                       <Card style={{color:'#3c4d6b', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
                         <Accordion.Toggle as={Card.Header} eventKey="15">
-                        Q-18. &nbsp; What is GitHub link of TimeAlly.io?
+                        Q-17. &nbsp; What is GitHub link of TimeAlly.io?
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="15">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>TimeAlly: https://github.com/KMPARDS/timeally-react</Card.Body>
