@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Spinner } from 'react-bootstrap';
 import { timeally } from '../../env';
+import StakingElement from './StakingElement';
 const ethers = require('ethers');
 
 class StakingList extends Component {
@@ -35,34 +36,37 @@ class StakingList extends Component {
       topics
     });
 
+    const mou = await this.props.store.esInstance.functions.mou();
+
     const stakings = [];
     for(let i = logs.length - 1; i >= 0; i--) {
       const log = logs[i];
       const address = log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length);
       const stakingId = Number('0x'+log.data.slice(66,130));
-      const staking = await this.props.store.timeallyInstance.functions.stakings(address, stakingId);
-      const timestamp = staking[1].toNumber();
-      console.log(staking);
+      // const staking = await this.props.store.timeallyInstance.functions.stakings(address, stakingId);
+      // const timestamp = staking[1].toNumber();
+      // console.log(staking);
       stakings.push({
         address,
+        stakingId,
         planId: ethers.utils.bigNumberify(log.topics[2]).toNumber(),
         amount: ethers.utils.formatEther(ethers.utils.bigNumberify(log.data.slice(0,66))),
-        timestamp
+        // timestamp
       });
       let currentTime;
       try {
-        currentTime = (await this.props.store.esInstance.functions.mou()).toNumber();
+        currentTime = (mou).toNumber();
       } catch (e) {
         currentTime = Math.floor(Date.now()/1000);
       }
-      const time = {...this.state.time}; let factor = 0;
-      while(!(time[stakingId] > 0)) {
-        time[stakingId] = (timestamp + 2629744 * factor++) - currentTime;
-      }
+      // const time = {...this.state.time}; let factor = 0;
+      // while(!(time[stakingId] > 0)) {
+      //   time[stakingId] = (timestamp + 2629744 * factor++) - currentTime;
+      // }
 
       // console.log(stakingId, timestamp, factor, time[stakingId]);
 
-      this.setState({ time });
+      // this.setState({ time });
     }
 
     this.setState({ stakings, loadingStakings: false });
@@ -254,65 +258,13 @@ class StakingList extends Component {
                           </tr>
                         </thead>
                         <tbody>
-                          {this.state.stakings.map((staking, index) => {
-                            const days = Math.floor(this.state.time[this.state.stakings.length - index - 1]/60/60/24);
-                            const hours = Math.floor((this.state.time[this.state.stakings.length - index - 1] - days * 60 * 60 * 24) / 60 / 60);
-                            const minutes = Math.floor((this.state.time[this.state.stakings.length - index - 1] - days * 60 * 60 * 24 - hours * 60 * 60) / 60);
-                            const seconds = this.state.time[this.state.stakings.length - index - 1] - days * 60 * 60 * 24 - hours * 60 * 60 - minutes * 60;
-                            return (
-                            <tr>
-                              <td>{this.state.stakings.length - index - 1}</td>
-                              <td>{staking.amount} ES</td>
-                              <td>{staking.planId ? '2 Year' : '1 Year'}</td>
-                              <td>{new Date(staking.timestamp * 1000).toLocaleString()}</td>
-                              <td>{days} days, {hours} hours, {minutes} minutes and {seconds} seconds</td>
-                              <td>{
-                                  this.state.benefits[this.state.stakings.length - index - 1]
-                                    ? (
-                                      <>
-                                        {this.state.benefits[this.state.stakings.length - index - 1] + ' ES'}
-                                        <button
-                                          className="btn query btn-outline-primary"
-                                          onClick={() => this.withdraw(this.state.stakings.length - index - 1)}
-                                          disabled={this.state.withdrawSpinner[this.state.stakings.length - index - 1] !== undefined || this.state.benefits[this.state.stakings.length - index - 1] === '0.0'}
-                                        >
-                                          {
-                                            this.state.withdrawSpinner[this.state.stakings.length - index - 1] === undefined
-                                            ? 'Withdraw'
-                                            : (
-                                              this.state.withdrawSpinner[this.state.stakings.length - index - 1] === 1
-                                              ? 'Preparing tx...'
-                                              : (
-                                                this.state.withdrawSpinner[this.state.stakings.length - index - 1] === 2
-                                                ? 'Sending tx...'
-                                                : (
-                                                  this.state.withdrawSpinner[this.state.stakings.length - index - 1] === 3
-                                                  ? 'Waiting for confirmation...'
-                                                  : (
-                                                    this.state.withdrawSpinner[this.state.stakings.length - index - 1] === 4
-                                                    ? 'Withdrawl Success! Sent 50% to wallet and 50% to rewards'
-                                                    : 'Error: see it in console'
-                                                  )
-                                                )
-                                              )
-                                            )
-                                          }
-                                        </button>
-                                      </>
-
-                                    )
-                                    : (
-                                      this.state.benefitSpinner[this.state.stakings.length - index - 1]
-                                      ? <Spinner animation="border" />
-                                      : <button className="btn query btn-primary" onClick={() => this.query(this.state.stakings.length - index - 1)}>Query</button>
-                                    )
-                                  }
-                              </td>
-                              <td><button onClick={() => this.props.history.push('/stakings/'+ (this.state.stakings.length - index - 1))} className="btn query btn-primary">View Staking</button></td>
-                              {/*<td><button className="btn query btn-primary">WITHDRAW</button></td>*/}
-                            </tr>
-                          );
-                          })}
+                          {this.state.stakings.map((staking, index) => (
+                            <StakingElement
+                              key={'StakingElement'+index}
+                              address={staking.address}
+                              stakingId={staking.stakingId}
+                            />
+                          ))}
                         </tbody>
                       </table>
                       : <p>There are no stakings to show. <span onClick={() => this.props.history.push('/stakings/new')}>You can create a new staking by clicking here.</span></p>

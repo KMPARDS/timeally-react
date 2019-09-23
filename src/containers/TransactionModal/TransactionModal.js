@@ -144,7 +144,6 @@ class TransactionModal extends Component {
 
   render() {
     let screenContent;
-    console.log(this.props);
     if(Object.entries(this.props.store.walletInstance).length === 0) {
       screenContent = (
         <Modal.Body style={{textAlign: 'center'}}>
