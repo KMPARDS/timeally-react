@@ -85,11 +85,12 @@ class NavbarComponent extends Component {
   }
 
   render() {
+    const announcementLink = <span><a href="/pdf/TimeAlly_Stakers.pdf" target="_blank" className="btn main-btn btn-default btn-sm flash-button" >Announcement</a></span>;
+
     let navbarButtons = (
      <div>
         {/* <span><a onClick={() => this.props.history.push('/create-wallet')} className="btn main-btn btn-primary btn-sm">Create Wallet</a></span> */}
-        <span><a href="/pdf/TimeAlly_Stakers.pdf" target="_blank" className="btn main-btn btn-default btn-sm" >Announcement</a></span>
-        
+        {announcementLink}
         <span><a onClick={() => this.props.history.push('/load-wallet')} className="btn main-btn btn-default btn-sm">Connect to a Wallet</a></span>
 
         <span><a onClick={() => this.props.history.push('/nominee')} className="btn main-btn btn-default btn-sm" style={{backgroundColor: '#55a903'}}>Nominee</a></span>
@@ -98,6 +99,7 @@ class NavbarComponent extends Component {
     if(this.state.userAddress) {
       navbarButtons = (
         <div>
+          {announcementLink}
           <span><a className="btn btn-primary btn-sm">Welcome {
               this.state.userAddress.slice(0,6) + '...' + this.state.userAddress.slice(this.state.userAddress.length - 3, this.state.userAddress.length - 1)
             }</a>
