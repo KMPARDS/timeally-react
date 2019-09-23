@@ -4,8 +4,8 @@ const timeAllyJSON = require('./ethereum/compiledContracts/TimeAlly_0.json');
 
 const env = {
   network:
-           'homestead',
-          //  'kovan',
+           // 'homestead',
+           'kovan',
   esContract: {
     address: '0x53E750ee41c562C171D65Bcb51405b16a56cF676',
     abi: eraSwapTokenJSON.abi
