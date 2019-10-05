@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
 
 import { network } from '../../env';
+import axios from 'axios';
 
 const ethers = require('ethers');
 
@@ -24,9 +25,20 @@ class UsingMetamask extends Component {
         const metamaskWeb3Provider = new ethers.providers.Web3Provider(window.web3.currentProvider);
         this.props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: metamaskWeb3Provider.getSigner() });
 
-        setTimeout(() => {
+        setTimeout(async() => {
           this.setState({ displayText: `Connected to Metamask! Your address is ${this.props.store.walletInstance.address}` });
           window.connectedToMetamask = true;
+
+          /// sending user address to
+          try {
+            await axios.get('https://apis.dayswappers.com/graph/first_time', {
+              params: {
+                address: this.props.store.walletInstance.address.toLowerCase()
+              }
+            });
+          } catch (error) {
+            console.log(error.message);
+          }
         }, 300);
       }
     } else {

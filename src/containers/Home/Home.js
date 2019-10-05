@@ -362,21 +362,38 @@ class Home extends Component {
                         <Accordion.Collapse eventKey="0">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap Token or ES is a decentralized utility token currently based on Ethereum blockchain (ERC20) which will be used on multiple platforms for exchange of services(P2P), avail discounts, get rewards and many more utility.</Card.Body>
                         </Accordion.Collapse>
-                      </Card>                      
+                      </Card>  
                       <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', borderTop:'1px solid #ccc', padding: '10px 0px 10px 30px'}}>
                         <Accordion.Toggle as={Card.Header} eventKey="1">
                           Q-2. &nbsp; What is TimeAlly DApp?
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="1">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the generation & distribution of ES Newly released Token. <br></br><br></br>
-                          <h4 style={{textAlign:'center'}}>Please watch this video for Walkthrough of TimeAlly DApp.</h4>
+                          <h4 style={{textAlign:'center'}}>Please watch this videos to understand .</h4>
+                          <h5 style={{textAlign:'center'}}>TimeAlly Tour.</h5>
                           <div class="row">
+                            <div className="offset-md-4 col-md-4">
+                                <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
+                                  <iframe src="https://www.youtube.com/embed/9Utcv_Uvz5U?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                                </div>
+                             </div>
+                           </div>   
+                           <h5 style={{textAlign:'center'}}>TimeAlly Quick Walk through.</h5>  
+                           <div class="row">
                             <div className="offset-md-4 col-md-4">
                                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
                                     <iframe src="https://www.youtube.com/embed/Gyk9mA3vX88?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                                 </div>
                              </div>
-                           </div>                          
+                           </div>         
+                           <h5 style={{textAlign:'center'}}>TimeAlly Teaser </h5>  
+                           <div class="row">
+                            <div className="offset-md-4 col-md-4">
+                                <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
+                                    <iframe src="https://www.youtube.com/embed/srsL3_UIsvE?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                                </div>
+                             </div>
+                           </div>                  
                           </Card.Body>
                         </Accordion.Collapse>
                       </Card>                     
@@ -417,7 +434,6 @@ class Home extends Component {
                           </Card.Body>
                         </Accordion.Collapse>
                       </Card>
-
                       <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
                         <Accordion.Toggle as={Card.Header} eventKey="4">
                         Q-5. &nbsp; How to do staking of TimeAlly on Etherscan?
@@ -523,14 +539,32 @@ class Home extends Component {
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Ethereum is a decentralized and immutable platform. Tens of thousands of miners dedicate their computers to maintain the Ethereum network. For compensation, the concept of the gas fee is there. All transactions on Ethereum Network cost gas and this fee is transferred to miners in ETH. Users can choose to pay less or more gas to miners. A miner can choose which transactions to mine, and generally, they give priority to those transactions which give them more fees. You can customize your gas fees in the advanced settings while making staking, withdrawal or any transaction.</Card.Body>
                         </Accordion.Collapse>
                       </Card>
+                        
+                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                        <Accordion.Toggle as={Card.Header} eventKey="18">
+                          Q-16. &nbsp; How To Stake Your Era Swap Tokens In TimeAlly Using Keystore/ Mnemonics/Private Key?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="18">
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Please watch this video to understand "How To Stake Your Era Swap Tokens In TimeAlly Using Keystore/ Mnemonics/Private Key"
+                          <div class="row">
+                            <div className="offset-md-4 col-md-4" >
+                                <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px', marginTop:'20px'}}>
+                                    <iframe src="https://www.youtube.com/embed/qn1q9_SPeT0?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                                </div>
+                             </div>
+                           </div>  
+                          </Card.Body>
+                         </Accordion.Collapse>
+                      </Card> 
                       <Card style={{color:'#3c4d6b', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
                         <Accordion.Toggle as={Card.Header} eventKey="15">
-                        Q-16. &nbsp; What is GitHub link of TimeAlly.io?
+                        Q-17. &nbsp; What is GitHub link of TimeAlly.io?
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="15">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>TimeAlly: https://github.com/KMPARDS/timeally-react</Card.Body>
                         </Accordion.Collapse>
                       </Card>
+                      
                       
                     </Accordion>
               </div>
