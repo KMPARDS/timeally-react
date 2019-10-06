@@ -1400,7 +1400,7 @@ Landing Page Template
 
 .table td{
   font-size: 12px;
-  
+
 }
 
 .tablebg{
@@ -1409,7 +1409,7 @@ Landing Page Template
   border: 1px solid #ccc;
   padding: 30px;
   width: 100%;
-  
+
 }
 
 table {
@@ -1505,13 +1505,22 @@ card.body{
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
 
-.query{
+.z-btn-outline{
   font-size: 10px !important;
   padding: 10px !important;
   float: right;
-  color: #000000;  
+  color: #000000;
   border: 1px solid #007bff !important;
   background-color: white;
+}
+
+.z-btn-full{
+  font-size: 10px !important;
+  padding: 10px !important;
+  float: right;
+  color: #fff !important;
+  border: 1px solid #007bff !important;
+  background-color: #007bff;
 }
 
 .styles_closeIcon__1QwbI{display: none !important;}

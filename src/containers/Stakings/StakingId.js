@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import TransactionModal from '../TransactionModal/TransactionModal';
 
-import { Spinner } from 'react-bootstrap';
+import { Spinner, Button } from 'react-bootstrap';
 
 const ethers = require('ethers');
 
 class StakingId extends Component {
   state = {
+    loading: true,
     staking: {},
     currentMonth: 0,
     canWithdraw: false,
@@ -16,32 +18,35 @@ class StakingId extends Component {
     planMonths: 0,
     monthlyBenefits: {},
     monthlyBenefitSpinner: {},
-    selectedMonths: []
+    selectedMonths: {},
+    selectedMonthsUpdated: true,
+    selectedQuerySpinner: false,
+    selectedMonthsBenefit: '',
+    showWithdrawTransactionModal: false,
+    withdrawSpinner: false
   };
 
   componentDidMount = async () => {
+    window.x = window.reduxStore.getState();
     const currentMonth = Number(await this.props.store.timeallyInstance.functions.getCurrentMonth());
     this.setState({ currentMonth });
-
     if(this.props.store.walletInstance.address && this.props.match.params.id) {
       const staking = await this.props.store.timeallyInstance.functions.stakings(
         this.props.store.walletInstance.address,
-        this.props.match.params.id
+        Number(this.props.match.params.id)
       );
       console.log(staking);
       const stakingPlan = await this.props.store.timeallyInstance.functions.stakingPlans(
-        Number(staking[2])
+        staking.stakingPlanId
       );
-
       this.setState({ staking, stakingMonth: Number(staking[2]), planMonths: Number(stakingPlan[0]) });
-
       const currentMouTimestamp = (await this.props.store.esInstance.functions.mou()).toNumber();
       const stakingStartTime = this.state.staking[1].toNumber();
       const stakingEndTime = (this.state.staking[2].eq(1) ? 63244800 : 31622400) + stakingStartTime;
       const canWithdraw = currentMouTimestamp > stakingEndTime;
 
       console.log(canWithdraw, stakingEndTime, currentMouTimestamp);
-      this.setState({ canWithdraw });
+      this.setState({ canWithdraw, loading: false });
     }
   };
 
@@ -79,9 +84,29 @@ class StakingId extends Component {
 
   };
 
+  querySelected = async() => {
+    this.setState({ selectedQuerySpinner: true });
+    console.log('sd', this.displaySelectedArray);
 
+    try {
+      const monthlyBenefit = await this.props.store.timeallyInstance.functions.seeBenefitOfAStakingByMonths(
+        this.props.store.walletInstance.address,
+        this.props.match.params.id,
+        this.displaySelectedArray
+      );
+      console.log(monthlyBenefit);
+      let lessDecimals = ethers.utils.formatEther(monthlyBenefit).split('.');
+      if(lessDecimals[1].length >= 2) {
+        lessDecimals[1] = lessDecimals[1].slice(0,2);
+      }
+      this.setState({ selectedMonthsBenefit: lessDecimals.join('.'), selectedQuerySpinner: false, selectedMonthsUpdated: false });
+    } catch (err) {
+      console.log('error from bl chain', err.message);
+      this.setState({ selectedQuerySpinner: false });
+    }
+  }
 
-  withdrawStaking = async () => {
+  withdrawStaking = async() => {
     this.setState({ withdrawing: true, errorMessage: '' });
     try {
       await this.props.store.timeallyInstance.functions.withdrawExpiredStakings([this.props.match.params.id])
@@ -96,7 +121,6 @@ class StakingId extends Component {
       return (<p>User not found, please load wallet</p>);
     }
     const monthsTableRows = [];
-
     for(let i = this.state.stakingMonth + 1; i <= this.state.stakingMonth + this.state.planMonths; i++) {
       // if(i > this.state.currentMonth) show grey
       monthsTableRows.push(
@@ -113,7 +137,7 @@ class StakingId extends Component {
                     : <button
                         disabled={i > this.state.currentMonth}
                         onClick={() => this.query(i)}
-                        className="btn query btn-outline-primary"
+                        className="btn z-btn-outline"
                       >
                         {i > this.state.currentMonth ? 'Cannot Query as NRT not released' : 'Query'}
                       </button>
@@ -128,15 +152,18 @@ class StakingId extends Component {
           <td>
             <button
               disabled={i > this.state.currentMonth}
-              className="btn query btn-outline-primary"
+              onClick={() => this.setState({ selectedMonthsUpdated: true, selectedMonths: {...this.state.selectedMonths, [i]: !this.state.selectedMonths[i]} })}
+              className={`btn ${this.state.selectedMonths[i] ? 'z-btn-full' : 'z-btn-outline'}`}
 
             >
-              {i > this.state.currentMonth ? 'Cannot Select' : 'Select'}
+              {i > this.state.currentMonth ? 'Cannot Select' : (this.state.selectedMonths[i] ? 'Selected' : 'Select')}
             </button>
           </td>
         </tr>
       );
     }
+
+    this.displaySelectedArray = Object.entries(this.state.selectedMonths).filter(entry => entry[1]).map(entry => entry[0]);
 
     return (
       <div>
@@ -178,29 +205,9 @@ class StakingId extends Component {
                   <div className="wrapper-content bg-white pinside40">
                    <div className="bg-white section-space80">
                      <div className="container">
-                        <p style={{padding: '10px'}}>This page is under construction. You will be able to view your stakings benefits here, claim your staking monthly received benefits in liquid and rewards and withdraw your staking's principal amount once the plan period is over.</p>
-                        {/* <>
-                    <p>Staking amount: {this.state.staking[0] ? ethers.utils.formatEther(this.state.staking[0]) : null}</p>
-                    <p>Staking time: {new Date(this.state.staking[1] * 1000).toLocaleString()}</p>
-                    <p>Staking plan Id: {this.state.staking[2] ? this.state.staking[2].toNumber() : null} ({this.state.staking[2] && this.state.staking[2].eq(1) ? '2 Year' : '1 Year'})</p>
-                    <p>Status: {this.state.staking[3] ? this.state.staking[3].toNumber() : null}</p>
-                    
-                    {this.state.staking[3] && this.state.staking[3].eq(2) ? <p>Loan id: {this.state.staking[5] ? this.state.staking[5].toNumber() : null}</p> : null}
-                    <button onClick={()=>this.props.history.push(`${this.props.match.url}/nominees`)}>View Nominees</button>
-
-                    <br />
-                    <br />
-
-                    <button onClick={this.withdrawStaking} disabled={!this.state.canWithdraw && this.state.withdrawing}>{this.state.canWithdraw ? (this.state.withdrawing ? 'Withdrawing...' : 'Withdraw') : 'Cannot withdraw before end of period'}</button>
-
-                      {
-                        this.state.errorMessage
-                        ? <div><br />
-                        <p>Error from Blockchain: {this.state.errorMessage}</p></div>
-                        : null
-                      }
-
-                      </> */}
+                        {this.state.loading
+                          ? <p>Please wait loading staking details...</p>
+                          : <><p style={{padding: '10px'}}>Please select months of which you want to withdraw your NRT benefits.</p>
                       <table className="table table-striped" border="1">
                           <thead>
                             <tr>
@@ -208,7 +215,7 @@ class StakingId extends Component {
                               <th>Monthly Benefit</th>
                               {/*<th>Liquid Benefit</th>
                               <th>Reward Benefit</th>*/}
-                              <th>Actions</th>
+                              <th>Withdraw Benefits</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -218,13 +225,62 @@ class StakingId extends Component {
                           </tbody>
                         </table>
 
+                      {this.displaySelectedArray.length
+                        ? <div style={{backgroundColor: '#eee', padding: '1rem', borderRadius: '.25rem'}}>
+                          <p>You have selected: {this.displaySelectedArray.join(', ')}</p>
+                          {this.state.selectedMonthsBenefit && !this.state.selectedMonthsUpdated
+                            ? <>
+                              <p>{this.state.selectedMonthsBenefit} ES</p>
+                              {this.state.selectedMonthsBenefit !== '0.0' ? <><p>Your benefits will be withdrawned 50% in liquid to your wallet, and 50% accruded as TimeAlly rewards.</p>
+                              <Button onClick={() => this.setState({ showWithdrawTransactionModal: true })}>
+                                Withdraw Benefit
+                              </Button></> : null}
+                            </>
+                            : <Button
+                                onClick={this.querySelected}
+                                disabled={this.state.selectedQuerySpinner}
+                              >
+                                {this.state.selectedQuerySpinner
+                                  ? <Spinner animation="border" /> : 'Query Total Benefit Withdrawl'
+                                }
+                              </Button>}
+                        </div> : <p>You have not selected any month. To withdraw benefits, select one or more months.</p>}
 
+                        <div style={{backgroundColor: '#eee', padding: '1rem', borderRadius: '.25rem', marginTop: '16px'}}>
+                          TimeAlly Stakers can add nominees to their stakings. After one year of time period of staking, nominees get access to your benefits and principal amount of a particular staking. You can add multiple nominees with % share of the staking, and they would have access only upto their shares in your staking.<br /><br />
+                          <Button onClick={() => this.props.history.push(this.props.match.url + '/nominees')}>
+                            View Nominees of this stakings
+                          </Button>
+                        </div>
+                        </>}
                 </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <TransactionModal
+            show={this.state.showWithdrawTransactionModal}
+            hideFunction={() => this.setState({
+              showWithdrawTransactionModal: false,
+              withdrawSpinner: false
+            })}
+            ethereum={{
+              transactor: this.props.store.timeallyInstance.functions.withdrawBenefitOfAStakingByMonths,
+              estimator: this.props.store.timeallyInstance.estimate.withdrawBenefitOfAStakingByMonths,
+              contract: this.props.store.timeallyInstance,
+              contractName: 'TimeAlly',
+              arguments: [this.props.match.params.id, this.displaySelectedArray],
+              ESAmount: '0.0',
+              headingName: 'Withdraw Benefit',
+              functionName: 'Withdraw Benefit',
+              directGasScreen: true,
+              continueFunction: txHash => this.setState({
+                showWithdrawTransactionModal: false,
+                withdrawSpinner: false
+              })
+            }}
+          />
       </div>
     );
   }

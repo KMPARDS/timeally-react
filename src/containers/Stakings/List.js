@@ -241,7 +241,6 @@ class StakingList extends Component {
 
                     {this.state.loadingStakings ? <p>Please wait loading your stakings</p> : (
                       <>
-                        <p>Note: Your benefit withdrawls are sent 50% to your wallet address and 50% to your rewards. Please go to Rewards section and click on check your rewards to see all your rewards</p>
                      <div className="tablebg">
                       {this.state.stakings.length
                       ? <table className="table table-striped" border="1">
@@ -263,6 +262,7 @@ class StakingList extends Component {
                               key={'StakingElement'+index}
                               address={staking.address}
                               stakingId={staking.stakingId}
+                              routerFunction={() => this.props.history.push('/stakings/'+ staking.stakingId)}
                             />
                           ))}
                         </tbody>
