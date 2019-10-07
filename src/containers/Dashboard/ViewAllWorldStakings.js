@@ -66,7 +66,7 @@ class ViewAllWorldStakings extends Component {
       const rows = [];
       rows.push(['address', 'plan', 'amount', 'stakingType', 'timestamp', 'formattedDate', 'transactionHash'].join(','));
       Object.values(this.database).forEach(obj => {
-        const row = [obj.address, obj.plan, obj.amount, obj.stakingType, obj.timestamp, new Date(+obj.timestamp).toLocaleString().split(',').join(''), obj.transactionHash];
+        const row = [obj.address, obj.plan, obj.amount, obj.stakingType, obj.timestamp, new Date(+obj.timestamp * 1000).toLocaleString().split(',').join(''), obj.transactionHash];
         rows.push(row.join(','));
       });
       return rows.join('\n');
