@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import StakingEntry from './StakingEntry';
 import { timeally } from '../../env';
@@ -7,8 +7,11 @@ const ethers = require('ethers');
 
 class ViewAllWorldStakings extends Component {
   state = {
-    stakings: []
+    stakings: [],
+    downloadReady: false
   };
+
+  database = {};
 
   componentDidMount = async() => {
     const newStakingEventSig = ethers.utils.id("NewStaking(address,uint256,uint256,uint256)");
@@ -43,13 +46,49 @@ class ViewAllWorldStakings extends Component {
     }
 
     this.setState({ stakings });
+
+    await new Promise((resolve, reject) => {
+      const intervalId = setInterval(() => {
+        if(this.state.stakings.length && this.state.stakings.length === Object.keys(this.database).length) {
+          clearInterval(intervalId);
+          resolve();
+        }
+      }, 500);
+    });
+
+    this.setState({ downloadReady: true })
   };
+
+  downloadCsv = () => {
+    const element = document.createElement("a");
+    console.log(this.database);
+    const file = new Blob([(() => {
+      const rows = [];
+      rows.push(['address', 'plan', 'amount', 'stakingType', 'timestamp', 'formattedDate', 'transactionHash'].join(','));
+      Object.values(this.database).forEach(obj => {
+        const row = [obj.address, obj.plan, obj.amount, obj.stakingType, obj.timestamp, new Date(+obj.timestamp).toLocaleString().split(',').join(''), obj.transactionHash];
+        rows.push(row.join(','));
+      });
+      return rows.join('\n');
+    })()], {type: 'text/plain'});
+    element.href = URL.createObjectURL(file);
+    element.download = 'view-all-stakings.csv';
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
+  }
 
   render() {
     return (
       <>
         {this.state.stakings.length
         ? <>
+          <Button
+            onClick={this.downloadCsv}
+            disabled={!this.state.downloadReady}
+          >
+              {this.state.downloadReady
+                ? 'Download this data' : 'Please wait...'}
+          </Button>
           <Table responsive>
             <thead style={{textAlign:'center'}}>
               <tr>
@@ -60,15 +99,22 @@ class ViewAllWorldStakings extends Component {
                 <th>Timestamp</th>
               </tr>
             </thead>
-            {this.state.stakings.map(staking => (
+            <tbody>
+            {this.state.stakings.map((staking, index) => (
               <StakingEntry
+                key={staking.address+'-'+staking.stakingId}
+                index={index}
                 address={staking.address}
                 stakingId={staking.stakingId}
                 planId={staking.planId}
                 amount={staking.amount}
                 transactionHash={staking.transactionHash}
+                updateDatabase={(obj, index) => {
+                  this.database[index] = obj;
+                }}
               />
             ))}
+            </tbody>
           </Table>
         </> : 'Please wait loading stakings...'}
       </>
