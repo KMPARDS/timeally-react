@@ -13,10 +13,11 @@ class NavbarComponent extends Component {
     userAddress: '',
     time: 0,
     etherPrice: '',
+    esPrice: '',
     gasPrice: ''
   };
 
-  componentDidMount = async () => {
+  updatePrice = () => {
     (async() => {
       const response = await axios.get('https://api.coinmarketcap.com/v1/ticker/ethereum/');
       this.setState({ etherPrice: response.data[0]['price_usd'] });
@@ -29,6 +30,16 @@ class NavbarComponent extends Component {
       this.setState({ gasPrice: response.data['fast'] / 10 });
 
     })();
+
+    (async() => {
+      const response = await axios.get('https://api.probit.com/api/exchange/v1/ticker?market_ids=ES-USDT%2CES-BTC');
+
+      this.setState({ esPrice: response.data.data[0].last + ' USDT / '+response.data.data[1].last + ' BTC' })
+    })();
+  }
+
+  componentDidMount = async () => {
+    setInterval(this.updatePrice, 5000);
 
     window.zHistory = this.props.history;
 
@@ -129,13 +140,13 @@ class NavbarComponent extends Component {
                 {network === 'homestead' ? 'Current Time:' : 'mou:'} {this.state.time ? new Date(this.state.time * 1000).toLocaleString(): 'Loading...'}</p>
             </div>
             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3  d-none d-xl-block d-lg-block">
-              <p className="mail-text text-center">ES Price: Not available</p>
+              <p className="mail-text text-center">ES Price: {this.state.esPrice || 'Loading...'}</p>
             </div>
             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 d-none d-xl-block d-lg-block">
-              <p className="mail-text text-center">Ether Price: ${this.state.etherPrice}</p>
+              <p className="mail-text text-center">Ether Price: {this.state.etherPrice ? '$'+this.state.etherPrice : 'Loading...'}</p>
             </div>
             <div className="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 d-none d-xl-block d-lg-block">
-              <p className="mail-text text-center">Gas Price: {this.state.gasPrice} gwei</p>
+              <p className="mail-text text-center">Gas Price: {this.state.gasPrice ? this.state.gasPrice + ' gwei' : 'Loading...'}</p>
             </div>
           </div>
         </div>
