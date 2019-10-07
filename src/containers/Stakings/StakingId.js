@@ -16,6 +16,7 @@ class StakingId extends Component {
     errorMessage: '',
     stakingMonth: 0,
     planMonths: 0,
+    stakingEndTime: 0,
     monthlyBenefits: {},
     monthlyBenefitSpinner: {},
     selectedMonths: {},
@@ -46,7 +47,7 @@ class StakingId extends Component {
       const canWithdraw = currentMouTimestamp > stakingEndTime;
 
       console.log(canWithdraw, stakingEndTime, currentMouTimestamp);
-      this.setState({ canWithdraw, loading: false });
+      this.setState({ canWithdraw, stakingEndTime, loading: false });
     }
   };
 
@@ -245,6 +246,8 @@ class StakingId extends Component {
                                 }
                               </Button>}
                         </div> : <p>You have not selected any month. To withdraw benefits, select one or more months.</p>}
+
+                        <p>{this.state.canWithdraw ? 'You can withdraw.' : 'The staking period is not complete, so you will be able to withdraw after staking period completes at '+new Date(this.state.stakingEndTime * 1000)}</p>
 
                         <div style={{backgroundColor: '#eee', padding: '1rem', borderRadius: '.25rem', marginTop: '16px'}}>
                           TimeAlly Stakers can add nominees to their stakings. After one year of time period of staking, nominees get access to your benefits and principal amount of a particular staking. You can add multiple nominees with % share of the staking, and they would have access only upto their shares in your staking.<br /><br />
