@@ -33,7 +33,7 @@ class StakingElement extends Component {
 
     this.intervalId = setInterval(() => this.setState({ nextBenefitTime: this.state.nextBenefitTime-1 }), 1000);
 
-    await this.setState({ stakingDetails, nextBenefitTime });
+    this.setState({ stakingDetails, nextBenefitTime });
   };
 
   componentWillUnmount = () => {
@@ -84,7 +84,7 @@ class StakingElement extends Component {
       <td>{this.state.stakingDetails ? ethers.utils.formatEther(this.state.stakingDetails[0]) : 'Loading...'} ES</td>
       <td>{this.state.stakingDetails ? (this.state.stakingDetails[3].toNumber() ? '2 Year' : '1 Year') : 'Loading...'}</td>
       <td>{this.state.stakingDetails ? new Date(this.state.stakingDetails[1].toNumber() * 1000).toLocaleString() : 'Loading...'}</td>
-      <td>{days ? `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds` : 'Calculating...'}</td>
+      <td>{this.state.nextBenefitTime ? `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds` : 'Calculating...'}</td>
       <td>{
           this.state.benefitAmount
             ? (
