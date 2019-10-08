@@ -16,6 +16,7 @@ class StakingId extends Component {
     errorMessage: '',
     stakingMonth: 0,
     planMonths: 0,
+    stakingStartTime: 0,
     stakingEndTime: 0,
     monthlyBenefits: {},
     monthlyBenefitSpinner: {},
@@ -47,9 +48,13 @@ class StakingId extends Component {
       const canWithdraw = currentMouTimestamp > stakingEndTime;
 
       console.log(canWithdraw, stakingEndTime, currentMouTimestamp);
-      this.setState({ canWithdraw, stakingEndTime, loading: false });
+      this.setState({ canWithdraw, stakingStartTime, stakingEndTime, loading: false });
     }
   };
+
+  componentWillUnmount = () => {
+    this.intervalId && clearInterval(this.intervalId);
+  }
 
   query = async month => {
     (()=>{
@@ -61,28 +66,60 @@ class StakingId extends Component {
     console.log('month', month);
     const monthlyBenefits = {...this.state.monthlyBenefits};
 
-    try {
-      const monthlyBenefit = await this.props.store.timeallyInstance.functions.seeBenefitOfAStakingByMonths(
-        this.props.store.walletInstance.address,
-        this.props.match.params.id,
-        [month]
-      );
-      console.log(monthlyBenefit);
-      let lessDecimals = ethers.utils.formatEther(monthlyBenefit).split('.');
-      if(lessDecimals[1].length >= 2) {
-        lessDecimals[1] = lessDecimals[1].slice(0,2);
+    const benefitAccessTime = this.state.stakingStartTime + (month - this.state.stakingMonth) * 2629744;
+
+    const currentMouTimestamp = network === 'homestead' ? Math.floor(Date.now() / 1000) : (await this.props.store.esInstance.functions.mou()).toNumber();
+
+    if(currentMouTimestamp >= benefitAccessTime) {
+      console.log('yes', currentMouTimestamp, benefitAccessTime);
+      try {
+        const monthlyBenefit = await this.props.store.timeallyInstance.functions.seeBenefitOfAStakingByMonths(
+          this.props.store.walletInstance.address,
+          this.props.match.params.id,
+          [month]
+        );
+        console.log(monthlyBenefit);
+        let lessDecimals = ethers.utils.formatEther(monthlyBenefit).split('.');
+        if(lessDecimals[1].length >= 2) {
+          lessDecimals[1] = lessDecimals[1].slice(0,2);
+        }
+        monthlyBenefits[month] = lessDecimals.join('.');
+      } catch (err) {
+        console.log('error from bl chain', err.message);
       }
-      monthlyBenefits[month] = lessDecimals.join('.');
-    } catch (err) {
-      console.log('error from bl chain', err.message);
+
+      (()=>{
+        const monthlyBenefitSpinner = {...this.state.monthlyBenefitSpinner};
+        monthlyBenefitSpinner[month] = false;
+        this.setState({ monthlyBenefitSpinner, monthlyBenefits });
+      })();
+    } else {
+      const waitPeriodForBenefit = benefitAccessTime - currentMouTimestamp;
+      console.log('no', benefitAccessTime, waitPeriodForBenefit);
+      let countdown = currentMouTimestamp;
+      this.intervalId = setInterval(() => {
+        const currentMouTimestampUpdated = network === 'homestead' ? Math.floor(Date.now() / 1000) : countdown;
+        const updatedWaitPeriodForBenefit = benefitAccessTime - currentMouTimestampUpdated;
+        console.log('no', benefitAccessTime, waitPeriodForBenefit, updatedWaitPeriodForBenefit);
+        const days = Math.floor(updatedWaitPeriodForBenefit/60/60/24);
+        const hours = Math.floor((updatedWaitPeriodForBenefit - days * 60 * 60 * 24) / 60 / 60);
+        const minutes = Math.floor((updatedWaitPeriodForBenefit - days * 60 * 60 * 24 - hours * 60 * 60) / 60);
+        const seconds = updatedWaitPeriodForBenefit - days * 60 * 60 * 24 - hours * 60 * 60 - minutes * 60;
+
+        const monthlyBenefits = {...this.state.monthlyBenefits};
+        monthlyBenefits[month] = `Please wait for ${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
+
+        if(updatedWaitPeriodForBenefit <= 0) {
+          monthlyBenefits[month] = undefined;
+          clearInterval(this.intervalId);
+        }
+
+        const monthlyBenefitSpinner = {...this.state.monthlyBenefitSpinner};
+        monthlyBenefitSpinner[month] = false;
+        this.setState(this.state.monthlyBenefitSpinner[month] ? { monthlyBenefits, monthlyBenefitSpinner } : { monthlyBenefits });
+        countdown++;
+      }, 1000);
     }
-
-    (()=>{
-      const monthlyBenefitSpinner = {...this.state.monthlyBenefitSpinner};
-      monthlyBenefitSpinner[month] = false;
-      this.setState({ monthlyBenefitSpinner, monthlyBenefits });
-    })();
-
   };
 
   querySelected = async() => {
@@ -140,7 +177,10 @@ class StakingId extends Component {
                         onClick={() => this.query(i)}
                         className="btn z-btn-outline"
                       >
-                        {i > this.state.currentMonth ? 'Cannot Query as NRT not released' : 'Query'}
+                        {i > this.state.currentMonth ? 'Cannot Query as NRT not released' :
+                          (
+                            'Query'
+                          )}
                       </button>
                   )
                 }
