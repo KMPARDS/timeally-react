@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TransactionModal from '../TransactionModal/TransactionModal';
-
+import { network } from '../../env';
 import { Spinner, Button } from 'react-bootstrap';
 
 const ethers = require('ethers');
@@ -41,7 +41,7 @@ class StakingId extends Component {
         staking.stakingPlanId
       );
       this.setState({ staking, stakingMonth: Number(staking[2]), planMonths: Number(stakingPlan[0]) });
-      const currentMouTimestamp = (await this.props.store.esInstance.functions.mou()).toNumber();
+      const currentMouTimestamp = network === 'homestead' ? Math.floor(Date.now() / 1000) : (await this.props.store.esInstance.functions.mou()).toNumber();
       const stakingStartTime = this.state.staking[1].toNumber();
       const stakingEndTime = (this.state.staking[2].eq(1) ? 63244800 : 31622400) + stakingStartTime;
       const canWithdraw = currentMouTimestamp > stakingEndTime;

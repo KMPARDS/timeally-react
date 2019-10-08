@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Spinner } from 'react-bootstrap';
-import { timeally } from '../../env';
+import { timeally, network } from '../../env';
 import StakingElement from './StakingElement';
 const ethers = require('ethers');
 
@@ -36,7 +36,7 @@ class StakingList extends Component {
       topics
     });
 
-    const mou = await this.props.store.esInstance.functions.mou();
+    const mou = network === 'homestead' ? Math.floor(Date.now() / 1000) : (await this.props.store.esInstance.functions.mou());
 
     const stakings = [];
     for(let i = logs.length - 1; i >= 0; i--) {

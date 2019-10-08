@@ -26,7 +26,7 @@ class StakingEntry extends Component {
 
     await Promise.all([promise1, promise2]);
 
-    this.props.updateDatabase({
+    this.props.updateDatabase && this.props.updateDatabase({
       address: this.props.address,
       plan: this.props.planId ? '2 Year' : '1 Year',
       amount: this.props.amount,
