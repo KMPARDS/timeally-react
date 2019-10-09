@@ -71,7 +71,6 @@ class StakingId extends Component {
     const currentMouTimestamp = network === 'homestead' ? Math.floor(Date.now() / 1000) : (await this.props.store.esInstance.functions.mou()).toNumber();
 
     if(currentMouTimestamp >= benefitAccessTime) {
-      console.log('yes', currentMouTimestamp, benefitAccessTime);
       try {
         const monthlyBenefit = await this.props.store.timeallyInstance.functions.seeBenefitOfAStakingByMonths(
           this.props.store.walletInstance.address,
@@ -88,37 +87,46 @@ class StakingId extends Component {
         console.log('error from bl chain', err.message);
       }
 
-      (()=>{
+      await (async()=>{
         const monthlyBenefitSpinner = {...this.state.monthlyBenefitSpinner};
         monthlyBenefitSpinner[month] = false;
-        this.setState({ monthlyBenefitSpinner, monthlyBenefits });
+        await this.setState({ monthlyBenefitSpinner, monthlyBenefits });
       })();
     } else {
       const waitPeriodForBenefit = benefitAccessTime - currentMouTimestamp;
-      console.log('no', benefitAccessTime, waitPeriodForBenefit);
       let countdown = currentMouTimestamp;
-      this.intervalId = setInterval(() => {
-        const currentMouTimestampUpdated = network === 'homestead' ? Math.floor(Date.now() / 1000) : countdown;
-        const updatedWaitPeriodForBenefit = benefitAccessTime - currentMouTimestampUpdated;
-        console.log('no', benefitAccessTime, waitPeriodForBenefit, updatedWaitPeriodForBenefit);
-        const days = Math.floor(updatedWaitPeriodForBenefit/60/60/24);
-        const hours = Math.floor((updatedWaitPeriodForBenefit - days * 60 * 60 * 24) / 60 / 60);
-        const minutes = Math.floor((updatedWaitPeriodForBenefit - days * 60 * 60 * 24 - hours * 60 * 60) / 60);
-        const seconds = updatedWaitPeriodForBenefit - days * 60 * 60 * 24 - hours * 60 * 60 - minutes * 60;
+      // this promise is for awaiting until atleast one interval is run.
+      await new Promise((resolve, reject) => {
+        this.intervalId = setInterval(async() => {
+          const currentMouTimestampUpdated = network === 'homestead' ? Math.floor(Date.now() / 1000) : countdown;
+          const updatedWaitPeriodForBenefit = benefitAccessTime - currentMouTimestampUpdated;
+          const days = Math.floor(updatedWaitPeriodForBenefit/60/60/24);
+          const hours = Math.floor((updatedWaitPeriodForBenefit - days * 60 * 60 * 24) / 60 / 60);
+          const minutes = Math.floor((updatedWaitPeriodForBenefit - days * 60 * 60 * 24 - hours * 60 * 60) / 60);
+          const seconds = updatedWaitPeriodForBenefit - days * 60 * 60 * 24 - hours * 60 * 60 - minutes * 60;
 
-        const monthlyBenefits = {...this.state.monthlyBenefits};
-        monthlyBenefits[month] = `Please wait for ${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
+          const monthlyBenefits = {...this.state.monthlyBenefits};
+          monthlyBenefits[month] = `Please wait for ${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds for getting `;
 
-        if(updatedWaitPeriodForBenefit <= 0) {
-          monthlyBenefits[month] = undefined;
-          clearInterval(this.intervalId);
-        }
+          if(updatedWaitPeriodForBenefit <= 0) {
+            monthlyBenefits[month] = undefined;
+            clearInterval(this.intervalId);
+          }
 
-        const monthlyBenefitSpinner = {...this.state.monthlyBenefitSpinner};
-        monthlyBenefitSpinner[month] = false;
-        this.setState(this.state.monthlyBenefitSpinner[month] ? { monthlyBenefits, monthlyBenefitSpinner } : { monthlyBenefits });
-        countdown++;
-      }, 1000);
+          const monthlyBenefitSpinner = {...this.state.monthlyBenefitSpinner};
+          monthlyBenefitSpinner[month] = false;
+          await this.setState(this.state.monthlyBenefitSpinner[month] ? { monthlyBenefits, monthlyBenefitSpinner } : { monthlyBenefits });
+          countdown++;
+          resolve();
+        }, 1000);
+      });
+    }
+
+    // i was going to de select in case user already selected and button got disabled
+    if(['P', '0'].includes(this.state.monthlyBenefits[month].substr(0,1))){
+      const selectedMonths = {...this.state.selectedMonths};
+      selectedMonths[month] = false;
+      this.setState({ selectedMonths });
     }
   };
 
@@ -192,7 +200,7 @@ class StakingId extends Component {
           <td></td>*/}
           <td>
             <button
-              disabled={i > this.state.currentMonth}
+              disabled={i > this.state.currentMonth || this.state.monthlyBenefits[i] && ['P', '0'].includes(this.state.monthlyBenefits[i].substr(0,1))}
               onClick={() => this.setState({ selectedMonthsUpdated: true, selectedMonths: {...this.state.selectedMonths, [i]: !this.state.selectedMonths[i]} })}
               className={`btn ${this.state.selectedMonths[i] ? 'z-btn-full' : 'z-btn-outline'}`}
 
