@@ -40,6 +40,12 @@ const ListOfLoadMethods = props => {
           Connect to <strong>Metamask</strong> (supports many hardware wallets like Trezor and Ledger)
         </Card.Body>
       </Card>
+
+      <Card style={{margin: '15px 0'}} onClick={() => props.history.push('/load-wallet/using-address')}>
+        <Card.Body align="center">
+          Use <strong>Address</strong> to read account
+        </Card.Body>
+      </Card>
     </div>
   );
 }

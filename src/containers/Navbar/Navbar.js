@@ -10,7 +10,6 @@ const axios = require('axios');
 
 class NavbarComponent extends Component {
   state = {
-    userAddress: '',
     time: 0,
     etherPrice: '',
     esPrice: '',
@@ -49,9 +48,12 @@ class NavbarComponent extends Component {
         let userAddress = '';
         if(Object.entries(action.payload).length) {
           try {
-            userAddress = await action.payload.getAddress();
-            action.payload['address'] = userAddress;
-            console.log('address from metamask', userAddress);
+            if(!action.payload.address) {
+              userAddress = await action.payload.getAddress();
+              action.payload['address'] = userAddress;
+            } else {
+              userAddress = action.payload.address;
+            }
           } catch (err) {
             console.log(err.message);
             // try {
@@ -64,9 +66,9 @@ class NavbarComponent extends Component {
             // }
           }
         }
-        this.setState({ userAddress });
+        // this.setState({ userAddress });
 
-        const provider = userAddress ? action.payload : this.props.store.providerInstance;
+        const provider = action.payload._ethersType === 'Signer' ? action.payload : this.props.store.providerInstance;
 
         // update es instance
         this.props.dispatch({ type: 'LOAD-ES-INSTANCE', payload: new ethers.Contract(esContract.address, esContract.abi, provider) });
@@ -107,12 +109,12 @@ class NavbarComponent extends Component {
         <span><a onClick={() => this.props.history.push('/nominee')} className="btn main-btn btn-default btn-sm" style={{backgroundColor: '#55a903'}}>Nominee</a></span>
     </div>
     );
-    if(this.state.userAddress) {
+    if(this.props.store.walletInstance.address) {
       navbarButtons = (
         <div>
           {announcementLink}
-          <span><a className="btn btn-primary btn-sm">Welcome {
-              this.state.userAddress.slice(0,6) + '...' + this.state.userAddress.slice(this.state.userAddress.length - 3, this.state.userAddress.length - 1)
+          <span><a className="btn btn-primary btn-sm" style={{backgroundColor: this.props.store.walletInstance._ethersType !== 'Signer' ? '#333' : undefined}}>Welcome {
+              this.props.store.walletInstance.address.slice(0,6) + '...' + this.props.store.walletInstance.address.slice(this.props.store.walletInstance.address.length - 3, this.props.store.walletInstance.address.length - 1)
             }</a>
           </span>
           <span><a onClick={() => {
@@ -254,22 +256,22 @@ class NavbarComponent extends Component {
 
       //   <Navbar.Collapse className="justify-content-end">
 
-      //     <DropdownButton alignRight id="dropdown-basic-button" title={this.state.userAddress ? `Welcome ${String(this.state.userAddress).substr(0,6)}...` : 'Era Swap Wallet'} variant="outline-light" drop="down">
+      //     <DropdownButton alignRight id="dropdown-basic-button" title={this.props.store.walletInstance.address ? `Welcome ${String(this.props.store.walletInstance.address).substr(0,6)}...` : 'Era Swap Wallet'} variant="outline-light" drop="down">
 
       //       {/*<Dropdown.Header>Your HD Accounts</Dropdown.Header>
       //       <Dropdown.Item>Signed in as 0x124B7... (23.75 ES)</Dropdown.Item>*/}
 
       //       {/* show if not signed in*/
-      //       !this.state.userAddress ? <Dropdown.Item onClick={() => this.props.history.push('/create-wallet')}>Create Wallet</Dropdown.Item> : null}
+      //       !this.props.store.walletInstance.address ? <Dropdown.Item onClick={() => this.props.history.push('/create-wallet')}>Create Wallet</Dropdown.Item> : null}
 
       //       {/* show if not signed in*/
-      //       !this.state.userAddress ? <Dropdown.Item onClick={() => this.props.history.push('/load-wallet')}>Load Wallet</Dropdown.Item> : null}
+      //       !this.props.store.walletInstance.address ? <Dropdown.Item onClick={() => this.props.history.push('/load-wallet')}>Load Wallet</Dropdown.Item> : null}
 
       //       {/* show if not signed in*/
-      //       this.state.userAddress ? <Dropdown.Item onClick={() => this.props.history.push('/user')}>Account page</Dropdown.Item> : null}
+      //       this.props.store.walletInstance.address ? <Dropdown.Item onClick={() => this.props.history.push('/user')}>Account page</Dropdown.Item> : null}
 
       //       {/* show if not signed in*/
-      //       this.state.userAddress ? <Dropdown.Item onClick={() => {
+      //       this.props.store.walletInstance.address ? <Dropdown.Item onClick={() => {
       //         this.props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: {} });
       //         window.historyy = this.props.history;
       //         this.props.history.push('/logout');

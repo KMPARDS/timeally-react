@@ -144,6 +144,7 @@ class TransactionModal extends Component {
 
   render() {
     let screenContent;
+    console.log('this.props.store.walletInstance._ethersType !== \'Signer\'', this.props.store.walletInstance._ethersType !== 'Signer');
     if(Object.entries(this.props.store.walletInstance).length === 0) {
       screenContent = (
         <Modal.Body style={{textAlign: 'center'}}>
@@ -154,8 +155,14 @@ class TransactionModal extends Component {
           <Button onClick={() => this.props.history.push('/create-wallet')}>Create wallet</Button>
         </Modal.Body>
       );
-    }
-    else if(this.state.currentScreen === 0) {
+    } else if(this.props.store.walletInstance._ethersType !== 'Signer') {
+      screenContent = (
+        <Modal.Body style={{textAlign: 'center'}}>
+          You are trying to do a transaction using an address. For making a transaction on behalf of an address, private key is required. It can be in form or a mnemonic, keystore or stored inside your hardware wallet or metamask. You can load your wallet to make transaction.
+          <Button onClick={() => {window.redirectHereAfterLoadWallet=this.props.location.pathname;this.props.history.push('/load-wallet')}}>Go to load wallet page</Button>
+        </Modal.Body>
+      );
+    } else if(this.state.currentScreen === 0) {
       screenContent = (
         <Modal.Body>
           {this.props.ethereum.directGasScreen ? null : <><h5>Please select a staking plan to create a new staking.</h5>

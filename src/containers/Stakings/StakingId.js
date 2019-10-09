@@ -123,7 +123,7 @@ class StakingId extends Component {
     }
 
     // i was going to de select in case user already selected and button got disabled
-    if(['P', '0'].includes(this.state.monthlyBenefits[month].substr(0,1))){
+    if(['Ple', '0.0'].includes(this.state.monthlyBenefits[month].substr(0,3))){
       const selectedMonths = {...this.state.selectedMonths};
       selectedMonths[month] = false;
       this.setState({ selectedMonths });
@@ -200,7 +200,7 @@ class StakingId extends Component {
           <td></td>*/}
           <td>
             <button
-              disabled={i > this.state.currentMonth || this.state.monthlyBenefits[i] && ['P', '0'].includes(this.state.monthlyBenefits[i].substr(0,1))}
+              disabled={i > this.state.currentMonth || this.state.monthlyBenefits[i] && ['Ple', '0.0'].includes(this.state.monthlyBenefits[i].substr(0,3))}
               onClick={() => this.setState({ selectedMonthsUpdated: true, selectedMonths: {...this.state.selectedMonths, [i]: !this.state.selectedMonths[i]} })}
               className={`btn ${this.state.selectedMonths[i] ? 'z-btn-full' : 'z-btn-outline'}`}
 

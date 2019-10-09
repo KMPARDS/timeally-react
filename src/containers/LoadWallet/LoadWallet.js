@@ -7,6 +7,7 @@ import UsingKeystoreFile from './UsingKeystoreFile';
 import UsingPrivateKey from './UsingPrivateKey';
 import UsingMnemonic from './UsingMnemonic';
 import UsingMetamask from './UsingMetamask';
+import UsingAddress from './UsingAddress';
 
 
 class LoadWallet extends Component {
@@ -25,6 +26,8 @@ class LoadWallet extends Component {
         <Route path ="/load-wallet/using-mnemonic" exact component={UsingMnemonic} />
 
         <Route path ="/load-wallet/using-metamask" exact component={UsingMetamask} />
+
+        <Route path ="/load-wallet/using-address" exact component={UsingAddress} />
         {/* <div className="row">
           <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
             <div className="bg-white pinside40 number-block highlight-outline outline mb60 bg-boxshadow">
