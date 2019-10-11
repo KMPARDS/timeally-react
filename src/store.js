@@ -1,5 +1,5 @@
 import { applyMiddleware, createStore } from "redux";
-
+import { network } from './env';
 
 const initialState = {
   walletInstance: {},
@@ -33,14 +33,14 @@ const walletChangeUpdater = store => next => action => {
   try {
     window.updateTheNavbar(action);
   } catch (e) {
-    console.log(e.message);
+    network === 'homestead' || console.log(e.message);
   }
 
-  console.group(action.type);
-  console.info('dispatching', action);
+  network === 'homestead' || console.group(action.type);
+  network === 'homestead' || console.info('dispatching', action);
   let result = next(action);
-  console.log('next state', store.getState());
-  console.groupEnd();
+  network === 'homestead' || console.log('next state', store.getState());
+  network === 'homestead' || console.groupEnd();
   return result;
 }
 

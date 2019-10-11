@@ -158,7 +158,7 @@ class TransactionModal extends Component {
     } else if(this.props.store.walletInstance._ethersType !== 'Signer') {
       screenContent = (
         <Modal.Body style={{textAlign: 'center'}}>
-          You are trying to do a transaction using an address. For making a transaction on behalf of an address, private key is required. It can be in form or a mnemonic, keystore or stored inside your hardware wallet or metamask. You can load your wallet to make transaction.
+          You are trying to do a transaction using an address. For a transaction on behalf of an address to be accepted by the blockchain, the private key corresponding to the address is required to sign the transaction. Without a private key, tranasaction cannot be signed. The private key can be in the form of a mnemonic, keystore or stored inside your hardware wallet or metamask. You can load your wallet to make transaction.
           <Button onClick={() => {window.redirectHereAfterLoadWallet=this.props.location.pathname;this.props.history.push('/load-wallet')}}>Go to load wallet page</Button>
         </Modal.Body>
       );

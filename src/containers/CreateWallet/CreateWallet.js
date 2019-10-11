@@ -332,8 +332,8 @@ class CreateWalletPage extends Component {
                   TimeAlly is a free, open-source, client-side interface. TimeAlly allows you to interact directly with the blockchain, while you remain in full control of your keys and holdings.
                     <br></br><br></br>
                     Please think about this carefully. YOU are the one who is in control. TimeAlly is not a bank or exchange. We don't hold your keys, your holdings, or your information. This means we can't access accounts, recover keys, reset passwords, or reverse transactions.<br></br><br></br>
-                    {/* <a  class="btn btn-primary btn-sm">Create Wallet</a> */}
-                    <a onClick={this.onCloseModal}  class="btn btn-primary btn-sm"><span className="text-white">Proceed</span></a>
+                    {/* <a  className="btn btn-primary btn-sm">Create Wallet</a> */}
+                    <a onClick={this.onCloseModal}  className="btn btn-primary btn-sm"><span className="text-white">Proceed</span></a>
                   </p>
                   </div>
                 </Modal>

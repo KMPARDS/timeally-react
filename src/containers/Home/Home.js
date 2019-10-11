@@ -40,20 +40,20 @@ class Home extends Component {
         <div className="row">
           <div className="offset-xl-7 col-xl-5 offset-lg-2 col-lg-8 col-md-12 col-sm-12 col-12 ">
             <div className="hero-tab-block">
-               <div class="lead-calculator pinside40">
-                         <div class="row">
-                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb10">
-                             <div class="card-hero-block">
-                                 <h1 class="text-white" style={{fontSize:'30px'}}>TimeAlly Smart Contract</h1>
-                                 <p class="text-white">TimeAlly Smart Contract - Controls Volatility, Reward Distribution from ES NRT and simply increase TA Holder’s Era Swap (ES) counts based on their vesting periods without getting in to the hassle of day trading. </p>
-                                 <div class="mt30">
+               <div className="lead-calculator pinside40">
+                         <div className="row">
+                             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb10">
+                             <div className="card-hero-block">
+                                 <h1 className="text-white" style={{fontSize:'30px'}}>TimeAlly Smart Contract</h1>
+                                 <p className="text-white">TimeAlly Smart Contract - Controls Volatility, Reward Distribution from ES NRT and simply increase TA Holder’s Era Swap (ES) counts based on their vesting periods without getting in to the hassle of day trading. </p>
+                                 <div className="mt30">
                                      <a  onClick={() => {
                                          if(this.props.store.walletInstance.address) {
                                            this.props.history.push('stakings/new')
                                          } else {
                                            this.props.history.push('create-wallet')
                                          }
-                                       }} class="btn btn-default">Vest Now</a>
+                                       }} className="btn btn-default">Vest Now</a>
                                  </div>
                              </div>
                              </div>
@@ -95,12 +95,11 @@ class Home extends Component {
           <div className="section-title text-center mb60">
           <h1>What is DApp</h1>
             <p>Decentralized Applications (DApp) is open source application that runs autonomously on decentralized public blockchain. They have existed since the advent of P2P network. DApp uses distributed ledger technology which is neither stored in centralized location nor can be controlled by single entity. It generates & uses tokens by following a standard cryptographic algorithm. <br></br>
-            <hr/>           
-              </p>
-            
+            </p>
+            <hr/>
               <h1>What is TimeAlly</h1>
             <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the generation & distribution of ES Newly released Token. TimeAlly increase Era Swap count for TimeAlly contract holders for holding tokens over a period of time.</p>
-            <div class="row">
+            <div className="row">
                 <div className="offset-md-2 col-md-4">
                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
                     <iframe src="https://www.youtube.com/embed/srsL3_UIsvE?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
@@ -108,10 +107,10 @@ class Home extends Component {
                 </div>
                 <div className="col-md-4">
                   <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                    <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/m3WyMh43ns8?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/m3WyMh43ns8?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                   </div>
                 </div>
-              </div>             
+              </div>
           </div>
         </div>
       </div>
@@ -190,13 +189,13 @@ class Home extends Component {
                   {/* hero-caption */}
                   <div className="card-hero-block text-center">
                     <h1 className="text-white">How TimeAlly works</h1>
-                    <p className="text-white">TimeAlly rewards TA holders for locking their tokens in TA smart contract (TA Time Vault) for the duration of one or two years as per their choice. <br></br><br></br>
+                    <p className="text-white">TimeAlly rewards TA holders for locking their tokens in TA smart contract (TA Time Vault) for the duration of one or two years as per their choice.</p><br></br>
                     <ul style={{textAlign:'left'}}>
                       <li>Vesting for 1 Year: 13% (1.08% per month) of ES Tokens from NRT pool is allocated to be distributed among TA Vestors. </li>
                       <li>Vesting for 2 Year: 15% (1.25% per month) of ES Tokens from NRT pool is allocated  to be distributed among TA Vestors.</li>
                       <li>All the Rewards will be distributed 50% in TimeAlly & 50 % in Liquid.</li>
                     </ul>
-
+                    <p>
                     There is a fixed number of ES rewarded every month to users which is governed by TA smart contract. Total number of ES tokens to be distributed among TA holders is pre-defined, but which user will get how many ES tokens is not defined. It depends on number of token staked in proportion to their vesting plans.</p>
                     <div className="row">
                       <div className="col-md-6">
@@ -242,10 +241,10 @@ class Home extends Component {
                 {/* <div className="loan-products-icon"><img src="./images/medal.png"/></div> */}
                 <div className="loan-products-content">
                   <h3>TimeAlly Loan</h3>
-                  <input type="checkbox" class="read-more-state" id="post-1" />
-                  <p class="read-more-wrap">TimeAlly holders will get opportunity to avail loan upto 50% for a duration of 2 months after consuming 75% of contract period. More plan options will be introduced after <span class="read-more-target"> deployment of 1 year & 2 year vesting initial plans. The borrower has to pay 1% additional of the borrowed ES for 60 days. The additional 1% will be collected in luck pool and distributed back to the community. In case a borrower fails to pay back within 60 days and 12 hours, remaining staked tokens in TimeAlly contract will be burnt.
+                  <input type="checkbox" className="read-more-state" id="post-1" />
+                  <p className="read-more-wrap">TimeAlly holders will get opportunity to avail loan upto 50% for a duration of 2 months after consuming 75% of contract period. More plan options will be introduced after <span className="read-more-target"> deployment of 1 year & 2 year vesting initial plans. The borrower has to pay 1% additional of the borrowed ES for 60 days. The additional 1% will be collected in luck pool and distributed back to the community. In case a borrower fails to pay back within 60 days and 12 hours, remaining staked tokens in TimeAlly contract will be burnt.
  </span></p>
-                    <label for="post-1"  class="btn btn-default read-more-trigger"></label>
+                    <label htmlFor="post-1"  className="btn btn-default read-more-trigger"></label>
                 </div>
               </div>
             </div>
@@ -255,9 +254,9 @@ class Home extends Component {
                 {/* <div className="loan-products-icon"><i className="flaticon-time-is-money icon-4x icon-primary" /></div> */}
                 <div className="loan-products-content">
                   <h3>TimeAlly Club</h3>
-                  <input type="checkbox" class="read-more-state" id="post-2" />
-                  <p class="read-more-wrap">TimeAlly Club, a premium membership offering for Era Swap Community, will provide the users with additional benefits of rewards along with <span class="read-more-target">exclusive membership benefits like Utility Bill Payments, Travel & Holidays, Dine-out, Education, Health & Fitness, etc. It will be available in 5 categories: Silver, Gold, Diamond, Emerald and Ruby.</span></p>
-                    <label for="post-2"  class="btn btn-default read-more-trigger"></label>
+                  <input type="checkbox" className="read-more-state" id="post-2" />
+                  <p className="read-more-wrap">TimeAlly Club, a premium membership offering for Era Swap Community, will provide the users with additional benefits of rewards along with <span className="read-more-target">exclusive membership benefits like Utility Bill Payments, Travel & Holidays, Dine-out, Education, Health & Fitness, etc. It will be available in 5 categories: Silver, Gold, Diamond, Emerald and Ruby.</span></p>
+                    <label htmlFor="post-2"  className="btn btn-default read-more-trigger"></label>
                 </div>
               </div>
             </div>
@@ -267,9 +266,9 @@ class Home extends Component {
                 {/* <div className="loan-products-icon"><i className="flaticon-rich icon-4x icon-primary" /></div> */}
                 <div className="loan-products-content">
                   <h3>TimeAlly Insurance</h3>
-                  <input type="checkbox" class="read-more-state" id="post-3" />
-                  <p class="read-more-wrap">The insurance policy issued will be based on efficient underwriting norms of smart contract removing middleman and physical processes. No dilution on mortality. <span class="read-more-target">  TimeAlly will create provision for users to get their premium adjustment from TimeAlly payouts, TimeAlly Rewards & TimeAlly Power. TimeAlly insurance will be launched soon for community.</span></p>
-                    <label for="post-3"  class="btn btn-default read-more-trigger"></label>
+                  <input type="checkbox" className="read-more-state" id="post-3" />
+                  <p className="read-more-wrap">The insurance policy issued will be based on efficient underwriting norms of smart contract removing middleman and physical processes. No dilution on mortality. <span className="read-more-target">  TimeAlly will create provision for users to get their premium adjustment from TimeAlly payouts, TimeAlly Rewards & TimeAlly Power. TimeAlly insurance will be launched soon for community.</span></p>
+                    <label htmlFor="post-3"  className="btn btn-default read-more-trigger"></label>
                 </div>
               </div>
             </div>
@@ -302,7 +301,7 @@ class Home extends Component {
                     </span>
                   </div>
                   <br></br>
-                <div class="row">
+                <div className="row">
                   <div className="offset-md-2 col-md-4">
                     <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
                         <iframe src="https://www.youtube.com/embed/X0SV9pGQls4?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
@@ -311,7 +310,7 @@ class Home extends Component {
 
                   <div className="col-md-4">
                     <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                      <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/pCsg5betihY?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/pCsg5betihY?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                   </div>
                 </div>
@@ -326,7 +325,7 @@ class Home extends Component {
                 </div>
                 {/* <a className="btn-link-white">Watch the video for TimeAlly activation</a> */}
                 {/* <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                    <iframe width="560" height="315" style={{position: 'absolute', top: 0, left: 0,}} src="https://www.youtube.com/embed/X0SV9pGQls4?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" style={{position: 'absolute', top: 0, left: 0,}} src="https://www.youtube.com/embed/X0SV9pGQls4?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                   </div> */}
               </div>
               {/* /.hero-caption */}
@@ -362,7 +361,7 @@ class Home extends Component {
                         <Accordion.Collapse eventKey="0">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap Token or ES is a decentralized utility token currently based on Ethereum blockchain (ERC20) which will be used on multiple platforms for exchange of services(P2P), avail discounts, get rewards and many more utility.</Card.Body>
                         </Accordion.Collapse>
-                      </Card>  
+                      </Card>
                       <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', borderTop:'1px solid #ccc', padding: '10px 0px 10px 30px'}}>
                         <Accordion.Toggle as={Card.Header} eventKey="1">
                           Q-2. &nbsp; What is TimeAlly DApp?
@@ -371,32 +370,32 @@ class Home extends Component {
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the generation & distribution of ES Newly released Token. <br></br><br></br>
                           <h4 style={{textAlign:'center'}}>Please watch this videos to understand .</h4>
                           <h5 style={{textAlign:'center'}}>TimeAlly Tour.</h5>
-                          <div class="row">
+                          <div className="row">
                             <div className="offset-md-4 col-md-4">
                                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
                                   <iframe src="https://www.youtube.com/embed/9Utcv_Uvz5U?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                                 </div>
                              </div>
-                           </div>   
-                           <h5 style={{textAlign:'center'}}>TimeAlly Quick Walk through.</h5>  
-                           <div class="row">
+                           </div>
+                           <h5 style={{textAlign:'center'}}>TimeAlly Quick Walk through.</h5>
+                           <div className="row">
                             <div className="offset-md-4 col-md-4">
                                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
                                     <iframe src="https://www.youtube.com/embed/Gyk9mA3vX88?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                                 </div>
                              </div>
-                           </div>         
-                           <h5 style={{textAlign:'center'}}>TimeAlly Teaser </h5>  
-                           <div class="row">
+                           </div>
+                           <h5 style={{textAlign:'center'}}>TimeAlly Teaser </h5>
+                           <div className="row">
                             <div className="offset-md-4 col-md-4">
                                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
                                     <iframe src="https://www.youtube.com/embed/srsL3_UIsvE?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                                 </div>
                              </div>
-                           </div>                  
+                           </div>
                           </Card.Body>
                         </Accordion.Collapse>
-                      </Card>                     
+                      </Card>
                       <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
                         <Accordion.Toggle as={Card.Header} eventKey="2">
                         Q-3. &nbsp; How to claim your staking in TimeAlly
@@ -404,12 +403,12 @@ class Home extends Component {
                         <Accordion.Collapse eventKey="2">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
                           Please watch this video on how to claim your staking in TimeAlly DApp.<br></br><br></br>
-                          <div class="row">
+                          <div className="row">
                               <div className="offset-md-4 col-md-4">
                               <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
                                   <iframe src="https://www.youtube.com/embed/MrnABDePmC4?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                               </div>
-                                  
+
                               </div>
                             </div>
                           </Card.Body>
@@ -422,14 +421,14 @@ class Home extends Component {
                         <Accordion.Collapse eventKey="3">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
                             One can vest in TimeAlly just by locking up ES in TimeAlly smart contract for a vesting period of 1 year or 2 years.<br></br><br></br>
-                          
-                            <div className="col-md-4 offset-md-4">  
-                            <strong style={{textAlign:'center'}}>Please watch this video on how to stake in TimeAlly.</strong> <br></br><br></br>                          
+
+                            <div className="col-md-4 offset-md-4">
+                            <strong style={{textAlign:'center'}}>Please watch this video on how to stake in TimeAlly.</strong> <br></br><br></br>
                               <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                                <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/qn1q9_SPeT0?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+                                <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/qn1q9_SPeT0?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
                               </div>
                             </div>
-                          
+
                             <br></br>
                           </Card.Body>
                         </Accordion.Collapse>
@@ -440,12 +439,12 @@ class Home extends Component {
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="4">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
-                            <div className="col-md-4 offset-md-4">  
-                            <strong style={{textAlign:'center'}}>Please watch this video on how to do staking of TimeAlly on Etherscan.</strong> <br></br><br></br>                          
+                            <div className="col-md-4 offset-md-4">
+                            <strong style={{textAlign:'center'}}>Please watch this video on how to do staking of TimeAlly on Etherscan.</strong> <br></br><br></br>
                               <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                                <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/NMATG-aP2zM?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+                                <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/NMATG-aP2zM?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
                               </div>
-                            </div>                          
+                            </div>
                             <br></br>
                           </Card.Body>
                         </Accordion.Collapse>
@@ -539,23 +538,23 @@ class Home extends Component {
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Ethereum is a decentralized and immutable platform. Tens of thousands of miners dedicate their computers to maintain the Ethereum network. For compensation, the concept of the gas fee is there. All transactions on Ethereum Network cost gas and this fee is transferred to miners in ETH. Users can choose to pay less or more gas to miners. A miner can choose which transactions to mine, and generally, they give priority to those transactions which give them more fees. You can customize your gas fees in the advanced settings while making staking, withdrawal or any transaction.</Card.Body>
                         </Accordion.Collapse>
                       </Card>
-                        
+
                       <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
                         <Accordion.Toggle as={Card.Header} eventKey="18">
                           Q-16. &nbsp; How To Stake Your Era Swap Tokens In TimeAlly Using Keystore/ Mnemonics/Private Key?
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="18">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Please watch this video to understand "How To Stake Your Era Swap Tokens In TimeAlly Using Keystore/ Mnemonics/Private Key"
-                          <div class="row">
+                          <div className="row">
                             <div className="offset-md-4 col-md-4" >
                                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px', marginTop:'20px'}}>
                                     <iframe src="https://www.youtube.com/embed/qn1q9_SPeT0?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                                 </div>
                              </div>
-                           </div>  
+                           </div>
                           </Card.Body>
                          </Accordion.Collapse>
-                      </Card> 
+                      </Card>
                       <Card style={{color:'#3c4d6b', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
                         <Accordion.Toggle as={Card.Header} eventKey="15">
                         Q-17. &nbsp; What is GitHub link of TimeAlly.io?
@@ -564,8 +563,8 @@ class Home extends Component {
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>TimeAlly: https://github.com/KMPARDS/timeally-react</Card.Body>
                         </Accordion.Collapse>
                       </Card>
-                      
-                      
+
+
                     </Accordion>
               </div>
             </div>
