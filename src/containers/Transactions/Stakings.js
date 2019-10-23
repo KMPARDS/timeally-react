@@ -3,11 +3,14 @@ import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { timeally } from '../../env';
 
+import Entry from './Entry';
+
 const ethers = require('ethers');
 
 class Stakings extends Component {
   state = {
-    stakings: []
+    stakings: [],
+    loading: true
   }
 
   async componentDidMount() {
@@ -25,23 +28,26 @@ class Stakings extends Component {
       topics
     });
 
+    console.log('logs', logs);
+
     const stakings = [];
     for(let i = logs.length - 1; i >= 0; i--) {
       const log = logs[i];
       const address = log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length);
-      const stakingId = Number(log.data.slice(66,130));
+      const stakingId = Number('0x'+log.data.slice(66,130));
+      console.log(address, stakingId, log);
       const staking = await this.props.store.timeallyInstance.functions.stakings(address, stakingId);
       console.log(staking);
       stakings.push({
         address,
         planId: ethers.utils.bigNumberify(log.topics[2]).toNumber(),
-        amount: ethers.utils.formatEther(ethers.utils.bigNumberify(log.data.slice(0,66))),
+        amount: window.lessDecimals(ethers.utils.bigNumberify(log.data.slice(0,66))),
         timestamp: staking[1].toNumber(),
         hash: log.transactionHash
       });
     }
 
-    await this.setState({ stakings });
+    await this.setState({ stakings, loading: false });
 
     console.log('fetching logs from the ethereum blockchain', logs, this.state.stakings);
   }
@@ -89,36 +95,17 @@ class Stakings extends Component {
 
             <div className="row">
               <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-              <table className="table table-image">
-                {this.state.stakings.map(staking => (
-                  <div>
-                    <thead>
-                      <tr>
-                        <th scope="col" style={{fontSize:'11px', fontWeight:'500'}}>{staking.hash}</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"  style={{fontSize:'11px', fontWeight:'500', textAlign:'right'}}>{new Date(staking.timestamp * 1000).toLocaleString()}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row" style={{fontSize:'14px', fontWeight:'500'}}>
-                          {this.props.store.walletInstance.address}
-                        </th>
-                        <td style={{fontSize:'35px', fontWeight:'100', color: '#971802'}}><i className="fa fa-long-arrow-right"></i></td>
-                        <td>
-                          <span style={{color: '#007bff'}}>TimeAlly Smart Contract <br />{this.props.store.timeallyInstance.address}</span><br />
-                        </td>
-                        <td style={{textAlign:'right'}}><br></br>
-                        {staking.amount} ES<br></br>
-                        <br></br>
-                        <button type="button" className="btn btn-secondary small-btn">{staking.amount} ES</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </div>
+
+                {this.state.loading
+                  ? 'Please wait loading your staking transactions...'
+                  : this.state.stakings.map(staking => (
+                  <Entry
+                    key={staking.hash}
+                    store={this.props.store}
+                    staking={staking}
+                  />
                 ))}
-                  </table>
+
               </div>
             </div>
           </div>

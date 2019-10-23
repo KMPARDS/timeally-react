@@ -31,3 +31,7 @@
     transform: rotate(360deg);
   }
 }
+
+.mono-font {
+  font-family: 'Share Tech Mono', monospace;
+}

@@ -26,6 +26,8 @@ class Transactions extends Component {
       topics
     });
 
+    console.log(logs);
+
     const stakings = [];
     for(let i = logs.length - 1; i >= 0; i--) {
       const log = logs[i];

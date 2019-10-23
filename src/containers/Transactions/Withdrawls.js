@@ -15,7 +15,9 @@ class Withdrawls extends Component {
   }
 
   showStakings = async () => {
-    const benefitWithdrawlEventSig = ethers.utils.id("BenefitWithdrawl(address,uint256,uint256,bool,uint256)");
+    console.log('benefit');
+    const benefitWithdrawlEventSig = ethers.utils.id("BenefitWithdrawl(address,uint256,uint256[],uint256)");
+    console.log('benefit', benefitWithdrawlEventSig);
     const topics = [ benefitWithdrawlEventSig, ethers.utils.hexZeroPad(this.props.store.walletInstance.address, 32) ];
 
     const logs = await this.props.store.providerInstance.getLogs({
@@ -25,23 +27,31 @@ class Withdrawls extends Component {
       topics
     });
 
-    const stakings = [];
+    console.log(logs);
+
+    const withdrawls = [];
     for(let i = logs.length - 1; i >= 0; i--) {
       const log = logs[i];
+      const dataChunks = [];
+      let str = log.data.slice(2);
+      while(str.length) {
+        dataChunks.push(str.substr(0,64));
+        str = str.slice(64);
+      }
+      console.log('dataChunks', dataChunks);
       const address = log.topics[1].slice(0,2) + log.topics[1].slice(26,log.topics[1].length);
-      const stakingId = Number(log.data.slice(66,130));
-      const staking = await this.props.store.timeallyInstance.functions.stakings(address, stakingId);
-      console.log(staking);
-      stakings.push({
-        address,
-        planId: ethers.utils.bigNumberify(log.topics[2]).toNumber(),
-        amount: ethers.utils.formatEther(ethers.utils.bigNumberify(log.data.slice(0,66))),
-        timestamp: staking[1].toNumber(),
-        hash: log.transactionHash
-      });
+      const stakingId = Number('0x'+dataChunks[0]);
+      const months = dataChunks.slice(4).map(hex => Number('0x'+hex));
+      // console.log(staking);
+      // withdrawls.push({
+      //   address,
+      //   stakingId,
+      //   amount: window.lessDecimals(ethers.utils.bigNumberify(dataChunks[2]),
+      //
+      // });
     }
 
-    await this.setState({ stakings });
+    // await this.setState({ stakings });
 
     console.log('fetching logs from the ethereum blockchain', logs, this.state.stakings);
   }

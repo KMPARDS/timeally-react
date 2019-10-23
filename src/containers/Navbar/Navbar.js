@@ -38,7 +38,7 @@ class NavbarComponent extends Component {
   }
 
   componentDidMount = async () => {
-    setInterval(this.updatePrice, 5000);
+    // setInterval(this.updatePrice, 5000);
 
     window.zHistory = this.props.history;
 
@@ -190,16 +190,16 @@ class NavbarComponent extends Component {
                             : null
                         }
 
-                    {/* { this.props.store.walletInstance.address ?
+                        { this.props.store.walletInstance.address ?
 
-                          <li><a onClick={() => this.props.history.push('/transactions')}>Transactions</a>
-                            <ul>
+                          <Nav.Link  onClick={() => this.props.history.push('/transactions')}><span style={{color:'#fff'}}>Transactions</span>
+                            {/*<ul>
                                 <li><a onClick={() => this.props.history.push('/transactions/stakings')}>Staking Transactions</a></li>
                                 <li><a onClick={() => this.props.history.push('/transactions/withdrawls')}>Withdrawal Transactions</a></li>
-                              </ul>
-                          </li>
-                    : null
-                     } */}
+                            </ul>*/}
+                            </Nav.Link>
+                          : null
+                        }
                    { this.props.store.walletInstance.address ?
                    <Nav.Link  onClick={() => this.props.history.push('/stakings')}><span style={{color:'#fff'}}>Stakings</span></Nav.Link>
                       : null
