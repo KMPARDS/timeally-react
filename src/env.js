@@ -1,6 +1,7 @@
 const eraSwapTokenJSON = require('./ethereum/compiledContracts/Eraswap_0.json');
 const nrtManagerJSON = require('./ethereum/compiledContracts/NRTManager_0.json');
 const timeAllyJSON = require('./ethereum/compiledContracts/TimeAlly_0.json');
+const sipJSON = require('./ethereum/compiledContracts/TimeAllySIP_TimeAllySIP.json');
 
 const env = {
   network:
@@ -17,6 +18,10 @@ const env = {
   timeally: {
     address: '0xd8710F2F5335BaAcd4e4e35AbeC57D594891d497',
     abi: timeAllyJSON.abi
+  },
+  sip: {
+    address: '0x986Ef38a9821a3F368857c5D776C726894624bAB',
+    abi: sipJSON.abi
   }
 };
 

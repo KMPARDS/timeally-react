@@ -28,7 +28,7 @@ import Logout from './containers/Logout/Logout';
 import './App.css';
 
 import provider from './ethereum/provider';
-import { esContract, nrtManager, timeally, network } from './env.js';
+import { esContract, nrtManager, timeally, sip, network } from './env.js';
 import nominee from './containers/nominee/nominee';
 const ethers = require('ethers');
 
@@ -93,6 +93,12 @@ function App(props) {
   if(Object.entries(props.store.timeallyInstance).length === 0) {
     //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
     props.dispatch({ type: 'LOAD-TIMEALLY-INSTANCE', payload: new ethers.Contract(timeally.address, timeally.abi, provider) });
+  }
+
+  // load sip
+  if(Object.entries(props.store.sipInstance).length === 0) {
+    //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
+    props.dispatch({ type: 'LOAD-SIP-INSTANCE', payload: new ethers.Contract(sip.address, sip.abi, provider) });
   }
 
   return (

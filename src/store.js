@@ -6,6 +6,7 @@ const initialState = {
   esInstance: {},
   nrtInstance: {},
   timeallyInstance: {},
+  sipInstance: {},
   providerInstance: {}
 };
 
@@ -19,6 +20,8 @@ const reducer = (state, action) => {
       return {...state, nrtInstance: action.payload};
     case 'LOAD-TIMEALLY-INSTANCE':
       return {...state, timeallyInstance: action.payload};
+    case 'LOAD-SIP-INSTANCE':
+      return {...state, sipInstance: action.payload};
     case 'LOAD-PROVIDER-INSTANCE':
       return {...state, providerInstance: action.payload}
     default:
