@@ -217,6 +217,8 @@ class NavbarComponent extends Component {
                     : null
                   }
 
+                   <Nav.Link onClick={() => this.props.history.push('/sip')}><span style={{color:'#fff'}}>SIP</span></Nav.Link>
+
                    <Nav.Link  href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank" ><span style={{color:'#fff'}}>T & C</span></Nav.Link>
 
                         {/* <Nav.Link href="#link">Link</Nav.Link> */}

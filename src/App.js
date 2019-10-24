@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'; // this is for accessing the store\
-import {Dropdown } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 
 import Navbar from './containers/Navbar/Navbar';
 import Home from './containers/Home/Home';
@@ -18,6 +18,7 @@ import Loans from './containers/Loans/Loans';
 import Staking from './containers/Stakings/Stakings';
 import Mou from './containers/Mou/Mou';
 import Rewards from './containers/Rewards/Rewards';
+import SIP from './containers/SIP/SIP';
 import Logout from './containers/Logout/Logout';
 
 
@@ -127,6 +128,7 @@ function App(props) {
             <Route path="/insurance" exact render={
               () => <div>Coming soon</div>
             } />
+            <Route path="/sip" component={SIP} />
             <Route path="/mou" exact component={Mou} />
             <Route render={
                 () => <div>404 Page not found</div>
