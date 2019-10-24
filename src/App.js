@@ -208,7 +208,7 @@ function App(props) {
                   <a href="/pdf/TimeAlly.pdf" target="_blank" >User Guide</a> &nbsp; | &nbsp;
                   <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank"  >Era Swap White Paper</a> &nbsp; | &nbsp;
                   <a href="https://eraswaptoken.io/era-swap-howey-test-letter-august7-2018.php" target="_blank"  >Howey Test</a> &nbsp; | &nbsp;
-                  <a href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank">Terms of use</a> &nbsp; | &nbsp; <a href="/pdf/TimeAlly-Privacy.pdf" target="_blank">Privacy Policy</a>
+                  <a href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank">Terms of use</a> &nbsp; | &nbsp; <a href="/pdf/TimeAlly-Privacy.pdf" target="_blank">Privacy Policy</a> | &nbsp; <a href="/pdf/TSGAP.pdf" target="_blank">TSGAP</a>
                 </p>
               </div>
 
