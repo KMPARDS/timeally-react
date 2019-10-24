@@ -3,7 +3,7 @@ import { Button, Form, Alert } from 'react-bootstrap';
 
 import Layout from '../Layout/Layout';
 
-class CalculateSIP extends Component {
+class Calculate extends Component {
   state = {
     commitmentAmount: '',
     errorMessage: '',
@@ -85,4 +85,4 @@ class CalculateSIP extends Component {
   }
 }
 
-export default CalculateSIP;
+export default Calculate;
