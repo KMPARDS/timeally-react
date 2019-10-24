@@ -45,8 +45,9 @@ or participating in any way. You should read whitepaper carefully before
 participating and consider whether these products are right for you.
 *White-paper Link*</p>
 
-  <Button onClick={() => this.props.history.push('/sip/calculate')}>Calculate</Button>
-
+  <Button onClick={() => this.props.history.push('/assurance/calculate')}>Calculate</Button>
+  <Button onClick={() => this.props.history.push('/assurance/new')}>New</Button>
+  <Button onClick={() => this.props.history.push('/assurance/view')}>View</Button>
     </Layout>
   );
 }

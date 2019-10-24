@@ -18,7 +18,7 @@ import Loans from './containers/Loans/Loans';
 import Staking from './containers/Stakings/Stakings';
 import Mou from './containers/Mou/Mou';
 import Rewards from './containers/Rewards/Rewards';
-import SIP from './containers/SIP/SIP';
+import Assurance from './containers/Assurance/Assurance';
 import Logout from './containers/Logout/Logout';
 
 
@@ -70,12 +70,12 @@ function App(props) {
   }
 
   //for dev purpose 24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA
-  // setTimeout(() => {
-  //   if(Object.entries(props.store.walletInstance).length === 0) {
-  //     //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
-  //     props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: new ethers.Wallet('0x24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA', provider) });
-  //   }
-  // },0);
+  setTimeout(() => {
+    if(Object.entries(props.store.walletInstance).length === 0) {
+      //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
+      props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: new ethers.Wallet('0x24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA', provider) });
+    }
+  },0);
 
   // load es instance
   if(Object.entries(props.store.esInstance).length === 0) {
@@ -128,7 +128,7 @@ function App(props) {
             <Route path="/insurance" exact render={
               () => <div>Coming soon</div>
             } />
-            <Route path="/sip" component={SIP} />
+            <Route path="/assurance" component={Assurance} />
             <Route path="/mou" exact component={Mou} />
             <Route render={
                 () => <div>404 Page not found</div>
