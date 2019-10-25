@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 
 class Layout extends Component {
   render = () => (
@@ -22,7 +23,7 @@ class Layout extends Component {
                           <h1 className="page-title">{this.props.title}</h1>
                         </div>
                         <div className="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12">
-
+                          {this.props.buttonName ? <Button onClick={this.props.buttonOnClick}>{this.props.buttonName}</Button> : null}
                         </div>
                       </div>
                     </div>
@@ -33,7 +34,9 @@ class Layout extends Component {
             </div>
         <div>
         <div className="container">
-      <div className="row">
+      {this.props.transparent
+        ? <>{this.props.children}</>
+        : <div className="row">
         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
           <div className="wrapper-content bg-white pinside10">
             <div className="row">
@@ -43,7 +46,7 @@ class Layout extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </div>}
     </div>
 
         </div>

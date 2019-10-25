@@ -21,17 +21,13 @@ import Rewards from './containers/Rewards/Rewards';
 import Assurance from './containers/Assurance/Assurance';
 import Logout from './containers/Logout/Logout';
 
-
-//import { Button } from 'react-bootstrap';
-
-//import logo from './logo.svg';
 import './App.css';
 
 import provider from './ethereum/provider';
 import { esContract, nrtManager, timeally, sip, network } from './env.js';
 import nominee from './containers/nominee/nominee';
 const ethers = require('ethers');
-
+window.ethers = ethers;
 window.redirectHereAfterLoadWallet = '/dashboard';
 
 window.lessDecimals = (ethersBigNumber, decimals = 2) => {
@@ -41,7 +37,17 @@ window.lessDecimals = (ethersBigNumber, decimals = 2) => {
   }
   return lessDecimals.join('.');
 }
+window.sliceDataTo32Bytes = (data, index = 0) => {
+  return '0x'+data.slice(2+64*index, 2+64*(index+1));
+}
 
+window.getTimeRemaining = totalSeconds => {
+  const days = Math.floor(totalSeconds/60/60/24);
+  const hours = Math.floor((totalSeconds - days * 60 * 60 * 24) / 60 / 60);
+  const minutes = Math.floor((totalSeconds - days * 60 * 60 * 24 - hours * 60 * 60) / 60);
+  const seconds = totalSeconds - days * 60 * 60 * 24 - hours * 60 * 60 - minutes * 60;
+  return `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
+}
 
 // one app login
 window.onload = function(){
@@ -70,12 +76,12 @@ function App(props) {
   }
 
   //for dev purpose 24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA
-  setTimeout(() => {
-    if(Object.entries(props.store.walletInstance).length === 0) {
-      //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
-      props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: new ethers.Wallet('0x24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA', provider) });
-    }
-  },0);
+  // setTimeout(() => {
+  //   if(Object.entries(props.store.walletInstance).length === 0) {
+  //     //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
+  //     props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: new ethers.Wallet('0x24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA', provider) });
+  //   }
+  // },0);
 
   // load es instance
   if(Object.entries(props.store.esInstance).length === 0) {

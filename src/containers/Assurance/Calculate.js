@@ -34,7 +34,7 @@ class Calculate extends Component {
       returns.push(
         <tr>
           <td>Month {i} Withdraw</td>
-          <td>{amount} ES + 1% to introducer + 1% to tree{i%12 === 0 ? ` + power booster ${(+this.state.commitmentAmount)*12/3} ES` : ''}</td>
+          <td>{amount} ES + 1% to introducer + 1% to tree{i%36 === 0 ? ` + power booster ${(+this.state.commitmentAmount)*12/3} ES` : ''}</td>
         </tr>
       );
     }
@@ -61,7 +61,7 @@ class Calculate extends Component {
 
         {this.state.montlhyAmount
           ? <>
-          <p>Monthly returns after accumulation period: {this.state.montlhyAmount}</p>
+          <p>Monthly returns after accumulation period: {this.state.montlhyAmount} ES</p>
           <table>
             {[1,2,3,4,5,6,7,8,9,10,11,12].map(number => (
               <tr>

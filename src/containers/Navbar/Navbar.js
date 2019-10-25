@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Navbar, Nav, DropdownButton, Dropdown, NavDropdown, Form, Button, FormControl } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 
-import { esContract, nrtManager, timeally, network } from '../../env';
+import { esContract, nrtManager, timeally, sip, network } from '../../env';
 
 const ethers = require('ethers');
 const axios = require('axios');
@@ -78,6 +78,9 @@ class NavbarComponent extends Component {
 
         // update timeally
         this.props.dispatch({ type: 'LOAD-TIMEALLY-INSTANCE', payload: new ethers.Contract(timeally.address, timeally.abi, provider) });
+
+        // update sip
+        this.props.dispatch({ type: 'LOAD-SIP-INSTANCE', payload: new ethers.Contract(sip.address, sip.abi, provider) });
       }
 
       if(action.type === 'update time yaar') {
@@ -180,13 +183,22 @@ class NavbarComponent extends Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                       <Nav className="mr-auto">
-                        <Nav.Link onClick={() => this.props.history.push('/')}><span style={{color:'#fff'}}>Home</span></Nav.Link>
+                        <Nav.Link onClick={() => this.props.history.push('/')}><span style={{
+                          color:'#fff',
+                          textShadow:this.props.location.pathname==='/'?'0 0 2px #fff':undefined
+                        }}>Home</span></Nav.Link>
                         { this.props.store.walletInstance.address ?
-                          <Nav.Link  onClick={() => this.props.history.push('/dashboard')}><span style={{color:'#fff'}}>Dashboard</span></Nav.Link>
+                          <Nav.Link  onClick={() => this.props.history.push('/dashboard')}><span style={{
+                            color:'#fff',
+                            textShadow:this.props.location.pathname==='/dashboard'?'0 0 2px #fff':undefined
+                          }}>Dashboard</span></Nav.Link>
                           : null
                           }
                         { this.props.store.walletInstance.address ?
-                         <Nav.Link  onClick={() => this.props.history.push('/wallet')}><span style={{color:'#fff'}}>Wallet</span></Nav.Link>
+                         <Nav.Link  onClick={() => this.props.history.push('/wallet')}><span style={{
+                           color:'#fff',
+                           textShadow:this.props.location.pathname==='/wallet'?'0 0 2px #fff':undefined
+                         }}>Wallet</span></Nav.Link>
                             : null
                         }
 
@@ -201,23 +213,38 @@ class NavbarComponent extends Component {
                     : null
                      } */}
                    { this.props.store.walletInstance.address ?
-                   <Nav.Link  onClick={() => this.props.history.push('/stakings')}><span style={{color:'#fff'}}>Stakings</span></Nav.Link>
+                   <Nav.Link  onClick={() => this.props.history.push('/stakings')}><span style={{
+                     color:'#fff',
+                     textShadow:this.props.location.pathname==='/stakings'?'0 0 2px #fff':undefined
+                   }}>Stakings</span></Nav.Link>
                       : null
                    }
 
                   { this.props.store.walletInstance.address ?
-                   <Nav.Link  onClick={() => this.props.history.push('/loans-info')}><span style={{color:'#fff'}}>Apply for Loan</span></Nav.Link>
+                   <Nav.Link  onClick={() => this.props.history.push('/loans-info')}><span style={{
+                     color:'#fff',
+                     textShadow:this.props.location.pathname==='/loans-info'?'0 0 2px #fff':undefined
+                   }}>Apply for Loan</span></Nav.Link>
                     // <li className="active"><a onClick={() => this.props.history.push('/loans-info')}>Apply for Loan</a></li>
                      : null
                   }
-                  {network === 'homestead' ? null : <Nav.Link  onClick={() => this.props.history.push('/mou')}><span style={{color:'#fff'}}>The mou Time Machine</span></Nav.Link>}
+                  {network === 'homestead' ? null : <Nav.Link  onClick={() => this.props.history.push('/mou')}><span style={{
+                    color:'#fff',
+                    textShadow:this.props.location.pathname==='/mou'?'0 0 2px #fff':undefined
+                  }}>The mou Time Machine</span></Nav.Link>}
 
                   { this.props.store.walletInstance.address ?
-                    <Nav.Link  onClick={() => this.props.history.push('/rewards')}><span style={{color:'#fff'}}>Vesting Rewards</span></Nav.Link>
+                    <Nav.Link  onClick={() => this.props.history.push('/rewards')}><span style={{
+                      color:'#fff',
+                      textShadow:this.props.location.pathname==='/rewards'?'0 0 2px #fff':undefined
+                    }}>Vesting Rewards</span></Nav.Link>
                     : null
                   }
 
-                   <Nav.Link onClick={() => this.props.history.push('/assurance')}><span style={{color:'#fff'}}>Assurance</span></Nav.Link>
+                   <Nav.Link onClick={() => this.props.history.push('/assurance')}><span style={{
+                     color:'#fff',
+                     textShadow:this.props.location.pathname==='/assurance'?'0 0 2px #fff':undefined
+                   }}>Assurance</span></Nav.Link>
 
                    <Nav.Link  href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank" ><span style={{color:'#fff'}}>T & C</span></Nav.Link>
 

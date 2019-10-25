@@ -1,55 +1,90 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-
+import { connect } from 'react-redux';
 import Layout from '../Layout/Layout';
 
+const ethers = require('ethers');
+
 class SIP extends Component {
+  state = {
+    fundsDeposit: 'Loading...',
+    pendingBenefits: 'Loading...'
+  };
+
+  componentDidMount = () => {
+    (async() => {
+      const fundsDeposit = await this.props.store.sipInstance.functions.fundsDeposit();
+      this.setState({ fundsDeposit: ethers.utils.formatEther(fundsDeposit)+' ES' })
+    })();
+
+    (async() => {
+      const pendingBenefits = await this.props.store.sipInstance.functions.pendingBenefitAmountOfAllStakers();
+      this.setState({ pendingBenefits: ethers.utils.formatEther(pendingBenefits)+' ES' })
+    })();
+  }
+
   render = () => (
     <Layout
-      breadcrumb={['Home', 'SIP']}
+      breadcrumb={['Home', 'Assurance']}
       title="TimeAlly Super Goal Achiever Plan"
+      transparent={true}
+      buttonName="New SIP"
+      buttonOnClick={() => this.props.history.push('/assurance/new')}
     >
-      <p>TimeAlly Retirement Plans are a Smart Contract Protocol based plans, that
-are extraordinarily intended to meet your post-retirement needs, for
-example, medical and living costs. To safeguard your interest, so that you
-can make the most of your golden years with financial independence, these
-arrangements help you plan for your expenses and secure your future.</p>
-
-  <p>There are multiple plans including short and long durations. All you have to
-do is choose one plan and stake ES monthly until the due date, and get
-returns with profits for 9 years, monthly. So you can be financially
-independent while enjoying life with your loved ones.
-Why TimeAlly Super Goal Achiever Plan?
-● Monthly Annuity in Era Swap (ES)
-Annuity received per month will be 20% of ES staked every month for
-the next 9 years.
-● Booster Bonus
-33.33% of total stacked ES- 1st Accumulation Year gets released on
-every 49/85/109th Month.
-● DaySwapper Partners Rewards
-DaySwappers Reward is applicable on monthly ES Stacked for 1
-year on 5% Direct Bounty in Es as well 5% Bounty as per
-Dayswappers Tree, and Monthly Annuity for 9 Years 1% Direct
-Bounty and Bounty as per DaySwappers Tree.
-SIP Payment Terms
-1. SIP Starts with Minimum 500 ES and above
-2. SIP Payment Grace period in 10 Days. If Default there will 10%
-reduction on Booster bonus applicable.
-3. Month is defined as per NRT month.
-4. There will be an additional 10% on TOP-UP ES staked for any month.
-
-You should also check what rules and protections apply to your respective
-jurisdictions before investing or participating in any way. The Creators &amp;
-community will not compensate you for any losses from trading, investment
-or participating in any way. You should read whitepaper carefully before
-participating and consider whether these products are right for you.
-*White-paper Link*</p>
-
-  <Button onClick={() => this.props.history.push('/assurance/calculate')}>Calculate</Button>
-  <Button onClick={() => this.props.history.push('/assurance/new')}>New</Button>
-  <Button onClick={() => this.props.history.push('/assurance/view')}>View</Button>
+      <h2 style={{marginTop: '1rem'}}>TimeAlly Assurance SIP for Acheivers</h2>
+      <p style={{marginBottom: '5rem'}}>TimeAlly Retirement Plans are a Smart Contract Protocol based plans, that are extraordinarily intended to meet your post-retirement needs, for example, medical and living costs. It is secured SIP (Systematic Investment Plan) since the benefits for the stakers are stored in safely in Smart Contract which is transparent & most secure system driven.</p>
+      <div className="row">
+        <div className="col-xl-4 col-md-12">
+          <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
+            <div className="circle"><img src="./images/loan.png"/></div>
+            <h3 className="number-title">Gurantee</h3>
+            <p>Complete Transparency of Rewards Allocated in Advance through Smart Contracts.</p>
+          </div>
+        </div>
+        <div className="col-xl-4 col-md-12">
+          <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
+          <div className="circle"><img src="./images/interest.png"/></div>
+            <h3 className="number-title">Power of Compounding</h3>
+            <p>TimeAlly Smart Contract offers only 1% Rate of Interest to it's users for a duration of 60 days.</p>
+          </div>
+        </div>
+        <div className="col-xl-4 col-md-12">
+          <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
+            <div className="circle"><img src="./images/loan.png"/></div>
+            <h3 className="number-title">Booster Bonous</h3>
+            <p>End of every three years, stakers are eligible for Power Booster bonous through Smart Contract.</p>
+          </div>
+        </div>
+        <div className="col-xl-4 col-md-12">
+          <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
+          <div className="circle"><img src="./images/interest.png"/></div>
+            <h3 className="number-title">Dayswapper Rewards</h3>
+            <p>Help others to acheive their goals to acheive your own through Dayswapper Rewards.</p>
+          </div>
+        </div>
+        <div className="col-xl-4 col-md-12">
+          <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
+          <div className="circle"><img src="./images/medal.png"/></div>
+            <h3 className="number-title">Nominate your Legacy</h3>
+            <p>Stakers can add Nominees in their SIPs who can act on their behalf after inactivity of Stakers.</p>
+          </div>
+        </div>
+        <div className="col-xl-4 col-md-12">
+          <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
+          <div className="circle"><img src="./images/medal.png"/></div>
+            <h3 className="number-title">Appointees</h3>
+            <p>Trustless consensus after inactivity using multi-signing by assigned Appointees in SIP.</p>
+          </div>
+        </div>
+      </div>
+      <div className="outline pinside30 bg-boxshadow" style={{marginBottom: '1rem', backgroundColor: '#fff'}}>
+        <p><strong>ES Bucket In Smart Contract:</strong> {this.state.fundsDeposit}</p>
+        <p><strong>Benefits Already Alloted:</strong> {this.state.pendingBenefits}</p>
+        <Button onClick={() => this.props.history.push('/assurance/calculate')}>SIP Calculator</Button>
+        <Button onClick={() => this.props.history.push('/assurance/view')}>View My SIPs</Button>
+      </div>
     </Layout>
   );
 }
 
-export default SIP;
+export default connect(state => {return{store: state}})(SIP);
