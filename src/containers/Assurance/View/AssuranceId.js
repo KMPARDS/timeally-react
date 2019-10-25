@@ -1,63 +1,108 @@
 import React, { Component } from 'react';
 import { Button,Table } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 import Layout from '../../Layout/Layout';
+import DepositElement from './DepositElement';
 import '../Assurance.css';
 
+const ethers = require('ethers');
+
 class AssuranceId extends Component {
-    componentDidMount = () => {
-        console.log(this.props);
+  state = {
+    months: [],
+    loading: true,
+  };
+
+  componentDidMount = async() => {
+    const sip = await this.props.store.sipInstance.functions.sips(
+      this.props.store.walletInstance.address,
+      this.props.match.params.id
+    );
+    const sipPlan = await this.props.store.sipInstance.functions.sipPlans(sip.planId);
+    const accumulationPeriodMonths = sipPlan.accumulationPeriodMonths.toNumber();
+
+    const months = [];
+    for(let i = 1; i <= accumulationPeriodMonths; i++) {
+      months.push({
+        number: i,
+        depositAmount: null,
+        status: null,
+        stakingTimestamp: sip.stakingTimestamp.toNumber()
+      });
     }
-    render = () => (
-        <Layout
-            breadcrumb={['Home', 'Assurance','View']}
-            title={this.props.match.params.id}>
-            <Table responsive>
-            <thead>
-              <tr>
-                <th>Month Number</th>
-                <th>Deposits of All Months</th>
-                <th>Status of All Months</th>
-                <th>Click on button to Deposit</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td><Button>Deposit</Button></td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td><Button>Deposit</Button></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td><Button>Deposit</Button></td>
-              </tr>
-            </tbody>
-          </Table>
-        
+
+    const newDepositSig = ethers.utils.id('NewDeposit(address,uint256,uint256,uint256,uint256,address)');
+
+    const topics = [
+      newDepositSig,
+      ethers.utils.hexZeroPad(this.props.store.walletInstance.address, 32),
+      ethers.utils.hexZeroPad('0x'+Number(this.props.match.params.id).toString(16), 32)
+    ];
+
+    const logs = await this.props.store.providerInstance.getLogs({
+      address: this.props.store.sipInstance.address,
+      fromBlock: 0,
+      toBlock: 'latest',
+      topics
+    });
+
+    console.log('deposits logs', logs);
+
+    logs.forEach(log => {
+      const month = Number(window.sliceDataTo32Bytes(log.data,0));
+      months[month - 1].depositAmount = ethers.utils.formatEther(ethers.utils.bigNumberify(window.sliceDataTo32Bytes(log.data,1)));
+    });
+
+    this.setState({ months });
+  }
+
+  render = () => (
+    <Layout
+      breadcrumb={['Home', 'Assurance','View']}
+      title={`SIP ID: ${this.props.match.params.id}`}>
+      {this.state.months.length ? <>
+        <Table responsive>
+          <thead>
+            <tr>
+              <th>Month Number</th>
+              <th>Deposit Amounts</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.months.map(month => (
+              <DepositElement
+                sipId={this.props.match.params.id}
+                monthId={month.number}
+                depositAmount={month.depositAmount}
+                status={month.status}
+                stakingTimestamp={month.stakingTimestamp}
+              />
+            ))}
+          </tbody>
+        </Table>
+
         <div class="details">
-            <Button>Benefit Page</Button>
+          <Button>Benefit Page</Button>
         </div>
-        
+
         <div class="details">
-            <Button>Nominee Page</Button>
+          <Button>Nominee Page</Button>
         </div>
-         
-         <div class="details">
-            <Button>Power Booster Timer</Button>
-         </div>
-          
-        </Layout>
-        
+
+        <div class="details">
+          <Button>Power Booster Timer</Button>
+        </div>
+      </> : (
+        this.state.loading
+        ? <p>Please wait loading...</p>
+        : <p>There is nothing to show.</p>
+      )}
+    </Layout>
+
     );
 }
 
-export default AssuranceId;
+export default connect(state => {return{store: state}})(AssuranceId);

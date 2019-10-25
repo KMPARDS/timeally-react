@@ -47,8 +47,8 @@ class View extends Component {
                 <th>Time of Staking</th>
                 <th>SIP Plan</th>
                 <th>Monthly Commitment Amount</th>
-                <th>Next Deposit</th>
-                <th>Next Withdraw</th>
+                <th>Next Deposit Due</th>
+                <th>Next Withdraw Release</th>
                 <th>Click on the buttons to view</th>
               </tr>
             </thead>
