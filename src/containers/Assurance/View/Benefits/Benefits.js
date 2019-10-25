@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Button,Table } from 'react-bootstrap';
 
-import Layout from '../../Layout/Layout';
-import '../Assurance.css';
+import Layout from '../../../Layout/Layout';
+import '../../Assurance.css';
 
-class AssuranceId extends Component {
+class Benefits extends Component {
     componentDidMount = () => {
         console.log(this.props);
     }
     render = () => (
         <Layout
-            breadcrumb={['Home', 'Assurance','View']}
+            breadcrumb={['Home', 'Assurance','View', this.props.match.params.id, 'Benefits']}
             title={this.props.match.params.id}>
             <Table responsive>
             <thead>
@@ -38,14 +38,14 @@ class AssuranceId extends Component {
               </tr>
             </tbody>
           </Table>
-        
+
         <div class="details">
             <Button>ABCD</Button>
         </div>
-          
+
         </Layout>
-        
+
     );
 }
 
-export default AssuranceId;
+export default Benefits;

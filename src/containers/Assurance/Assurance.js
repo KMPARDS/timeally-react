@@ -6,8 +6,14 @@ import Calculate from './Calculate';
 import New from './New';
 import View from './View/View';
 import AssuranceId from './View/AssuranceId';
+import Benefits from './View/Benefits/Benefits';
+import PowerBooster from './View/PowerBooster/PowerBooster';
+import Nominee from './View/Nominee/Nominee';
+import NewNominee from './View/Nominee/NewNominee';
+import Appointee from './View/Appointee/Appointee';
+import NewAppointee from './View/Appointee/NewAppointee';
+
 import './Assurance.css';
-import AssuranceIdBenefits from './View/AssuranceIdBenefits';
 
 class Assurance extends Component {
   render() {
@@ -23,7 +29,13 @@ class Assurance extends Component {
 
         <Route path ="/assurance/view/:id" exact component={AssuranceId} />
 
-        <Route path ="/assurance/view/:id/benefits" exact component={AssuranceIdBenefits} />
+        <Route path ="/assurance/view/:id/benefits" exact component={Benefits} />
+
+        <Route path ="/assurance/view/:id/nominees" exact component={Nominee} />
+        <Route path ="/assurance/view/:id/nominees/new" exact component={NewNominee} />
+
+        <Route path ="/assurance/view/:id/appointees" exact component={Appointee} />
+        <Route path ="/assurance/view/:id/appointees/new" exact component={NewAppointee} />
       </>
     );
   }
