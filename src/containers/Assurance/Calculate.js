@@ -14,11 +14,15 @@ class Calculate extends Component {
     try {
       if(String(+event.target.value) === 'NaN') throw new Error('Only Number is allowed');
       // console.log(+event.target.value, +event.target.value === NaN);
+
       this.setState({
         commitmentAmount: event.target.value,
         errorMessage: '',
         montlhyAmount: +event.target.value * 20 / 100
       });
+
+      if(+event.target.value < 100) throw new Error('SIP of minimum 100 ES allowed');
+
     } catch (error) {
       this.setState({ errorMessage: error.message });
     }
@@ -33,8 +37,9 @@ class Calculate extends Component {
       // if(i%12 === 0) amount += (+this.state.commitmentAmount)*12/3;
       returns.push(
         <tr>
-          <td>Month {i} Withdraw</td>
-          <td>{amount} ES + 1% to introducer + 1% to tree{i%36 === 0 ? ` + power booster ${(+this.state.commitmentAmount)*12/3} ES` : ''}</td>
+          <td><strong>Month {i}</strong> Withdraw</td>
+          <td><strong>{amount} ES</strong>{i%36 === 0 ? <> + power booster <strong>{(+this.state.commitmentAmount)*12/3} ES</strong></> : null}</td>
+          <td><strong>{(+this.state.commitmentAmount)*1/100} ES</strong> to introducer + <strong>{(+this.state.commitmentAmount)*1/100} ES</strong> to tree</td>
         </tr>
       );
     }
@@ -52,31 +57,47 @@ class Calculate extends Component {
               value={this.state.commitmentAmount}
               type="text"
               placeholder="Enter commitment amount"
-
+              autoComplete="off"
             />
           </Form.Group>
 
-          {this.state.errorMessage ? <Alert variant="danger">{this.state.errorMessage}</Alert> : null}
+          {this.state.errorMessage ? <Alert variant="danger">{this.state.errorMessage}</Alert> : <>
+
+
+
+          </>}
         </div>
 
-        {this.state.montlhyAmount
+        {this.state.montlhyAmount && !this.state.errorMessage
           ? <>
           <p>Monthly returns after accumulation period: {this.state.montlhyAmount} ES</p>
           <table>
+            <tr>
+              <th style={{textAlign: 'center'}}>Deposit</th>
+              <th style={{textAlign: 'center'}}>Staker Benefits</th>
+              <th style={{textAlign: 'center'}}>Partner Benefits</th>
+            </tr>
             {[1,2,3,4,5,6,7,8,9,10,11,12].map(number => (
               <tr>
-                <td>Month {number} Deposit</td>
-                <td><strong>{this.state.commitmentAmount} ES</strong> and {+this.state.commitmentAmount*5/100} ES to Introducer, {+this.state.commitmentAmount*5/100} ES to Tree</td>
+                <td><strong>Month {number}</strong> Deposit</td>
+                <td><strong>{this.state.commitmentAmount} ES</strong></td>
+                <td><strong>{+this.state.commitmentAmount*5/100} ES</strong> to Introducer, <strong>{+this.state.commitmentAmount*5/100} ES</strong> to Tree</td>
               </tr>
             ))}
           </table>
           <table>
+            <tr>
+              <th style={{textAlign: 'center'}}>Withdrawls</th>
+              <th style={{textAlign: 'center'}}>Staker Benefits</th>
+              <th style={{textAlign: 'center'}}>Partner Benefits</th>
+            </tr>
             {returns}
           </table>
-
-          <p>Total Deposit by Staker: {+this.state.commitmentAmount * 12} ES</p>
-          <p>Total Monthly to Staker: {this.state.montlhyAmount * 108} ES</p>
-          <p>Power Booster to Staker: {+this.state.commitmentAmount * 12} ES</p>
+          <div style={{padding:'1rem'}}>
+            <p>Total Deposit by Staker: <strong>{+this.state.commitmentAmount * 12} ES</strong></p>
+            <p>Total Monthly to Staker: <strong>{this.state.montlhyAmount * 108} ES</strong></p>
+            <p>Power Booster to Staker: <strong>{+this.state.commitmentAmount * 12} ES</strong></p>
+          </div>
           </>
           : null}
 
