@@ -41,7 +41,25 @@ class New extends Component {
     if(this.state.userLiquidEsBalance) {
       await this.setState({
         userAmount: event.target.value,
-        insufficientBalance: ethers.utils.parseEther(event.target.value).gt(this.state.userLiquidEsBalance) });
+        insufficientBalance: ethers.utils.parseEther(event.target.value || '0').gt(this.state.userLiquidEsBalance) ,
+        plan: +event.target.value >= 100000
+        ? 4
+        : (
+          +event.target.value >= 10000
+          ? 3
+          : (
+            +event.target.value >= 1000
+            ? 2
+            : (
+              +event.target.value >= 500
+              ? 1 : (
+                +event.target.value >= 100
+                ? 0 : undefined
+              )
+            )
+          )
+        )
+      });
     } else {
       await this.setState({ userAmount: event.target.value });
     }
@@ -235,7 +253,11 @@ class New extends Component {
               <Form.Group controlId="exampleForm.ControlSelect1">
                 <Form.Control as="select" onChange={this.onPlanChange} style={{width: '325px'}}>
                   <option disabled selected={this.state.plan === undefined}>Select Assurance Plan</option>
-                  <option value="0" selected={this.state.plan === 0}>12 Months / 9 Years</option>
+                  <option value="0" selected={this.state.plan === 0}>Min 100 ES, 16%, 12 Months / 9 Years</option>
+                  <option value="1" selected={this.state.plan === 1}>Min 500 ES, 18%, 12 Months / 9 Years</option>
+                  <option value="2" selected={this.state.plan === 2}>Min 1000 ES, 20%, 12 Months / 9 Years</option>
+                  <option value="3" selected={this.state.plan === 3}>Min 10000 ES, 22%, 12 Months / 9 Years</option>
+                  <option value="4" selected={this.state.plan === 4}>Min 100000 ES, 24%, 12 Months / 9 Years</option>
                 </Form.Control>
               </Form.Group>
             </Form.Group>
