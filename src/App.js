@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'; // this is for accessing the store\
-import {Dropdown } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 
 import Navbar from './containers/Navbar/Navbar';
 import Home from './containers/Home/Home';
@@ -18,19 +18,16 @@ import Loans from './containers/Loans/Loans';
 import Staking from './containers/Stakings/Stakings';
 import Mou from './containers/Mou/Mou';
 import Rewards from './containers/Rewards/Rewards';
+import Assurance from './containers/Assurance/Assurance';
 import Logout from './containers/Logout/Logout';
 
-
-//import { Button } from 'react-bootstrap';
-
-//import logo from './logo.svg';
 import './App.css';
 
 import provider from './ethereum/provider';
-import { esContract, nrtManager, timeally, network } from './env.js';
+import { esContract, nrtManager, timeally, sip, network } from './env.js';
 import nominee from './containers/nominee/nominee';
 const ethers = require('ethers');
-
+window.ethers = ethers;
 window.redirectHereAfterLoadWallet = '/dashboard';
 
 window.lessDecimals = (ethersBigNumber, decimals = 2) => {
@@ -40,7 +37,17 @@ window.lessDecimals = (ethersBigNumber, decimals = 2) => {
   }
   return lessDecimals.join('.');
 }
+window.sliceDataTo32Bytes = (data, index = 0) => {
+  return '0x'+data.slice(2+64*index, 2+64*(index+1));
+}
 
+window.getTimeRemaining = totalSeconds => {
+  const days = Math.floor(totalSeconds/60/60/24);
+  const hours = Math.floor((totalSeconds - days * 60 * 60 * 24) / 60 / 60);
+  const minutes = Math.floor((totalSeconds - days * 60 * 60 * 24 - hours * 60 * 60) / 60);
+  const seconds = totalSeconds - days * 60 * 60 * 24 - hours * 60 * 60 - minutes * 60;
+  return `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
+}
 
 // one app login
 window.onload = function(){
@@ -94,6 +101,12 @@ function App(props) {
     props.dispatch({ type: 'LOAD-TIMEALLY-INSTANCE', payload: new ethers.Contract(timeally.address, timeally.abi, provider) });
   }
 
+  // load sip
+  if(Object.entries(props.store.sipInstance).length === 0) {
+    //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
+    props.dispatch({ type: 'LOAD-SIP-INSTANCE', payload: new ethers.Contract(sip.address, sip.abi, provider) });
+  }
+
   return (
 
     <BrowserRouter>
@@ -127,6 +140,7 @@ function App(props) {
             <Route path="/insurance" exact render={
               () => <div>Coming soon</div>
             } />
+            <Route path="/assurance" component={Assurance} />
             <Route path="/mou" exact component={Mou} />
             <Route render={
                 () => <div>404 Page not found</div>
