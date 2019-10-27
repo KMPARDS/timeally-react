@@ -20,7 +20,7 @@ const env = {
     abi: timeAllyJSON.abi
   },
   sip: {
-    address: '0x986Ef38a9821a3F368857c5D776C726894624bAB',
+    address: '0x54D47C34d92D6BbaEeb8e7f530c0f585d17361DF',
     abi: sipJSON.abi
   }
 };
@@ -29,6 +29,7 @@ if (env.network === 'homestead') {
   env.esContract.address = '0xef1344bdf80bef3ff4428d8becec3eea4a2cf574';
   env.nrtManager.address = '0x20ee679D73559e4c4B5E3B3042B61bE723828d6C';
   env.timeally.address = '0x5630ee5f247bd6b61991fbb2f117bbeb45990876';
+  env.sip.address = '0xbad9af4db5401b7d5e8177a18c1d69c35fc03fd3';
 }
 
 module.exports = env;
