@@ -263,7 +263,7 @@ class New extends Component {
             </Form.Group>
 
 
-            <Button variant="primary" id="firstSubmit" type="submit" disabled={!this.state.userAmount || !this.state.plan || this.state.spinner}>
+            <Button variant="primary" id="firstSubmit" type="submit" disabled={!this.state.userAmount || this.state.plan === undefined || this.state.spinner}>
               {this.state.spinner ?
               <Spinner
                 as="span"
