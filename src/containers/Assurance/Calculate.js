@@ -18,7 +18,22 @@ class Calculate extends Component {
       this.setState({
         commitmentAmount: event.target.value,
         errorMessage: '',
-        montlhyAmount: +event.target.value * 20 / 100
+        montlhyAmount: +event.target.value * (
+          +event.target.value >= 100000
+          ? 24
+          : (
+            +event.target.value >= 10000
+            ? 22
+            : (
+              +event.target.value >= 1000
+              ? 20
+              : (
+                +event.target.value >= 500
+                ? 18 : 16
+              )
+            )
+          )
+        ) / 100
       });
 
       if(+event.target.value < 100) throw new Error('SIP of minimum 100 ES allowed');
@@ -49,6 +64,13 @@ class Calculate extends Component {
         breadcrumb={['Home', 'SIP', 'Calculate']}
         title="Calculate Your TimeAlly Super Goal"
       >
+
+        <p style={{margin:'0'}}>Commitment Amount Above 100 ES: 16%</p>
+        <p style={{margin:'0'}}>Commitment Amount Above 500 ES: 18%</p>
+        <p style={{margin:'0'}}>Commitment Amount Above 1,000 ES: 20%</p>
+        <p style={{margin:'0'}}>Commitment Amount Above 10,000 ES: 22%</p>
+        <p style={{margin:'0'}}>Commitment Amount Above 1,00,000 ES: 24%</p>
+
         <div style={{width: '325px', margin: 'auto'}}>
           <Form.Group controlId="sipCommitment">
             <Form.Control
