@@ -82,6 +82,7 @@ class SIP extends Component {
         <p><strong>Benefits Already Alloted:</strong> {this.state.pendingBenefits}</p>
         <Button onClick={() => this.props.history.push('/assurance/calculate')}>SIP Calculator</Button>
         <Button onClick={() => this.props.history.push('/assurance/view')}>View My SIPs</Button>
+        <p style={{marginTop:'1rem'}}><strong>SIP Smart Contract Link:</strong> <a href="https://etherscan.io/address/0xbad9af4db5401b7d5e8177a18c1d69c35fc03fd3#code" target="_blank" style={{color: '#000', textDecoration: 'underline'}}>EtherScan</a></p>
       </div>
     </Layout>
   );
