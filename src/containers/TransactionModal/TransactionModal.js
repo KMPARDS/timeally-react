@@ -113,7 +113,7 @@ class TransactionModal extends Component {
       }
       this.setState({
         estimatedGas,
-        selectedGwei: ethGasStationResponse['fast'] / 10,
+        selectedGwei: 1,
         currentScreen: 1
       });
 
