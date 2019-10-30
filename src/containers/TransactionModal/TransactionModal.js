@@ -223,7 +223,7 @@ class TransactionModal extends Component {
             <span style={{display: 'block', fontSize: '1.8rem'}}>
               {this.props.ethereum.reward || this.props.ethereum.ESAmount}<strong>ES</strong>
             </span>
-            + network fee of Ethereum
+            Network fee of Ethereum:
             <span style={{display: 'block', fontSize: '1.8rem'}}>
               {Math.round(this.state.estimatedGas * ( this.state.selectedGwei )) / 10**9}<strong>ETH</strong>
             </span>

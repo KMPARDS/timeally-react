@@ -276,7 +276,7 @@ class StakingId extends Component {
 
                       {this.displaySelectedArray.length
                         ? <div style={{backgroundColor: '#eee', padding: '1rem', borderRadius: '.25rem'}}>
-                          <p>You have selected: {this.displaySelectedArray.join(', ')}</p>
+                          <p>NRT Months that you have selected: {this.displaySelectedArray.join(', ')}</p>
                           {this.state.selectedMonthsBenefit && !this.state.selectedMonthsUpdated
                             ? <>
                               <p>{this.state.selectedMonthsBenefit} ES</p>
@@ -293,7 +293,7 @@ class StakingId extends Component {
                                   ? <Spinner animation="border" /> : 'Query Total Benefit Withdrawl'
                                 }
                               </Button>}
-                        </div> : <p>You have not selected any month. To withdraw benefits, select one or more months.</p>}
+                        </div> : <p>You have not selected any NRT month. To withdraw benefits, select one or more months.</p>}
 
                         <p>{this.state.canWithdraw ? 'You can withdraw.' : 'The staking period is not complete, so you will be able to withdraw after staking period completes at '+new Date(this.state.stakingEndTime * 1000)}</p>
 
@@ -322,9 +322,9 @@ class StakingId extends Component {
               contract: this.props.store.timeallyInstance,
               contractName: 'TimeAlly',
               arguments: [this.props.match.params.id, this.displaySelectedArray],
-              ESAmount: '0.0',
+              ESAmount: this.state.selectedMonthsBenefit,
               headingName: 'Withdraw Benefit',
-              functionName: 'Withdraw Benefit',
+              functionName: `Withdraw Benefit for NRT Month${this.displaySelectedArray.length > 1 ? 's' : ''} ${this.displaySelectedArray.join(', ')}`,
               directGasScreen: true,
               continueFunction: txHash => this.setState({
                 showWithdrawTransactionModal: false,
