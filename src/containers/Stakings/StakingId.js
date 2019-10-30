@@ -276,7 +276,7 @@ class StakingId extends Component {
 
                       {this.displaySelectedArray.length
                         ? <div style={{backgroundColor: '#eee', padding: '1rem', borderRadius: '.25rem'}}>
-                          <p>NRT Months that you have selected: {this.displaySelectedArray.join(', ')}</p>
+                          <p>NRT Month{this.displaySelectedArray.length > 1 ? 's' : ''} that you have selected: {this.displaySelectedArray.join(', ')}</p>
                           {this.state.selectedMonthsBenefit && !this.state.selectedMonthsUpdated
                             ? <>
                               <p>{this.state.selectedMonthsBenefit} ES</p>
