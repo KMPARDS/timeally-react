@@ -7,19 +7,19 @@ const ethers = require('ethers');
 
 class SIP extends Component {
   state = {
-    fundsDeposit: 'Loading...',
-    pendingBenefits: 'Loading...'
+    fundsDeposit: null,
+    pendingBenefits: null
   };
 
   componentDidMount = () => {
     (async() => {
       const fundsDeposit = await this.props.store.sipInstance.functions.fundsDeposit();
-      this.setState({ fundsDeposit: ethers.utils.formatEther(fundsDeposit)+' ES' })
+      this.setState({ fundsDeposit })
     })();
 
     (async() => {
       const pendingBenefits = await this.props.store.sipInstance.functions.pendingBenefitAmountOfAllStakers();
-      this.setState({ pendingBenefits: ethers.utils.formatEther(pendingBenefits)+' ES' })
+      this.setState({ pendingBenefits })
     })();
   }
 
@@ -78,8 +78,10 @@ class SIP extends Component {
         </div>
       </div>
       <div className="outline pinside30 bg-boxshadow" style={{marginBottom: '1rem', backgroundColor: '#fff'}}>
-        <p><strong>ES Bucket In Smart Contract:</strong> {this.state.fundsDeposit}</p>
-        <p><strong>Benefits Already Alloted:</strong> {this.state.pendingBenefits}</p>
+        <p><strong>ES Bucket In Smart Contract:</strong> {
+          this.state.fundsDeposit ? ethers.utils.formatEther(this.state.fundsDeposit) + ' ES' : 'Loading...'}</p>
+        <p><strong>Benefits Already Alloted:</strong> {this.state.pendingBenefits ? ethers.utils.formatEther(this.state.pendingBenefits) + ' ES' : 'Loading...'} ({this.state.fundsDeposit && this.state.pendingBenefits
+          ? window.lessDecimals(this.state.pendingBenefits.mul(ethers.utils.parseEther('100')).div(this.state.fundsDeposit), 4) + '% of fund bucket is allocated' : 'Loading...'})</p>
         <Button onClick={() => this.props.history.push('/assurance/calculate')}>SIP Calculator</Button>
         <Button onClick={() => this.props.history.push('/assurance/view')}>View My SIPs</Button>
         <p style={{marginTop:'1rem'}}><strong>SIP Smart Contract Link:</strong> <a href="https://etherscan.io/address/0xbad9af4db5401b7d5e8177a18c1d69c35fc03fd3#code" target="_blank" style={{color: '#000', textDecoration: 'underline'}}>EtherScan</a></p>
