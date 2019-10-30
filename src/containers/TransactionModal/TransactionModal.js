@@ -166,7 +166,7 @@ class TransactionModal extends Component {
       screenContent = (
         <Modal.Body>
           {this.props.ethereum.directGasScreen ? null : <><h5>Please select a staking plan to create a new staking.</h5>
-          <Form.Control as="select" onChange={event =>this.setState({ stakingPlan: event.target.value })}>
+          <Form.Control as="select" style={{width:'100%'}} onChange={event =>this.setState({ stakingPlan: event.target.value })}>
             <option selected disabled>Please click to select a plan</option>
             <option value="0">1 Year</option>
             <option value="1">2 Year</option>
