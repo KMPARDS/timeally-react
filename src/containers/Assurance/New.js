@@ -23,7 +23,12 @@ class New extends Component {
     approveSuccess: false,
     approveAlreadyDone: false,
     userLiquidEsBalance: undefined,
-    insufficientBalance: false
+    userPrepaidESBalance: undefined,
+    isLiquidAvailable: false,
+    isPrepaidAvailable: false,
+    insufficientBalance: false,
+    insufficientBalanceText: '',
+    usePrepaidES: false
   }
 
   componentDidMount= async() => {
@@ -32,36 +37,63 @@ class New extends Component {
     // if(this.props.store.walletInstance) this.props.history.push('/load-wallet');
 
     if(this.props.store.walletInstance) {
-      const userLiquidEsBalance = await this.props.store.esInstance.functions.balanceOf(this.props.store.walletInstance.address);
-      this.setState({ userLiquidEsBalance });
+      const userLiquidEsBalancePromise = this.props.store.esInstance.functions.balanceOf(this.props.store.walletInstance.address);
+      const userPrepaidESBalancePromise = this.props.store.sipInstance.functions.prepaidES(this.props.store.walletInstance.address);
+      await Promise.all([userLiquidEsBalancePromise, userPrepaidESBalancePromise]);
+      this.setState({
+        userLiquidEsBalance: await userLiquidEsBalancePromise,
+        userPrepaidESBalance: await userPrepaidESBalancePromise
+      });
     }
   }
 
   onAmountUpdate = async event => {
-    if(this.state.userLiquidEsBalance) {
-      await this.setState({
-        userAmount: event.target.value,
-        insufficientBalance: ethers.utils.parseEther(event.target.value || '0').gt(this.state.userLiquidEsBalance) ,
-        plan: +event.target.value >= 100000
-        ? 4
-        : (
-          +event.target.value >= 10000
-          ? 3
+    try {
+      if(this.state.userLiquidEsBalance && this.state.userPrepaidESBalance) {
+        const isLiquidAvailable = ethers.utils.parseEther(event.target.value || '0').lte(this.state.userLiquidEsBalance);
+        const isPrepaidAvailable = ethers.utils.parseEther(event.target.value || '0').lte(this.state.userPrepaidESBalance);
+        console.log('isLiquidAvailable', isLiquidAvailable, 'isPrepaidAvailable', isPrepaidAvailable);
+        let insufficientBalanceText = '';
+        if(isLiquidAvailable && isPrepaidAvailable) {
+          insufficientBalanceText = `You can use either your liquid tokens (${window.lessDecimals(this.state.userLiquidEsBalance)} ES) or your TimeAllySIP prepaidES tokens (${window.lessDecimals(this.state.userPrepaidESBalance)} ES) for this SIP.`;
+        } else if(isLiquidAvailable && !isPrepaidAvailable) {
+          insufficientBalanceText = this.state.userPrepaidESBalance.gt(0) ? `You can use your liquid ES tokens (${window.lessDecimals(this.state.userLiquidEsBalance)} ES) for this SIP as there aren't enough tokens in your TimeAllySIP prepaidES.` : '' ;
+        } else if(!isLiquidAvailable && isPrepaidAvailable) {
+          insufficientBalanceText = `You can use your TimeAllySIP prepaidES tokens (${window.lessDecimals(this.state.userPrepaidESBalance)} ES) for this SIP.`
+        } else {
+          insufficientBalanceText = `Insufficient ES balance. You only have ${window.lessDecimals(this.state.userLiquidEsBalance)} liquid ES tokens${this.state.userPrepaidESBalance.gt(0) ? ` and ${window.lessDecimals(this.state.userPrepaidESBalance)} TimeAllySIP prepaidES tokens.` : '.'}`;
+        }
+
+        await this.setState({
+          userAmount: event.target.value,
+          isLiquidAvailable,
+          isPrepaidAvailable,
+          insufficientBalance: !isLiquidAvailable && !isPrepaidAvailable,
+          insufficientBalanceText,
+          plan: +event.target.value >= 100000
+          ? 4
           : (
-            +event.target.value >= 1000
-            ? 2
+            +event.target.value >= 10000
+            ? 3
             : (
-              +event.target.value >= 500
-              ? 1 : (
-                +event.target.value >= 100
-                ? 0 : undefined
+              +event.target.value >= 1000
+              ? 2
+              : (
+                +event.target.value >= 500
+                ? 1 : (
+                  +event.target.value >= 100
+                  ? 0 : undefined
+                )
               )
             )
           )
-        )
-      });
-    } else {
-      await this.setState({ userAmount: event.target.value });
+        });
+      } else {
+        await this.setState({ userAmount: event.target.value });
+      }
+    } catch (error) {
+      console.log(error.message);
+      this.setState({ insufficientBalance: true, insufficientBalanceText: error.message })
     }
     // console.log('this.state.userLiquidEsBalance', this.state.userLiquidEsBalance, this.state.insufficientBalance);
   }
@@ -149,6 +181,10 @@ class New extends Component {
   render() {
     let screen;
 
+    const startOverAgainButton = (
+      <span style={{display:'block', textAlign:'left', cursor: 'pointer'}} onClick={() => this.setState({ currentScreen: 0 })}>{'<'}Start All Over</span>
+    );
+
     if(this.state.currentScreen === 0) {
       screen = (
           <>
@@ -233,8 +269,8 @@ class New extends Component {
                   </div>
                 </Modal>
         <Card>
-          <Form className="mnemonics" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
 
+          <Form className="mnemonics" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>New Assurance SIP - Step 1 of 3</h3>
 
             <Form.Group controlId="sipAmount">
@@ -248,7 +284,7 @@ class New extends Component {
                 style={{width: '325px'}}
                 isInvalid={this.state.insufficientBalance}
               />
-              {this.state.insufficientBalance ? <p style={{color: 'red', textAlign: 'left'}}>Insufficient balance ES balance</p> : null}
+              {this.state.insufficientBalanceText ? <p style={{color: this.state.insufficientBalance ? 'red' : 'green', textAlign: 'left'}}>{this.state.insufficientBalanceText}</p> : null}
 
               <Form.Group controlId="exampleForm.ControlSelect1">
                 <Form.Control as="select" onChange={this.onPlanChange} style={{width: '325px'}}>
@@ -280,11 +316,55 @@ class New extends Component {
         </>
       );
     } else if(this.state.currentScreen === 1) {
+      let displayText = '';
+      if(this.state.isLiquidAvailable && this.state.isPrepaidAvailable) {
+        displayText = <p>This dApp just noticed that you have <strong>{window.lessDecimals(this.state.userLiquidEsBalance)} liquid ES tokens</strong> as well as <strong>{window.lessDecimals(this.state.userPrepaidESBalance)} TimeAllySIP prepaidES</strong>. Please choose which you want to use to initiate a new TimeAlly Assurance SIP with <strong>monthly commitment of {this.state.userAmount} ES</strong>.</p>;
+      } else if(this.state.isLiquidAvailable && !this.state.isPrepaidAvailable) {
+        displayText = <p>You have enough tokens (<strong>{window.lessDecimals(this.state.userLiquidEsBalance)} ES</strong>) in your wallet for SIP. Go to Step 3 for doing approval procedure of <strong>{this.state.userAmount} ES</strong> to TimeAllySIP Smart Contract.</p>;
+      } else if(!this.state.isLiquidAvailable && this.state.isPrepaidAvailable) {
+        displayText = <p>You have enough tokens in your TimeAllySIP prepaidES to create your New TimeAlly Assurance SIP with <strong>monthly commitment of {this.state.userAmount} ES</strong>. You can use your <strong>{window.lessDecimals(this.state.userPrepaidESBalance)} ES</strong> prepaidES tokens to create a New SIP or also pay monthly deposits of your SIP.</p>;
+      } else {
+        displayText = <p>Seems that you don't have enough ES tokens for New SIP of <strong>{this.state.userAmount} ES</strong>. Your liquid balance is <strong>{window.lessDecimals(this.state.userLiquidEsBalance)} ES</strong>{this.state.userPrepaidESBalance.gt(0) ? <> and prepaidES balance is <strong>{window.lessDecimals(this.state.userPrepaidESBalance)} ES</strong></> : null}. Are you sure you want to proceed? You can get ES tokens from anyone who has ES tokens. ES tokens are also trading on Probit Exchange, where you can exchange your other crypto assets with the exchange community for ES.</p>;
+      }
+
+      screen = (
+        <Card>
+          <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+            {startOverAgainButton}
+            <h3 style={{marginBottom: '15px'}}>New Assurance SIP - Step 2 of 4</h3>
+            {displayText}
+            <p>Choose which balance to use for initiating a new TimeAlly Assurance SIP of <strong>{this.state.userAmount} ES minimum monthly commitment</strong>:</p>
+            <Button
+              style={{display:'block', width:'100%'}}
+              disabled={!this.state.isLiquidAvailable}
+              onClick={() => this.setState({
+                usePrepaidES: false,
+                currentScreen: 2
+              })}
+            >
+              From Liquid: {window.lessDecimals(this.state.userLiquidEsBalance)}
+            </Button>
+            <Button
+              variant="warning"
+              style={{display:'block', width:'100%'}}
+              disabled={!this.state.isPrepaidAvailable}
+              onClick={() => this.setState({
+                usePrepaidES: true,
+                currentScreen: 3
+              })}
+            >
+              From PrepaidES: {window.lessDecimals(this.state.userPrepaidESBalance)}
+            </Button>
+          </div>
+        </Card>
+      );
+    } else if(this.state.currentScreen === 2) {
       screen = (
         <>
         <Card>
           <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
-            <h3 style={{marginBottom: '15px'}}>New Assurance SIP - Step 2 of 3</h3>
+            {startOverAgainButton}
+            <h3 style={{marginBottom: '15px'}}>New Assurance SIP - Step 3 of 4</h3>
             {!this.state.approveAlreadyDone ? <>
               <p>This step is for approving TimeAllySIP Smart Contract to collect {this.state.userAmount} ES from your account. <strong>No funds will be debited from your account in this step.</strong> Funds will be debited in Step 3 and sent into SIP Contract when you do New SIP transaction.</p>
               {
@@ -297,7 +377,7 @@ class New extends Component {
               {this.state.approveSuccess
                 ? <>
                   <Alert variant="warning">Your approve tx is confirmed! <strong>Note: Your {this.state.userAmount} ES has not been deposited in TimeAlly SIP Contract yet.</strong> Please go to third step to do your NewSIP transaction.</Alert>
-                  <Button onClick={() => this.setState({ currentScreen: 2 })}>
+                  <Button onClick={() => this.setState({ currentScreen: 3 })}>
                     Go to 3rd Step
                   </Button>
                 </>
@@ -321,7 +401,7 @@ class New extends Component {
               </Button>}
             </> : <>
               <Alert variant="primary">This dApp just noticed that you already have enough allowance. You can directly continue to the third step and do your NewSIP transaction.</Alert>
-              <Button onClick={() => this.setState({ currentScreen: 2 })}>
+              <Button onClick={() => this.setState({ currentScreen: 3 })}>
                 Go to 3rd Step
               </Button>
             </>}
@@ -330,12 +410,13 @@ class New extends Component {
         </Card>
         </>
       );
-    } else if(this.state.currentScreen === 2) {
+    } else if(this.state.currentScreen === 3) {
       screen = (
         <>
         <Card>
           <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
-            <h3 style={{marginBottom: '15px'}}>New Assurance SIP - Step 3 of 3</h3>
+            {startOverAgainButton}
+            <h3 style={{marginBottom: '15px'}}>New Assurance SIP - Step 4 of 4</h3>
             <p>Please click the following button to confirm your SIP.</p>
               {
                 this.state.errorMessage
@@ -391,7 +472,6 @@ class New extends Component {
         title='New Assurance'
       >
         {screen}
-        {console.log(this.state)}
         <TransactionModal
           show={this.state.showApproveTransactionModal}
           hideFunction={() => this.setState({ showApproveTransactionModal: false, spinner: false })}
@@ -422,7 +502,7 @@ class New extends Component {
               estimator: this.props.store.sipInstance.estimate.newSIP,
               contract: this.props.store.sipInstance,
               contractName: 'TimeAllySIP',
-              arguments: [this.state.plan,ethers.utils.parseEther(this.state.userAmount?this.state.userAmount:'0'), false],
+              arguments: [this.state.plan,ethers.utils.parseEther(this.state.userAmount?this.state.userAmount:'0'), this.state.usePrepaidES],
               ESAmount: this.state.userAmount,
               headingName: 'New SIP',
               functionName: 'New SIP',
@@ -430,7 +510,7 @@ class New extends Component {
               directGasScreen: true,
               continueFunction: txHash => this.setState({
                 spinner: false,
-                currentScreen: 3,
+                currentScreen: 4,
                 showStakeTransactionModal: false,
                 txHash
               })
