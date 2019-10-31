@@ -5,7 +5,7 @@ import Info from './Info';
 import Calculate from './Calculate';
 import New from './New';
 import View from './View/View';
-import AssuranceId from './View/AssuranceId';
+import AssuranceId from './View/AssuranceId/AssuranceId';
 import Benefits from './View/Benefits/Benefits';
 import PowerBooster from './View/PowerBooster/PowerBooster';
 import Nominee from './View/Nominee/Nominee';

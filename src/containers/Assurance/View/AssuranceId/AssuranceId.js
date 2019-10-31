@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Button,Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import Layout from '../../Layout/Layout';
+import Layout from '../../../Layout/Layout';
 import DepositElement from './DepositElement';
-import '../Assurance.css';
+import '../../Assurance.css';
 
 const ethers = require('ethers');
 
