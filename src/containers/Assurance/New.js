@@ -271,7 +271,7 @@ class New extends Component {
         <Card>
 
           <Form className="mnemonics" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
-            <h3 style={{marginBottom: '15px'}}>New Assurance SIP - Step 1 of 3</h3>
+            <h3 style={{marginBottom: '15px'}}>New Assurance SIP - Step 1 of 4</h3>
 
             <Form.Group controlId="sipAmount">
               <Form.Control
