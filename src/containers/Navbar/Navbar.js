@@ -241,12 +241,12 @@ class NavbarComponent extends Component {
                     : null
                   }
 
-                  { this.props.store.walletInstance.address ?
+                  { /*this.props.store.walletInstance.address ?*/
                    <Nav.Link onClick={() => this.props.history.push('/assurance')}><span style={{
                      color:'#fff',
                      textShadow:this.props.location.pathname==='/assurance'?'0 0 2px #fff':undefined
                    }}>Assurance</span></Nav.Link>
-                   : null
+                   /*: null*/
                  }
 
                    <Nav.Link  href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank" ><span style={{color:'#fff'}}>T & C</span></Nav.Link>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Layout from '../Layout/Layout';
 
@@ -8,18 +8,19 @@ const ethers = require('ethers');
 class SIP extends Component {
   state = {
     fundsDeposit: null,
-    pendingBenefits: null
+    pendingBenefits: null,
+    showLoginModal: false
   };
 
   componentDidMount = () => {
     (async() => {
       const fundsDeposit = await this.props.store.sipInstance.functions.fundsDeposit();
-      this.setState({ fundsDeposit })
+      this.setState({ fundsDeposit });
     })();
 
     (async() => {
       const pendingBenefits = await this.props.store.sipInstance.functions.pendingBenefitAmountOfAllStakers();
-      this.setState({ pendingBenefits })
+      this.setState({ pendingBenefits });
     })();
   }
 
@@ -29,7 +30,9 @@ class SIP extends Component {
       title="TimeAlly Super Goal Achiever Plan"
       transparent={true}
       buttonName="New SIP"
-      buttonOnClick={() => this.props.history.push('/assurance/new')}
+      buttonOnClick={this.props.store.walletInstance && this.props.store.walletInstance.address
+        ? () => this.props.history.push('/assurance/new')
+        : () => this.setState({showLoginModal:true})}
     >
       <h2 style={{marginTop: '1rem'}}>TimeAlly Assurance SIP for Acheivers</h2>
       <p style={{marginBottom: '5rem'}}>TimeAlly Retirement Plans are a Smart Contract Protocol based plans, that are extraordinarily intended to meet your post-retirement needs, for example, medical and living costs. It is secured SIP (Systematic Investment Plan) since the benefits for the stakers are stored in safely in Smart Contract which is transparent & most secure system driven.</p>
@@ -83,9 +86,29 @@ class SIP extends Component {
         <p><strong>Benefits Already Alloted:</strong> {this.state.pendingBenefits ? ethers.utils.formatEther(this.state.pendingBenefits) + ' ES' : 'Loading...'} ({this.state.fundsDeposit && this.state.pendingBenefits
           ? window.lessDecimals(this.state.pendingBenefits.mul(ethers.utils.parseEther('100')).div(this.state.fundsDeposit), 4) + '% of fund bucket is allocated' : 'Loading...'})</p>
         <Button onClick={() => this.props.history.push('/assurance/calculate')}>SIP Calculator</Button>
-        <Button onClick={() => this.props.history.push('/assurance/view')}>View My SIPs</Button>
+        <Button onClick={this.props.store.walletInstance && this.props.store.walletInstance.address
+          ? () => this.props.history.push('/assurance/view')
+          : () => this.setState({showLoginModal:true})}>View My SIPs</Button>
         <p style={{marginTop:'1rem'}}><strong>SIP Smart Contract Link:</strong> <a href="https://etherscan.io/address/0xbad9af4db5401b7d5e8177a18c1d69c35fc03fd3#code" target="_blank" style={{color: '#000', textDecoration: 'underline'}}>EtherScan</a></p>
       </div>
+      <Modal
+        show={this.state.showLoginModal}
+        onHide={ () => this.setState({ showLoginModal: false }) }
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Wallet Needed</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <p>You need to load your ethereum wallet in order to proceed. Please click the below button to go to the load wallet page.</p>
+          <Button
+            onClick={() => this.props.history.push('/load-wallet')}
+            variant="primary"
+          >
+            Go to Load Wallet Page
+          </Button>
+        </Modal.Body>
+      </Modal>
     </Layout>
   );
 }
