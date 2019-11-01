@@ -34,8 +34,6 @@ class New extends Component {
   componentDidMount= async() => {
     this.onOpenModal();
 
-    // if(this.props.store.walletInstance) this.props.history.push('/load-wallet');
-
     if(this.props.store.walletInstance) {
       const userLiquidEsBalancePromise = this.props.store.esInstance.functions.balanceOf(this.props.store.walletInstance.address);
       const userPrepaidESBalancePromise = this.props.store.sipInstance.functions.prepaidES(this.props.store.walletInstance.address);
@@ -44,6 +42,7 @@ class New extends Component {
         userLiquidEsBalance: await userLiquidEsBalancePromise,
         userPrepaidESBalance: await userPrepaidESBalancePromise
       });
+      this.onAmountUpdate({target:{value:this.state.userAmount}});
     }
   }
 
@@ -54,14 +53,16 @@ class New extends Component {
         const isPrepaidAvailable = ethers.utils.parseEther(event.target.value || '0').lte(this.state.userPrepaidESBalance);
         console.log('isLiquidAvailable', isLiquidAvailable, 'isPrepaidAvailable', isPrepaidAvailable);
         let insufficientBalanceText = '';
-        if(isLiquidAvailable && isPrepaidAvailable) {
-          insufficientBalanceText = `You can use either your liquid tokens (${window.lessDecimals(this.state.userLiquidEsBalance)} ES) or your TimeAllySIP prepaidES tokens (${window.lessDecimals(this.state.userPrepaidESBalance)} ES) for this SIP.`;
-        } else if(isLiquidAvailable && !isPrepaidAvailable) {
-          insufficientBalanceText = this.state.userPrepaidESBalance.gt(0) ? `You can use your liquid ES tokens (${window.lessDecimals(this.state.userLiquidEsBalance)} ES) for this SIP as there aren't enough tokens in your TimeAllySIP prepaidES.` : '' ;
-        } else if(!isLiquidAvailable && isPrepaidAvailable) {
-          insufficientBalanceText = `You can use your TimeAllySIP prepaidES tokens (${window.lessDecimals(this.state.userPrepaidESBalance)} ES) for this SIP.`
-        } else {
-          insufficientBalanceText = `Insufficient ES balance. You only have ${window.lessDecimals(this.state.userLiquidEsBalance)} liquid ES tokens${this.state.userPrepaidESBalance.gt(0) ? ` and ${window.lessDecimals(this.state.userPrepaidESBalance)} TimeAllySIP prepaidES tokens.` : '.'}`;
+        if(+event.target.value >= 100) {
+          if(isLiquidAvailable && isPrepaidAvailable) {
+            insufficientBalanceText = `You can use either your liquid tokens (${window.lessDecimals(this.state.userLiquidEsBalance)} ES) or your TimeAllySIP prepaidES tokens (${window.lessDecimals(this.state.userPrepaidESBalance)} ES) for this SIP.`;
+          } else if(isLiquidAvailable && !isPrepaidAvailable) {
+            insufficientBalanceText = this.state.userPrepaidESBalance.gt(0) ? `You can use your liquid ES tokens (${window.lessDecimals(this.state.userLiquidEsBalance)} ES) for this SIP as there aren't enough tokens in your TimeAllySIP prepaidES.` : '' ;
+          } else if(!isLiquidAvailable && isPrepaidAvailable) {
+            insufficientBalanceText = `You can use your TimeAllySIP prepaidES tokens (${window.lessDecimals(this.state.userPrepaidESBalance)} ES) for this SIP.`
+          } else {
+            insufficientBalanceText = `Insufficient ES balance. You only have ${window.lessDecimals(this.state.userLiquidEsBalance)} liquid ES tokens${this.state.userPrepaidESBalance.gt(0) ? ` and ${window.lessDecimals(this.state.userPrepaidESBalance)} TimeAllySIP prepaidES tokens.` : '.'}`;
+          }
         }
 
         await this.setState({
@@ -189,9 +190,10 @@ class New extends Component {
       screen = (
           <>
            {/* <button className="btn" onClick={this.onOpenModal}>Open modal</button> */}
-           <Modal open={this.state.open}>
+           <Modal show={this.state.open}>
+              <div style={{padding: '2rem'}}>
                   <h2>Terms & Conditions</h2>
-                  <h5>Please scroll and read the complete document carefully to proceed.</h5>
+                  <h5>Please scroll and read the complete document carefully, then if you agree then you can select proceed option.</h5>
                   <hr></hr>
                   <div style={{overflowY:'scroll', height:'500px'}}>
                   <p style={{fontSize:'12px'}}>
@@ -267,7 +269,8 @@ class New extends Component {
                     <a onClick={this.onCloseModal}  className="btn btn-primary btn-sm"><span className="text-white">Proceed</span></a>
                   </p>
                   </div>
-                </Modal>
+                </div>
+              </Modal>
         <Card>
 
           <Form className="mnemonics" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
