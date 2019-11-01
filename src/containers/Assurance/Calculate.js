@@ -64,7 +64,7 @@ class Calculate extends Component {
         breadcrumb={['Home', 'SIP', 'Calculate']}
         title="Calculate Your TimeAlly Super Goal"
       >
-        <a style={{color:'black', textDecoration: 'underline'}} href="/excel/TSGAP_Illustration.xlsx">Download Illustration Excel File</a>
+        {/*<a style={{color:'black', textDecoration: 'underline'}} href="/excel/TSGAP_Illustration.xlsx">Download Illustration Excel File</a>*/}
         <p style={{margin:'0'}}>Commitment Amount Above 100 ES: 16%</p>
         <p style={{margin:'0'}}>Commitment Amount Above 500 ES: 18%</p>
         <p style={{margin:'0'}}>Commitment Amount Above 1,000 ES: 20%</p>
