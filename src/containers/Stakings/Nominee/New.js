@@ -39,7 +39,7 @@ class NewNominee extends Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     let screen = (
       <Card>
         <Form onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
