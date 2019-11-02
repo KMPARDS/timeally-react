@@ -41,7 +41,7 @@ const ListOfLoadMethods = props => {
         </Card.Body>
       </Card>
 
-      <Card style={{margin: '15px 0'}} onClick={() => props.history.push('/load-wallet/using-address')}>
+      <Card style={{margin: '15px 0', cursor: 'pointer'}} onClick={() => props.history.push('/load-wallet/using-address')}>
         <Card.Body align="center">
           Use <strong>Address</strong> to read account
         </Card.Body>

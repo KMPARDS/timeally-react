@@ -247,7 +247,7 @@ class Dashboard extends Component {
                               </tbody>
                             </table>: 'Please wait loading recent stakings...'}
                             <br />
-                            <Button onClick={() => this.props.history.push('/view-all-world-staking')}>View all stakings in the world</Button>
+                            <Button className="mt-2" onClick={() => this.props.history.push('/view-all-world-staking')}>View all stakings in the world</Button>
                             {/*<div className="pagination">
                                 <a href="#">«</a>
                                 <a className="active" href="#">1</a>
