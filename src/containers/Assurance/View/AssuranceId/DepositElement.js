@@ -10,7 +10,7 @@ class DepositElement extends Component {
     showTimer: false,
     timerSeconds: 0,
     displayText: '',
-    currentTimestamp: 0,
+    currentTimestamp: Math.floor(Date.now()/1000),
     loading: true
   };
 
@@ -27,6 +27,10 @@ class DepositElement extends Component {
       this.setState({ currentTimestamp: Math.floor(Date.now()/1000) })
     }, 1000);
   };
+
+  componentWillUnmount = () => {
+    clearInterval(this.intervalId);
+  }
 
   render = () => {
     const dueTimestampOfThisMonth = this.props.stakingTimestamp + 2629744 * (this.props.monthId - 1);
@@ -95,9 +99,10 @@ class DepositElement extends Component {
       <tr>
         <td>{this.props.monthId}</td>
         <td>{this.props.depositAmount ? this.props.depositAmount+' ES' : '-'}</td>
-        <td>{status}</td>
-        <td>{!this.state.loading
-          ? <>
+        <td>{this.state.loading ? 'Loading...' : status}</td>
+        <td>{this.state.loading
+          ? 'Loading...'
+          : <>
             {displayText}<br />
             {showTimer ? <>{window.getTimeRemaining(timerSeconds)}</> : null}<br />
             {showDepositButton
@@ -108,8 +113,7 @@ class DepositElement extends Component {
                   Deposit
                 </Button>
               : null}
-            </>
-          : 'Loading...'}
+            </>}
           </td>
       </tr>
     )
