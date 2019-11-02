@@ -43,12 +43,22 @@ class DepositElement extends Component {
       status = 'Deposit later';
     } else if(dueTimestampOfThisMonth > this.state.currentTimestamp) {
       // on time
-      showTimer = true;
-      showDepositButton = true;
-      displayText = 'To avoid grace penalty, deposit before';
-      // show timer of ontime due date
-      timerSeconds = dueTimestampOfThisMonth - this.state.currentTimestamp;
-      status = 'Deposit pending';
+      if(this.state.status === 2) {
+        showTimer = false;
+        displayText = 'Deposited on time';
+        status = 'On-time deposit done';
+      } else if(this.state.status === 1) {
+        showTimer = false;
+        displayText = 'Deposited during grace';
+        status = 'Grace deposit done';
+      } else {
+        showTimer = true;
+        showDepositButton = true;
+        displayText = 'To avoid grace penalty, deposit before';
+        // show timer of ontime due date
+        timerSeconds = dueTimestampOfThisMonth - this.state.currentTimestamp;
+        status = 'Deposit pending';
+      }
     } else if(dueTimestampOfThisMonth + 864000 > this.state.currentTimestamp) {
       // grace period
       if(this.state.status === 2) {

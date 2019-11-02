@@ -65,7 +65,7 @@ class AssuranceId extends Component {
         <Table responsive>
           <thead>
             <tr>
-              <th>Month Number</th>
+              <th>Deposit Month</th>
               <th>Deposit Amounts</th>
               <th>Status</th>
               <th>Action</th>
