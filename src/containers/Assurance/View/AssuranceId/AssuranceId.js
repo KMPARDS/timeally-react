@@ -79,6 +79,8 @@ class AssuranceId extends Component {
                 depositAmount={month.depositAmount}
                 status={month.status}
                 stakingTimestamp={month.stakingTimestamp}
+                history={this.props.history}
+                location={this.props.location}
               />
             ))}
           </tbody>

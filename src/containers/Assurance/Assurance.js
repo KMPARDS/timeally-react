@@ -6,6 +6,7 @@ import Calculate from './Calculate';
 import New from './New';
 import View from './View/View';
 import AssuranceId from './View/AssuranceId/AssuranceId';
+import Deposit from './View/Deposit/Deposit';
 import Benefits from './View/Benefits/Benefits';
 import PowerBooster from './View/PowerBooster/PowerBooster';
 import Nominee from './View/Nominee/Nominee';
@@ -28,6 +29,8 @@ class Assurance extends Component {
         <Route path ="/assurance/view" exact component={View} />
 
         <Route path ="/assurance/view/:id" exact component={AssuranceId} />
+
+        <Route path ="/assurance/view/:id/deposit/:month" exact component={Deposit} />
 
         <Route path ="/assurance/view/:id/benefits" exact component={Benefits} />
 

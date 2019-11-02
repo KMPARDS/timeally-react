@@ -352,7 +352,10 @@ class TransactionModal extends Component {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter" style={{wordBreak:'break-all'}}>
+          <Modal.Title id="contained-modal-title-vcenter" style={{
+            wordBreak:this.props.ethereum.headingName.split(' ')
+            .filter(word => word.length >= 10).length > 0 ? 'break-all' : 'break-word'
+          }}>
             {this.props.ethereum.headingName || 'New Staking'}
           </Modal.Title>
         </Modal.Header>

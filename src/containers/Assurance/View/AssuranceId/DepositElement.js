@@ -90,7 +90,14 @@ class DepositElement extends Component {
           ? <>
             {displayText}<br />
             {showTimer ? <>{window.getTimeRemaining(timerSeconds)}</> : null}<br />
-            {showDepositButton ? <Button>Deposit</Button> : null}
+            {showDepositButton
+              ? <Button
+                  className="mt-2"
+                  onClick={() => this.props.history.push(this.props.location.pathname+'/deposit/'+this.props.monthId)}
+                >
+                  Deposit
+                </Button>
+              : null}
             </>
           : 'Loading...'}
           </td>

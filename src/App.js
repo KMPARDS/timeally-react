@@ -49,6 +49,27 @@ window.getTimeRemaining = totalSeconds => {
   return `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
 }
 
+window.getOrdinalString = number => {
+  const numberString = String(number);
+  const lastChar = numberString.charAt(numberString.length - 1);
+  let ordinalString = '';
+  switch(lastChar) {
+    case '1':
+      ordinalString = 'st';
+      break;
+    case '2':
+      ordinalString = 'nd';
+      break;
+    case '3':
+      ordinalString = 'rd';
+      break;
+    default:
+      ordinalString = 'th';
+      break;
+  }
+  return numberString+ordinalString;
+}
+
 // one app login
 window.onload = function(){
   !window.opener || window.opener.postMessage("loaded","*");
