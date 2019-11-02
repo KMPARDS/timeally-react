@@ -26,13 +26,14 @@ class View extends Component {
 
     console.log('logs', logs);
     const sips = [];
-    logs.forEach(log => {
+    for(let i = logs.length - 1; i >= 0; i--) {
+      const log = logs[i];
       const sipId = Number(window.sliceDataTo32Bytes(log.data,0));
       const monthlyCommitmentAmount = ethers.utils.bigNumberify(window.sliceDataTo32Bytes(log.data,1));
       sips.push({
         sipId, monthlyCommitmentAmount
       });
-    });
+    }
     this.setState({ sips, loading: false });
   };
 
