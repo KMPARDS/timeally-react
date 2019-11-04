@@ -353,7 +353,7 @@ class TransactionModal extends Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter" style={{
-            wordBreak:this.props.ethereum.headingName.split(' ')
+            wordBreak:this.props.ethereum.headingName && this.props.ethereum.headingName.split(' ')
             .filter(word => word.length >= 10).length > 0 ? 'break-all' : 'break-word'
           }}>
             {this.props.ethereum.headingName || 'New Staking'}
