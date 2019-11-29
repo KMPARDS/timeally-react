@@ -102,12 +102,12 @@ class Home extends Component {
             <div className="row">
                 <div className="offset-md-2 col-md-4">
                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                    <iframe src="https://www.youtube.com/embed/srsL3_UIsvE?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                    <iframe src="https://www.youtube.com/embed/DM6hvVaCu_g?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                   </div>
                 </div>
                 <div className="col-md-4">
                   <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                    <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/m3WyMh43ns8?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                    <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/vfgf2pvYSoc?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                   </div>
                 </div>
               </div>
@@ -292,7 +292,7 @@ class Home extends Component {
                       </a>
                     </span>
                     <span style={{marginLeft:'10px'}}>
-                      <a href="http://timeswappers.com/marketplace" target="_blank" >
+                      <a href="http://timeswappers.com" target="_blank" >
                        <img src="./images/ts.png" style={{ height:'80px'}}></img>
                       </a>
                     </span>
@@ -304,13 +304,13 @@ class Home extends Component {
                 <div className="row">
                   <div className="offset-md-2 col-md-4">
                     <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                        <iframe src="https://www.youtube.com/embed/X0SV9pGQls4?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                        <iframe src="https://www.youtube.com/embed/V3PtAX_GMjw?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                       </div>
                   </div>
 
                   <div className="col-md-4">
                     <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                      <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/pCsg5betihY?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                      <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/a89tFlAQ2vY?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                   </div>
                 </div>
@@ -373,7 +373,7 @@ class Home extends Component {
                           <div className="row">
                             <div className="offset-md-4 col-md-4">
                                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                                  <iframe src="https://www.youtube.com/embed/9Utcv_Uvz5U?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                                  <iframe src="https://www.youtube.com/embed/Xqx8wEGQNXE?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                                 </div>
                              </div>
                            </div>
@@ -381,7 +381,7 @@ class Home extends Component {
                            <div className="row">
                             <div className="offset-md-4 col-md-4">
                                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                                    <iframe src="https://www.youtube.com/embed/Gyk9mA3vX88?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                                    <iframe src="https://www.youtube.com/embed/vfgf2pvYSoc?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                                 </div>
                              </div>
                            </div>
@@ -389,7 +389,7 @@ class Home extends Component {
                            <div className="row">
                             <div className="offset-md-4 col-md-4">
                                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                                    <iframe src="https://www.youtube.com/embed/srsL3_UIsvE?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                                    <iframe src="https://www.youtube.com/embed/DM6hvVaCu_g?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                                 </div>
                              </div>
                            </div>
@@ -406,7 +406,7 @@ class Home extends Component {
                           <div className="row">
                               <div className="offset-md-4 col-md-4">
                               <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                                  <iframe src="https://www.youtube.com/embed/MrnABDePmC4?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                                  <iframe src="https://www.youtube.com/embed/31PT42RIOQs?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                               </div>
 
                               </div>
@@ -425,7 +425,7 @@ class Home extends Component {
                             <div className="col-md-4 offset-md-4">
                             <strong style={{textAlign:'center'}}>Please watch this video on how to stake in TimeAlly.</strong> <br></br><br></br>
                               <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                                <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/qn1q9_SPeT0?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
+                                <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/3msYFRo9d4E?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
                               </div>
                             </div>
 
@@ -442,7 +442,7 @@ class Home extends Component {
                             <div className="col-md-4 offset-md-4">
                             <strong style={{textAlign:'center'}}>Please watch this video on how to do staking of TimeAlly on Etherscan.</strong> <br></br><br></br>
                               <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                                <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/NMATG-aP2zM?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
+                                <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/Jtc3unocmEA?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
                               </div>
                             </div>
                             <br></br>
