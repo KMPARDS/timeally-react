@@ -229,11 +229,7 @@ class Deposit extends Component {
                   </Button>
                 </>
                 : <Button onClick={() => {
-                  if(window.connectedToMetamask) {
-                    this.onApproveClick();
-                  } else {
                     this.setState({ showApproveTransactionModal: true, spinner: true });
-                  }
                 }} disabled={this.state.spinner}>
                 {this.state.spinner ?
                 <Spinner
@@ -273,11 +269,7 @@ class Deposit extends Component {
                 : null
               }
             <Button onClick={() => {
-                if(window.connectedToMetamask) {
-                  this.stakeNowClick();
-                } else {
                   this.setState({ showStakeTransactionModal: true, spinner: true });
-                }
               }} disabled={this.state.spinner}>
               {this.state.spinner ?
               <Spinner
