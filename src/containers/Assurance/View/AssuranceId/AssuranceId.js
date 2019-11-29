@@ -93,10 +93,6 @@ class AssuranceId extends Component {
         <div class="details">
           <Button onClick={() => this.props.history.push(`/assurance/view/${this.props.match.params.id}/nominees`)}>Nominee Page</Button>
         </div>
-
-        <div class="details">
-          <Button onClick={() => this.props.history.push(`/assurance/view/${this.props.match.params.id}/power-booster`)}>Power Booster Timer</Button>
-        </div>
       </> : (
         this.state.loading
         ? <p>Please wait loading...</p>
