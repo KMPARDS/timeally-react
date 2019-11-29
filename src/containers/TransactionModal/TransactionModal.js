@@ -229,7 +229,7 @@ class TransactionModal extends Component {
             </span>
             <span onClick={()=>this.setState({currentScreen: 2})} style={{display: 'inline-block', float:'right', fontSize: '0.8rem'}}>Advanced settings</span>
           </Card>
-          <Button style={{margin:'0'}}variant="primary" size="lg" block onClick={this.sendTransaction}>Proceed</Button>
+          <Button style={{margin:'0'}}variant="primary" size="lg" block onClick={this.sendTransaction}>{window.connectedToMetamask ? 'Proceed to Metamask' : 'Sign and Submit'}</Button>
           {/*<Row style={{marginTop: '12px'}}>
             <Col style={{paddingRight: '6px'}}>
               <Button variant="secondary" size="lg" block>Reject</Button>
@@ -290,7 +290,9 @@ class TransactionModal extends Component {
             ? 'Your transaction is being prepared...'
             : (
               this.state.transactionStatus === 1
-              ? 'Sending your transaction to the Blockchain...'
+              ? (window.connectedToMetamask
+                ? 'Please check MetaMask and CONFIRM to proceed...'
+                : 'Sending your transaction to the Blockchain...')
               : (
                 this.state.transactionStatus === 2
                 ? 'Waiting for confirmation of the transaction...'
@@ -302,7 +304,7 @@ class TransactionModal extends Component {
               )
             )
           )}</p>
-          <p>You can view your transaction on <a href={`https://${network === 'homestead' ? '' : 'kovan.' }etherscan.io/tx/${this.state.hash}`} style={{color: 'black'}} target="_blank" rel="noopener noreferrer">EtherScan</a></p>
+          {this.state.hash ? <p>You can view your transaction on <a href={`https://${network === 'homestead' ? '' : 'kovan.' }etherscan.io/tx/${this.state.hash}`} style={{color: 'black', textDecoration: 'underline'}} target="_blank" rel="noopener noreferrer">EtherScan</a></p> : null}
 
         {this.state.transactionStatus === 3 ? <Button style={{margin:'0'}} variant="primary" size="lg" block onClick={this.props.ethereum.continueFunction ? this.props.ethereum.continueFunction.bind(this, this.state.hash) : () => this.props.history.push('/stakings')}>{this.props.ethereum.continueFunction ? 'Continue' : 'Go to Stakings Page'}</Button> : null}
         </Modal.Body>
