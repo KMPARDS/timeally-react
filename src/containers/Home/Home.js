@@ -190,12 +190,12 @@ class Home extends Component {
                   <div className="card-hero-block text-center">
                     <h1 className="text-white">How TimeAlly works</h1>
                     <p className="text-white">TimeAlly rewards TA holders for locking their tokens in TA smart contract (TA Time Vault) for the duration of one or two years as per their choice.</p><br></br>
-                    <ul style={{textAlign:'left'}}>
+                    <ul style={{textAlign:'left', color:'#fff'}}>
                       <li>Vesting for 1 Year: 13% (1.08% per month) of ES Tokens from NRT pool is allocated to be distributed among TA Vestors. </li>
                       <li>Vesting for 2 Year: 15% (1.25% per month) of ES Tokens from NRT pool is allocated  to be distributed among TA Vestors.</li>
                       <li>All the Rewards will be distributed 50% in TimeAlly & 50 % in Liquid.</li>
                     </ul>
-                    <p>
+                    <p style={{color:'#fff'}}>
                     There is a fixed number of ES rewarded every month to users which is governed by TA smart contract. Total number of ES tokens to be distributed among TA holders is pre-defined, but which user will get how many ES tokens is not defined. It depends on number of token staked in proportion to their vesting plans.</p>
                     <div className="row">
                       <div className="col-md-6">
