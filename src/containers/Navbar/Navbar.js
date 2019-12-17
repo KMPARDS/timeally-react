@@ -31,9 +31,11 @@ class NavbarComponent extends Component {
     })();
 
     (async() => {
-      const response = await axios.get('https://api.probit.com/api/exchange/v1/ticker?market_ids=ES-USDT%2CES-BTC');
+      const response = await axios.get('https://eraswap.technology/probit/getESPrice');
 
-      this.setState({ esPrice: response.data.data[0].last + ' USDT / '+response.data.data[1].last + ' BTC' })
+      if(!response.data.data.success) return console.log('Error in Probit API:', response);
+
+      this.setState({ esPrice: response.data.data.probitResponse.data[0].last + ' USDT / '+response.data.data.probitResponse.data[1].last + ' BTC' })
     })();
   }
 
