@@ -8,7 +8,8 @@ app.use(helmet());
 
 app.use((req, res, next) => {
   res.set({
-    'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+    // 'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+    'Cache-Control': 'max-age=604800, public',
     'Strict-Transport-Security': 'max-age=31536000; preload',
     'X-Frame-Options': 'deny',
     'X-XSS-Protection': '1; mode=block'
