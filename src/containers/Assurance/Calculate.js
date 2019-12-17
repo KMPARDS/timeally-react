@@ -109,7 +109,7 @@ class Calculate extends Component {
           </table>
           <table>
             <tr>
-              <th style={{textAlign: 'center'}}>Withdrawls</th>
+              <th style={{textAlign: 'center'}}>Withdrawals</th>
               <th style={{textAlign: 'center'}}>Staker Benefits</th>
               <th style={{textAlign: 'center'}}>Partner Benefits</th>
             </tr>

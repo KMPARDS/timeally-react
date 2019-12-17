@@ -290,7 +290,7 @@ class StakingId extends Component {
                                 disabled={this.state.selectedQuerySpinner}
                               >
                                 {this.state.selectedQuerySpinner
-                                  ? <Spinner animation="border" /> : 'Query Total Benefit Withdrawl'
+                                  ? <Spinner animation="border" /> : 'Query Total Benefit Withdrawal'
                                 }
                               </Button>}
                         </div> : <p>You have not selected any NRT month. To withdraw benefits, select one or more months.</p>}

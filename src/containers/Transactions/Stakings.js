@@ -70,7 +70,7 @@ class Stakings extends Component {
                       <div className="row">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                           <Button className="btn-default" onClick={() => this.props.history.push('/transactions/stakings')}>View only stakings</Button>
-                          <Button onClick={() => this.props.history.push('/transactions/withdrawls')}>View only Withdrawls</Button>
+                          <Button onClick={() => this.props.history.push('/transactions/withdrawls')}>View only Withdrawals</Button>
                         </div>
                       </div>
                     </div>
