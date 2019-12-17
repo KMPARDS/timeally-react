@@ -74,7 +74,6 @@ window.getOrdinalString = number => {
 window.onload = function(){
   !window.opener || window.opener.postMessage("loaded","*");
 
-  document.getElementById('start-loader').style.display = 'none';
   // const element = document.getElementById('start-loader');
   // element.parentElement.removeChild(element);
 }
@@ -85,6 +84,9 @@ window.addEventListener('message', function(e) {
 } , false);
 
 function App(props) {
+
+  // remove the site loader curtain once dom starts to render
+  document.getElementById('start-loader').style.display = 'none';
 
   window.ProcessParentMessage_2 = message => {
     if(message.substring){
