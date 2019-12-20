@@ -1,143 +1,96 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Navbar, Nav, DropdownButton, Dropdown } from 'react-bootstrap';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-class NavbarComponent extends Component {
-  state = {
-    userAddress: ''
-  };
-
-  componentDidMount = () => {
-    window.updateTheNavbar = async action => {
-      if(action.type === 'LOAD-WALLET-INSTANCE') {
-        let userAddress = '';
-        if(Object.entries(action.payload).length) {
-          userAddress = await action.payload.getAddress();
-        }
-        this.setState({ userAddress });
-      }
-    };
-  }
-
+class FooterComponent extends Component {
   render() {
     return (
-      <div>
-      <div className="top-bar">
-        {/* top-bar */}
+      <>
+      <div className="footer section-space20" style={{ paddingBottom: '0px'}}>
+        {/* footer */}
         <div className="container">
           <div className="row">
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-none d-xl-block d-lg-block d-md-block">
-              <p className="mail-text">Welcome to Time Ally</p>
+            <div className="col-12">
+              <div className="footer-logo" style={{ fontSize: '30px'}}>
+                {/* Footer Logo */}
+                {/* <img src="images/ft-logo.png" alt="Borrow - Loan Company Website Templates" />  */}
+                <ul className="list-unstyled list-inline social2 text-center text-white">
+                <li className="list-inline-item">
+                  <a href="https://github.com/KMPARDS" target="_blank"><i className="fa fa-github"></i></a>
+                </li>
+                <li className="list-inline-item telegram">
+                  <a href="https://t.me/eraswap" target="_blank"><i className="fa fa-telegram"></i></a>
+                </li>
+                <li className="list-inline-item">
+                  <a href="https://twitter.com/eraswaptec" target="_blank"><i className="fa fa-twitter"></i></a>
+                </li>
+                <li className="list-inline-item">
+                  <a href="https://www.facebook.com/eraswap" target="_blank"><i className="fa fa-facebook"></i></a>
+                </li>
+                <li className="list-inline-item">
+                  <a href="https://www.instagram.com/eraswap/?hl=en" target="_blank"><i className="fa fa-instagram"></i></a>
+                </li>
+                <li className="list-inline-item">
+                  <a href="https://www.youtube.com/channel/UCGCP4f5DF1W6sbCjS6y3T1g?view_as=subscriber" target="_blank"><i className="fa fa-youtube"></i></a>
+                </li>
+                <li className="list-inline-item">
+                  <a href="https://www.linkedin.com/company/eraswap/" target="_blank"><i className="fa fa-linkedin"></i></a>
+                </li>
+                {/* <li className="list-inline-item">
+                  <a href="https://plus.google.com/u/2/107638861216745114245" target="_blank"><i className="fa fa-google-plus"></i></a>
+                </li> */}
+                <li className="list-inline-item">
+                  <a href="https://www.reddit.com/user/EraSwap" target="_blank"><i className="fa fa-reddit"></i></a>
+                </li>
+                <li className="list-inline-item">
+                  <a href="https://medium.com/@eraswap" target="_blank"><i className="fa fa-medium"></i></a>
+                </li>
+                <li className="list-inline-item">
+                  <a href="https://eraswap.tumblr.com/" target="_blank"><i className="fa fa-tumblr"></i></a>
+                </li>
+                <li className="list-inline-item">
+                  <a href="https://mix.com/eraswap" target="_blank"><i className="fa fa-stumbleupon"></i></a>
+                </li>
+                <li className="list-inline-item">
+                <a href="https://www.pinterest.com/eraswapt" target="_blank"><i className="fa fa-pinterest"></i></a>
+                </li>
+                <li className="list-inline-item">
+                  <a href="https://bitcointalk.org/index.php?topic=5025979.msg45502457" target="_blank"><i className="fa fa-btc"></i></a>
+                </li>
+              </ul>
+                </div>
+              {/* /.Footer Logo */}
             </div>
-            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 d-none d-xl-block d-lg-block d-md-block">
-              <p className="mail-text text-center">Personal</p>
-            </div>
-            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 d-none d-xl-block d-lg-block d-md-block">
-              <p className="mail-text text-center">Business</p>
-            </div>
-            <div className="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 d-none d-xl-block d-lg-block d-md-block">
-              <p className="mail-text text-center">Corporate</p>
-            </div>
+          </div>
+          <div className="row">
           </div>
         </div>
       </div>
-       <div className="header-2">
-         <div className="container">
-           <div className="row">
-             <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-               {/* logo */}
-               <div className="logo">
-                 <img onClick={() => this.props.history.push('/create-wallet')} src="images/logo.png" alt="" />
-               </div>
-             </div>
-             {/* logo */}
-             <div className="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 text-right d-none d-xl-block d-lg-block ">
-               <div className="header-action">
-                 <a href="#" className="btn btn-primary">Loan Available</a>
-                 <a href="#" className="btn btn-default ">Get Quote Now</a></div>
-             </div>
-           </div>
-         </div>
-         <div className="navigation-2">
-           <div className="container">
-             <div className="row">
-               <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                 <div id="navigation">
-                   {/* navigation start*/}
-                   <ul>
-                     <li className="active"><a href="#" className="animsition-link">Home</a>
-                       
-                     </li>
-                     <li><a href="#" className="animsition-link">Time Ally Loan</a>
-                      
-                     </li>
-                     <li><a href="about.html" className="animsition-link">Time Ally Insurance</a>
-                      
-                     </li>
-                     <li><a href="blog-listing.html" className="animsition-link">Time Ally Card</a>
-                     
-                     </li>
-                     
-                   </ul>
-                 </div>
-                 
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-       </div>
-      // <Navbar style={{backgroundColor: '#070707'}} {...this.props}>
+      {/* /.footer */}
+      <div className="tiny-footer">
+        {/* tiny footer */}
+        <div className="container">
+          <div className="row">
+            {/*<div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+              <p style={{color:'#fff'}}>Time Ally</p>
+            </div>*/}
+            <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style={{ margin: '0 auto' }}>
+              <p style={{color:'#fff'}}>
+                <a rel="noopener noreferrer" href="https://etherscan.io/address/0x5630ee5f247bd6b61991fbb2f117bbeb45990876#code" target="_blank"  >TA Smart Contract Address: 0x5630ee5f247Bd6B61991FBB2f117bBEb45990876</a> | <a style={{cursor:'pointer'}} onClick={this.props.history.push.bind(null, '/view-all-world-staking')}>View All World Staking</a><br/>{/*&nbsp; | &nbsp;*/}
+                <a href="/pdf/TimeAlly_Contract_Security_Software_Testing_Report.pdf" target="_blank"  >Contract, Security, and Software Testing Reports</a> &nbsp; | &nbsp;
+                <a href="/pdf/TimeAlly.pdf" target="_blank" >User Guide</a> &nbsp; | &nbsp;
+                <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank"  >Era Swap White Paper</a> &nbsp; | &nbsp;
+                <a href="https://eraswaptoken.io/era-swap-howey-test-letter-august7-2018.php" target="_blank"  >Howey Test</a> &nbsp; | &nbsp;
+                <a href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank">Terms of use</a> &nbsp; | &nbsp; <a href="/pdf/TimeAlly-Privacy.pdf" target="_blank">Privacy Policy</a> | &nbsp; <a href="/pdf/TSGAP.pdf" target="_blank">TSGAP</a>
+              </p>
+            </div>
 
-      //   <Link to="/">
-      //     <Navbar.Brand>
-      //       <img
-      //         src="/logo.png"
-      //         width="30"
-      //         height="30"
-      //         className="d-inline-block align-top"
-      //         alt="React Bootstrap logo"
-      //       />
-      //     </Navbar.Brand>
-      //   </Link>
-
-      //   <Nav.Link style={{color: 'white'}} onClick={() => this.props.history.push('/dashboard')}>Dashboard</Nav.Link>
-      //   <Nav.Link style={{color: 'white'}} onClick={() => this.props.history.push('/transactions')}>Transactions</Nav.Link>
-
-      //   <Navbar.Toggle />
-
-      //   <Navbar.Collapse className="justify-content-end">
-
-      //     <DropdownButton alignRight id="dropdown-basic-button" title={this.state.userAddress ? `Welcome ${String(this.state.userAddress).substr(0,6)}...` : 'Era Swap Wallet'} variant="outline-light" drop="down">
-
-      //       {/*<Dropdown.Header>Your HD Accounts</Dropdown.Header>
-      //       <Dropdown.Item>Signed in as 0x124B7... (23.75 ES)</Dropdown.Item>*/}
-
-      //       {/* show if not signed in*/
-      //       !this.state.userAddress ? <Dropdown.Item onClick={() => this.props.history.push('/create-wallet')}>Create Wallet</Dropdown.Item> : null}
-
-      //       {/* show if not signed in*/
-      //       !this.state.userAddress ? <Dropdown.Item onClick={() => this.props.history.push('/load-wallet')}>Load Wallet</Dropdown.Item> : null}
-
-      //       {/* show if not signed in*/
-      //       this.state.userAddress ? <Dropdown.Item onClick={() => this.props.history.push('/user')}>Account page</Dropdown.Item> : null}
-
-      //       {/* show if not signed in*/
-      //       this.state.userAddress ? <Dropdown.Item onClick={() => {
-      //         this.props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: {} });
-      //         window.historyy = this.props.history;
-      //         this.props.history.push('/logout');
-      //       }}>Log out</Dropdown.Item> : null}
-      //     </DropdownButton>
-      //   </Navbar.Collapse>
-
-      // </Navbar>
-      
-
-      
+          </div>
+        </div>
+      </div>
+      </>
     );
   }
 }
 
-export default connect(state => {return{store: state}})(withRouter(NavbarComponent));
+export default connect(state => {return{store: state}})(withRouter(FooterComponent));
