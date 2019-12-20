@@ -77,6 +77,10 @@ window.onload = function(){
 
   // const element = document.getElementById('start-loader');
   // element.parentElement.removeChild(element);
+
+
+  // remove the site loader on page load
+  document.getElementById('start-loader').style.display = 'none';
 }
 window.addEventListener('message', function(e) {
   setTimeout(() => {
@@ -85,9 +89,6 @@ window.addEventListener('message', function(e) {
 } , false);
 
 function App(props) {
-
-  // remove the site loader curtain once dom starts to render
-  document.getElementById('start-loader').style.display = 'none';
 
   window.ProcessParentMessage_2 = message => {
     if(message.substring){

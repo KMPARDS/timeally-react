@@ -173,9 +173,53 @@
     <div id="start-loader" style="position: fixed; background-color: #eee; z-index:9999; width: 100vw; height: 100vh; text-align: center">
       <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);">
         <img style="width: 30vw;margin-bottom: 0.5rem" src="/images/talogo.png" />
-        <p>Loading the ÐApp in a moment, please wait...</p>
+        <p><span id="loading-text-1">Loading</span> <span id="loading-text-2">the</span> <span id="loading-text-3">ÐApp</span> <span id="loading-text-4">in</span> <span id="loading-text-5">a</span> <span id="loading-text-6">moment</span><span id="loading-text-7">, please</span> <span id="loading-text-8">wait</span><span id="loading-text-9">.</span><span id="loading-text-10">.</span><span id="loading-text-11">.</span></p>
       </div>
     </div>
+    <script>
+      // to scope out the var variables created in below snippets
+      (() => {
+        var getLoadingElement = number => document.getElementById('loading-text-'+number);
+        var intervalId;
+
+        for(let i = 1; i <= 11; i++) {
+          getLoadingElement(i).style.visibility = 'hidden';
+        }
+
+        var time = 0;
+        setTimeout(()=>(console.log(1),getLoadingElement(1).style.visibility = 'visible'), time+=50)
+        setTimeout(()=>(console.log(2),getLoadingElement(2).style.visibility = 'visible'), time+=800)
+        setTimeout(()=>(console.log(3),getLoadingElement(3).style.visibility = 'visible'), time+=200)
+        setTimeout(()=>(console.log(4),getLoadingElement(4).style.visibility = 'visible'), time+=500)
+        setTimeout(()=>(console.log(5),getLoadingElement(5).style.visibility = 'visible'), time+=400)
+        setTimeout(()=>(console.log(6),getLoadingElement(6).style.visibility = 'visible'), time+=200)
+        setTimeout(()=>(console.log(7),getLoadingElement(7).style.visibility = 'visible'), time+=700)
+        setTimeout(()=>(console.log(8),getLoadingElement(8).style.visibility = 'visible'), time+=200)
+
+        // for(let i = 1; i <= 8; i++) {
+        //   setTimeout(()=>(console.log(i),getLoadingElement(i).style.visibility = 'visible'), i*800)
+        // }
+
+        var current = 9;
+        setTimeout(() => {
+          intervalId = setInterval(() => {
+            if(current === 12) {
+              getLoadingElement(9).style.visibility = 'hidden';
+              getLoadingElement(10).style.visibility = 'hidden';
+              getLoadingElement(11).style.visibility = 'hidden';
+              current = 9;
+            } else {
+              getLoadingElement(current).style.visibility = 'visible';
+              console.log(current);
+              current++;
+            }
+          }, 200);
+        },time);
+      })();
+
+      // window onload clear interval id
+    </script>
+
     <a href="https://t.me/eraswap" target="https://t.me/eraswap" class="float">
         <i class="fa fa-telegram" style="font-size: 37px;" aria-hidden="true"></i>
         <!-- <i class="fa fa-plus my-float"></i> -->
