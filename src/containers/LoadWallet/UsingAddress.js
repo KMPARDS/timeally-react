@@ -20,10 +20,6 @@ class UsingAddress extends Component {
     success: false
   };
 
-  onAddressUpdate = event => {
-    this.setState({ addressContent: event.target.value });
-  }
-
   onAddressSubmit = async event => {
     //document.getElementById('btnsubmit').innerHTML = 'unlocking...';
     event.preventDefault();
@@ -100,7 +96,14 @@ class UsingAddress extends Component {
           <Form onSubmit={this.onAddressSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding: '20px 40px', width: '400px'}}>
 
             <Form.Group controlId="address">
-              <Form.Control autocomplete="off" onKeyUp={this.onAddressUpdate} type="text" placeholder="Enter your Address" style={{width: '325px'}} />
+              <Form.Control autocomplete="off" onChange={event => {
+                if(event.target.value.slice(0,-1) !== this.state.addressContent) {
+                  console.log(event.target.value, this.state.addressContent);
+                  this.setState({ addressContent: event.target.value });
+                }
+              }} onKeyUp={event => {
+                this.setState({ addressContent: event.target.value });
+              }} type="text" placeholder="Enter your Address" style={{width: '325px'}} />
             </Form.Group>
 
             {this.state.addressErrorDisplay ?
