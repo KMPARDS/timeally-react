@@ -99,18 +99,23 @@ class Home extends Component {
             <hr/>
               <h1>What is TimeAlly</h1>
             <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the generation & distribution of ES Newly released Token. TimeAlly increase Era Swap count for TimeAlly contract holders for holding tokens over a period of time.</p>
-            <div className="row">
+
+            <p><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/DM6hvVaCu_g?rel=0&amp" target="_blank">Click to open TimeAlly Teaser in a new tab</a></p>
+
+            <p><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/vfgf2pvYSoc?rel=0&amp" target="_blank">Click to open TimeAlly Walkthrough in a new tab</a></p>
+
+            {/*<div className="row">
                 <div className="offset-md-2 col-md-4">
-                <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                    <iframe src="https://www.youtube.com/embed/DM6hvVaCu_g?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                  <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
+                      <iframe src="https://www.youtube-nocookie.com/embed/DM6hvVaCu_g?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
+                      <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube-nocookie.com/embed/vfgf2pvYSoc?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                   </div>
                 </div>
-                <div className="col-md-4">
-                  <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                    <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/vfgf2pvYSoc?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                  </div>
-                </div>
-              </div>
+              </div>*/}
           </div>
         </div>
       </div>
@@ -301,19 +306,21 @@ class Home extends Component {
                     </span>
                   </div>
                   <br></br>
-                <div className="row">
+                  <p><a style={{color: 'white', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/V3PtAX_GMjw?rel=0&amp" target="_blank">Click to open Power Token Insights Video in a new tab</a></p>
+                  <p><a style={{color: 'white', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/a89tFlAQ2vY?rel=0&amp" target="_blank">Click to open SwappersWall Video in a new tab</a></p>
+                {/*<div className="row">
                   <div className="offset-md-2 col-md-4">
                     <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                        <iframe src="https://www.youtube.com/embed/V3PtAX_GMjw?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                        <iframe src="https://www.youtube-nocookie.com/embed/V3PtAX_GMjw?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                       </div>
                   </div>
 
                   <div className="col-md-4">
                     <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                      <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/a89tFlAQ2vY?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                      <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube-nocookie.com/embed/a89tFlAQ2vY?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                   </div>
-                </div>
+                </div>*/}
                 <div className="row">
                   {/* <div className="col-md-4">
                     <img src="./images/swp_bz-01.png"></img>
@@ -325,7 +332,7 @@ class Home extends Component {
                 </div>
                 {/* <a className="btn-link-white">Watch the video for TimeAlly activation</a> */}
                 {/* <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                    <iframe width="560" height="315" style={{position: 'absolute', top: 0, left: 0,}} src="https://www.youtube.com/embed/X0SV9pGQls4?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                    <iframe width="560" height="315" style={{position: 'absolute', top: 0, left: 0,}} src="https://www.youtube-nocookie.com/embed/X0SV9pGQls4?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                   </div> */}
               </div>
               {/* /.hero-caption */}
@@ -369,27 +376,28 @@ class Home extends Component {
                         <Accordion.Collapse eventKey="1">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the generation & distribution of ES Newly released Token. <br></br><br></br>
                           <h4 style={{textAlign:'center'}}>Please watch this videos to understand .</h4>
-                          <h5 style={{textAlign:'center'}}>TimeAlly Tour.</h5>
+                          <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/Xqx8wEGQNXE?rel=0&amp" target="_blank">Click to open the <u>TimeAlly Tour</u> Video in a new tab</a></p>
                           <div className="row">
                             <div className="offset-md-4 col-md-4">
-                                <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                                  <iframe src="https://www.youtube.com/embed/Xqx8wEGQNXE?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
-                                </div>
+
+                                {/*<div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
+                                  <iframe src="https://www.youtube-nocookie.com/embed/Xqx8wEGQNXE?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                                </div>*/}
                              </div>
                            </div>
-                           <h5 style={{textAlign:'center'}}>TimeAlly Quick Walk through.</h5>
+                           <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/vfgf2pvYSoc?rel=0&amp" target="_blank">Click to open the <u>TimeAlly Quick Walk Through</u> Video in a new tab</a></p>
+                           <div className="row">
+                            <div className="offset-md-4 col-md-4">
+                                {/*<div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
+                                    <iframe src="https://www.youtube-nocookie.com/embed/vfgf2pvYSoc?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                                </div>*/}
+                             </div>
+                           </div>
+                           <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/DM6hvVaCu_g?rel=0&amp" target="_blank">Click to open the <u>TimeAlly Teaser</u> Video in a new tab</a></p>
                            <div className="row">
                             <div className="offset-md-4 col-md-4">
                                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                                    <iframe src="https://www.youtube.com/embed/vfgf2pvYSoc?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
-                                </div>
-                             </div>
-                           </div>
-                           <h5 style={{textAlign:'center'}}>TimeAlly Teaser </h5>
-                           <div className="row">
-                            <div className="offset-md-4 col-md-4">
-                                <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                                    <iframe src="https://www.youtube.com/embed/DM6hvVaCu_g?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                                    <iframe src="https://www.youtube-nocookie.com/embed/DM6hvVaCu_g?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                                 </div>
                              </div>
                            </div>
@@ -403,10 +411,11 @@ class Home extends Component {
                         <Accordion.Collapse eventKey="2">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
                           Please watch this video on how to claim your staking in TimeAlly DApp.<br></br><br></br>
+                          <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/31PT42RIOQs?rel=0&amp" target="_blank">Click to open the Video in a new tab</a></p>
                           <div className="row">
                               <div className="offset-md-4 col-md-4">
                               <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                                  <iframe src="https://www.youtube.com/embed/31PT42RIOQs?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                                  {/*<iframe src="https://www.youtube-nocookie.com/embed/31PT42RIOQs?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />*/}
                               </div>
 
                               </div>
@@ -423,9 +432,10 @@ class Home extends Component {
                             One can vest in TimeAlly just by locking up ES in TimeAlly smart contract for a vesting period of 1 year or 2 years.<br></br><br></br>
 
                             <div className="col-md-4 offset-md-4">
-                            <strong style={{textAlign:'center'}}>Please watch this video on how to stake in TimeAlly.</strong> <br></br><br></br>
+                            <strong style={{textAlign:'center'}}>Please watch this video on how to stake in TimeAlly.</strong>
+                            <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/3msYFRo9d4E?rel=0&amp" target="_blank">Click to open the Video in a new tab</a></p> <br></br><br></br>
                               <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                                <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/3msYFRo9d4E?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
+                                {/*<iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube-nocookie.com/embed/3msYFRo9d4E?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>*/}
                               </div>
                             </div>
 
@@ -441,8 +451,9 @@ class Home extends Component {
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
                             <div className="col-md-4 offset-md-4">
                             <strong style={{textAlign:'center'}}>Please watch this video on how to do staking of TimeAlly on Etherscan.</strong> <br></br><br></br>
+                            <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/Jtc3unocmEA?rel=0&amp" target="_blank">Click to open the Video in a new tab</a></p>
                               <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                                <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube.com/embed/Jtc3unocmEA?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
+                              {/*  <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube-nocookie.com/embed/Jtc3unocmEA?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>*/}
                               </div>
                             </div>
                             <br></br>
@@ -545,10 +556,12 @@ class Home extends Component {
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="18">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Please watch this video to understand "How To Stake Your Era Swap Tokens In TimeAlly Using Keystore/ Mnemonics/Private Key"
+
+                          <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/qn1q9_SPeT0?rel=0&amp" target="_blank">Click to open the Video in a new tab</a></p>
                           <div className="row">
                             <div className="offset-md-4 col-md-4" >
                                 <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px', marginTop:'20px'}}>
-                                    <iframe src="https://www.youtube.com/embed/qn1q9_SPeT0?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                                    {/*<iframe src="https://www.youtube-nocookie.com/embed/qn1q9_SPeT0?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />*/}
                                 </div>
                              </div>
                            </div>
