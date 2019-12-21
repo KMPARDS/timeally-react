@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import copy from 'copy-to-clipboard';
 
 const ethers = require('ethers');
 
@@ -12,7 +13,8 @@ class WalletPage extends Component {
     totalStakingsNext: {},
     shareNow: {},
     shareNext: {},
-    myActiveStakings: undefined
+    myActiveStakings: undefined,
+    copied: false
   };
 
   componentDidMount = async () => {
@@ -115,14 +117,18 @@ class WalletPage extends Component {
                     {
                      isWalletPresent ?
                     <div className="col-12">
-                      <div className="bg-white pinside30 mb30 highlight-outline outline">
-                        <p><b>YourAddress</b> : <span style={{color:'#f51f8a'}}>{this.state.userAddress}</span></p>
+                      <div className="bg-white pinside30 mb30 highlight-outline outline set-word-break-all">
+                        <p><b>YourAddress</b> : <span style={{color:'#f51f8a'}} onClick={() => {
+                          copy(this.state.userAddress);
+                          this.setState({ copied: true });
+                          setTimeout(this.setState.bind(this, {copied: false}), 2000);
+                        }}>{this.state.userAddress}</span>{this.state.copied ? <>✓ Copied!</> : null}</p>
                         <div className="row">
-                          <div className="col-md-6"><b>Your ES Balance</b>:
+                          <div className="col-md-6 set-word-break-all"><b>Your ES Balance</b>:
                             {Object.keys(this.state.esBalance).length ? ethers.utils.formatEther(this.state.esBalance) : null} ES</div>
-                          <div className="col-md-6"><b>Your Ether Balance</b>:
+                          <div className="col-md-6 set-word-break-all"><b>Your Ether Balance</b>:
                             {Object.keys(this.state.etherBalance).length ? ethers.utils.formatEther(this.state.etherBalance) : null } ETH</div>
-                          <div className="col-md-6"><b>Your Stakings</b>:
+                          <div className="col-md-6 set-word-break-all"><b>Your Stakings</b>:
                             {this.state.myActiveStakings ? this.state.myActiveStakings + ' ES' : 'Loading...'}</div>
 
 

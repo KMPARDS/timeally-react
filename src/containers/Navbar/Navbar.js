@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Navbar, Nav, DropdownButton, Dropdown, NavDropdown, Form, Button, FormControl } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
-
+import copy from 'copy-to-clipboard';
 import { esContract, nrtManager, timeally, sip, network } from '../../env';
 
 const ethers = require('ethers');
@@ -13,7 +13,8 @@ class NavbarComponent extends Component {
     time: 0,
     etherPrice: '',
     esPrice: '',
-    gasPrice: ''
+    gasPrice: '',
+    copied: false
   };
 
   updatePrice = () => {
@@ -118,9 +119,13 @@ class NavbarComponent extends Component {
       navbarButtons = (
         <div>
           {announcementLink}
-          <span><a className="btn btn-primary btn-sm" style={{backgroundColor: this.props.store.walletInstance._ethersType !== 'Signer' ? '#333' : undefined}}>Welcome {
+          <span><a onClick={() => {
+            copy(this.props.store.walletInstance.address);
+            this.setState({ copied: true });
+            setTimeout(this.setState.bind(this, {copied: false}), 2000);
+          }} className="btn btn-primary btn-sm" style={{backgroundColor: this.props.store.walletInstance._ethersType !== 'Signer' ? '#333' : undefined, cursor: 'pointer'}}>{this.state.copied ? <>✓ Address Copied!</> : <>Welcome {
               this.props.store.walletInstance.address.slice(0,6) + '...' + this.props.store.walletInstance.address.slice(this.props.store.walletInstance.address.length - 3, this.props.store.walletInstance.address.length - 1)
-            }</a>
+            }</>}</a>
           </span>
           <span><a onClick={() => {
               this.props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: {} });
