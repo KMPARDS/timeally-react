@@ -4,7 +4,7 @@ import { connect } from 'react-redux'; // this is for accessing the store\
 import { Dropdown } from 'react-bootstrap';
 
 import Navbar from './containers/Navbar/Navbar';
-import Footer from './containers/Footer/Footer';
+import Footer from './containers/footer/Footer';
 import Home from './containers/Home/Home';
 import CreateWallet from './containers/CreateWallet/CreateWallet';
 import LoadWallet from './containers/LoadWallet/LoadWallet';
