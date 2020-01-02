@@ -187,14 +187,14 @@
         }
 
         var time = 0;
-        setTimeout(()=>(console.log(1),getLoadingElement(1).style.visibility = 'visible'), time+=50)
-        setTimeout(()=>(console.log(2),getLoadingElement(2).style.visibility = 'visible'), time+=800)
-        setTimeout(()=>(console.log(3),getLoadingElement(3).style.visibility = 'visible'), time+=200)
-        setTimeout(()=>(console.log(4),getLoadingElement(4).style.visibility = 'visible'), time+=500)
-        setTimeout(()=>(console.log(5),getLoadingElement(5).style.visibility = 'visible'), time+=400)
-        setTimeout(()=>(console.log(6),getLoadingElement(6).style.visibility = 'visible'), time+=200)
-        setTimeout(()=>(console.log(7),getLoadingElement(7).style.visibility = 'visible'), time+=700)
-        setTimeout(()=>(console.log(8),getLoadingElement(8).style.visibility = 'visible'), time+=200)
+        setTimeout(()=>(getLoadingElement(1).style.visibility = 'visible'), time+=50)
+        setTimeout(()=>(getLoadingElement(2).style.visibility = 'visible'), time+=800)
+        setTimeout(()=>(getLoadingElement(3).style.visibility = 'visible'), time+=200)
+        setTimeout(()=>(getLoadingElement(4).style.visibility = 'visible'), time+=500)
+        setTimeout(()=>(getLoadingElement(5).style.visibility = 'visible'), time+=400)
+        setTimeout(()=>(getLoadingElement(6).style.visibility = 'visible'), time+=200)
+        setTimeout(()=>(getLoadingElement(7).style.visibility = 'visible'), time+=700)
+        setTimeout(()=>(getLoadingElement(8).style.visibility = 'visible'), time+=200)
 
         // for(let i = 1; i <= 8; i++) {
         //   setTimeout(()=>(console.log(i),getLoadingElement(i).style.visibility = 'visible'), i*800)
@@ -210,7 +210,7 @@
               current = 9;
             } else {
               getLoadingElement(current).style.visibility = 'visible';
-              console.log(current);
+              // console.log(current);
               current++;
             }
           }, 200);
