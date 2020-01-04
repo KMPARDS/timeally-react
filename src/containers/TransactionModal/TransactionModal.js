@@ -227,7 +227,7 @@ class TransactionModal extends Component {
             <span style={{display: 'block', fontSize: '1.8rem'}}>
               {Math.round(this.state.estimatedGas * ( this.state.selectedGwei )) / 10**9}<strong>ETH</strong>
             </span>
-            <span onClick={()=>this.setState({currentScreen: 2})} style={{display: 'inline-block', float:'right', fontSize: '0.8rem'}}>Advanced settings</span>
+            <span onClick={()=>this.setState({currentScreen: 2})} style={{cursor:'pointer', display: 'inline-block', float:'right', fontSize: '0.8rem', textDecoration: 'underline'}}>Advanced settings</span>
           </Card>
           <Button style={{margin:'0'}}variant="primary" size="lg" block onClick={this.sendTransaction}>{window.connectedToMetamask ? 'Proceed to Metamask' : 'Sign and Submit'}</Button>
           {/*<Row style={{marginTop: '12px'}}>
@@ -251,7 +251,7 @@ class TransactionModal extends Component {
             {name: 'Fast', gwei: this.state.ethGasStation[2], time: 'around 2 mins to confirm' },
             {name: 'Faster', gwei: this.state.ethGasStation[3], time: 'around 30 secs to confirm'}
           ].map(plan => (
-            <Card key={'advanced-'+plan.name} style={{margin: '10px 0', padding:'10px'}} onClick={() => {
+            <Card key={'advanced-'+plan.name} style={{cursor: 'pointer', margin: '10px 0', padding:'10px'}} onClick={() => {
               // update the gwei being used
               // change screen to 1
               this.setState({
@@ -352,6 +352,7 @@ class TransactionModal extends Component {
         size="sm"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        backdrop="static"
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter" style={{
