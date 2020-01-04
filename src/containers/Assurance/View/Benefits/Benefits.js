@@ -96,7 +96,7 @@ class Benefits extends Component {
           </tbody>
         </Table>
 
-      <div class="details">
+      <div className="details">
           <Button disabled>Withdraw</Button>
       </div>
 

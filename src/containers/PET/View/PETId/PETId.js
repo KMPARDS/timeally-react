@@ -86,11 +86,11 @@ class PETId extends Component {
           </tbody>
         </Table>
         <p>Grace penalty is 1% per graced months on Power Booster. Default penalty is 2% per defaulted months on Power Booster.</p>
-        <div class="details">
+        <div className="details">
           <Button onClick={() => this.props.history.push(`/pet/view/${this.props.match.params.id}/benefits`)}>Benefit Page</Button>
         </div>
 
-        <div class="details">
+        <div className="details">
           <Button onClick={() => this.props.history.push(`/pet/view/${this.props.match.params.id}/nominees`)}>Nominee Page</Button>
         </div>
       </> : (
