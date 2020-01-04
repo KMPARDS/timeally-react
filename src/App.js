@@ -20,12 +20,13 @@ import Staking from './containers/Stakings/Stakings';
 import Mou from './containers/Mou/Mou';
 import Rewards from './containers/Rewards/Rewards';
 import Assurance from './containers/Assurance/Assurance';
+import PET from './containers/PET/PET';
 import Logout from './containers/Logout/Logout';
 
 import './App.css';
 
 import provider from './ethereum/provider';
-import { esContract, nrtManager, timeally, sip, network } from './env.js';
+import { esContract, nrtManager, timeally, sip, pet, network } from './env.js';
 import nominee from './containers/nominee/nominee';
 const ethers = require('ethers');
 window.ethers = ethers;
@@ -100,7 +101,7 @@ function App(props) {
     }
   }
 
-  //for dev purpose 24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA
+  // for dev purpose 24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA
   // setTimeout(() => {
   //   if(Object.entries(props.store.walletInstance).length === 0) {
   //     //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
@@ -130,6 +131,12 @@ function App(props) {
   if(Object.entries(props.store.sipInstance).length === 0) {
     //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
     props.dispatch({ type: 'LOAD-SIP-INSTANCE', payload: new ethers.Contract(sip.address, sip.abi, provider) });
+  }
+
+  // load pet
+  if(Object.entries(props.store.petInstance).length === 0) {
+    //console.log(provider, new ethers.providers.InfuraProvider('kovan'));
+    props.dispatch({ type: 'LOAD-PET-INSTANCE', payload: new ethers.Contract(pet.address, pet.abi, provider) });
   }
 
   return (
@@ -166,6 +173,7 @@ function App(props) {
               () => <div>Coming soon</div>
             } />
             <Route path="/assurance" component={Assurance} />
+            <Route path="/pet" component={PET} />
             <Route path="/mou" exact component={Mou} />
             <Route render={
                 () => <div>404 Page not found</div>

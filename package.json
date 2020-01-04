@@ -7,7 +7,7 @@
     "bip39": "3.0.2",
     "copy-to-clipboard": "3.2.0",
     "ethereumjs-wallet": "0.6.3",
-    "ethers": "4.0.33",
+    "ethers": "^4.0.41",
     "express": "4.17.1",
     "helmet": "3.20.0",
     "react": "16.8.6",

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Navbar, Nav, DropdownButton, Dropdown, NavDropdown, Form, Button, FormControl } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import copy from 'copy-to-clipboard';
-import { esContract, nrtManager, timeally, sip, network } from '../../env';
+import { esContract, nrtManager, timeally, sip, pet, network } from '../../env';
 
 const ethers = require('ethers');
 const axios = require('axios');
@@ -84,6 +84,9 @@ class NavbarComponent extends Component {
 
         // update sip
         this.props.dispatch({ type: 'LOAD-SIP-INSTANCE', payload: new ethers.Contract(sip.address, sip.abi, provider) });
+
+        // update pet
+        this.props.dispatch({ type: 'LOAD-PET-INSTANCE', payload: new ethers.Contract(pet.address, pet.abi, provider) });
       }
 
       if(action.type === 'update time yaar') {
@@ -248,13 +251,15 @@ class NavbarComponent extends Component {
                     : null
                   }
 
-                  { /*this.props.store.walletInstance.address ?*/
-                   <Nav.Link onClick={() => this.props.history.push('/assurance')}><span style={{
-                     color:'#fff',
-                     textShadow:this.props.location.pathname==='/assurance'?'0 0 2px #fff':undefined
-                   }}>Assurance</span></Nav.Link>
-                   /*: null*/
-                 }
+                  <Nav.Link onClick={() => this.props.history.push('/assurance')}><span style={{
+                    color:'#fff',
+                    textShadow:this.props.location.pathname==='/assurance'?'0 0 2px #fff':undefined
+                  }}>Assurance</span></Nav.Link>
+
+                  <Nav.Link onClick={() => this.props.history.push('/pet')}><span style={{
+                    color:'#fff',
+                    textShadow:this.props.location.pathname==='/pet'?'0 0 2px #fff':undefined
+                  }}>PET</span></Nav.Link>
 
                    <Nav.Link  href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank" ><span style={{color:'#fff'}}>T & C</span></Nav.Link>
 
