@@ -3,7 +3,7 @@ import { Button, Card, Form, Spinner, Alert, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Layout from '../../../Layout/Layout';
 import TransactionModal from '../../../TransactionModal/TransactionModal';
-import { esContract, sip, network } from '../../../../env';
+import { esContract, pet, network } from '../../../../env';
 
 const ethers = require('ethers');
 
@@ -28,19 +28,24 @@ class Deposit extends Component {
     insufficientBalance: false,
     insufficientBalanceText: '',
     usePrepaidES: false,
-    monthlyCommitmentAmount: undefined
+    monthlyCommitmentAmount: undefined,
+    currentTime: Math.floor(Date.now()/1000)
   }
 
   componentDidMount= async() => {
+    // await this.setState({ currentTime: network === 'homestead' ? Math.floor(Date.now() / 1000) : (await this.props.store.esInstance.functions.mou()) });
+    this.state.currentTime = network === 'homestead' ? Math.floor(Date.now() / 1000) : (await this.props.store.esInstance.functions.mou());
+
     if(this.props.store.walletInstance) {
       const userLiquidEsBalancePromise = this.props.store.esInstance.functions.balanceOf(this.props.store.walletInstance.address);
-      const userPrepaidESBalancePromise = this.props.store.sipInstance.functions.prepaidES(this.props.store.walletInstance.address);
-      const sipPromise = this.props.store.sipInstance.functions.sips(this.props.store.walletInstance.address, this.props.match.params.id);
-      await Promise.all([userLiquidEsBalancePromise, userPrepaidESBalancePromise, sipPromise]);
+      const userPrepaidESBalancePromise = this.props.store.petInstance.functions.prepaidES(this.props.store.walletInstance.address);
+      const petPromise = this.props.store.petInstance.functions.pets(this.props.store.walletInstance.address, this.props.match.params.id);
+      await Promise.all([userLiquidEsBalancePromise, userPrepaidESBalancePromise, petPromise]);
       this.setState({
         userLiquidEsBalance: await userLiquidEsBalancePromise,
         userPrepaidESBalance: await userPrepaidESBalancePromise,
-        monthlyCommitmentAmount: (await sipPromise).monthlyCommitmentAmount,
+        monthId: Math.floor((this.state.currentTime - (await petPromise).initTimestamp)/2629744)+1,
+        // monthlyCommitmentAmount: (await petPromise).monthlyCommitmentAmount,
         spinner: false
       });
       this.onAmountUpdate({target:{value:this.state.userAmount}});
@@ -48,30 +53,33 @@ class Deposit extends Component {
   }
 
   onAmountUpdate = async event => {
+    console.log('onAmountUpdate');
     try {
-      if(this.state.userLiquidEsBalance && this.state.userPrepaidESBalance && this.state.monthlyCommitmentAmount) {
+      if(this.state.userLiquidEsBalance && this.state.userPrepaidESBalance) {
+        console.log('1');
         const isLiquidAvailable = ethers.utils.parseEther(event.target.value || '0').lte(this.state.userLiquidEsBalance);
         const isPrepaidAvailable = ethers.utils.parseEther(event.target.value || '0').lte(this.state.userPrepaidESBalance);
-        const isDepositAtleastMinimum = ethers.utils.parseEther(event.target.value || '0').gte(this.state.monthlyCommitmentAmount);
-        console.log('isLiquidAvailable', isLiquidAvailable, 'isPrepaidAvailable', isPrepaidAvailable, 'isDepositAtleastMinimum', isDepositAtleastMinimum);
-
+        // const isDepositAtleastMinimum = ethers.utils.parseEther(event.target.value || '0').gte(this.state.monthlyCommitmentAmount);
+        console.log('isLiquidAvailable', isLiquidAvailable, 'isPrepaidAvailable', isPrepaidAvailable);
+        console.log('2');
         let insufficientBalance = false;
         let insufficientBalanceText = '';
         if(+event.target.value) {
-          if(isDepositAtleastMinimum) {
+          if(true) {
             if(isLiquidAvailable && isPrepaidAvailable) {
-              insufficientBalanceText = `You can use either your liquid tokens (${window.lessDecimals(this.state.userLiquidEsBalance)} ES) or your TimeAllySIP prepaidES tokens (${window.lessDecimals(this.state.userPrepaidESBalance)} ES) for this SIP.`;
+              insufficientBalanceText = `You can use either your liquid tokens (${window.lessDecimals(this.state.userLiquidEsBalance)} ES) or your TimeAllyPET prepaidES tokens (${window.lessDecimals(this.state.userPrepaidESBalance)} ES) for this PET.`;
             } else if(isLiquidAvailable && !isPrepaidAvailable) {
-              insufficientBalanceText = this.state.userPrepaidESBalance.gt(0) ? `You can use your liquid ES tokens (${window.lessDecimals(this.state.userLiquidEsBalance)} ES) for this SIP as there aren't enough tokens in your TimeAllySIP prepaidES.` : '' ;
+              insufficientBalanceText = this.state.userPrepaidESBalance.gt(0) ? `You can use your liquid ES tokens (${window.lessDecimals(this.state.userLiquidEsBalance)} ES) for this PET as there aren't enough tokens in your TimeAllyPET prepaidES.` : '' ;
             } else if(!isLiquidAvailable && isPrepaidAvailable) {
-              insufficientBalanceText = `You can use your TimeAllySIP prepaidES tokens (${window.lessDecimals(this.state.userPrepaidESBalance)} ES) for this SIP.`
+              insufficientBalanceText = `You can use your TimeAllyPET prepaidES tokens (${window.lessDecimals(this.state.userPrepaidESBalance)} ES) for this PET.`
             } else {
               insufficientBalance = true;
-              insufficientBalanceText = `Insufficient ES balance. You only have ${window.lessDecimals(this.state.userLiquidEsBalance)} liquid ES tokens${this.state.userPrepaidESBalance.gt(0) ? ` and ${window.lessDecimals(this.state.userPrepaidESBalance)} TimeAllySIP prepaidES tokens.` : '.'}`;
+              insufficientBalanceText = `Insufficient ES balance. You only have ${window.lessDecimals(this.state.userLiquidEsBalance)} liquid ES tokens${this.state.userPrepaidESBalance.gt(0) ? ` and ${window.lessDecimals(this.state.userPrepaidESBalance)} TimeAllyPET prepaidES tokens.` : '.'}`;
             }
           } else {
+            console.log('3');
             insufficientBalance = true;
-            insufficientBalanceText = `Your amount should be at least ${window.lessDecimals(this.state.monthlyCommitmentAmount)} ES. `
+            insufficientBalanceText = `Your amount should be at least  ES. `
           }
         }
 
@@ -98,7 +106,7 @@ class Deposit extends Component {
     await this.setState({ spinner: true });
     const allowance = await this.props.store.esInstance.functions.allowance(
       this.props.store.walletInstance.address,
-      this.props.store.sipInstance.address
+      this.props.store.petInstance.address
     );
 
     console.log('allowance', allowance, allowance.gte(ethers.utils.parseEther(this.state.userAmount)));
@@ -121,7 +129,7 @@ class Deposit extends Component {
       <span style={{display:'block', textAlign:'left', cursor: 'pointer'}} onClick={() => this.setState({ currentScreen: 0 })}>{'<'}Start All Over</span>
     );
 
-    const headingText = `Deposit Installment of Month ${this.props.match.params.month}`;
+    const headingText = `Deposit${this.state.monthId ? ` for Month ${window.getOrdinalString(this.state.monthId)}` : ''}`;
 
     if(this.state.currentScreen === 0) {
       screen = (
@@ -139,7 +147,7 @@ class Deposit extends Component {
                 value={this.state.userAmount}
                 type="text"
                 autoComplete="off"
-                placeholder="Enter installment amount for SIP"
+                placeholder="Enter installment amount for PET"
                 style={{width: '325px'}}
                 isInvalid={this.state.insufficientBalance}
               />
@@ -166,13 +174,13 @@ class Deposit extends Component {
     } else if(this.state.currentScreen === 1) {
       let displayText = '';
       if(this.state.isLiquidAvailable && this.state.isPrepaidAvailable) {
-        displayText = <p>This dApp just noticed that you have <strong>{window.lessDecimals(this.state.userLiquidEsBalance)} liquid ES tokens</strong> as well as <strong>{window.lessDecimals(this.state.userPrepaidESBalance)} TimeAllySIP prepaidES</strong>. Please choose which you want to use to deposit the <strong>{window.getOrdinalString(this.props.match.params.month)} monthly installment of {this.state.userAmount} ES</strong> of your SIP with initial monthly commitment of {window.lessDecimals(this.state.monthlyCommitmentAmount)} ES.</p>;
+        displayText = <p>This dApp just noticed that you have <strong>{window.lessDecimals(this.state.userLiquidEsBalance)} liquid ES tokens</strong> as well as <strong>{window.lessDecimals(this.state.userPrepaidESBalance)} TimeAllyPET prepaidES</strong>. Please choose which you want to use to deposit the <strong>{this.state.monthId ? window.getOrdinalString(this.state.monthId) : 'Loading...'} monthly installment of {this.state.userAmount} ES</strong> of your PET with initial monthly commitment of  ES.</p>;
       } else if(this.state.isLiquidAvailable && !this.state.isPrepaidAvailable) {
-        displayText = <p>You have enough tokens (<strong>{window.lessDecimals(this.state.userLiquidEsBalance)} ES</strong>) in your wallet for SIP. Go to Step 3 for doing approval procedure of <strong>{this.state.userAmount} ES</strong> to TimeAllySIP Smart Contract.</p>;
+        displayText = <p>You have enough tokens (<strong>{window.lessDecimals(this.state.userLiquidEsBalance)} ES</strong>) in your wallet for PET. Go to Step 3 for doing approval procedure of <strong>{this.state.userAmount} ES</strong> to TimeAllyPET Smart Contract.</p>;
       } else if(!this.state.isLiquidAvailable && this.state.isPrepaidAvailable) {
-        displayText = <p>You have enough tokens in your TimeAllySIP prepaidES to make a deposit of <strong>{this.state.userAmount} ES</strong> in your SIP with initial monthly commitment of {window.lessDecimals(this.state.monthlyCommitmentAmount)} ES.</p>;
+        displayText = <p>You have enough tokens in your TimeAllyPET prepaidES to make a deposit of <strong>{this.state.userAmount} ES</strong> in your PET with initial monthly commitment of  ES.</p>;
       } else {
-        displayText = <p>Seems that you don't have enough ES tokens for making deposit of <strong>{this.state.userAmount} ES</strong> for {window.getOrdinalString(this.props.match.params.month)} Month. Your liquid balance is <strong>{window.lessDecimals(this.state.userLiquidEsBalance)} ES</strong>{this.state.userPrepaidESBalance.gt(0) ? <> and prepaidES balance is <strong>{window.lessDecimals(this.state.userPrepaidESBalance)} ES</strong></> : null}. Are you sure you want to proceed? You can get ES tokens from anyone who has ES tokens. ES tokens are also trading on Probit Exchange, where you can exchange your other crypto assets with the exchange community for ES.</p>;
+        displayText = <p>Seems that you don't have enough ES tokens for making deposit of <strong>{this.state.userAmount} ES</strong> for {this.state.monthId ? window.getOrdinalString(this.state.monthId) : 'Loading...'} Month. Your liquid balance is <strong>{window.lessDecimals(this.state.userLiquidEsBalance)} ES</strong>{this.state.userPrepaidESBalance.gt(0) ? <> and prepaidES balance is <strong>{window.lessDecimals(this.state.userPrepaidESBalance)} ES</strong></> : null}. Are you sure you want to proceed? You can get ES tokens from anyone who has ES tokens. ES tokens are also trading on Probit Exchange, where you can exchange your other crypto assets with the exchange community for ES.</p>;
       }
 
       screen = (
@@ -213,7 +221,7 @@ class Deposit extends Component {
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 3 of 4</h3>
             {!this.state.approveAlreadyDone ? <>
-              <p>This step is for approving TimeAllySIP Smart Contract to collect {this.state.userAmount} ES from your account. <strong>No funds will be debited from your account in this step.</strong> Funds will be debited in Step 3 and sent into SIP Contract when you do New SIP transaction.</p>
+              <p>This step is for approving TimeAllyPET Smart Contract to collect {this.state.userAmount} ES from your account. <strong>No funds will be debited from your account in this step.</strong> Funds will be debited in Step 3 and sent into PET Contract when you do New PET transaction.</p>
               {
                 this.state.errorMessage
                 ? <Alert variant="danger">
@@ -223,7 +231,7 @@ class Deposit extends Component {
               }
               {this.state.approveSuccess
                 ? <>
-                  <Alert variant="warning">Your approve tx is confirmed! <strong>Note: Your {this.state.userAmount} ES has not been deposited in TimeAlly SIP Contract yet.</strong> Please go to third step to do your Monthly Deposit transaction.</Alert>
+                  <Alert variant="warning">Your approve tx is confirmed! <strong>Note: Your {this.state.userAmount} ES has not been deposited in TimeAlly PET Contract yet.</strong> Please go to third step to do your Monthly Deposit transaction.</Alert>
                   <Button onClick={() => this.setState({ currentScreen: 3 })}>
                     Go to 3rd Step
                   </Button>
@@ -240,7 +248,7 @@ class Deposit extends Component {
                   aria-hidden="true"
                   style={{marginRight: '2px'}}
                 /> : null}
-                {this.state.spinner ? 'Please wait...' : 'Approve TimeAllySIP'}
+                {this.state.spinner ? 'Please wait...' : 'Approve TimeAllyPET'}
               </Button>}
             </> : <>
               <Alert variant="primary">This dApp just noticed that you already have enough allowance. You can directly continue to the third step and do your Monthly Deposit transaction.</Alert>
@@ -260,7 +268,7 @@ class Deposit extends Component {
           <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 4 of 4</h3>
-            <p>Please click the following button to confirm your SIP Monthly Deposit of <strong>{this.state.userAmount} ES</strong>.</p>
+            <p>Please click the following button to confirm your PET Monthly Deposit of <strong>{this.state.userAmount} ES</strong>.</p>
               {
                 this.state.errorMessage
                 ? <Alert variant="danger">
@@ -295,9 +303,9 @@ class Deposit extends Component {
         <>
           <Card>
             <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
-              <h3 style={{marginBottom: '15px'}}>{window.getOrdinalString(this.props.match.params.month)} Monthly Deposit confirmed!</h3>
+              <h3 style={{marginBottom: '15px'}}>{this.state.monthId ? window.getOrdinalString(this.state.monthId) : ''} Monthly Deposit confirmed!</h3>
               <Alert variant="success">Your deposit transaction is confirmed. You can view your transaction on <a style={{color: 'black'}} href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></Alert>
-              <Button onClick={() => this.props.history.push('/pet/view/'+this.props.match.params.id)}>Go to SIP Deposits Page</Button>
+              <Button onClick={() => this.props.history.push('/pet/view/'+this.props.match.params.id)}>Go to PET Deposits Page</Button>
             </div>
           </Card>
 
@@ -312,7 +320,7 @@ class Deposit extends Component {
           x.shift();
           return x;
         })()]}
-        title={`Deposit ${window.getOrdinalString(this.props.match.params.month)} Monthly Installment`}
+        title={`Make Deposit to PET${this.state.monthId ? ' of '+window.getOrdinalString(this.state.monthId)+' Month' : ''}`}
       >
         {screen}
         <TransactionModal
@@ -323,7 +331,7 @@ class Deposit extends Component {
             estimator: this.props.store.esInstance.estimate.approve,
             contract: this.props.store.esInstance,
             contractName: 'EraSwap',
-            arguments: [this.props.store.sipInstance.address, ethers.utils.parseEther(this.state.userAmount?this.state.userAmount:'0')],
+            arguments: [this.props.store.petInstance.address, ethers.utils.parseEther(this.state.userAmount?this.state.userAmount:'0')],
             ESAmount: this.state.userAmount,
             headingName: 'Approval Status',
             functionName: 'Approve',
@@ -341,21 +349,20 @@ class Deposit extends Component {
             show={this.state.showStakeTransactionModal}
             hideFunction={() => this.setState({ showStakeTransactionModal: false, spinner: false })}
             ethereum={{
-              transactor: this.props.store.sipInstance.functions.monthlyDeposit,
-              estimator: this.props.store.sipInstance.estimate.monthlyDeposit,
-              contract: this.props.store.sipInstance,
-              contractName: 'TimeAllySIP',
+              transactor: this.props.store.petInstance.functions.makeDeposit,
+              estimator: this.props.store.petInstance.estimate.makeDeposit,
+              contract: this.props.store.petInstance,
+              contractName: 'TimeAllyPET',
               arguments: [
                 this.props.store.walletInstance.address,
                 this.props.match.params.id,
                 ethers.utils.parseEther(this.state.userAmount?this.state.userAmount:'0'),
-                this.props.match.params.month,
                 this.state.usePrepaidES
               ],
               ESAmount: this.state.userAmount,
-              headingName: window.getOrdinalString(this.props.match.params.month)+' Monthly Deposit',
-              functionName: 'monthlyDeposit',
-              stakingPlan: this.state.plan,
+              headingName: window.getOrdinalString(this.state.monthId)+' Monthly Deposit',
+              functionName: 'makeDeposit',
+              // stakingPlan: this.state.plan,
               directGasScreen: true,
               continueFunction: txHash => this.setState({
                 spinner: false,

@@ -3,7 +3,7 @@ import { Button,Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import Layout from '../../../Layout/Layout';
-import DepositElement from './DepositElement';
+// import DepositElement from './DepositElement';
 import '../../PET.css';
 
 const ethers = require('ethers');
@@ -16,20 +16,15 @@ class PETId extends Component {
 
   componentDidMount = async() => {
     const pet = await this.props.store.petInstance.functions.pets(
-      this.props.store.walletInstance.address,
+      // this.props.store.walletInstance.address,
+      '0xC8e1F3B9a0CdFceF9fFd2343B943989A22517b26',
       this.props.match.params.id
     );
     const petPlan = await this.props.store.petInstance.functions.petPlans(pet.planId);
-    const accumulationPeriodMonths = 12;//petPlan.accumulationPeriodMonths.toNumber();
 
     const months = [];
-    for(let i = 1; i <= accumulationPeriodMonths; i++) {
-      months.push({
-        number: i,
-        depositAmount: null,
-        status: null,
-        stakingTimestamp: pet.stakingTimestamp.toNumber()
-      });
+    for(let i = 1; i <= 12; i++) {
+      months.push([]);
     }
 
     const newDepositSig = ethers.utils.id('NewDeposit(address,uint256,uint256,uint256,uint256,address)');
@@ -51,10 +46,18 @@ class PETId extends Component {
 
     logs.forEach(log => {
       const month = Number(window.sliceDataTo32Bytes(log.data,0));
-      months[month - 1].depositAmount = ethers.utils.formatEther(ethers.utils.bigNumberify(window.sliceDataTo32Bytes(log.data,1)));
+      months[month - 1].push(
+        // ethers.utils.formatEther(
+          ethers.utils.bigNumberify(window.sliceDataTo32Bytes(log.data,1))
+        // )
+      );
     });
 
-    this.setState({ months });
+    this.setState({
+      months,
+      commitmentAmount: petPlan.minimumMonthlyCommitmentAmount,
+      initTimestamp: pet.initTimestamp.toNumber()
+    });
   }
 
   render = () => (
@@ -62,30 +65,74 @@ class PETId extends Component {
       breadcrumb={['Home', 'PET','View']}
       title={`PET ID: ${this.props.match.params.id}`}>
       {this.state.months.length ? <>
+        <p>On this page you can see your deposits on your PET.</p>
         <Table responsive>
           <thead>
             <tr>
               <th>Deposit Month</th>
-              <th>Deposit Amounts</th>
+              <th>User Deposit Amount</th>
+              <th>PET's Deposit</th>
               <th>Status</th>
-              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {this.state.months.map(month => (
-              <DepositElement
-                petId={this.props.match.params.id}
-                monthId={month.number}
-                depositAmount={month.depositAmount}
-                status={month.status}
-                stakingTimestamp={month.stakingTimestamp}
-                history={this.props.history}
-                location={this.props.location}
-              />
-            ))}
+            {this.state.months.map((depositArray, index) => {
+              const monthId = index+1;
+              let depositAmount = ethers.constants.Zero;
+              depositArray.forEach(amount => depositAmount = depositAmount.add(amount));
+              let status = '';
+              const petArray = [];
+              if(depositAmount.gte(this.state.commitmentAmount)) {
+                petArray.push(this.state.commitmentAmount);
+
+                const topUp = depositAmount.sub(this.state.commitmentAmount);
+                petArray.push(topUp.div(2));
+              } else if(depositAmount.gte(this.state.commitmentAmount.div(2))) {
+                petArray.push(depositAmount);
+              }
+              let petAmount = ethers.constants.Zero;
+              petArray.forEach(amount => petAmount = petAmount.add(amount));
+
+              const MONTH_LENGTH = 2629744;
+              const windowOpenUntil = this.state.initTimestamp + 2629744 * monthId;
+              const currentTimestamp = Math.floor(Date.now() / 1000);
+
+              return (
+                <tr>
+                  <td>{monthId}</td>
+                  <td>{depositArray.map(amount => ethers.utils.formatEther(amount)+' ES').join(' + ')}{depositArray.length > 1
+                    ? <> = {ethers.utils.formatEther(depositAmount)} ES</>
+                    : <>{windowOpenUntil - currentTimestamp > MONTH_LENGTH
+                      ? <>Window not yet open</>
+                      : windowOpenUntil - currentTimestamp > 0
+                        ? <>Pet can deposit on your deposit</>
+                        : <>Pet cannot deposit as your window is closed</>
+                      }</>}
+                      {0 < windowOpenUntil - currentTimestamp && windowOpenUntil - currentTimestamp < MONTH_LENGTH ? <><br /><Button onClick={() => this.props.history.push(this.props.location.pathname+'/deposit/')}>Deposit</Button></>:null}
+                    </td>
+                  <td>{petArray[0]
+                    ? <>{ethers.utils.formatEther(petArray[0])} ES (for acheiving commitment of {ethers.utils.formatEther(this.state.commitmentAmount)} ES){petArray[1]
+                      ? <> and {ethers.utils.formatEther(petArray[1])} ES (for topup of {ethers.utils.formatEther(depositAmount.sub(this.state.commitmentAmount))} ES)</>
+                      :null}</>
+                    : <>{windowOpenUntil - currentTimestamp > MONTH_LENGTH
+                      ? <>Window not yet open</>
+                      : windowOpenUntil - currentTimestamp > 0
+                        ? <>Pet can deposit on your deposit</>
+                        : <>Pet cannot deposit as your window is closed</>
+                      }</>}
+                  </td>
+                  <td>{ }</td>
+                </tr>
+              );
+            })}
           </tbody>
         </Table>
-        <p>Grace penalty is 1% per graced months on Power Booster. Default penalty is 2% per defaulted months on Power Booster.</p>
+
+        <div style={{backgroundColor: '#eee', padding: '1rem', borderRadius: '.25rem', margin: '16px 0'}}>
+          <p>To make a deposit for the current month in your PET you can click the below button.</p>
+          <Button onClick={() => this.props.history.push(`/pet/view/${this.props.match.params.id}/deposit`)}>Make a Deposit</Button>
+        </div>
+
         <div className="details">
           <Button onClick={() => this.props.history.push(`/pet/view/${this.props.match.params.id}/benefits`)}>Benefit Page</Button>
         </div>

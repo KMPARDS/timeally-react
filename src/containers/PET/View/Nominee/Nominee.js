@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Table, Button } from 'react-bootstrap';
 import Layout from '../../../Layout/Layout';
 import TransactionModal from '../../../TransactionModal/TransactionModal';
-import { sip } from '../../../../env';
+import { pet } from '../../../../env';
 const ethers = require('ethers');
 
 class Nominee extends Component {
@@ -23,7 +23,7 @@ class Nominee extends Component {
     ];
 
     const logs = await this.props.store.providerInstance.getLogs({
-      address: sip.address,
+      address: pet.address,
       fromBlock: 0,
       toBlock: 'latest',
       topics
@@ -54,7 +54,7 @@ class Nominee extends Component {
         buttonName="New Nominee"
         buttonOnClick={() => this.props.history.push(this.props.location.pathname+'/new')}
       >
-        <h2>Nominees of this SIP</h2>
+        <h2>Nominees of this PET</h2>
         {this.state.loading
           ? <p>Please wait scanning the blockchain for Nominees...</p>
           : <>
@@ -89,10 +89,10 @@ class Nominee extends Component {
               show={this.state.showRemoveNomineeModal}
               hideFunction={() => this.setState({ showRemoveNomineeModal: false })}
               ethereum={{
-                transactor: this.props.store.sipInstance.functions.toogleNominee,
-                estimator: this.props.store.sipInstance.estimate.toogleNominee,
-                contract: this.props.store.sipInstance,
-                contractName: 'TimeAllySIP',
+                transactor: this.props.store.petInstance.functions.toogleNominee,
+                estimator: this.props.store.petInstance.estimate.toogleNominee,
+                contract: this.props.store.petInstance,
+                contractName: 'TimeAllyPET',
                 arguments: [
                   this.props.match.params.id,
                   this.state.removeNomineeAddress,

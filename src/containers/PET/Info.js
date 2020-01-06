@@ -98,7 +98,7 @@ class PET extends Component {
         <p><strong>ES in Funds Bucket Smart Contract:</strong> {
           this.state.fundsDeposit ? ethers.utils.formatEther(this.state.fundsDeposit) + ' ES' : 'Loading...'}</p>
         <p><strong>Benefits Already Alloted:</strong> {this.state.pendingBenefits ? ethers.utils.formatEther(this.state.pendingBenefits) + ' ES' : 'Loading...'}</p>
-        <Button onClick={() => this.props.history.push('/pet/calculate')}>PET Calculator</Button>
+        <Button onClick={window.open.bind(null, '/excel/PET_03012020.xlsb')}>PET Calculator</Button>
         <Button onClick={this.props.store.walletInstance && this.props.store.walletInstance.address
           ? () => this.props.history.push('/pet/view')
           : () => this.setState({showLoginModal:true})}>View My PETs</Button>

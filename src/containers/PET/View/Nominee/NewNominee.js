@@ -25,7 +25,7 @@ class NewNominee extends Component {
           <h3 style={{marginBottom: '15px'}}>New Nominee - Step 1 of 2</h3>
 
           <p>
-            Adding a nominee to your staking gives access to your unwithdrawn SIP benefits to the nominee delayed for 1 year.
+            Adding a nominee to your staking gives access to your unwithdrawn PET benefits to the nominee delayed for 1 year.
             &nbsp;
           </p>
 
@@ -114,7 +114,7 @@ class NewNominee extends Component {
         <Card>
           <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '500px', padding:'20px 40px', margin: '15px auto'}}>
             <h3>Confirmed!</h3>
-            <Alert variant="success">Nominee is added to your SIP!</Alert>
+            <Alert variant="success">Nominee is added to your PET!</Alert>
             <p>You can view the transaction on <a href={`https://${network === 'homestead' ? '' : 'kovan.' }etherscan.io/tx/${this.state.txHash}`} rel="noopener noreferrer" target="_blank" style={{color: 'black', textDecoration: 'underline', cursor:'pointer'}}>EtherScan</a> or you can go back to <span onClick={() => {
               const pathArray = this.props.location.pathname.split('/');
               pathArray.pop();
@@ -136,10 +136,10 @@ class NewNominee extends Component {
             show={this.state.showNomineeTransactionModal}
             hideFunction={() => this.setState({ showNomineeTransactionModal: false, spinner: false })}
             ethereum={{
-              transactor: this.props.store.sipInstance.functions.toogleNominee,
-              estimator: this.props.store.sipInstance.estimate.toogleNominee,
-              contract: this.props.store.sipInstance,
-              contractName: 'TimeAllySIP',
+              transactor: this.props.store.petInstance.functions.toogleNominee,
+              estimator: this.props.store.petInstance.estimate.toogleNominee,
+              contract: this.props.store.petInstance,
+              contractName: 'TimeAllyPET',
               arguments: [
                 this.props.match.params.id,
                 this.state.nomineeAddress,

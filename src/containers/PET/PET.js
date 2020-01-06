@@ -6,6 +6,8 @@ import New from './New';
 import View from './View/View';
 import PETId from './View/PETId/PETId';
 import Deposit from './View/Deposit/Deposit';
+import Nominee from './View/Nominee/Nominee';
+import NewNominee from './View/Nominee/NewNominee';
 
 // import './PET.css';
 
@@ -22,6 +24,9 @@ class PET extends Component {
         <Route path ="/pet/view/:id" exact component={PETId} />
 
         <Route path ="/pet/view/:id/deposit/" exact component={Deposit} />
+
+        <Route path ="/pet/view/:id/nominees" exact component={Nominee} />
+        <Route path ="/pet/view/:id/nominees/new" exact component={NewNominee} />
       </>
     );
   }

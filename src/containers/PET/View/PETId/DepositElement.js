@@ -15,9 +15,9 @@ class DepositElement extends Component {
   };
 
   componentDidMount = async() => {
-    const status = (await this.props.store.sipInstance.functions.getDepositDoneStatus(
+    const status = (await this.props.store.petInstance.functions.getDepositDoneStatus(
       this.props.store.walletInstance.address,
-      this.props.sipId,
+      this.props.petId,
       this.props.monthId
     )).toNumber();
     // console.log(status);
