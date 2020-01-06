@@ -102,12 +102,15 @@ class PETId extends Component {
                   <td>{monthId}</td>
                   <td>{depositArray.map(amount => ethers.utils.formatEther(amount)+' ES').join(' + ')}{depositArray.length > 1
                     ? <> = {ethers.utils.formatEther(depositAmount)} ES</>
-                    : <>{windowOpenUntil - currentTimestamp > MONTH_LENGTH
-                      ? <>Window not yet open</>
-                      : windowOpenUntil - currentTimestamp > 0
-                        ? <>Pet can deposit on your deposit</>
-                        : <>Pet cannot deposit as your window is closed</>
-                      }</>}
+                    : null}
+                    {depositArray.length > 0
+                      ? <>{windowOpenUntil - currentTimestamp > MONTH_LENGTH
+                        ? <>Window not yet open</>
+                        : windowOpenUntil - currentTimestamp > 0
+                          ? <>Pet can deposit on your deposit</>
+                          : <>Pet cannot deposit as your window is closed</>
+                        }</>
+                      : null}
                       {0 < windowOpenUntil - currentTimestamp && windowOpenUntil - currentTimestamp < MONTH_LENGTH ? <><br /><Button onClick={() => this.props.history.push(this.props.location.pathname+'/deposit/')}>Deposit</Button></>:null}
                     </td>
                   <td>{petArray[0]

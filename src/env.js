@@ -25,7 +25,7 @@ const env = {
     abi: sipJSON.abi
   },
   pet: {
-    address: '0xD0E732d00Ea69E2367109836004f9103E10D5449',
+    address: '0xe8865eb0153683658CFaB217980bf087eBa64f52',
     abi: petJSON.abi
   }
 };
