@@ -14,6 +14,8 @@ class PETElement extends Component {
   componentDidMount = async() => {
     const currentTime = network === 'homestead' ? Math.floor(Date.now() / 1000) : (await this.props.store.esInstance.functions.mou()).toNumber();
 
+    // console.log(currentTime, Math.floor(Date.now() / 1000));
+
     const pet = await this.props.store.petInstance.functions.pets(
       this.props.store.walletInstance.address,
       this.props.petId
@@ -24,7 +26,8 @@ class PETElement extends Component {
     console.log(petPlan);
     const minimumMonthlyCommitmentAmount = petPlan.minimumMonthlyCommitmentAmount;
     const monthlyBenefitFactorPerThousand = petPlan.monthlyBenefitFactorPerThousand;
-    const petPlanName = `${ethers.utils.formatEther(minimumMonthlyCommitmentAmount.mul(2))} ES / ${monthlyBenefitFactorPerThousand.toNumber()/10}%`;
+    const commitmentAmount = window.lessDecimals(pet.monthlyCommitmentAmount);
+    // const petPlanName = `${ethers.utils.formatEther(minimumMonthlyCommitmentAmount.mul(2))} ES / ${monthlyBenefitFactorPerThousand.toNumber()/10}%`;
     const nextWithdrawTimestamp = pet.initTimestamp.toNumber() + 12*2629744;
     let nextDepositTimestamp = pet.initTimestamp.toNumber();
     let i = 0;
@@ -32,7 +35,7 @@ class PETElement extends Component {
       nextDepositTimestamp += 2629744;
     }
     // 2629744
-    this.setState({ stakingTime, petPlanName, nextDepositTimestamp, nextWithdrawTimestamp });
+    this.setState({ stakingTime, commitmentAmount, nextDepositTimestamp, nextWithdrawTimestamp, currentTime });
 
     this.intervalId = setInterval(() => {
       this.setState({ currentTime: this.state.currentTime + 1 });
@@ -49,7 +52,7 @@ class PETElement extends Component {
       <tr>
         <td>{this.props.petId}</td>
         <td>{this.state.stakingTime}</td>
-        <td>{this.state.petPlanName}</td>
+        <td>{this.state.commitmentAmount}</td>
         <td>{this.state.nextDepositTimestamp ? window.getTimeRemaining(this.state.nextDepositTimestamp - this.state.currentTime) : 'Calculating...'}</td>
         <td>{this.state.nextWithdrawTimestamp ? window.getTimeRemaining(this.state.nextWithdrawTimestamp - this.state.currentTime) : 'Calculating...'}</td>
         <td><Button onClick={this.props.onClick}>View PET</Button></td>

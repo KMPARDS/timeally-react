@@ -3,6 +3,7 @@ const nrtManagerJSON = require('./ethereum/compiledContracts/NRTManager_0.json')
 const timeAllyJSON = require('./ethereum/compiledContracts/TimeAlly_0.json');
 const sipJSON = require('./ethereum/compiledContracts/TimeAllySIP_TimeAllySIP.json');
 const petJSON = require('./ethereum/compiledContracts/TimeAllyPET_TimeAllyPET.json');
+const fundsBucketJSON = require('./ethereum/compiledContracts/TimeAllyPET_FundsBucketPET.json');
 
 const env = {
   network:
@@ -25,8 +26,12 @@ const env = {
     abi: sipJSON.abi
   },
   pet: {
-    address: '0xe8865eb0153683658CFaB217980bf087eBa64f52',
+    address: '0x7AB972A66497fd122Ea3A4D55671Fea968Fb9753',
     abi: petJSON.abi
+  },
+  fundsBucket: {
+    address: '0x65211ee4481669E21f8fA792f5F2e22D25024A1D',
+    abi: fundsBucketJSON.abi
   }
 };
 

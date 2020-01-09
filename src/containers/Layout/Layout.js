@@ -21,6 +21,7 @@ class Layout extends Component {
                       <div className="row">
                         <div className="col-xl-8 col-lg-8 col-md-3 col-sm-12 col-12">
                           <h1 className="page-title">{this.props.title}</h1>
+                          {this.props.subtitle ? <p>{this.props.subtitle}</p> : null}
                         </div>
                         <div className="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12">
                           {this.props.buttonName ? <Button onClick={this.props.buttonOnClick}>{this.props.buttonName}</Button> : null}

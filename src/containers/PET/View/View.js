@@ -14,7 +14,7 @@ class View extends Component {
   };
 
   componentDidMount = async() => {
-    const newPETEventSig = ethers.utils.id('NewPET(address,uint256)');
+    const newPETEventSig = ethers.utils.id('NewPET(address,uint256,uint256)');
     const topics = [ newPETEventSig, ethers.utils.hexZeroPad(this.props.store.walletInstance.address, 32) ];
 
     const logs = await this.props.store.providerInstance.getLogs({
@@ -34,19 +34,24 @@ class View extends Component {
         petId
       });
     }
+
     this.setState({ pets, loading: false });
   };
 
   render = () => (
         <Layout
             breadcrumb={['Home', 'PET','View']}
-            title='PET View'>
+            title='List of your PETs'
+            buttonName={!this.state.loading && this.state.pets.length === 0 ? 'New PET' : null}
+            buttonOnClick={this.props.store.walletInstance && this.props.store.walletInstance.address
+              ? () => this.props.history.push('/pet/new')
+              : () => this.setState({showLoginModal:true})}>
             {this.state.pets.length ? <Table responsive>
             <thead>
               <tr>
                 <th>PET ID</th>
                 <th>Time of Staking</th>
-                <th>PET Plan</th>
+                <th>Self ES Deposit</th>
                 <th>Deposit Window Open Until</th>
                 <th>Next Withdraw Release</th>
                 <th>Click on the buttons to view</th>

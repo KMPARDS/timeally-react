@@ -226,7 +226,7 @@ class NavbarComponent extends Component {
                    <Nav.Link  onClick={() => this.props.history.push('/stakings')}><span style={{
                      color:'#fff',
                      textShadow:this.props.location.pathname==='/stakings'?'0 0 2px #fff':undefined
-                   }}>Stakings</span></Nav.Link>
+                   }}>TimeAlly Stakings</span></Nav.Link>
                       : null
                    }
 
@@ -247,14 +247,14 @@ class NavbarComponent extends Component {
                     <Nav.Link  onClick={() => this.props.history.push('/rewards')}><span style={{
                       color:'#fff',
                       textShadow:this.props.location.pathname==='/rewards'?'0 0 2px #fff':undefined
-                    }}>Vesting Rewards</span></Nav.Link>
+                    }}>TimeAlly Rewards</span></Nav.Link>
                     : null
                   }
 
                   <Nav.Link onClick={() => this.props.history.push('/assurance')}><span style={{
                     color:'#fff',
                     textShadow:this.props.location.pathname==='/assurance'?'0 0 2px #fff':undefined
-                  }}>Assurance</span></Nav.Link>
+                  }}>TSGAP</span></Nav.Link>
 
                   <Nav.Link onClick={() => this.props.history.push('/pet')}><span style={{
                     color:'#fff',

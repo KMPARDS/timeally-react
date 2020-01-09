@@ -10,7 +10,8 @@ const ethers = require('ethers');
 class New extends Component {
   state = {
     currentScreen: 0,
-    // userAmount: undefined,
+    userAmount: undefined,
+    step1DisplayButton: false,
     plan: undefined,
     spinner: false,
     waiting: false,
@@ -28,21 +29,59 @@ class New extends Component {
 
   onPlanChange = event => {
     this.setState({ plan: +event.target.value });
-    console.log(event.target.value);
+    // console.log(event);
+    // this.checkAmount();
+  }
+
+  // checkAmount = () => {
+  //   if(this.state.plan !== undefined) {
+  //     let isOk = false;
+  //     const amountBN = ethers.utils.parseEther(this.state.userAmount);
+  //     if(this.state.plan === 0) {
+  //       if(amountBN.gte('1000') && amountBN.lt('2000')) throw 'Amount should be from 1000 to 1999';
+  //     } else if(this.state.plan === 1) {
+  //       if(amountBN.gte('2000') && amountBN.lt('5000')) throw 'Amount should be from 2000 to 4999';
+  //     } else if(this.state.plan === 2) {
+  //       if(amountBN.gte('5000') && amountBN.lt('10000')) throw 'Amount should be from 5000 to 9999';
+  //     } else if(this.state.plan === 3) {
+  //       if(amountBN.gte('10000') && amountBN.lt('20000')) throw 'Amount should be from 10000 to 19999';
+  //     } else if(this.state.plan === 4) {
+  //       if(amountBN.gte('20000')) throw 'Amount should be atleast 20000';
+  //     }
+  //   }
+  // };
+
+  onAmountUpdate = event => {
+    try {
+      const amountBN = ethers.utils.parseEther(event.target.value);
+      // this.checkAmount();
+      this.setState({ userAmount: ethers.utils.formatEther(amountBN), errorDisplay: false, errorDisplayText: '' });
+    } catch (error) {
+      console.log(error.message);
+      this.setState({ userAmount: '', errorDisplay: true, errorDisplayText: error.message })
+    }
   }
 
   onFirstSubmit = async event => {
     event.preventDefault();
 
-    await this.setState({ spinner: true });
+    await this.setState({ spinner: true, errorDisplay: false, errorDisplayText: '' });
 
     const petPlan = await this.props.store.petInstance.functions.petPlans(this.state.plan);
 
-    this.setState({
-      spinner: false,
-      currentScreen: 1,
-      targetDepositAmount: ethers.utils.formatEther(petPlan.minimumMonthlyCommitmentAmount)
-    });
+    if(ethers.utils.parseEther(this.state.userAmount).gte(petPlan.minimumMonthlyCommitmentAmount)) {
+      this.setState({
+        spinner: false,
+        currentScreen: 1,
+        // targetDepositAmount: ethers.utils.formatEther(petPlan.minimumMonthlyCommitmentAmount)
+      });
+    } else {
+      this.setState({
+        spinner: false,
+        errorDisplay: true,
+        errorDisplayText:  `Low Contribution Amount: Your entered self contribution ${this.state.userAmount} ES should be more than minimum self contribution target ${ethers.utils.formatEther(petPlan.minimumMonthlyCommitmentAmount)} ES for the selected plan`
+      });
+    }
   }
 
   onOpenModal = () => {
@@ -148,23 +187,36 @@ class New extends Component {
         <Card>
 
           <Form className="mnemonics" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
-            <h3 style={{marginBottom: '15px'}}>New PET - Step 1 of 2</h3>
+            <h3 style={{marginBottom: '15px'}}>New PET Contract - Step 1 of 2</h3>
 
             <Form.Group controlId="PETAmount">
               <Form.Group controlId="exampleForm.ControlSelect1">
                 <Form.Control as="select" onChange={this.onPlanChange} style={{width: '325px'}}>
                   <option disabled selected={this.state.plan === undefined}>Select PET Plan</option>
-                  <option value="0" selected={this.state.plan === 0}>Both Target 1000 ES / 12 Months, 10.0% / 5 Years</option>
-                  <option value="1" selected={this.state.plan === 1}>Both Target 2000 ES / 12 Months, 10.5% / 5 Years</option>
-                  <option value="2" selected={this.state.plan === 2}>Both Target 5000 ES / 12 Months, 11.0% / 5 Years</option>
-                  <option value="3" selected={this.state.plan === 3}>Both Target 10000 ES / 12 Months, 11.5% / 5 Years</option>
-                  <option value="4" selected={this.state.plan === 4}>Both Target 20000 ES / 12 Months, 12.0% / 5 Years</option>
+                  <option value="0" selected={this.state.plan === 0}>ID: 0) Self Contribution 500+ ES / Month</option>
+                  <option value="1" selected={this.state.plan === 1}>ID: 1) Self Contribution 1000+ ES / Month</option>
+                  <option value="2" selected={this.state.plan === 2}>ID: 2) Self Contribution 2500+ ES / Month</option>
+                  <option value="3" selected={this.state.plan === 3}>ID: 3) Self Contribution 5000+ ES / Month</option>
+                  <option value="4" selected={this.state.plan === 4}>ID: 4) Self Contribution 10000+ ES / Month</option>
                 </Form.Control>
               </Form.Group>
+
+              <Form.Control
+                className="stakingInput"
+                onChange={this.onAmountUpdate}
+                // value={this.state.userAmount}
+                type="text"
+                autoComplete="off"
+                placeholder="Enter Self ES Monthly Deposit Target"
+                style={{width: '325px'}}
+                isInvalid={this.state.errorDisplay}
+              />
+
+              {this.state.errorDisplayText ? <p style={{color: this.state.errorDisplay ? 'red' : 'green', textAlign: 'left'}}>{this.state.errorDisplayText}</p> : null}
             </Form.Group>
 
 
-            <Button variant="primary" id="firstSubmit" type="submit" disabled={this.state.plan === undefined || this.state.spinner}>
+            <Button variant="primary" id="firstSubmit" type="submit" disabled={!this.state.userAmount || this.state.plan === undefined || this.state.spinner}>
               {this.state.spinner ?
               <Spinner
                 as="span"
@@ -181,15 +233,37 @@ class New extends Component {
         </>
       );
     } else if(this.state.currentScreen === 1) {
-      const bothTarget = this.state.targetDepositAmount ? ethers.utils.formatEther(ethers.utils.parseEther(this.state.targetDepositAmount).mul(2)) : '(Error connecting to blockchain)';
+      const halfTarget = ethers.utils.formatEther(ethers.utils.parseEther(this.state.userAmount));
+      const fullTarget = ethers.utils.formatEther(ethers.utils.parseEther(this.state.userAmount).mul(2));
+      const lumSum = ethers.utils.formatEther(ethers.utils.parseEther(this.state.userAmount).mul(12));
+      let annuityPercentage = '';
+      switch(this.state.plan) {
+        case 0:
+          annuityPercentage = '10.0%';
+          break;
+        case 1:
+          annuityPercentage = '10.5%';
+          break;
+        case 2:
+          annuityPercentage = '11.0%';
+          break;
+        case 3:
+          annuityPercentage = '11.5%';
+          break;
+        case 4:
+          annuityPercentage = '12.0%';
+          break;
+      }
       screen = (
         <>
         <Card>
-          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '100%', padding:'20px 40px', margin: '15px'}}>
             {startOverAgainButton}
-            <h3 style={{marginBottom: '15px'}}>New PET - Step 2 of 2</h3>
-            <p>While initiating a new PET, you do not need to transfer any ES. After your <u>New PET</u> transaction is done (these steps), you will be able to see it in your <u>View PET</u> page and there you can make deposit to it within 30 days and 10 hours for it to be counted in first month.</p>
-            <p>You are initiating a PET of <b>{bothTarget} ES</b>. When you deposit at least <b>{this.state.targetDepositAmount} ES</b> within 30 days and 10 hours in your PET, your PET deposits another <b>{this.state.targetDepositAmount} ES</b> for you making your deposit <b>{bothTarget} ES</b> for that month.</p>
+            <h3 style={{marginBottom: '15px'}}>New PET Contract - Step 2 of 2</h3>
+            <p>You are initiating a PET of <b>{fullTarget} ES</b> with a self commitment of <b>{halfTarget} ES</b> and PET contribution of <b>{halfTarget} ES</b> with plan id <b>{this.state.plan}</b> where in you are entitled to receive <b>{annuityPercentage}</b> as annuity of ES accumulated for the month and <b>12 booster bonus ES</b>. This means when you deposit at least <b>{halfTarget} ES</b> within 30 days and 10 hours in your PET, your PET contributes another <b>{halfTarget} ES</b> for you and making your deposit <b>{fullTarget} ES</b> for that month. You can also checkout fee based LumpSum deposit options of Quarterly, Half Yearly and Annual Deposit Frequency Mode.</p>
+
+            <p>This is only a PET initiation transaction. While initiating a new PET, you do not need to transfer any ES. After your <u>New PET</u> transaction is done (by below button), you will be able to see it in your <u>View PETs</u> page and there you can make deposit to it within 30 days and 10 hours for it to be counted in first month.</p>
+
             <p>Please click the following button to confirm your PET.</p>
               {
                 this.state.errorMessage
@@ -213,7 +287,7 @@ class New extends Component {
               {this.state.waiting ? 'Waiting for confirmation' : ( this.state.spinner ? 'Sending transaction' : 'Confirm PET')}
             </Button>
             { this.state.txHash
-              ? <p>You can view your transaction on <a style={{color: 'black'}} href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a>.</p>
+              ? <p>You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a>.</p>
               : null
             }
           </div>
@@ -226,7 +300,7 @@ class New extends Component {
           <Card>
             <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
               <h3 style={{marginBottom: '15px'}}>PET confirmed!</h3>
-              <Alert variant="success">Your PET is initiated. You can view your transaction on <a style={{color: 'black'}} href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></Alert>
+              <Alert variant="success">Your PET is initiated. You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a>. You are yet to make a deposit and you can do this from your View PET page.</Alert>
               <Button onClick={() => this.props.history.push('/pet/view')}>Go to View PETs</Button>
             </div>
           </Card>
@@ -238,7 +312,10 @@ class New extends Component {
     return (
       <Layout
         breadcrumb={['Home', 'PET', 'New']}
-        title='New PET'
+        title='ES PET Contract'
+        subtitle='1 Year Accumulation - 5 Year Annuity'
+        buttonName='Calculator Excel'
+        buttonOnClick={window.open.bind(null, '/excel/PET_Calculator.xlsx')}
       >
         {screen}
         <TransactionModal
@@ -249,7 +326,10 @@ class New extends Component {
               estimator: this.props.store.petInstance.estimate.newPET,
               contract: this.props.store.petInstance,
               contractName: 'TimeAllyPET',
-              arguments: [this.state.plan],
+              arguments: [
+                this.state.plan,
+                ethers.utils.parseEther(this.state.userAmount || '0')
+              ],
               ESAmount: '0.0',
               headingName: 'New PET',
               functionName: 'New PET',

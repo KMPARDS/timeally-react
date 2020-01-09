@@ -26,7 +26,7 @@ import Logout from './containers/Logout/Logout';
 import './App.css';
 
 import provider from './ethereum/provider';
-import { esContract, nrtManager, timeally, sip, pet, network } from './env.js';
+import { esContract, nrtManager, timeally, sip, pet, fundsBucket, network } from './env.js';
 import nominee from './containers/nominee/nominee';
 const ethers = require('ethers');
 window.ethers = ethers;
@@ -108,6 +108,8 @@ function App(props) {
       props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: new ethers.Wallet('0x24C4FE6063E62710EAD956611B71825B778B041B18ED53118CE5DA5F02E494BA', provider) });
     }
   },0);
+
+  window.fundsBucketPET = new ethers.Contract(fundsBucket.address, fundsBucket.abi, provider);
 
   // load es instance
   if(Object.entries(props.store.esInstance).length === 0) {

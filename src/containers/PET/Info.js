@@ -69,7 +69,7 @@ class PET extends Component {
           <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
             <div className="circle"><img src="./images/loan.png"/></div>
             <h3 className="number-title">Booster Bonous</h3>
-            <p>End of every three years, stakers are eligible for Power Booster bonous through Smart Contract.</p>
+            <p>End of every five months, stakers are eligible for Power Booster bonous through Smart Contract.</p>
           </div>
         </div>
         <div className="col-xl-4 col-md-12">
@@ -96,9 +96,10 @@ class PET extends Component {
       </div>
       <div className="outline pinside30 bg-boxshadow" style={{marginBottom: '1rem', backgroundColor: '#fff'}}>
         <p><strong>ES in Funds Bucket Smart Contract:</strong> {
-          this.state.fundsDeposit ? ethers.utils.formatEther(this.state.fundsDeposit) + ' ES' : 'Loading...'}</p>
-        <p><strong>Benefits Already Alloted:</strong> {this.state.pendingBenefits ? ethers.utils.formatEther(this.state.pendingBenefits) + ' ES' : 'Loading...'}</p>
-        <Button onClick={window.open.bind(null, '/excel/PET_03012020.xlsb')}>PET Calculator</Button>
+          this.state.fundsDeposit ? window.lessDecimals(this.state.fundsDeposit) + ' ES' : 'Loading...'}</p>
+        <p><strong>Benefits Already Alloted:</strong> {this.state.pendingBenefits ? window.lessDecimals(this.state.pendingBenefits) + ' ES' : 'Loading...'}</p>
+        <Button onClick={window.open.bind(null, '/excel/PET_Calculator.xlsx')}>PET Illustration Excel</Button>
+        <Button onClick={window.open.bind(null, '/excel/PET_Presenter.pptx')}>PET Presenter</Button>
         <Button onClick={this.props.store.walletInstance && this.props.store.walletInstance.address
           ? () => this.props.history.push('/pet/view')
           : () => this.setState({showLoginModal:true})}>View My PETs</Button>

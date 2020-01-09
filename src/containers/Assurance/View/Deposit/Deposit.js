@@ -283,7 +283,7 @@ class Deposit extends Component {
               {this.state.waiting ? 'Waiting for confirmation' : ( this.state.spinner ? 'Sending transaction' : 'Confirm Monthly Deposit')}
             </Button>
             { this.state.txHash
-              ? <p>You can view your transaction on <a style={{color: 'black'}} href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a>.</p>
+              ? <p>You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a>.</p>
               : null
             }
           </div>
@@ -296,7 +296,7 @@ class Deposit extends Component {
           <Card>
             <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
               <h3 style={{marginBottom: '15px'}}>{window.getOrdinalString(this.props.match.params.month)} Monthly Deposit confirmed!</h3>
-              <Alert variant="success">Your deposit transaction is confirmed. You can view your transaction on <a style={{color: 'black'}} href={`https://${network}.etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></Alert>
+              <Alert variant="success">Your deposit transaction is confirmed. You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></Alert>
               <Button onClick={() => this.props.history.push('/assurance/view/'+this.props.match.params.id)}>Go to SIP Deposits Page</Button>
             </div>
           </Card>
