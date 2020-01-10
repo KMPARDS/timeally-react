@@ -9,6 +9,9 @@ import Deposit from './View/Deposit/Deposit';
 import LumSumDeposit from './View/Deposit/LumSumDeposit';
 import Nominee from './View/Nominee/Nominee';
 import NewNominee from './View/Nominee/NewNominee';
+import PrepaidES from './PrepaidES/PrepaidES';
+import AddToPrepaid from './PrepaidES/AddToPrepaid';
+import SendPrepaidESDifferent from './PrepaidES/SendPrepaidESDifferent';
 
 // import './PET.css';
 
@@ -29,6 +32,10 @@ class PET extends Component {
 
         <Route path ="/pet/view/:id/nominees" exact component={Nominee} />
         <Route path ="/pet/view/:id/nominees/new" exact component={NewNominee} />
+
+        <Route path ="/pet/prepaid-es/" exact component={PrepaidES} />
+        <Route path ="/pet/prepaid-es/add-to-prepaid" exact component={AddToPrepaid} />
+        <Route path ="/pet/prepaid-es/send" exact component={SendPrepaidESDifferent} />
       </>
     );
   }

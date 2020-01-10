@@ -98,12 +98,11 @@ class PET extends Component {
         <p><strong>ES in Funds Bucket Smart Contract:</strong> {
           this.state.fundsDeposit ? window.lessDecimals(this.state.fundsDeposit) + ' ES' : 'Loading...'}</p>
         <p><strong>Benefits Already Alloted:</strong> {this.state.pendingBenefits ? window.lessDecimals(this.state.pendingBenefits) + ' ES' : 'Loading...'}</p>
-        <Button onClick={window.open.bind(null, '/excel/PET_Calculator.xlsx')}>PET Illustration Excel</Button>
-        <Button onClick={window.open.bind(null, '/excel/PET_Presenter.pptx')}>PET Presenter</Button>
+        <Button onClick={() => this.props.history.push('/pet/prepaid-es')}>PET Prepaid ES</Button>
         <Button onClick={this.props.store.walletInstance && this.props.store.walletInstance.address
           ? () => this.props.history.push('/pet/view')
           : () => this.setState({showLoginModal:true})}>View My PETs</Button>
-        <p style={{marginTop:'1rem'}}><strong>PET Smart Contract Link:</strong> <a href="https://etherscan.io/address/0xbad9af4db5401b7d5e8177a18c1d69c35fc03fd3#code" target="_blank" style={{color: '#000', textDecoration: 'underline'}}>EtherScan</a></p>
+        <p style={{marginTop:'1rem'}}><a href="/excel/PET_Calculator.xlsx" target="_blank" style={{color: '#000', textDecoration: 'underline'}}>PET Illustration Excel</a> | <a href="/excel/PET_Presenter.pptx" target="_blank" style={{color: '#000', textDecoration: 'underline'}}>PET Presenter</a> | <a href="https://etherscan.io/address/0xbad9af4db5401b7d5e8177a18c1d69c35fc03fd3#code" target="_blank" style={{color: '#000', textDecoration: 'underline'}}>PET Smart Contract</a></p>
       </div>
       <Modal
         show={this.state.showLoginModal}
