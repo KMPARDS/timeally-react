@@ -200,14 +200,14 @@ class NavbarComponent extends Component {
                         { this.props.store.walletInstance.address ?
                           <Nav.Link  onClick={() => this.props.history.push('/dashboard')}><span style={{
                             color:'#fff',
-                            textShadow:this.props.location.pathname==='/dashboard'?'0 0 2px #fff':undefined
+                            textShadow:this.props.location.pathname.split('/')[1]==='dashboard'?'0 0 2px #fff':undefined
                           }}>Dashboard</span></Nav.Link>
                           : null
                           }
                         { this.props.store.walletInstance.address ?
                          <Nav.Link  onClick={() => this.props.history.push('/wallet')}><span style={{
                            color:'#fff',
-                           textShadow:this.props.location.pathname==='/wallet'?'0 0 2px #fff':undefined
+                           textShadow:this.props.location.pathname.split('/')[1]==='wallet'?'0 0 2px #fff':undefined
                          }}>Wallet</span></Nav.Link>
                             : null
                         }
@@ -225,7 +225,7 @@ class NavbarComponent extends Component {
                    { this.props.store.walletInstance.address ?
                    <Nav.Link  onClick={() => this.props.history.push('/stakings')}><span style={{
                      color:'#fff',
-                     textShadow:this.props.location.pathname==='/stakings'?'0 0 2px #fff':undefined
+                     textShadow:this.props.location.pathname.split('/')[1]==='stakings'?'0 0 2px #fff':undefined
                    }}>TimeAlly Stakings</span></Nav.Link>
                       : null
                    }
@@ -233,8 +233,8 @@ class NavbarComponent extends Component {
                   { this.props.store.walletInstance.address ?
                    <Nav.Link  onClick={() => this.props.history.push('/loans-info')}><span style={{
                      color:'#fff',
-                     textShadow:this.props.location.pathname==='/loans-info'?'0 0 2px #fff':undefined
-                   }}>Apply for Loan</span></Nav.Link>
+                     textShadow:this.props.location.pathname.split('/')[1]==='loans-info'?'0 0 2px #fff':undefined
+                   }}>TimeAlly Loan</span></Nav.Link>
                     // <li className="active"><a onClick={() => this.props.history.push('/loans-info')}>Apply for Loan</a></li>
                      : null
                   }
@@ -246,19 +246,19 @@ class NavbarComponent extends Component {
                   { this.props.store.walletInstance.address ?
                     <Nav.Link  onClick={() => this.props.history.push('/rewards')}><span style={{
                       color:'#fff',
-                      textShadow:this.props.location.pathname==='/rewards'?'0 0 2px #fff':undefined
+                      textShadow:this.props.location.pathname.split('/')[1]==='rewards'?'0 0 2px #fff':undefined
                     }}>TimeAlly Rewards</span></Nav.Link>
                     : null
                   }
 
                   <Nav.Link onClick={() => this.props.history.push('/assurance')}><span style={{
                     color:'#fff',
-                    textShadow:this.props.location.pathname==='/assurance'?'0 0 2px #fff':undefined
+                    textShadow:this.props.location.pathname.split('/')[1]==='assurance'?'0 0 2px #fff':undefined
                   }}>TSGAP</span></Nav.Link>
 
                   <Nav.Link onClick={() => this.props.history.push('/pet')}><span style={{
                     color:'#fff',
-                    textShadow:this.props.location.pathname==='/pet'?'0 0 2px #fff':undefined
+                    textShadow:this.props.location.pathname.split('/')[1]==='pet'?'0 0 2px #fff':undefined
                   }}>PET <img src='/images/new.png' style={{height:'20px',position:'relative',bottom:'10px'}} /></span></Nav.Link>
 
                    <Nav.Link  href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank" ><span style={{color:'#fff'}}>T & C</span></Nav.Link>
