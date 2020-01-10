@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Card, Form, Spinner, Alert, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import Layout from '../Layout/Layout';
+import Layout from '../Layout/LayoutPET';
 import TransactionModal from '../TransactionModal/TransactionModal';
 import { esContract, PET, network } from '../../env';
 
@@ -184,14 +184,16 @@ class New extends Component {
                   </div>
                 </div>
               </Modal>
-        <Card>
+        <Card style={{marginBottom:'0'}}> 
 
-          <Form className="mnemonics" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+        <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px'}}>
+
+          <Form className="mnemonics custom-width" onSubmit={this.onFirstSubmit} style={{borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>New PET Contract - Step 1 of 2</h3>
 
             <Form.Group controlId="PETAmount">
               <Form.Group controlId="exampleForm.ControlSelect1">
-                <Form.Control as="select" onChange={this.onPlanChange} style={{width: '325px'}}>
+                <Form.Control as="select" onChange={this.onPlanChange} className="width-100">
                   <option disabled selected={this.state.plan === undefined}>Select PET Plan</option>
                   <option value="0" selected={this.state.plan === 0}>ID: 0) Self Contribution 500+ ES / Month</option>
                   <option value="1" selected={this.state.plan === 1}>ID: 1) Self Contribution 1000+ ES / Month</option>
@@ -229,6 +231,7 @@ class New extends Component {
               { this.state.spinner ? 'Please wait..' : 'Next'}
             </Button>
           </Form>
+          </div>
         </Card>
         </>
       );
@@ -256,11 +259,11 @@ class New extends Component {
       }
       screen = (
         <>
-        <Card>
-          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '100%', padding:'20px 40px', margin: '15px'}}>
+        <Card style={{marginBottom:'0'}}>
+          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px'}}>
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>New PET Contract - Step 2 of 2</h3>
-            <p>You are initiating a PET of <b>{fullTarget} ES</b> with a self commitment of <b>{halfTarget} ES</b> and PET contribution of <b>{halfTarget} ES</b> with plan id <b>{this.state.plan}</b> where in you are entitled to receive <b>{annuityPercentage}</b> as annuity of ES accumulated for the month and <b>12 booster bonus ES</b>. This means when you deposit at least <b>{halfTarget} ES</b> within 30 days and 10 hours in your PET, your PET contributes another <b>{halfTarget} ES</b> for you and making your deposit <b>{fullTarget} ES</b> for that month. You can also checkout fee based LumpSum deposit options of Quarterly, Half Yearly and Annual Deposit Frequency Mode.</p>
+            <p>You are initiating a PET of <b>{fullTarget} ES</b> with a self commitment of <b>{halfTarget} ES</b> and PET contribution of <b>{halfTarget} ES</b> with plan id <b>{this.state.plan}</b> where in you are entitled to receive <b>{annuityPercentage}</b> as annuity of ES accumulated for the corresponding month for next 5 years and <b>12 booster bonus</b>. This means when you deposit at least <b>{halfTarget} ES</b> within 30 days and 10 hours in your PET, your PET contributes another <b>{halfTarget} ES</b> for you and making your deposit <b>{fullTarget} ES</b> for that month. You can also checkout <b>fee based LumpSum deposit options of Quarterly, Half Yearly and Annual Deposit Frequency Mode</b>.</p>
 
             <p>This is only a PET initiation transaction. While initiating a new PET, you do not need to transfer any ES. After your <u>New PET</u> transaction is done (by below button), you will be able to see it in your <u>View PETs</u> page and there you can make deposit to it within 30 days and 10 hours for it to be counted in first month.</p>
 
@@ -297,8 +300,8 @@ class New extends Component {
     } else {
       screen = (
         <>
-          <Card>
-            <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <Card style={{marginBottom:'0'}}>
+            <div className="custom-width" style={{borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
               <h3 style={{marginBottom: '15px'}}>PET confirmed!</h3>
               <Alert variant="success">Your PET is initiated. You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a>. You are yet to make a deposit and you can do this from your View PET page.</Alert>
               <Button onClick={() => this.props.history.push('/pet/view')}>Go to View PETs</Button>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button,Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import Layout from '../../../Layout/Layout';
+import Layout from '../../../Layout/LayoutPET';
 // import DepositElement from './DepositElement';
 import '../../PET.css';
 import { network } from '../../../../env';
@@ -75,14 +75,14 @@ class PETId extends Component {
       breadcrumb={['Home', 'PET','View']}
       title={`PET ID: ${this.props.match.params.id}`}>
       {this.state.months.length ? <>
-        <p>On this page you can see your deposits on your PET.</p>
+        <p style={{padding: '10px'}}>On this page you can see your deposits on your PET.</p>
         {this.state.lumSum
           ? <div style={{backgroundColor: '#ffffed', padding: '1rem', borderRadius: '.25rem', margin: '16px 0'}}>
             <p>PET is all about Systematic Accumulation Plan (SAP) to accumulate ES on a regular basis at different price points of ES. SAP monthly mode is fee free and helps in ES cost averaging. PET Smart Contract gives bounty to stake holders for accumulating ES by influencing their behaviour to follow SAP methodology and gives an opportunity to acquire ES without exposing their ES tokens in trading risk. PET encourages SAP and discourages LumpSum deposits, however from convenience prospective PET provides options in Smart Contract to even choose LumpSum options like Quarterly, Half Yearly and Annual Deposit Frequency Mode with a fee of 1%, 2% and 3% respectively.</p>
             <Button onClick={() => this.props.history.push(`/pet/view/${this.props.match.params.id}/lum-sum-deposit`)}>Make LumpSum Deposit</Button>
           </div>
           : null}
-        <Table responsive>
+        <Table style={{'margin-bottom': '0'}} responsive>
           <thead>
             <tr>
               <th>Deposit Month</th>
@@ -170,7 +170,7 @@ class PETId extends Component {
           </tbody>
         </Table>
 
-        <div style={{backgroundColor: '#eee', padding: '1rem', borderRadius: '.25rem', margin: '16px 0'}}>
+        <div style={{backgroundColor: '#eee', padding: '1rem', borderRadius: '.25rem'}}>
           <p>To make a deposit for the current month in your PET you can click the below button.</p>
           <Button onClick={() => this.props.history.push(`/pet/view/${this.props.match.params.id}/deposit`)}>Make a Deposit</Button>
         </div>
@@ -179,7 +179,7 @@ class PETId extends Component {
           <Button onClick={() => this.props.history.push(`/pet/view/${this.props.match.params.id}/benefits`)}>Benefit Page</Button>
         </div>*/}
 
-        <div className="details">
+        <div className="details" style={{margin: '10px auto'}}>
           <Button onClick={() => this.props.history.push(`/pet/view/${this.props.match.params.id}/nominees`)}>Nominee Page</Button>
         </div>
       </> : (

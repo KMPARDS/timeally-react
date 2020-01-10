@@ -796,6 +796,19 @@ footer
 Page header
 ---------------------------------*/
 .page-header { margin: 0; padding: 60px 0px 80px; min-height: 280px; border: none; background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), rgba(0, 0, 0, 0.2) url(/images/page-header.jpg) no-repeat center; background-size: cover; }
+.page-header-pet { margin: 0; padding: 60px 0px 80px; min-height: 280px; border: none; background: url(/images/pet-background.jpg) no-repeat center; background-size: cover; }
+.page-title-pet { position: relative; left: 22%; letter-spacing: 0;}
+.page-subtitle-pet { position: relative; left: 22%;}
+.custom-button { position: relative; left: 100%; top: 20px;}
+.pinside306090 { padding: 90px 30px 60px; border-radius: 20px;}
+.circle-pet { width: 110px; height: 110px; background-color: transparent; border: none;}
+.background-bones { background: url(/images/background-bones.png);}
+.custom-background { background-color: #5DA7C0; border-top-left-radius: 20px; border-top-right-radius: 20px; border: none;}
+.position-top { position: relative; top: -30px; background-color: #EFF3F8;}
+.robo-img { width: 130px; height: 200px; position: absolute; left: 20%;}
+.remove-boxshadow { box-shadow: none;}
+.form-control.width-100 { width: 325px;}
+.custom-width { width: 400px;}
 .page-title { margin-bottom: 0px; font-size: 34px; }
 .rate-block { text-align: right; }
 .rate-number { margin-bottom: 0px; line-height: 1; color: #f51f8a; }
@@ -1230,7 +1243,7 @@ Landing Page Template
   /* .pinside40{padding: 0px !important; } */
   .loan-eligibility-block {padding: 0px !important; background: none !important; }
   .btn{font-size: 12px !important;}
-  .mnemonics{width: 100% !important; border: none !important; padding: 0px !important;}
+  .mnemonics{width: 100% !important; border: none !important; padding: 10px !important; margin: 0 !important;}
   .stakingInput{width: 100% !important;}
   .main-btn{ padding: 10px 11px !important; font-weight: 400 !important; margin: 0px 2px; }
   p{text-align: justify !important;}
@@ -1303,6 +1316,18 @@ Landing Page Template
   .post-caption-content h3 {
     font-size: 12px;
     line-height: 18px;}
+  .page-header-pet { margin: 0; min-height: 280px; border: none; background: url(/images/pet-background-mob.png) no-repeat; background-size: cover; }
+  .page-title-pet { left: 0%; top: -70%;}
+  .custom-button { left: 40%; top: 50px;}
+  .pinside306090 { padding: 90px 30px 30px; border-radius: 20px;}
+  .mb60 { margin-bottom: 30px;}
+  .robo-img { width: 60px; height: 100px; position: relative; left: 0%;}
+  .margin-custom { margin: 10px auto;}
+  .page-subtitle-pet { word-break: break-word; width: 85%; text-shadow: 0 0 1px #fff; top: -60px;}
+  .form-control.width-100 { width: 100%;}
+  .custom-width { width: 100%;}
+  .custom-pad-margin { padding: 20px !important; margin: 0 !important;}
+  .col { flex-basis: auto;}
 }
 @media only screen and (max-width:460px) {
 

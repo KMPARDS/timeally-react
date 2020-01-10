@@ -42,7 +42,7 @@ class NewNominee extends Component {
     // console.log(this.props);
     let screen = (
       <Card>
-        <Form onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+        <Form className="custom-width" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
 
           <h3 style={{marginBottom: '15px'}}>New Nominee - Step 1 of 2</h3>
 

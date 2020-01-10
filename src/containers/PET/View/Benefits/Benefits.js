@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button,Table } from 'react-bootstrap';
-import Layout from '../../../Layout/Layout';
+import Layout from '../../../Layout/LayoutPET';
 import '../../PET.css';
 
 const ethers = require('ethers');

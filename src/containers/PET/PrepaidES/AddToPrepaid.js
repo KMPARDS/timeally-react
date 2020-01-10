@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, Form, Button, Spinner, Alert } from 'react-bootstrap';
-import Layout from '../../Layout/Layout';
+import Layout from '../../Layout/LayoutPET';
 import { esContract, pet, network } from '../../../env';
 import Modal from "react-responsive-modal";
 import TransactionModal from '../../TransactionModal/TransactionModal';
@@ -91,7 +91,7 @@ class AddToPrepaid extends Component {
     if(this.state.currentScreen === 0) {
       screen = (
         <Card>
-          <Form className="mnemonics" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <Form className="mnemonics custom-width" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
 
             <h3 style={{marginBottom: '15px'}}>{heading} - Step 1 of 3</h3>
 
@@ -128,10 +128,10 @@ class AddToPrepaid extends Component {
     } else if(this.state.currentScreen === 1) {
       screen = (
         <Card>
-          <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div className="mnemonics custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>{heading} - Step 2 of 3</h3>
             {!this.state.approveAlreadyDone ? <>
-              <p>This step is for approving TimeAlly PET Smart Contract to collect {this.state.userAmount} ES from your account for converting it into PET PrepaidES. <strong>No funds will not be debited from your account in this step.</strong> Funds will be debited in Step 3 and sent into TimeAlly PET Smart Contract when you do the addToPrepaid transaction.</p>
+              <p style={{padding: '10px'}}>This step is for approving TimeAlly PET Smart Contract to collect {this.state.userAmount} ES from your account for converting it into PET PrepaidES. <strong>No funds will not be debited from your account in this step.</strong> Funds will be debited in Step 3 and sent into TimeAlly PET Smart Contract when you do the addToPrepaid transaction.</p>
               {
                 this.state.errorMessage
                 ? <Alert variant="danger">
@@ -173,7 +173,7 @@ class AddToPrepaid extends Component {
     } else if(this.state.currentScreen === 2) {
       screen = (
         <Card>
-          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div className="custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>{heading} - Step 3 of 3</h3>
             <p>Please click the following button to confirm your topup.</p>
               {
@@ -207,7 +207,7 @@ class AddToPrepaid extends Component {
     } else {
       screen = (
           <Card>
-            <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+            <div className="custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
               <h3 style={{marginBottom: '15px'}}>Add to Prepaid!</h3>
               <Alert variant="success">Your addToPrepaid is done. You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></Alert>
               <Button onClick={() => this.props.history.push('/pet/prepaid-es')}>Go to PrepaidES</Button>

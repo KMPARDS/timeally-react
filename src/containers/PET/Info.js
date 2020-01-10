@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import Layout from '../Layout/Layout';
+import Layout from '../Layout/LayoutPET';
 
 const ethers = require('ethers');
 
@@ -48,61 +48,85 @@ class PET extends Component {
         ? () => this.props.history.push('/pet/new')
         : () => this.setState({showLoginModal:true})}
     >
-      <h2 style={{marginTop: '1rem'}}>TimeAlly PET for Acheivers</h2>
-      <p style={{marginBottom: '5rem'}}>TimeAlly Retirement Plans are a Smart Contract Protocol based plans, that are extraordinarily intended to meet your post-retirement needs, for example, medical and living costs. It is secured SAP (Systematic Accumulation Plan) since the benefits for the stakers are stored in safely in Smart Contract which is transparent & most secure system driven.</p>
+      <div className="container pinside30 position-top" style={{'background-color': '#EFF3F8 !important', 'margin-bottom': '30px', 'border-radius': '20px'}}>
+        <h2 style={{marginTop: '1rem'}}>TimeAlly PET for Acheivers</h2>
+        <p style={{marginBottom: '1rem'}}>TimeAlly Retirement Plans are a Smart Contract Protocol based plans, that are extraordinarily intended to meet your post-retirement needs, for example, medical and living costs. It is secured SAP (Systematic Accumulation Plan) since the benefits for the stakers are stored in safely in Smart Contract which is transparent & most secure system driven.</p>
+      </div>
       <div className="row">
         <div className="col-xl-4 col-md-12">
-          <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
-            <div className="circle"><img src="./images/loan.png"/></div>
-            <h3 className="number-title">Gurantee</h3>
-            <p>Complete Transparency of Rewards Allocated in Advance through Smart Contracts.</p>
+          <div className="bg-white pinside306090 number-block outline mb60 bg-boxshadow">
+            <div className="circle circle-pet"><img src="./images/Companion.png"/></div>
+            <h3 className="number-title">Companion</h3>
+            <p>50% Additional Support for your Monthly Accumulation Goals Guaranteed by PET Smart Contract.</p>
           </div>
         </div>
         <div className="col-xl-4 col-md-12">
-          <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
-          <div className="circle"><img src="./images/interest.png"/></div>
+          <div className="bg-white pinside306090 number-block outline mb60 bg-boxshadow">
+          <div className="circle circle-pet"><img src="./images/Flexible.png"/></div>
+            <h3 className="number-title">Flexible</h3>
+            <p>Choose your PET Plan as per your Monthly Goals & Exepected Gains to meet your milestones.</p>
+          </div>
+        </div>
+        <div className="col-xl-4 col-md-12">
+          <div className="bg-white pinside306090 number-block outline mb60 bg-boxshadow">
+            <div className="circle circle-pet"><img src="./images/Assurance.png"/></div>
+            <h3 className="number-title">Assurance</h3>
+            <p>Assures monthly annuity gain consistently for 5 Annuity Years based on your Monthly Goals Achievement.</p>
+          </div>
+        </div>
+        <div className="col-xl-4 col-md-12">
+          <div className="bg-white pinside306090 number-block outline mb60 bg-boxshadow">
+          <div className="circle circle-pet"><img src="./images/bonuss.png"/></div>
+            <h3 className="number-title">Pet Bonus</h3>
+            <p>End of every five months, stakers are eligible for Power Booster bonus through Smart Contract.</p>
+          </div>
+        </div>
+        <div className="col-xl-4 col-md-12">
+          <div className="bg-white pinside306090 number-block outline mb60 bg-boxshadow">
+          <div className="circle circle-pet"><img src="./images/Secure.png"/></div>
+            <h3 className="number-title">Consistent & Secured</h3>
+            <p>Smart Contract based safety, security & stability on your accumulations with a predefined set of rules.</p>
+          </div>
+        </div>
+        <div className="col-xl-4 col-md-12">
+          <div className="bg-white pinside306090 number-block outline mb60 bg-boxshadow">
+          <div className="circle circle-pet"><img src="./images/Empower.png"/></div>
+            <h3 className="number-title">Empower</h3>
+            <p>Pet provides you complete control & transparency on your Monthly Accumulations & Returns.</p>
+          </div>
+        </div>
+        <div className="col-xl-4 col-md-12">
+          <div className="bg-white pinside306090 number-block outline mb60 bg-boxshadow">
+            <div className="circle circle-pet"><img src="./images/DayswappersRewards.png"/></div>
+            <h3 className="number-title">Day Swappers Rewards</h3>
+            <p>Help others to achieve their goals to achieve your own through Day Swappers Rewards.</p>
+          </div>
+        </div>
+        <div className="col-xl-4 col-md-12">
+          <div className="bg-white pinside306090 number-block outline mb60 bg-boxshadow">
+            <div className="circle circle-pet"><img src="./images/NominateLegacy.png"/></div>
             <h3 className="number-title">Power of Compounding</h3>
-            <p>TimeAlly Smart Contract offers only 1% Rate of Interest to it's users for a duration of 60 days.</p>
+            <p>TimeAlly Smart Contract offers only a 1% Rate of Interest to its users for duration of 60 days.</p>
           </div>
         </div>
         <div className="col-xl-4 col-md-12">
-          <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
-            <div className="circle"><img src="./images/loan.png"/></div>
-            <h3 className="number-title">Booster Bonous</h3>
-            <p>End of every five months, stakers are eligible for Power Booster bonous through Smart Contract.</p>
-          </div>
-        </div>
-        <div className="col-xl-4 col-md-12">
-          <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
-          <div className="circle"><img src="./images/interest.png"/></div>
-            <h3 className="number-title">Dayswapper Rewards</h3>
-            <p>Help others to acheive their goals to acheive your own through Dayswapper Rewards.</p>
-          </div>
-        </div>
-        <div className="col-xl-4 col-md-12">
-          <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
-          <div className="circle"><img src="./images/medal.png"/></div>
-            <h3 className="number-title">Nominate your Legacy</h3>
-            <p>Stakers can add Nominees in their PETs who can act on their behalf after inactivity of Stakers.</p>
-          </div>
-        </div>
-        <div className="col-xl-4 col-md-12">
-          <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
-          <div className="circle"><img src="./images/medal.png"/></div>
+          <div className="bg-white pinside306090 number-block outline mb60 bg-boxshadow">
+            <div className="circle circle-pet"><img src="./images/Appointees.png"/></div>
             <h3 className="number-title">Appointees</h3>
-            <p>Trustless consensus after inactivity using multi-signing by assigned Appointees in PET.</p>
+            <p>The trustless consensus after inactivity using multi-signing by assigned Appointees in PET.</p>
           </div>
         </div>
       </div>
-      <div className="outline pinside30 bg-boxshadow" style={{marginBottom: '1rem', backgroundColor: '#fff'}}>
-        <p><strong>ES in Funds Bucket Smart Contract:</strong> {
+      <div className="outline pinside30 custom-background">
+        <img src="./images/pet-robo.png" className="robo-img" />
+        <p className="text-white" style={{'text-shadow': '0 0 3px #000a'}}><strong>ES in Funds Bucket Smart Contract:</strong> {
           this.state.fundsDeposit ? window.lessDecimals(this.state.fundsDeposit) + ' ES' : 'Loading...'}</p>
-        <p><strong>Benefits Already Alloted:</strong> {this.state.pendingBenefits ? window.lessDecimals(this.state.pendingBenefits) + ' ES' : 'Loading...'}</p>
-        <Button onClick={() => this.props.history.push('/pet/prepaid-es')}>PET Prepaid ES</Button>
+        <p className="text-white" style={{'text-shadow': '0 0 3px #000a'}}><strong>Benefits Already Alloted:</strong> {this.state.pendingBenefits ? window.lessDecimals(this.state.pendingBenefits) + ' ES' : 'Loading...'}</p>
+        <Button style={{margin: '10px auto'}} onClick={() => this.props.history.push('/pet/prepaid-es')}>PET Prepaid ES</Button>
         <Button onClick={this.props.store.walletInstance && this.props.store.walletInstance.address
           ? () => this.props.history.push('/pet/view')
           : () => this.setState({showLoginModal:true})}>View My PETs</Button>
-        <p style={{marginTop:'1rem'}}><a href="/excel/PET_Calculator.xlsx" target="_blank" style={{color: '#000', textDecoration: 'underline'}}>PET Illustration Excel</a> | <a href="/excel/PET_Presenter.pptx" target="_blank" style={{color: '#000', textDecoration: 'underline'}}>PET Presenter</a> | <a href="https://etherscan.io/address/0xbad9af4db5401b7d5e8177a18c1d69c35fc03fd3#code" target="_blank" style={{color: '#000', textDecoration: 'underline'}}>PET Smart Contract</a></p>
+        <p className="text-white" style={{marginTop:'1rem', 'text-shadow': '0 0 3px #000a'}}><a className="text-white" href="/excel/PET_Calculator.xlsx" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Illustration Excel</a> | <a className="text-white" href="/excel/PET_Presenter.pptx" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Presenter</a> | <a className="text-white" href="https://etherscan.io/address/0xbad9af4db5401b7d5e8177a18c1d69c35fc03fd3#code" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Smart Contract</a></p>
       </div>
       <Modal
         show={this.state.showLoginModal}

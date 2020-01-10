@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Card, Form, Spinner, Alert, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import Layout from '../../../Layout/Layout';
+import Layout from '../../../Layout/LayoutPET';
 import TransactionModal from '../../../TransactionModal/TransactionModal';
 import { esContract, pet, network } from '../../../../env';
 
@@ -134,9 +134,9 @@ class Deposit extends Component {
     if(this.state.currentScreen === 0) {
       screen = (
           <>
-        <Card>
+        <Card style={{'margin-bottom': '0'}}>
 
-          <Form onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '500px', padding:'20px 40px', margin: '15px auto'}}>
+          <Form className="custom-width" onSubmit={this.onFirstSubmit} style={{borderRadius: '.25rem',padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 1 of 4</h3>
 
             <Form.Group controlId="installmentAmount">
@@ -147,7 +147,7 @@ class Deposit extends Component {
                 value={this.state.userAmount}
                 type="text"
                 autoComplete="off"
-                placeholder="Enter installment amount for PET"
+                placeholder="Enter deposit amount for PET"
                 style={{width: '100%'}}
                 isInvalid={this.state.insufficientBalance}
               />
@@ -184,8 +184,8 @@ class Deposit extends Component {
       }
 
       screen = (
-        <Card>
-          <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '500px', padding:'20px 40px', margin: '15px auto'}}>
+        <Card style={{'margin-bottom': '0'}}>
+          <div className="mnemonics" style={{borderRadius: '.25rem', width: '500px', padding:'20px 40px', margin: '15px auto'}}>
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 2 of 4</h3>
             {displayText}
@@ -216,7 +216,7 @@ class Deposit extends Component {
     } else if(this.state.currentScreen === 2) {
       screen = (
         <>
-        <Card>
+        <Card style={{'margin-bottom': '0'}}>
           <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '500px', padding:'20px 40px', margin: '15px auto'}}>
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 3 of 4</h3>
@@ -264,7 +264,7 @@ class Deposit extends Component {
     } else if(this.state.currentScreen === 3) {
       screen = (
         <>
-        <Card>
+        <Card style={{'margin-bottom': '0'}}>
           <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '500px', padding:'20px 40px', margin: '15px auto'}}>
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 4 of 4</h3>
@@ -301,7 +301,7 @@ class Deposit extends Component {
     } else {
       screen = (
         <>
-          <Card>
+          <Card style={{'margin-bottom': '0'}}>
             <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '500px', padding:'20px 40px', margin: '15px auto'}}>
               <h3 style={{marginBottom: '15px'}}>{this.state.monthId ? window.getOrdinalString(this.state.monthId) : ''} Monthly Deposit confirmed!</h3>
               <Alert variant="success">Your deposit transaction is confirmed. You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></Alert>

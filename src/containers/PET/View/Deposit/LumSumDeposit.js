@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Card, Form, Spinner, Alert, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import Layout from '../../../Layout/Layout';
+import Layout from '../../../Layout/LayoutPET';
 import TransactionModal from '../../../TransactionModal/TransactionModal';
 import { esContract, pet, network } from '../../../../env';
 
@@ -10,11 +10,11 @@ const ethers = require('ethers');
 function getFees(frequencyMode) {
   switch(frequencyMode) {
     case 3:
-      return '30';
+      return 1;
     case 6:
-      return '40';
+      return 2;
     case 12:
-      return '50';
+      return 3;
     default:
       return null;
   }
@@ -123,7 +123,7 @@ class LumSumDeposit extends Component {
       this.props.store.petInstance.address
     );
 
-    console.log('allowance', allowance, allowance.gte(ethers.utils.parseEther(this.state.userAmount).add(ethers.utils.parseEther(getFees(this.state.frequencyMode)))));
+    // console.log('allowance', allowance, allowance.gte(ethers.utils.parseEther(this.state.userAmount).add(ethers.utils.parseEther(getFees(this.state.frequencyMode)))));
 
     if(allowance.gte(ethers.utils.parseEther(this.state.userAmount))) {
       this.setState({
@@ -144,25 +144,28 @@ class LumSumDeposit extends Component {
     );
 
     const headingText = `Lum Sum Deposit`;
-    const userAmountWithFees = ethers.utils.formatEther(ethers.utils.parseEther(this.state.userAmount||'0').add(ethers.utils.parseEther(getFees(this.state.frequencyMode)||'0')));
+    const feesBN = ethers.utils.parseEther(this.state.userAmount?this.state.userAmount:'0').mul(getFees(this.state.frequencyMode)||'1').div(100);
+    const fees = ethers.utils.formatEther(feesBN);
+    
+    const userAmountWithFees = ethers.utils.formatEther(ethers.utils.parseEther(this.state.userAmount?this.state.userAmount:'0').add(feesBN));
 
     if(this.state.currentScreen === 0) {
       screen = (
           <>
         <Card>
 
-          <Form onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <Form className="custom-width" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 1 of 4</h3>
 
             <Form.Group controlId="exampleForm.ControlSelect1">
-              <Form.Control as="select" onChange={async event => {
+              <Form.Control className="width-100" as="select" onChange={async event => {
                 // await this.setState({ frequencyMode: +event.target.value });
                 this.state.frequencyMode = +event.target.value;
                 this.onAmountUpdate({target: {value: this.state.userAmount}});
-              }} style={{width: '325px'}}>
+              }}>
                 <option disabled selected={this.state.frequencyMode === null}>Select SAP Frequency Mode</option>
-                {[[3, 30], [6, 40], [12, 40]].map(entry => (
-                  <option value={entry[0]} selected={this.state.frequencyMode === 0}>{entry[0]} Months: {entry[1]} ES Convenience Fee</option>
+                {[[3, getFees(3)], [6, getFees(6)], [12, getFees(12)]].map(entry => (
+                  <option value={entry[0]} selected={this.state.frequencyMode === 0}>{entry[0]} Months => {entry[1]}% Convenience Fee</option>
                 ))}
 
               </Form.Control>
@@ -205,7 +208,7 @@ class LumSumDeposit extends Component {
       if(this.state.isLiquidAvailable && this.state.isPrepaidAvailable) {
         displayText = <p>This dApp just noticed that you have <strong>{window.lessDecimals(this.state.userLiquidEsBalance)} liquid ES tokens</strong> as well as <strong>{window.lessDecimals(this.state.userPrepaidESBalance)} TimeAllyPET prepaidES</strong>. Please choose which you want to use to deposit the <strong>{this.state.monthId ? window.getOrdinalString(this.state.monthId) : 'Loading...'} monthly installment of {this.state.userAmount} ES</strong> of your PET with initial monthly commitment of  ES.</p>;
       } else if(this.state.isLiquidAvailable && !this.state.isPrepaidAvailable) {
-        displayText = <p>You have enough tokens (<strong>{window.lessDecimals(this.state.userLiquidEsBalance)} ES</strong>) in your wallet for PET. Go to Step 3 for doing approval procedure of <strong>{this.state.userAmount} ES + {getFees(this.state.frequencyMode)} ES = {userAmountWithFees} ES</strong> to TimeAllyPET Smart Contract.</p>;
+        displayText = <p>You have enough tokens (<strong>{window.lessDecimals(this.state.userLiquidEsBalance)} ES</strong>) in your wallet for PET. Go to Step 3 for doing approval procedure of <strong>{this.state.userAmount} ES + {fees} ES = {userAmountWithFees} ES</strong> to TimeAllyPET Smart Contract.</p>;
       } else if(!this.state.isLiquidAvailable && this.state.isPrepaidAvailable) {
         displayText = <p>You have enough tokens in your TimeAllyPET prepaidES to make a deposit of <strong>{this.state.userAmount} ES</strong> in your PET with initial monthly commitment of  ES.</p>;
       } else {
@@ -214,12 +217,12 @@ class LumSumDeposit extends Component {
 
       screen = (
         <Card>
-          <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div className="mnemonics custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 2 of 4</h3>
             {displayText}
             <Button
-              style={{display:'block', width:'100%'}}
+              style={{display:'block', width:'100%', margin: '0'}}
               disabled={!this.state.isLiquidAvailable}
               onClick={() => this.setState({
                 usePrepaidES: false,
@@ -230,7 +233,7 @@ class LumSumDeposit extends Component {
             </Button>
             <Button
               variant="warning"
-              style={{display:'block', width:'100%'}}
+              style={{display:'block', width:'100%', margin: '0'}}
               disabled={!this.state.isPrepaidAvailable}
               onClick={() => this.setState({
                 usePrepaidES: true,
@@ -246,11 +249,11 @@ class LumSumDeposit extends Component {
       screen = (
         <>
         <Card>
-          <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div className="mnemonics custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 3 of 4</h3>
             {!this.state.approveAlreadyDone ? <>
-              <p>This step is for approving TimeAllyPET Smart Contract to collect <strong>{this.state.userAmount} ES + {getFees(this.state.frequencyMode)} ES = {userAmountWithFees} ES</strong> from your account. <strong>No funds will be debited from your account in this step.</strong> Funds will be debited in Step 3 and sent into PET Contract when you do New PET transaction.</p>
+              <p>This step is for approving TimeAllyPET Smart Contract to collect <strong>{this.state.userAmount} ES + {fees} ES = {userAmountWithFees} ES</strong> from your account. <strong>No funds will be debited from your account in this step.</strong> Funds will be debited in Step 3 and sent into PET Contract when you do New PET transaction.</p>
               {
                 this.state.errorMessage
                 ? <Alert variant="danger">
@@ -294,10 +297,10 @@ class LumSumDeposit extends Component {
       screen = (
         <>
         <Card>
-          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div className="custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 4 of 4</h3>
-            <p>Please click the following button to confirm your PET Lum Sum Deposit of <strong>{this.state.userAmount} ES</strong> (additional <strong>{getFees(this.state.frequencyMode)} ES</strong> will be charged making it total of <strong>{userAmountWithFees} ES</strong>).</p>
+            <p>Please click the following button to confirm your PET Lum Sum Deposit of <strong>{this.state.userAmount} ES</strong> (additional <strong>{fees} ES</strong> will be charged making it total of <strong>{userAmountWithFees} ES</strong>).</p>
               {
                 this.state.errorMessage
                 ? <Alert variant="danger">
@@ -331,7 +334,7 @@ class LumSumDeposit extends Component {
       screen = (
         <>
           <Card>
-            <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+            <div className="custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
               <h3 style={{marginBottom: '15px'}}>{this.state.monthId ? window.getOrdinalString(this.state.monthId) : ''} Lum Sum Deposit confirmed!</h3>
               <Alert variant="success">Your lum sum deposit transaction is confirmed. You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></Alert>
               <Button onClick={() => this.props.history.push('/pet/view/'+this.props.match.params.id)}>Go to PET Deposits Page</Button>
@@ -360,7 +363,7 @@ class LumSumDeposit extends Component {
             estimator: this.props.store.esInstance.estimate.approve,
             contract: this.props.store.esInstance,
             contractName: 'EraSwap',
-            arguments: [this.props.store.petInstance.address, ethers.utils.parseEther(this.state.userAmount?this.state.userAmount:'0').add(ethers.utils.parseEther(getFees(this.state.frequencyMode)||'0'))],
+            arguments: [this.props.store.petInstance.address, ethers.utils.parseEther(userAmountWithFees)],
             ESAmount: userAmountWithFees,
             headingName: 'Approval Status',
             functionName: 'Approve',

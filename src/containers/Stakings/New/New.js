@@ -213,7 +213,7 @@ class NewStaking extends Component {
                   </div>
                 </Modal>
         <Card>
-          <Form className="mnemonics" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <Form className="mnemonics custom-width" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
 
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 1 of 3</h3>
 
@@ -260,7 +260,7 @@ class NewStaking extends Component {
       screen = (
         <Header>
         <Card>
-          <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div className="mnemonics custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 2 of 3</h3>
             {!this.state.approveAlreadyDone ? <>
               <p>This step is for approving TimeAlly Smart Contract to collect {this.state.userAmount} ES from your account. <strong>No funds will not be debited from your account in this step.</strong> Funds will be debited in Step 3 and sent into TimeAlly when you do New Staking transaction.</p>
@@ -307,7 +307,7 @@ class NewStaking extends Component {
       screen = (
         <Header>
         <Card>
-          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div className="custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>New Staking - Step 3 of 3</h3>
             <p>Please click the following button to confirm your staking.</p>
               {
@@ -343,7 +343,7 @@ class NewStaking extends Component {
       screen = (
         <Header>
           <Card>
-            <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+            <div className="custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
               <h3 style={{marginBottom: '15px'}}>Staking created!</h3>
               <Alert variant="success">Your staking is done. You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></Alert>
               <Button onClick={() => this.props.history.push('/stakings')}>Go to stakings</Button>

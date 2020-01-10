@@ -128,7 +128,7 @@ class Deposit extends Component {
           <>
         <Card>
 
-          <Form onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <Form className="custom-width" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 1 of 4</h3>
 
             <Form.Group controlId="installmentAmount">
@@ -177,7 +177,7 @@ class Deposit extends Component {
 
       screen = (
         <Card>
-          <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div className="mnemonics custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 2 of 4</h3>
             {displayText}
@@ -209,7 +209,7 @@ class Deposit extends Component {
       screen = (
         <>
         <Card>
-          <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div className="mnemonics custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 3 of 4</h3>
             {!this.state.approveAlreadyDone ? <>
@@ -257,7 +257,7 @@ class Deposit extends Component {
       screen = (
         <>
         <Card>
-          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div className="custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 4 of 4</h3>
             <p>Please click the following button to confirm your SIP Monthly Deposit of <strong>{this.state.userAmount} ES</strong>.</p>
@@ -294,7 +294,7 @@ class Deposit extends Component {
       screen = (
         <>
           <Card>
-            <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+            <div className="custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
               <h3 style={{marginBottom: '15px'}}>{window.getOrdinalString(this.props.match.params.month)} Monthly Deposit confirmed!</h3>
               <Alert variant="success">Your deposit transaction is confirmed. You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></Alert>
               <Button onClick={() => this.props.history.push('/assurance/view/'+this.props.match.params.id)}>Go to SIP Deposits Page</Button>

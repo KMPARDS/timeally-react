@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Table, Button, Card, Form, Spinner, Alert, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import Layout from '../../Layout/Layout';
+import Layout from '../../Layout/LayoutPET';
 import TransactionModal from '../../TransactionModal/TransactionModal';
 import { esContract, PET, network } from '../../../env';
 
@@ -168,7 +168,7 @@ class SendPrepaidESDifferent extends Component {
       screen = (
         <>
         <Card>
-          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '100%', padding:'20px 40px', margin: '15px'}}>
+          <div className="custom-pad-margin" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '100%', padding:'20px 40px', margin: '15px'}}>
             {startOverAgainButton}
 
             <Table responsive>
@@ -225,7 +225,7 @@ class SendPrepaidESDifferent extends Component {
       screen = (
         <>
           <Card>
-            <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+            <div className="custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
               <h3 style={{marginBottom: '15px'}}>PrepaidES Sent!</h3>
               <Alert variant="success">PrepaidES are sent! You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a>. Since, this is not Liquid EraSwap transaction, EtherScan does not show the tokens transferred clearly.</Alert>
               <Button onClick={() => this.props.history.push('/pet')}>Go to PET Home</Button>
