@@ -225,6 +225,7 @@ class NewStaking extends Component {
                 type="text"
                 placeholder="Enter amount to stake"
                 style={{width: '325px'}}
+                autoComplete="off"
                 isInvalid={this.state.insufficientBalance}
               />
               {this.state.insufficientBalance ? <p style={{color: 'red', textAlign: 'left'}}>Insufficient balance ES balance</p> : null}
