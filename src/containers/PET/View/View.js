@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button,Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import Layout from '../../Layout/Layout';
+import Layout from '../../Layout/LayoutPET';
 import PETElement from './PETElement';
 import '../PET.css';
 
@@ -46,7 +46,7 @@ class View extends Component {
             buttonOnClick={this.props.store.walletInstance && this.props.store.walletInstance.address
               ? () => this.props.history.push('/pet/new')
               : () => this.setState({showLoginModal:true})}>
-            {this.state.pets.length ? <Table responsive>
+            {this.state.pets.length ? <Table style={{'margin-bottom': '0'}} responsive>
             <thead>
               <tr>
                 <th>PET ID</th>

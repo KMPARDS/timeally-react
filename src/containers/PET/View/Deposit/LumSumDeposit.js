@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Card, Form, Spinner, Alert, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import Layout from '../../../Layout/Layout';
+import Layout from '../../../Layout/LayoutPET';
 import TransactionModal from '../../../TransactionModal/TransactionModal';
 import { esContract, pet, network } from '../../../../env';
 
@@ -151,15 +151,15 @@ class LumSumDeposit extends Component {
           <>
         <Card>
 
-          <Form onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <Form className="custom-width" onSubmit={this.onFirstSubmit} style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 1 of 4</h3>
 
             <Form.Group controlId="exampleForm.ControlSelect1">
-              <Form.Control as="select" onChange={async event => {
+              <Form.Control className="width-100" as="select" onChange={async event => {
                 // await this.setState({ frequencyMode: +event.target.value });
                 this.state.frequencyMode = +event.target.value;
                 this.onAmountUpdate({target: {value: this.state.userAmount}});
-              }} style={{width: '325px'}}>
+              }}>
                 <option disabled selected={this.state.frequencyMode === null}>Select SAP Frequency Mode</option>
                 {[[3, 30], [6, 40], [12, 40]].map(entry => (
                   <option value={entry[0]} selected={this.state.frequencyMode === 0}>{entry[0]} Months: {entry[1]} ES Convenience Fee</option>
@@ -214,12 +214,12 @@ class LumSumDeposit extends Component {
 
       screen = (
         <Card>
-          <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div className="mnemonics custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 2 of 4</h3>
             {displayText}
             <Button
-              style={{display:'block', width:'100%'}}
+              style={{display:'block', width:'100%', margin: '0'}}
               disabled={!this.state.isLiquidAvailable}
               onClick={() => this.setState({
                 usePrepaidES: false,
@@ -230,7 +230,7 @@ class LumSumDeposit extends Component {
             </Button>
             <Button
               variant="warning"
-              style={{display:'block', width:'100%'}}
+              style={{display:'block', width:'100%', margin: '0'}}
               disabled={!this.state.isPrepaidAvailable}
               onClick={() => this.setState({
                 usePrepaidES: true,
@@ -246,7 +246,7 @@ class LumSumDeposit extends Component {
       screen = (
         <>
         <Card>
-          <div className="mnemonics" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div className="mnemonics custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 3 of 4</h3>
             {!this.state.approveAlreadyDone ? <>
@@ -294,7 +294,7 @@ class LumSumDeposit extends Component {
       screen = (
         <>
         <Card>
-          <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+          <div className="custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 4 of 4</h3>
             <p>Please click the following button to confirm your PET Lum Sum Deposit of <strong>{this.state.userAmount} ES</strong> (additional <strong>{getFees(this.state.frequencyMode)} ES</strong> will be charged making it total of <strong>{userAmountWithFees} ES</strong>).</p>
@@ -331,7 +331,7 @@ class LumSumDeposit extends Component {
       screen = (
         <>
           <Card>
-            <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', width: '400px', padding:'20px 40px', margin: '15px auto'}}>
+            <div className="custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
               <h3 style={{marginBottom: '15px'}}>{this.state.monthId ? window.getOrdinalString(this.state.monthId) : ''} Lum Sum Deposit confirmed!</h3>
               <Alert variant="success">Your lum sum deposit transaction is confirmed. You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></Alert>
               <Button onClick={() => this.props.history.push('/pet/view/'+this.props.match.params.id)}>Go to PET Deposits Page</Button>

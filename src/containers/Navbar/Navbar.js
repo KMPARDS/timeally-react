@@ -107,13 +107,13 @@ class NavbarComponent extends Component {
   }
 
   render() {
-    const announcementLink = <span><a href="/pdf/era_track.pdf" target="_blank" className="btn main-btn btn-default btn-sm flash-button" >Announcement</a></span>;
+    const announcementLink = <span><a href="/pdf/era_track.pdf" target="_blank" className="btn main-btn btn-default btn-sm flash-button margin-custom" >Announcement</a></span>;
 
     let navbarButtons = (
      <div>
         {/* <span><a onClick={() => this.props.history.push('/create-wallet')} className="btn main-btn btn-primary btn-sm">Create Wallet</a></span> */}
         {announcementLink}
-        <span><a onClick={() => this.props.history.push('/load-wallet')} className="btn main-btn btn-default btn-sm">Connect to a Wallet</a></span>
+        <span><a onClick={() => this.props.history.push('/load-wallet')} className="btn main-btn btn-default btn-sm margin-custom">Connect to a Wallet</a></span>
 
         <span><a onClick={() => this.props.history.push('/nominee')} className="btn main-btn btn-default btn-sm" style={{backgroundColor: '#55a903'}}>Nominee</a></span>
     </div>
@@ -126,7 +126,7 @@ class NavbarComponent extends Component {
             copy(this.props.store.walletInstance.address);
             this.setState({ copied: true });
             setTimeout(this.setState.bind(this, {copied: false}), 2000);
-          }} className="btn btn-primary btn-sm" style={{backgroundColor: this.props.store.walletInstance._ethersType !== 'Signer' ? '#333' : undefined, cursor: 'pointer'}}>{this.state.copied ? <>✓ Address Copied!</> : <>Welcome {
+          }} className="btn btn-primary btn-sm margin-custom" style={{backgroundColor: this.props.store.walletInstance._ethersType !== 'Signer' ? '#333' : undefined, cursor: 'pointer'}}>{this.state.copied ? <>✓ Address Copied!</> : <>Welcome {
               this.props.store.walletInstance.address.slice(0,6) + '...' + this.props.store.walletInstance.address.slice(this.props.store.walletInstance.address.length - 3, this.props.store.walletInstance.address.length - 1)
             }</>}</a>
           </span>

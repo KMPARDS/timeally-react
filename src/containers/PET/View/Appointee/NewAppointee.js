@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Layout from '../../../Layout/Layout';
+import Layout from '../../../Layout/LayoutPET';
 
 class NewAppointee extends Component {
   render = () => {
