@@ -259,7 +259,7 @@ class NavbarComponent extends Component {
                   <Nav.Link onClick={() => this.props.history.push('/pet')}><span style={{
                     color:'#fff',
                     textShadow:this.props.location.pathname==='/pet'?'0 0 2px #fff':undefined
-                  }}>PET</span></Nav.Link>
+                  }}>PET <img src='/images/new.png' style={{height:'20px',position:'relative',bottom:'10px'}} /></span></Nav.Link>
 
                    <Nav.Link  href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank" ><span style={{color:'#fff'}}>T & C</span></Nav.Link>
 
