@@ -40,6 +40,8 @@ if (env.network === 'homestead') {
   env.nrtManager.address = '0x20ee679D73559e4c4B5E3B3042B61bE723828d6C';
   env.timeally.address = '0x5630ee5f247bd6b61991fbb2f117bbeb45990876';
   env.sip.address = '0xbad9af4db5401b7d5e8177a18c1d69c35fc03fd3';
+  env.pet.address = '0x69e7960f6A1d6332a4be7e22916F627a3d95b1bc';
+  env.fundsBucket.address = '0x56bCe3b81e04497A154cFBf5A2C3FdFbD5c1bd63';
 }
 
 module.exports = env;
