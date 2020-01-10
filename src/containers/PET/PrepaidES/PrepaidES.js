@@ -32,7 +32,7 @@ class PrepaidES extends Component {
           this.state.prepaidESBalance ? window.lessDecimals(this.state.prepaidESBalance) + ' ES' : 'Loading...'}</p>
         <Button className="margin-custom" onClick={() => this.props.history.push('/pet/prepaid-es/add-to-prepaid')}>Add ES To Prepaid</Button>
         <Button className="margin-custom" onClick={() => this.props.history.push('/pet/view')}>Go to PETs</Button>
-        <Button onClick={() => this.props.history.push('/pet/prepaid-es/send')}>Send Prepaid ES Different</Button>
+        <Button onClick={() => this.props.history.push('/pet/prepaid-es/send')}>Send Prepaid ES to Peers</Button>
       </div>
       <Modal
         show={this.state.showLoginModal}
