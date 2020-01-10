@@ -143,10 +143,10 @@ class LumSumDeposit extends Component {
       <span style={{display:'block', textAlign:'left', cursor: 'pointer'}} onClick={() => this.setState({ currentScreen: 0 })}>{'<'}Start All Over</span>
     );
 
-    const headingText = `Lum Sum Deposit`;
+    const headingText = `Lump Sum Deposit`;
     const feesBN = ethers.utils.parseEther(this.state.userAmount?this.state.userAmount:'0').mul(getFees(this.state.frequencyMode)||'1').div(100);
     const fees = ethers.utils.formatEther(feesBN);
-    
+
     const userAmountWithFees = ethers.utils.formatEther(ethers.utils.parseEther(this.state.userAmount?this.state.userAmount:'0').add(feesBN));
 
     if(this.state.currentScreen === 0) {
@@ -263,7 +263,7 @@ class LumSumDeposit extends Component {
               }
               {this.state.approveSuccess
                 ? <>
-                  <Alert variant="warning">Your approve tx is confirmed! <strong>Note: Your {userAmountWithFees} ES has not been deposited in TimeAlly PET Contract yet.</strong> Please go to third step to do your Lum Sum Deposit transaction.</Alert>
+                  <Alert variant="warning">Your approve tx is confirmed! <strong>Note: Your {userAmountWithFees} ES has not been deposited in TimeAlly PET Contract yet.</strong> Please go to third step to do your Lump Sum Deposit transaction.</Alert>
                   <Button onClick={() => this.setState({ currentScreen: 3 })}>
                     Go to 3rd Step
                   </Button>
@@ -283,7 +283,7 @@ class LumSumDeposit extends Component {
                 {this.state.spinner ? 'Please wait...' : 'Approve TimeAllyPET'}
               </Button>}
             </> : <>
-              <Alert variant="primary">This dApp just noticed that you already have enough allowance. You can directly continue to the third step and do your Lum Sum Deposit transaction.</Alert>
+              <Alert variant="primary">This dApp just noticed that you already have enough allowance. You can directly continue to the third step and do your Lump Sum Deposit transaction.</Alert>
               <Button onClick={() => this.setState({ currentScreen: 3 })}>
                 Go to 3rd Step
               </Button>
@@ -300,7 +300,7 @@ class LumSumDeposit extends Component {
           <div className="custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
             {startOverAgainButton}
             <h3 style={{marginBottom: '15px'}}>{headingText} - Step 4 of 4</h3>
-            <p>Please click the following button to confirm your PET Lum Sum Deposit of <strong>{this.state.userAmount} ES</strong> (additional <strong>{fees} ES</strong> will be charged making it total of <strong>{userAmountWithFees} ES</strong>).</p>
+            <p>Please click the following button to confirm your PET Lump Sum Deposit of <strong>{this.state.userAmount} ES</strong> (additional <strong>{fees} ES</strong> will be charged making it total of <strong>{userAmountWithFees} ES</strong>).</p>
               {
                 this.state.errorMessage
                 ? <Alert variant="danger">
@@ -320,7 +320,7 @@ class LumSumDeposit extends Component {
                 aria-hidden="true"
                 style={{marginRight: '2px'}}
               /> : null}
-              {this.state.waiting ? 'Waiting for confirmation' : ( this.state.spinner ? 'Sending transaction' : 'Confirm Lum Sum Deposit')}
+              {this.state.waiting ? 'Waiting for confirmation' : ( this.state.spinner ? 'Sending transaction' : 'Confirm Lump Sum Deposit')}
             </Button>
             { this.state.txHash
               ? <p>You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a>.</p>
@@ -335,8 +335,8 @@ class LumSumDeposit extends Component {
         <>
           <Card>
             <div className="custom-width" style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
-              <h3 style={{marginBottom: '15px'}}>{this.state.monthId ? window.getOrdinalString(this.state.monthId) : ''} Lum Sum Deposit confirmed!</h3>
-              <Alert variant="success">Your lum sum deposit transaction is confirmed. You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></Alert>
+              <h3 style={{marginBottom: '15px'}}>{this.state.monthId ? window.getOrdinalString(this.state.monthId) : ''} Lump Sum Deposit confirmed!</h3>
+              <Alert variant="success">Your lump sum deposit transaction is confirmed. You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a></Alert>
               <Button onClick={() => this.props.history.push('/pet/view/'+this.props.match.params.id)}>Go to PET Deposits Page</Button>
             </div>
           </Card>
@@ -352,7 +352,7 @@ class LumSumDeposit extends Component {
           x.shift();
           return x;
         })()]}
-        title={`Make Lum Sum Deposit`}
+        title={`Make Lump Sum Deposit`}
       >
         {screen}
         <TransactionModal
@@ -381,8 +381,8 @@ class LumSumDeposit extends Component {
             show={this.state.showStakeTransactionModal}
             hideFunction={() => this.setState({ showStakeTransactionModal: false, spinner: false })}
             ethereum={{
-              transactor: this.props.store.petInstance.functions.makeLumSumDeposit,
-              estimator: this.props.store.petInstance.estimate.makeLumSumDeposit,
+              transactor: this.props.store.petInstance.functions.makeFrequencyModeDeposit,
+              estimator: this.props.store.petInstance.estimate.makeFrequencyModeDeposit,
               contract: this.props.store.petInstance,
               contractName: 'TimeAllyPET',
               arguments: [
@@ -393,8 +393,8 @@ class LumSumDeposit extends Component {
                 this.state.usePrepaidES
               ],
               ESAmount: userAmountWithFees,
-              headingName: `Lum Sum Deposit (${this.state.frequencyMode} Months)`,
-              functionName: 'makeLumSumDeposit',
+              headingName: `Lump Sum Deposit (${this.state.frequencyMode} Months)`,
+              functionName: 'makeFrequencyModeDeposit',
               // stakingPlan: this.state.plan,
               directGasScreen: true,
               continueFunction: txHash => this.setState({
