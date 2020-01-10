@@ -24,8 +24,8 @@ class PETId extends Component {
       this.props.store.walletInstance.address, this.props.match.params.id)).toNumber();
 
     const pet = await this.props.store.petInstance.functions.pets(
-      // this.props.store.walletInstance.address,
-      '0xC8e1F3B9a0CdFceF9fFd2343B943989A22517b26',
+      this.props.store.walletInstance.address,
+      // '0xC8e1F3B9a0CdFceF9fFd2343B943989A22517b26',
       this.props.match.params.id
     );
     const petPlan = await this.props.store.petInstance.functions.petPlans(pet.planId);
