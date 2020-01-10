@@ -156,7 +156,9 @@ class PETId extends Component {
                         :null}
                     </td>
                   <td>{petArray[0]
-                    ? <>{window.lessDecimals(petArray[0])} ES (for acheiving half of {window.lessDecimals(this.state.commitmentAmount)} ES commitment){petArray[1]
+                    ? <>
+                      <span style={{fontSize: '1rem'}}>{window.lessDecimals(petAmount)} ES</span><br />
+                    {window.lessDecimals(petArray[0])} ES (for acheiving half of {window.lessDecimals(this.state.commitmentAmount)} ES commitment){petArray[1].gt(0)
                       ? <> and {window.lessDecimals(petArray[1])} ES (for topup of {window.lessDecimals(depositAmount.sub(this.state.commitmentAmount))} ES)</>
                       :null}</>
                     : <></>}
