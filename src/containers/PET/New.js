@@ -141,75 +141,41 @@ class New extends Component {
                   <hr></hr>
                   <div style={{overflowY:'scroll', height:'500px'}}>
                   <p style={{fontSize:'12px'}}>
-                  The Eraswapfoundation OU is a group of developers and technology professionals who are passionate
-                    about the potential of decentralized applications. It does not own or lead the TimeAllyPET ("TimeAllyPET"), but
-                    rather supports and develops the free, open-source & decentralize applications.<br></br><br></br>
-                    The Eraswap Foundation is not a bank or financial institution and does not provide investment or
-                    financial advice or consulting services to users. Eraswap Foundation makes no warranties or
-                    representations, express or implied, on products offered through the platform. It accepts no liability for
-                    any damages or losses, however caused, in connection with the use of, or on the reliance of
-                    decentralized application, products or related services.<br></br><br></br>
-                    In no way are the owners of, or contributors to, the Website responsible for the actions, decisions, or
-                    other behavior taken or not taken by user in reliance upon the Website. Users not authorized and nor
-                    should they rely on the Website for any legal advice, business advice, or advice of any kind. User should
-                    act at their own risk in reliance on the contents of the Web interface.<br></br><br></br>
-                    TimeAllyPET is a DApp which refers to a suite of protocols using decentralized application. TimAlly is a
-                    decentralized application whish run on P2P network of computers. TimeAllyPET uses Ethereum Virtual
-                    Machine (“EVM”), which can execute code of arbitrary algorithmic complexity. TimeAllyPET uses distributed
-                    ledger technology which is neither stored in a centralized location nor managed by any single entity.<br></br><br></br>
-                    The New Released Token (NRT) distribution, Vesting, rewards are completely governed by TimeAllyPET
-                    DApp as per the predefined rules which is system driven & by the user itself. No organization, institute,
-                    human or personnel intervention is authorized to control or alter or modify the system driven software<br></br><br></br>
+                  Era Swap is a group of developers and technology professionals who are passionate about the potential of decentralized applications. It does not own or lead the “TimeAlly PET”, but rather supports and develops the free, open-source & decentralized applications.<br/><br/>
+The Era Swap is not a bank or financial institution and does not provide investment or financial advice or consulting services to users. Era Swap Foundation makes no warranties or representations, express or implied, on products offered through the platform. It accepts no liability for any damages or losses, however, caused in connection with the use of, or on the reliance of decentralized application, products or related services.<br/><br/>
+In no way, we are the owners of or contributors to the Website responsible for the actions, decisions, or other behaviour taken or not taken by the user in reliance upon this Website. Users should not authorize and nor should they rely on the Website for any legal advice, business advice, or advice of any kind. Users should act at their own risk in reliance on the contents of the Web interface.<br/><br/>
+TimeAlly PET is a DApp that refers to a suite of protocols using decentralized application. TimeAlly is a decentralized application that runs on a P2P network of computers. TimeAlly PET uses the Ethereum Virtual Machine (“EVM”), which can execute code of arbitrary algorithmic complexity. TimeAlly PET uses distributed ledger technology which is neither stored in a centralized location nor managed by any single entity. No organization, institute, human or personnel intervention is authorized to control or alter or modify the system driven software.<br/><br/>
 
-                    <span style={{fontWeight:'bold'}}>Important Guidelines for Users about TimeAllyPET DAPP</span><br></br><br></br>
-                    1. The user should carefully review the whitepaper and website content of TimeAllyPET DApp to
-                    familiarize with the Smart Contract logics & PET plans.<br></br><br></br>
-                    2. The User should understand, acknowledge that assuring in TimeAllyPET are subject to market risks
-                    and no PET on the valuation & its returns since it depends solely on the user itself &
-                    distribution is governed by DApp .<br></br><br></br>
-                    3. The Users should read carefully about the vesting plans and completely understands the risk
-                    factors associated with the vesting plans on the date of the transaction and thereafter. The user
-                    should consider their specific requirements before choosing any PET plan with TimeAllyPET
-                    DApp.<br></br><br></br>
-                    4. The Users are advised that the assuring in TimeAllyPET is based and dependent on the submission of
-                    information by user and the User shall be solely responsible for any submission of incorrect or
-                    non-submission/omission of necessary and accurate information. The User confirms and
-                    believes that transaction/s undertaken is/are appropriate for the User as per the objective of
-                    the User.<br></br><br></br>
-                    5. The User should confirm that the decision for vesting, claiming or undertaking any transaction
-                    on the TimeAllyPET DApp is taken with complete knowledge & ownership with user itself. <br></br><br></br>
-                    The User should recognize vesting in Time Ally involves certain risks and will take full cognizance
-                    of and understand all of the risk factors related before investing in Time Ally Contracts<br></br><br></br>
-                    7. The User should understand and accept complete responsibility & liability for any damages or
-                    losses, however caused, in connection with the vesting, use of, or on the reliance of DApp. <br></br><br></br>
-                    8. Do not participate in offerings where one or more people offer you a guaranteed return in
-                    exchange for an upfront deposit. The end result is that usually a lot of people loose a lot.
-                    Guarantee is given on something which you control or hold. TimeAllyPET Vault holds the token. Thus the guarantee can be given by Smart Contract as they
-                    hold all the tokens which will be released over next 50 years. It can guarantee only the release
-                    of Era Swap (ES) from NRT Pool. Because all tokens which are to be released in future are stored
-                    in vault and are distributed based on the work performed by the users among them<br></br><br></br>
-                    9. Era Swap doesn’t guarantees any Fiat or Crypto because Era Swap doesn’t control any Fiat or
-                    any other cryptocurrency. Era Swap token (ES) can only be used in the Eco System. ES can not be
-                    used outside Era swap Ecosystem.<br></br><br></br>
-                    10. The User can claim rewards based on the work performed in the ecosystem or vesting done in
-                    TimeAllyPET. As per preset rules, if the user has performed tasks, then they are eligible for rewards.
-                    In this case only, user can come and withdraw from TimeAllyPET DApp. The users will be solely
-                    responsible for claiming the rewards.<br></br><br></br>
-                    11. Phishing websites often go hand-in-hand with phishing emails. Phishing emails can link to a
-                    replica website designed to steal login credentials or prompt one to install malware. Do not
-                    install software or log in to a website unless you are 100% sure it isn't a fake one. Phishing
-                    websites may also appear as sponsored results on search engines or in app marketplaces used
-                    by mobile devices. Be wary that you aren't downloading a fake app or clicking a sponsored link
-                    to a fake website. It is completely on User’s risk and the user is only liable for any such activity.<br></br><br></br>
-                    No warranties<br></br><br></br>
-                    The TimeAllyPET DApp is opted by users on an "as is" basis without any warranties of any kind regarding the
-                    Website interface and/or any content, data, materials and/or services provided on the Website.<br></br><br></br>
-                    THE TIMEALLYPET DAPP SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-                    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-                    PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-                    HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-                    CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
-                    OR THE USE OR OTHER DEALINGS IN THE SOFTWARE<br></br><br></br>
+<b>TimeAlly PET Important Guidelines</b><br/>
+1. The user should carefully read the Website content, White Paper & PET demonstration of TimeAlly PET DApp to familiarize with the Smart Contract logics & PET plans.<br/>
+2. The User should understand and acknowledge that assuring in TimeAlly PET is subject to market risks and no PET on the valuation & its returns since it depends solely on the user itself & distribution is governed by DApp.<br/>
+3. Users should read carefully about the vesting plans and completely understand the risk factors associated with the vesting plans on the date of the transaction and thereafter. The user should consider their specific requirements before choosing any PET plan with TimeAlly PET DApp.<br/>
+4. Users are advised that the assuring in TimeAlly PET is based and dependent on the submission of information by the user and the user shall be solely responsible for any submission of incorrect or non-submission/omission of necessary and accurate information. The User confirms and believes that transaction/s undertaken is/are appropriate for the User as per the objective of the User.<br/>
+5. The User should confirm that the decision for vesting, claiming or undertaking any transaction on the TimeAlly PET DApp is taken with complete knowledge & ownership with the user itself.<br/>
+6. The User should recognize that vesting in Time Ally involves certain risks and should take full cognizance of and understand all of the risk factors related before investing in TimeAlly Contracts<br/>
+7. The User should understand and accept complete responsibility & liability for any damages or losses, however, caused in connection with the vesting, use of, or on the reliance of DApp.<br/>
+8. Do not participate in offerings where one or more people offer you a guaranteed return in exchange for an upfront deposit. The end result is that usually a lot of people lose a lot. Guarantee is given on something which you control or hold. TimeAlly PET Vault holds the token. Thus, the guarantee can be given by Smart Contract as they hold all the tokens which will be released over the next 50 years. It can guarantee only the release of Era Swap (ES) from NRT Pool. Because all tokens which are to be released in the future are stored in a vault and the distributions are based on the work performed by the users among them.<br/>
+9. Era Swap doesn’t guarantee any Fiat or Crypto because Era Swap doesn’t control any Fiat or any other Cryptocurrencies. Era Swap token (ES) can only be used in the Era Swap Eco System. ES cannot be used outside of the Ecosystem.<br/>
+10. The User can claim rewards based on the work performed in the ecosystem or vesting done in TimeAlly PET. As per pre-set rules, if the user has performed tasks, then they are eligible for rewards. In this case, only user can come and withdraw from TimeAlly PET DApp, the user will be solely responsible for claiming the rewards.<br/>
+11. Phishing websites often go hand-in-hand with phishing emails. Phishing emails can link to a replica website designed to steal login credentials or prompt one to install malware. Do not install software or log in to a website unless you are 100% sure it isn't a fake one. Phishing websites may also appear as sponsored results on search engines or in the app used in mobile devices. Be wary that you aren't downloading a fake app or clicking a sponsored link to a fake website. It is completely user’s risk and the user is only liable for any such activity.<br/><br/>
+<b>Personal Era Swap Teller (PET) Smart Contract Conditions</b><br/>
+PET Starts with Systematic Accumulation Plan (SAP) of minimum 500 ES commitment and above (Please refer to PET Annuity Chart ). PET Bounty will accumulate an equal count of ES as per Monthly Target Commitment achieved as per the Staker<br/><br/>
+PET Bonus will be released in 12 equal intervals of 5 months each over a period of 5 years as per the Monthly Target Commitment achievement in accumulation year. The PET Bonus pertaining to the 1st month shall be awarded on the 60th month of Annuity, the 2nd month shall be awarded on the 55th month of Annuity, correspondingly the 12th month shall be provided on the end of  5th month of Annuity.<br/><br/>
+<b>Monthly Target commitment</b><br/>
+Monthly target commitment refers to the total ES to be staked within 30 days 10 hours. One needs to select his Monthly target commitment from the annuity chart at the start of the plan.<br/><br/>
+<b>Monthly Target Achievement Benefits</b><br/>
+The staker has the flexibility to stake within 30 days 10 hours till the next window opens. The staker will have to meet the Monthly Target commitment to receive the PET Bonus as well as the PET Bounty<br/><br/>
+<b>Top-ups</b><br/>
+If the user stakes more than the monthly target commitment he/she shall receive 50% of the PET Bounty on the staking above his desired Monthly Target Commitment.<br/>
+Example: User has decided his limit of 5000 ES and he/she stakes 2000 ES + 2000 ES + 6000 ES in 3 instalments within 30 Days 10 hours. The total ES staked in PET is 10000 ES which shall imply that he/she has achieved his/her target for the month and he/she shall receive a PET Bounty of 5000 ES + 2500 ES.<br/><br/>
+<b>Passing PET Target Commitment %</b><br/>
+The Passing PET target commitment will be a minimum 50% of the Monthly target commitment of ES to qualify for PET Bonus.  If the monthly target commitment is not achieved and PET target commitment is achieved then the user shall be provided with the PET Smart Contract Contribution but shall not be awarded the PET Bonus and those respective tokens shall be burned for the corresponding month.<br/><br/>
+Example: If the monthly target of commitment is 10000 ES and the user stakes 5000ES that means he/she has achieved PET Target Commitment by staking a minimum of 50%. He /She shall avail on PET Smart Contract Contribution of 5000ES but he/she shall qualify for the PET Bonus.<br/><br/>
+<b>Default Monthly Commitment</b><br/>
+If the staker is unable to reach 50% of the monthly Target Commitment ES then he/she shall not qualify for PET Bounty nor shall he qualify for the PET bonus. The total staking ES count shall carry forward to the following month and a default shall be considered for that corresponding month.<br/><br/>
+Example: Staker defaults to achieve Monthly Target Commitment for 11 months then, he/she will not get 11 installments PET Bonus. He/She will receive a PET bonus corresponding to 1 month on the 12th Month of 5th Annuity Year.<br/><br/>
+<b>Single Lumsum Staking</b><br/>
+The staker has the ability to make the entire commitment of 12 months in a single transaction. He/She can avail of this option in the first month only if he/she has not staked in that particular PET previously.<br/><br/>
                     <a onClick={this.onCloseModal}  className="btn btn-primary btn-sm"><span className="text-white">Proceed</span></a>
                   </p>
                   </div>
