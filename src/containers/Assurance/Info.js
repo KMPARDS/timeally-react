@@ -32,7 +32,13 @@ class SIP extends Component {
       buttonName="New SIP"
       buttonOnClick={this.props.store.walletInstance && this.props.store.walletInstance.address
         ? () => this.props.history.push('/assurance/new')
-        : () => this.setState({showLoginModal:true})}
+        : () => (
+          window.returnLocationAfterLoadWallet={
+            name:'New SIP',
+            location:'/assurance/new',
+            sourceLocation:this.props.location.pathname
+          },this.setState({showLoginModal:true})
+        )}
     >
       <h2 style={{marginTop: '1rem'}}>TimeAlly Assurance SIP for Acheivers</h2>
       <p style={{marginBottom: '5rem'}}>TimeAlly Retirement Plans are a Smart Contract Protocol based plans, that are extraordinarily intended to meet your post-retirement needs, for example, medical and living costs. It is secured SIP (Systematic Investment Plan) since the benefits for the stakers are stored in safely in Smart Contract which is transparent & most secure system driven.</p>
@@ -88,7 +94,13 @@ class SIP extends Component {
         <Button onClick={() => this.props.history.push('/assurance/calculate')}>SIP Calculator</Button>
         <Button onClick={this.props.store.walletInstance && this.props.store.walletInstance.address
           ? () => this.props.history.push('/assurance/view')
-          : () => this.setState({showLoginModal:true})}>View My SIPs</Button>
+          : () => (
+            window.returnLocationAfterLoadWallet={
+              name:'View My SIPs',
+              location:'/assurance/view',
+              sourceLocation:this.props.location.pathname
+            },this.setState({showLoginModal:true})
+          )}>View My SIPs</Button>
         <p style={{marginTop:'1rem'}}><strong>SIP Smart Contract Link:</strong> <a href="https://etherscan.io/address/0xbad9af4db5401b7d5e8177a18c1d69c35fc03fd3#code" target="_blank" style={{color: '#000', textDecoration: 'underline'}}>EtherScan</a></p>
       </div>
       <Modal

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 
 import { network } from '../../env';
 import axios from 'axios';
@@ -51,6 +51,10 @@ class UsingMetamask extends Component {
       <Card>
         <h3>Using Metamask to login</h3>
         <p>{this.state.displayText}</p>
+        {this.state.displayText.slice(0,9) === 'Connected' && window.returnLocationAfterLoadWallet ? <Button onClick={() => {
+          this.props.history.push(window.returnLocationAfterLoadWallet&&window.returnLocationAfterLoadWallet.location);
+          window.returnLocationAfterLoadWallet = null;
+        }}>Click here to proceed to: {window.returnLocationAfterLoadWallet && window.returnLocationAfterLoadWallet.name}</Button> : null}
       </Card>
     );
   }

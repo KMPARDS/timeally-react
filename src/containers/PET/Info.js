@@ -46,7 +46,13 @@ class PET extends Component {
       buttonName="New PET"
       buttonOnClick={this.props.store.walletInstance && this.props.store.walletInstance.address
         ? () => this.props.history.push('/pet/new')
-        : () => this.setState({showLoginModal:true})}
+        : () => (
+          window.returnLocationAfterLoadWallet={
+            name:'New PET',
+            location:'/pet/new',
+            sourceLocation:this.props.location.pathname
+          },this.setState({showLoginModal:true})
+        )}
     >
       <div className="container pinside30 position-top" style={{'background-color': '#EFF3F8 !important', 'margin-bottom': '30px', 'border-radius': '20px'}}>
         <h2 style={{marginTop: '1rem'}}>TimeAlly PET for Acheivers</h2>
@@ -122,10 +128,24 @@ class PET extends Component {
         <p className="text-white" style={{'text-shadow': '0 0 3px #000a'}}><strong>ES in Funds Bucket Smart Contract:</strong> {
           this.state.fundsDeposit ? window.lessDecimals(this.state.fundsDeposit) + ' ES' : 'Loading...'}</p>
         <p className="text-white" style={{'text-shadow': '0 0 3px #000a'}}><strong>Benefits Already Alloted:</strong> {this.state.pendingBenefits ? window.lessDecimals(this.state.pendingBenefits) + ' ES' : 'Loading...'}</p>
-        <Button style={{margin: '10px auto'}} onClick={() => this.props.history.push('/pet/prepaid-es')}>PET Prepaid ES</Button>
+        <Button style={{margin: '10px auto'}} onClick={this.props.store.walletInstance && this.props.store.walletInstance.address
+          ? () => this.props.history.push('/pet/prepaid-es')
+          : () => (
+            window.returnLocationAfterLoadWallet={
+              name:'PET Prepaid ES',
+              location:'/pet/prepaid-es',
+              sourceLocation:this.props.location.pathname
+            },this.setState({showLoginModal:true})
+          )}>PET Prepaid ES</Button>
         <Button onClick={this.props.store.walletInstance && this.props.store.walletInstance.address
           ? () => this.props.history.push('/pet/view')
-          : () => this.setState({showLoginModal:true})}>View My PETs</Button>
+          : () => (
+            window.returnLocationAfterLoadWallet={
+              name:'View My PETs',
+              location:'/pet/view',
+              sourceLocation:this.props.location.pathname
+            },this.setState({showLoginModal:true})
+          )}>View My PETs</Button>
         <p className="text-white" style={{marginTop:'1rem', 'text-shadow': '0 0 3px #000a'}}><a className="text-white" href="/excel/PET_Calculator.xlsx" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Illustration Excel</a> | <a className="text-white" href="/excel/PET_Presenter.pptx" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Presenter</a> | <a className="text-white" href="https://etherscan.io/address/0xbad9af4db5401b7d5e8177a18c1d69c35fc03fd3#code" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Smart Contract</a></p>
       </div>
       <Modal

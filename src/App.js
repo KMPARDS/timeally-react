@@ -96,7 +96,8 @@ function App(props) {
       if(message.substring(0,2) == "0x"){
         // wallet = new ethers.Wallet(message);
         props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: new ethers.Wallet(message, provider) });
-        window.zHistory && window.zHistory.push('/dashboard');
+        window.zHistory && window.zHistory.push((window.returnLocationAfterLoadWallet && window.returnLocationAfterLoadWallet.sourceLocation) || '/dashboard');
+        window.returnLocationAfterLoadWallet = null;
       }
     }
   }
