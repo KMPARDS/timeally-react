@@ -805,7 +805,7 @@ Page header
 .background-bones { background: url(/images/background-bones.png);}
 .custom-background { background-color: #5DA7C0; border-top-left-radius: 20px; border-top-right-radius: 20px; border: none;}
 .position-top { position: relative; top: -30px; background-color: #EFF3F8;}
-.robo-img { width: 130px; height: 200px; position: absolute; left: 20%;}
+.robo-img { width: 110px; height: 170px; position: absolute; left: 18%;}
 .remove-boxshadow { box-shadow: none;}
 .form-control.width-100 { width: 325px;}
 .custom-width { width: 400px;}
@@ -1207,6 +1207,16 @@ Landing Page Template
 .feature-bg .feature-icon { background-color: #bacadd; color: #3c4d6b; width: 120px; height: 120px; border-radius: 120px; font-size: 40px; text-align: center; line-height: 120px; margin: 0 auto 40px auto; }
 .feature-bg .feature-content { }
 .feature-list-bar { background: #e3edf9; padding-top: 16px; padding-bottom: 16px; color: #3c4d6b; }
+
+/*-----------------------------------------
+PET
+------------------------------------------*/
+.pet-links {
+  background-color: #0009;
+  padding: .5rem;
+  margin: .1rem;
+}
+
 @media screen and (max-width:1366px) {
   .slider-captions { position: absolute; bottom: 70px; width: 100%; }
   .slider-title { color: #fff; font-size: 32px; font-weight: 700; line-height: 42px; }

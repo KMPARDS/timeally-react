@@ -125,8 +125,8 @@ class PET extends Component {
       </div>
       <div className="outline pinside30 custom-background">
         <img src="./images/pet-robo.png" className="robo-img" />
-        <p className="text-white" style={{'text-shadow': '0 0 3px #000a'}}><strong>ES in Funds Bucket Smart Contract:</strong> {
-          this.state.fundsDeposit ? window.lessDecimals(this.state.fundsDeposit) + ' ES' : 'Loading...'}</p>
+        {/*<p className="text-white" style={{'text-shadow': '0 0 3px #000a'}}><strong>ES in Funds Bucket Smart Contract:</strong> {
+          this.state.fundsDeposit ? window.lessDecimals(this.state.fundsDeposit) + ' ES' : 'Loading...'}</p>*/}
         <p className="text-white" style={{'text-shadow': '0 0 3px #000a'}}><strong>Benefits Already Alloted:</strong> {this.state.pendingBenefits ? window.lessDecimals(this.state.pendingBenefits) + ' ES' : 'Loading...'}</p>
         <Button style={{margin: '10px auto'}} onClick={this.props.store.walletInstance && this.props.store.walletInstance.address
           ? () => this.props.history.push('/pet/prepaid-es')
@@ -146,7 +146,7 @@ class PET extends Component {
               sourceLocation:this.props.location.pathname
             },this.setState({showLoginModal:true})
           )}>View My PETs</Button>
-        <p className="text-white" style={{marginTop:'1rem', 'text-shadow': '0 0 3px #000a'}}><a className="text-white" href="/excel/PET_Calculator.xlsx" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Illustration Excel</a> | <a className="text-white" href="/excel/PET_Presenter.pptx" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Presenter</a> | <a className="text-white" href="https://etherscan.io/address/0xbad9af4db5401b7d5e8177a18c1d69c35fc03fd3#code" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Smart Contract</a></p>
+        <p className="text-white" style={{marginTop:'1rem', 'text-shadow': '0 0 3px #000a'}}><a className="text-white pet-links" href="/excel/PET_Calculator.xlsx" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Illustration Excel</a> | <a className="text-white pet-links" href="/excel/PET_Presenter.pptx" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Presenter</a> | <a className="text-white pet-links" href="https://etherscan.io/address/0xbad9af4db5401b7d5e8177a18c1d69c35fc03fd3#code" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Smart Contract</a></p>
       </div>
       <Modal
         show={this.state.showLoginModal}
