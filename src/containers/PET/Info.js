@@ -57,7 +57,7 @@ class PET extends Component {
           <div className="bg-white pinside306090 number-block outline mb60 bg-boxshadow">
             <div className="circle circle-pet"><img src="./images/Companion.png"/></div>
             <h3 className="number-title">Companion</h3>
-            <p>50% Additional Support for your Monthly Accumulation Goals Guaranteed by PET Smart Contract.</p>
+            <p>100% Additional bounty for your next 12 month ES Accumulation Guaranteed by PET Smart Contract.</p>
           </div>
         </div>
         <div className="col-xl-4 col-md-12">
@@ -104,16 +104,16 @@ class PET extends Component {
         </div>
         <div className="col-xl-4 col-md-12">
           <div className="bg-white pinside306090 number-block outline mb60 bg-boxshadow">
-            <div className="circle circle-pet"><img src="./images/NominateLegacy.png"/></div>
-            <h3 className="number-title">Power of Compounding</h3>
-            <p>TimeAlly Smart Contract offers only a 1% Rate of Interest to its users for duration of 60 days.</p>
+            <div className="circle circle-pet"><img src="./images/Guarantee.png"/></div>
+            <h3 className="number-title">Guarantee</h3>
+            <p>Complete Transparency of Rewards Allocated in Advance through Smart Contracts.</p>
           </div>
         </div>
         <div className="col-xl-4 col-md-12">
           <div className="bg-white pinside306090 number-block outline mb60 bg-boxshadow">
             <div className="circle circle-pet"><img src="./images/Appointees.png"/></div>
             <h3 className="number-title">Appointees</h3>
-            <p>The trustless consensus after inactivity using multi-signing by assigned Appointees in PET.</p>
+            <p>Trustless consensus after inactivity using multi-signing by assigned Appointees in PET for monthly SAP.</p>
           </div>
         </div>
       </div>
