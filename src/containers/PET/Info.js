@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Layout from '../Layout/LayoutPET';
+import axios from 'axios';
 
 const ethers = require('ethers');
 
@@ -9,11 +10,21 @@ class PET extends Component {
   state = {
     fundsDeposit: null,
     pendingBenefits: null,
-    showLoginModal: false
+    showLoginModal: false,
+    eraSwapPrice: null,
+    fundsAdded: null
   };
 
   componentDidMount = async() => {
     const fundsBucketAddress = await this.props.store.petInstance.functions.fundsBucket();
+
+    (async() => {
+      const response = await axios.get('https://eraswap.technology/probit/getESPrice');
+
+      if(!response.data.data.success) return console.log('Error in Probit API:', response);
+
+      this.setState({ eraSwapPrice: +response.data.data.probitResponse.data[0].last })
+    })();
 
     (async() => {
       const fundsDeposit = await this.props.store.esInstance.functions.balanceOf(fundsBucketAddress);
@@ -21,8 +32,6 @@ class PET extends Component {
     })();
 
     (async() => {
-      // const pendingBenefits = await this.props.store.esInstance.functions.balanceOf(this.props.store.petInstance.address);
-
       const sumBN = (await this.props.store.providerInstance.getLogs({
         address: this.props.store.esInstance.address,
         fromBlock: 0,
@@ -35,6 +44,21 @@ class PET extends Component {
       })).map(log => ethers.utils.bigNumberify(log.data) ).reduce( (sumBN, valueBN) => sumBN.add(valueBN), ethers.constants.Zero);
 
       this.setState({ pendingBenefits: sumBN });
+    })();
+
+    (async() => {
+      const sumBN = (await this.props.store.providerInstance.getLogs({
+        address: fundsBucketAddress,
+        fromBlock: 0,
+        toBlock: 'latest',
+        topics:[ethers.utils.id('FundsDeposited(address,uint256)')]
+      })).map(log => {
+        const bn = ethers.utils.bigNumberify(window.sliceDataTo32Bytes(log.data,1));
+        console.log(ethers.utils.formatEther(bn));
+        return bn;
+      } ).reduce( (sumBN, valueBN) => sumBN.add(valueBN), ethers.constants.Zero);
+
+      this.setState({ fundsAdded: sumBN });
     })();
   }
 
@@ -56,7 +80,7 @@ class PET extends Component {
     >
       <div className="container pinside30 position-top" style={{'background-color': '#EFF3F8 !important', 'margin-bottom': '30px', 'border-radius': '20px'}}>
         <h2 style={{marginTop: '1rem'}}>TimeAlly PET for Acheivers</h2>
-        <p style={{marginBottom: '1rem'}}>TimeAlly Retirement Plans are a Smart Contract Protocol based plans, that are extraordinarily intended to meet your post-retirement needs, for example, medical and living costs. It is secured SAP (Systematic Accumulation Plan) since the benefits for the stakers are stored in safely in Smart Contract which is transparent & most secure system driven.</p>
+        <p style={{marginBottom: '1rem'}}>Time Ally PET (Personal Era Swap Teller) Plan is Systematic Accumulation Plan which is designed to support with additonal PET bounty by 50% of the Monthly commitment selected by staker and reward with annuity and PET bonus consistently for 5 years to provide maximum gains to meet the future milestone.</p>
       </div>
       <div className="row">
         <div className="col-xl-4 col-md-12">
@@ -124,10 +148,13 @@ class PET extends Component {
         </div>
       </div>
       <div className="outline pinside30 custom-background">
+        <p className="text-white" style={{'text-shadow': '0 0 3px #000a'}}><strong>Total bounty:</strong> 20000000 ES{this.state.eraSwapPrice ? ` (~${20000000 * this.state.eraSwapPrice} USDT)` : null}{this.state.fundsAdded ? <><br/>
+          Currently {window.lessDecimals(this.state.fundsAdded)} ES is available (out of 20M), and next will be released when current bucket is consumed</> : null}
+        </p>
+        <p className="text-white" style={{'text-shadow': '0 0 3px #000a'}}><strong>Current available bounty (out of 20M ES):</strong> {
+          this.state.fundsDeposit ? window.lessDecimals(this.state.fundsDeposit) + ' ES' : 'Loading...'}{this.state.eraSwapPrice && this.state.fundsDeposit ? ` (~${(this.state.fundsDeposit?(+ethers.utils.formatEther(this.state.fundsDeposit)):0) * this.state.eraSwapPrice} USDT)` : null}</p>
         <img src="./images/pet-robo.png" className="robo-img" />
-        {/*<p className="text-white" style={{'text-shadow': '0 0 3px #000a'}}><strong>ES in Funds Bucket Smart Contract:</strong> {
-          this.state.fundsDeposit ? window.lessDecimals(this.state.fundsDeposit) + ' ES' : 'Loading...'}</p>*/}
-        <p className="text-white" style={{'text-shadow': '0 0 3px #000a'}}><strong>Benefits Already Alloted:</strong> {this.state.pendingBenefits ? window.lessDecimals(this.state.pendingBenefits) + ' ES' : 'Loading...'}</p>
+        <p className="text-white" style={{'text-shadow': '0 0 3px #000a'}}><strong>Till now Consumed (out of 20M ES):</strong> {this.state.pendingBenefits ? window.lessDecimals(this.state.pendingBenefits) + ' ES' : 'Loading...'}{this.state.eraSwapPrice && this.state.pendingBenefits ? ` (~${(this.state.pendingBenefits?(+ethers.utils.formatEther(this.state.pendingBenefits)):0) * this.state.eraSwapPrice} USDT)` : null}</p>
         <Button style={{margin: '10px auto'}} onClick={this.props.store.walletInstance && this.props.store.walletInstance.address
           ? () => this.props.history.push('/pet/prepaid-es')
           : () => (
