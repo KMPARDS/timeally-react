@@ -79,7 +79,7 @@ class PET extends Component {
         )}
     >
       <div className="container pinside30 position-top" style={{'background-color': '#EFF3F8 !important', 'margin-bottom': '30px', 'border-radius': '20px'}}>
-        <h2 style={{marginTop: '1rem'}}>TimeAlly PET for Acheivers</h2>
+        <h2 style={{marginTop: '1rem'}}>TimeAlly PET</h2>
         <p style={{marginBottom: '1rem'}}>Time Ally PET (Personal Era Swap Teller) Plan is Systematic Accumulation Plan which is designed to support with additonal PET bounty by 50% of the Monthly commitment selected by staker and reward with annuity and PET bonus consistently for 5 years to provide maximum gains to meet the future milestone.</p>
       </div>
       <div className="row">
@@ -108,7 +108,7 @@ class PET extends Component {
           <div className="bg-white pinside306090 number-block outline mb60 bg-boxshadow">
           <div className="circle circle-pet"><img src="./images/bonuss.png"/></div>
             <h3 className="number-title">Pet Bonus</h3>
-            <p>End of every five months, stakers are eligible for Power Booster bonus through Smart Contract.</p>
+            <p>End of every five months, stakers are eligible for PET bonus through Smart Contract.</p>
           </div>
         </div>
         <div className="col-xl-4 col-md-12">
@@ -173,7 +173,12 @@ class PET extends Component {
               sourceLocation:this.props.location.pathname
             },this.setState({showLoginModal:true})
           )}>View My PETs</Button>
-        <p className="text-white" style={{marginTop:'1rem', 'text-shadow': '0 0 3px #000a'}}><a className="text-white pet-links" href="/excel/PET_Calculator.xlsx" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Illustration Excel</a> | <a className="text-white pet-links" href="/pdf/TimeAllyPET.pdf" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Presenter</a> | <a className="text-white pet-links" href="https://etherscan.io/address/0x69e7960f6A1d6332a4be7e22916F627a3d95b1bc#code" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Smart Contract</a></p>
+        <p className="text-white" style={{marginTop:'1rem', 'text-shadow': '0 0 3px #000a'}}>
+          <a className="text-white pet-links" href="/excel/PET_Calculator.xlsx" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Illustration Excel</a>
+          &nbsp;| <a className="text-white pet-links" href="/pdf/TimeAllyPET.pdf" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Presenter</a>
+          &nbsp;| <a className="text-white pet-links" href="/pdf/PETFAQs.pdf" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET FAQs</a>
+          &nbsp;| <a className="text-white pet-links" href="https://etherscan.io/address/0x69e7960f6A1d6332a4be7e22916F627a3d95b1bc#code" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Smart Contract</a>
+        </p>
       </div>
       <Modal
         show={this.state.showLoginModal}
