@@ -296,7 +296,7 @@ class New extends Component {
             <h3 style={{marginBottom: '15px'}}>New PET Contract - Step 2 of 2</h3>
             <p>You are initiating a PET of <b>{fullTarget} ES</b> with a self commitment of <b>{halfTarget} ES</b> and PET contribution of <b>{halfTarget} ES</b> with plan id <b>{this.state.plan}</b> where in you are entitled to receive <b>{annuityPercentage}</b> as annuity of ES accumulated for the corresponding month for next 5 years and <b>12 booster bonus</b>. This means when you deposit at least <b>{halfTarget} ES</b> within 30 days and 10 hours in your PET, your PET contributes another <b>{halfTarget} ES</b> for you and making your deposit <b>{fullTarget} ES</b> for that month. You can also checkout <b>fee based LumpSum deposit options of Quarterly, Half Yearly and Annual Deposit Frequency Mode</b>.</p>
 
-            <Alert variant="warning"><b>Attention</b>: <u>This is only a PET initiation transaction and your ES are not transfered to your PET in this transaction</u>. After your <b>New PET</b> transaction is done (by below button), you will be able to see it in your <b>View PETs</b> page and there you can make deposit to it within 30 days and 10 hours for it to be counted in first month.</Alert>
+            <Alert variant="warning"><b>Attention</b>: <u>This is only a PET Plan Selection transaction and your ES are not transfered to your PET in this transaction</u>. After your <b>New PET</b> transaction is done (by below button), you will be able to see it in your <b>View PETs</b> page and there you can click on <b>make deposit</b> button for depositing ES within 30 days and 10 hours for it to be counted in first month.</Alert>
 
             <p>Please click the following button to confirm your PET.</p>
               {
@@ -334,8 +334,8 @@ class New extends Component {
           <Card style={{marginBottom:'0'}}>
             <div className="custom-width" style={{borderRadius: '.25rem', padding:'20px 40px', margin: '15px auto'}}>
               <h3 style={{marginBottom: '15px'}}>PET confirmed!</h3>
-              <Alert variant="success">Your PET is initiated. You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a>. You are yet to make a deposit and you can do this from your View PET page.</Alert>
-              <Button onClick={() => this.props.history.push('/pet/view')}>Go to View PETs</Button>
+              <Alert variant="success">Your PET is initiated. You can view your transaction on <a style={{color: 'black'}} href={`https://${network === 'homestead' ? '' : 'kovan.'}etherscan.io/tx/${this.state.txHash}`} target="_blank" rel="noopener noreferrer">EtherScan</a>. You are yet to make ES deposit to your PET and you can do this by going to View PETs page and opening your PET to make ES deposit.</Alert>
+              <Button onClick={() => this.props.history.push('/pet/view')}>Go to View PETs page</Button>
             </div>
           </Card>
 

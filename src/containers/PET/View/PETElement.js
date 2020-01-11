@@ -55,7 +55,7 @@ class PETElement extends Component {
         <td>{this.state.commitmentAmount}</td>
         <td>{this.state.nextDepositTimestamp ? window.getTimeRemaining(this.state.nextDepositTimestamp - this.state.currentTime) : 'Calculating...'}</td>
         <td>{this.state.nextWithdrawTimestamp ? window.getTimeRemaining(this.state.nextWithdrawTimestamp - this.state.currentTime) : 'Calculating...'}</td>
-        <td><Button onClick={this.props.onClick}>View PET</Button></td>
+        <td><Button onClick={this.props.onClick}>Open PET</Button></td>
       </tr>
     );
   }
