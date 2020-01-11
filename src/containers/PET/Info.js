@@ -148,8 +148,8 @@ class PET extends Component {
         </div>
       </div>
       <div className="outline pinside30 custom-background">
-        <p className="text-white" style={{'text-shadow': '0 0 3px #000a'}}><strong>Total bounty:</strong> 20000000 ES{this.state.eraSwapPrice ? ` (~${20000000 * this.state.eraSwapPrice} USDT)` : null}{this.state.fundsAdded ? <><br/>
-          Currently {window.lessDecimals(this.state.fundsAdded)} ES is available (out of 20M), and next will be released when current bucket is consumed</> : null}
+        <p className="text-white" style={{'text-shadow': '0 0 3px #000a'}}><strong>Total bounty allocated budget for TimeAlly PET:</strong> 20000000 ES{this.state.eraSwapPrice ? ` (~${20000000 * this.state.eraSwapPrice} USDT)` : null}{this.state.fundsAdded ? <><br/>
+          Currently {window.lessDecimals(this.state.fundsAdded)} ES available (out of 20M), and next will be released when current bucket is consumed</> : null}
         </p>
         <p className="text-white" style={{'text-shadow': '0 0 3px #000a'}}><strong>Current available bounty (out of 20M ES):</strong> {
           this.state.fundsDeposit ? window.lessDecimals(this.state.fundsDeposit) + ' ES' : 'Loading...'}{this.state.eraSwapPrice && this.state.fundsDeposit ? ` (~${(this.state.fundsDeposit?(+ethers.utils.formatEther(this.state.fundsDeposit)):0) * this.state.eraSwapPrice} USDT)` : null}</p>
