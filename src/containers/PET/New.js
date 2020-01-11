@@ -12,7 +12,7 @@ class New extends Component {
     currentScreen: 0,
     userAmount: undefined,
     step1DisplayButton: false,
-    plan: undefined,
+    plan: null,
     spinner: false,
     waiting: false,
     approveTxHash: '',
@@ -55,7 +55,20 @@ class New extends Component {
     try {
       const amountBN = ethers.utils.parseEther(event.target.value);
       // this.checkAmount();
-      this.setState({ userAmount: ethers.utils.formatEther(amountBN), errorDisplay: false, errorDisplayText: '' });
+      let plan = null;
+      if(amountBN.gte(ethers.utils.parseEther('500')) && amountBN.lt(ethers.utils.parseEther('1000'))) {
+        plan = 0;
+      } else if(amountBN.gte(ethers.utils.parseEther('1000')) && amountBN.lt(ethers.utils.parseEther('2500'))) {
+        plan = 1;
+      } else if(amountBN.gte(ethers.utils.parseEther('2500')) && amountBN.lt(ethers.utils.parseEther('5000'))) {
+        plan = 2;
+      } else if(amountBN.gte(ethers.utils.parseEther('5000')) && amountBN.lt(ethers.utils.parseEther('10000'))) {
+        plan = 3;
+      } else if(amountBN.gte(ethers.utils.parseEther('10000'))) {
+        plan = 4;
+      }
+      // enter amount and automatakli selekt plan
+      this.setState({ userAmount: ethers.utils.formatEther(amountBN), errorDisplay: false, errorDisplayText: '', plan });
     } catch (error) {
       console.log(error.message);
       this.setState({ userAmount: '', errorDisplay: true, errorDisplayText: error.message })
@@ -100,6 +113,24 @@ class New extends Component {
     );
 
     if(this.state.currentScreen === 0) {
+      let amountPlaceholder = 'Enter Self ES Monthly Deposit Target';
+      switch(this.state.plan) {
+        case 0:
+          amountPlaceholder = 'Enter Self Target (500 to 999 ES)';
+          break;
+        case 1:
+          amountPlaceholder = 'Enter Self Target (1000 to 2499 ES)';
+          break;
+        case 2:
+          amountPlaceholder = 'Enter Self Target (2500 to 4999 ES)';
+          break;
+        case 3:
+          amountPlaceholder = 'Enter Self Target (5000 to 9999 ES)';
+          break;
+        case 4:
+          amountPlaceholder = 'Enter Self Target (10000 and above ES)';
+          break;
+      }
       screen = (
           <>
            {/* <button className="btn" onClick={this.onOpenModal}>Open modal</button> */}
@@ -184,7 +215,7 @@ class New extends Component {
                   </div>
                 </div>
               </Modal>
-        <Card style={{marginBottom:'0'}}> 
+        <Card style={{marginBottom:'0'}}>
 
         <div style={{border: '1px solid rgba(0,0,0,.125)', borderRadius: '.25rem', padding:'20px 40px', margin: '15px'}}>
 
@@ -193,8 +224,19 @@ class New extends Component {
 
             <Form.Group controlId="PETAmount">
               <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Control
+                  className="stakingInput"
+                  onChange={this.onAmountUpdate}
+                  // value={this.state.userAmount}
+                  type="text"
+                  autoComplete="off"
+                  placeholder={amountPlaceholder}
+                  style={{width: '325px'}}
+                  isInvalid={this.state.errorDisplay}
+                />
+
                 <Form.Control as="select" onChange={this.onPlanChange} className="width-100">
-                  <option disabled selected={this.state.plan === undefined}>Select PET Plan</option>
+                  <option disabled selected={this.state.plan === null}>Select PET Plan</option>
                   <option value="0" selected={this.state.plan === 0}>ID: 0) Self Contribution 500+ ES / Month</option>
                   <option value="1" selected={this.state.plan === 1}>ID: 1) Self Contribution 1000+ ES / Month</option>
                   <option value="2" selected={this.state.plan === 2}>ID: 2) Self Contribution 2500+ ES / Month</option>
@@ -203,22 +245,11 @@ class New extends Component {
                 </Form.Control>
               </Form.Group>
 
-              <Form.Control
-                className="stakingInput"
-                onChange={this.onAmountUpdate}
-                // value={this.state.userAmount}
-                type="text"
-                autoComplete="off"
-                placeholder="Enter Self ES Monthly Deposit Target"
-                style={{width: '325px'}}
-                isInvalid={this.state.errorDisplay}
-              />
-
               {this.state.errorDisplayText ? <p style={{color: this.state.errorDisplay ? 'red' : 'green', textAlign: 'left'}}>{this.state.errorDisplayText}</p> : null}
             </Form.Group>
 
 
-            <Button variant="primary" id="firstSubmit" type="submit" disabled={!this.state.userAmount || this.state.plan === undefined || this.state.spinner}>
+            <Button variant="primary" id="firstSubmit" type="submit" disabled={!this.state.userAmount || this.state.plan === null || this.state.spinner}>
               {this.state.spinner ?
               <Spinner
                 as="span"
@@ -265,7 +296,7 @@ class New extends Component {
             <h3 style={{marginBottom: '15px'}}>New PET Contract - Step 2 of 2</h3>
             <p>You are initiating a PET of <b>{fullTarget} ES</b> with a self commitment of <b>{halfTarget} ES</b> and PET contribution of <b>{halfTarget} ES</b> with plan id <b>{this.state.plan}</b> where in you are entitled to receive <b>{annuityPercentage}</b> as annuity of ES accumulated for the corresponding month for next 5 years and <b>12 booster bonus</b>. This means when you deposit at least <b>{halfTarget} ES</b> within 30 days and 10 hours in your PET, your PET contributes another <b>{halfTarget} ES</b> for you and making your deposit <b>{fullTarget} ES</b> for that month. You can also checkout <b>fee based LumpSum deposit options of Quarterly, Half Yearly and Annual Deposit Frequency Mode</b>.</p>
 
-            <p>This is only a PET initiation transaction. While initiating a new PET, you do not need to transfer any ES. After your <u>New PET</u> transaction is done (by below button), you will be able to see it in your <u>View PETs</u> page and there you can make deposit to it within 30 days and 10 hours for it to be counted in first month.</p>
+            <Alert variant="warning"><b>Attention</b>: <u>This is only a PET initiation transaction and your ES are not transfered to your PET in this transaction</u>. After your <b>New PET</b> transaction is done (by below button), you will be able to see it in your <b>View PETs</b> page and there you can make deposit to it within 30 days and 10 hours for it to be counted in first month.</Alert>
 
             <p>Please click the following button to confirm your PET.</p>
               {
