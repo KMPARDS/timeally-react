@@ -76,7 +76,7 @@ class FooterComponent extends Component {
             </div>*/}
             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style={{ margin: '0 auto' }}>
               <p style={{color:'#fff'}}>
-                <a rel="noopener noreferrer" href="https://etherscan.io/address/0x5630ee5f247bd6b61991fbb2f117bbeb45990876#code" target="_blank"  >TA Smart Contract Address: 0x5630ee5f247Bd6B61991FBB2f117bBEb45990876</a> | <a style={{cursor:'pointer'}} onClick={this.props.history.push.bind(null, '/view-all-world-staking')}>View All World Staking</a><br/>{/*&nbsp; | &nbsp;*/}
+                <a rel="noopener noreferrer" href="https://etherscan.io/address/0x5630ee5f247bd6b61991fbb2f117bbeb45990876#code" target="_blank"  >TA Smart Contract Address: 0x5630ee5f247Bd6B61991FBB2f117bBEb45990876</a> | <a style={{cursor:'pointer'}} onClick={() => this.props.history.push('/view-all-world-staking')}>View All World Staking</a><br/>{/*&nbsp; | &nbsp;*/}
                 <a href="/pdf/TimeAlly_Contract_Security_Software_Testing_Report.pdf" target="_blank"  >Contract, Security, and Software Testing Reports</a> &nbsp; | &nbsp;
                 <a href="/pdf/TimeAlly.pdf" target="_blank" >User Guide</a> &nbsp; | &nbsp;
                 <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank"  >Era Swap White Paper</a> &nbsp; | &nbsp;
