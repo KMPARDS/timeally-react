@@ -173,12 +173,13 @@ class PET extends Component {
               sourceLocation:this.props.location.pathname
             },this.setState({showLoginModal:true})
           )}>View My PETs</Button>
-        <p className="text-white" style={{marginTop:'1rem', 'text-shadow': '0 0 3px #000a'}}>
-          <a className="text-white pet-links" href="/excel/PET_Calculator.xlsx" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Illustration Excel</a>
-          &nbsp;| <a className="text-white pet-links" href="/pdf/TimeAllyPET.pdf" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Presenter</a>
-          &nbsp;| <a className="text-white pet-links" href="/pdf/PETFAQs.pdf" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET FAQs</a>
-          &nbsp;| <a className="text-white pet-links" href="https://etherscan.io/address/0x69e7960f6A1d6332a4be7e22916F627a3d95b1bc#code" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Smart Contract</a>
-        </p>
+          <br />
+          <div style={{display:'block', maxWidth: '500px', margin:'0 auto'}}>
+            <Button className="text-white pet-links" href="/excel/PET_Calculator.xlsx" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Illustration Excel</Button>
+            <Button className="text-white pet-links" href="/pdf/TimeAllyPET.pdf" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Presenter</Button>
+            <Button className="text-white pet-links" href="/pdf/PETFAQs.pdf" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET FAQs</Button>
+            <Button className="text-white pet-links" href="https://etherscan.io/address/0x69e7960f6A1d6332a4be7e22916F627a3d95b1bc#code" target="_blank" style={{color: '#000', textDecoration: 'underline', 'text-shadow': '0 0 3px #000a'}}>PET Smart Contract</Button>
+          </div>
       </div>
       <Modal
         show={this.state.showLoginModal}

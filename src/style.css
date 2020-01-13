@@ -1215,6 +1215,7 @@ PET
   background-color: #0009;
   padding: .5rem;
   margin: .1rem;
+  display: inline-block;
 }
 
 @media screen and (max-width:1366px) {
