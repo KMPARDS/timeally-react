@@ -241,9 +241,10 @@ class SendPrepaidESDifferent extends Component {
         breadcrumb={['Home', 'PET', 'New']}
         title='Send Prepaid ES Different'
         subtitle='Send multiple Prepaid ES in one transaction!'
-        buttonName='Topup Prepaid ES'
-        buttonOnClick={window.open.bind(null, '/excel/PET_Calculator.xlsx')}
+        buttonName='Add to Prepaid ES'
+        buttonOnClick={() => this.props.history.push('/pet/prepaid-es/add-to-prepaid')}
       >
+        <p style={{marginTop: '.5rem'}}>Your PrepaidES balance: {this.state.prepaidESBalance ? ethers.utils.formatEther(this.state.prepaidESBalance) : 'Loading...'} ES</p>
         {screen}
         <TransactionModal
             show={this.state.showSendPrepaidESDifferentTransactionModal}
