@@ -67,11 +67,10 @@ class New extends Component {
       } else if(amountBN.gte(ethers.utils.parseEther('10000'))) {
         plan = 4;
       }
-      // enter amount and automatakli selekt plan
       this.setState({ userAmount: ethers.utils.formatEther(amountBN), errorDisplay: false, errorDisplayText: '', plan });
     } catch (error) {
       console.log(error.message);
-      this.setState({ userAmount: '', errorDisplay: true, errorDisplayText: error.message })
+      this.setState({ userAmount: '', errorDisplay: event.target.value !== '', errorDisplayText: event.target.value !== '' ? error.message : ''})
     }
   }
 

@@ -48,9 +48,9 @@ class AddToPrepaid extends Component {
       }
     } catch (error) {
       this.setState({
-        userAmount: event.target.value,
-        insufficientBalance:true,
-        errorText: error.message
+        userAmount: '',
+        insufficientBalance: event.target.value !== '',
+        errorText: event.target.value !== '' ? error.message : ''
       });
     }
     // console.log('this.state.userLiquidEsBalance', this.state.userLiquidEsBalance, this.state.insufficientBalance);
@@ -99,7 +99,6 @@ class AddToPrepaid extends Component {
               <Form.Control
                 className="stakingInput"
                 onChange={this.onAmountUpdate}
-                value={this.state.userAmount}
                 type="text"
                 placeholder="Enter ES to add as PrepaidES"
                 style={{width: '325px'}}

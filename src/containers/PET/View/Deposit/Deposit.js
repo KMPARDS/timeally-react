@@ -144,7 +144,6 @@ class Deposit extends Component {
                 className="stakingInput"
                 autoFocus
                 onChange={this.onAmountUpdate}
-                value={this.state.userAmount}
                 type="text"
                 autoComplete="off"
                 placeholder="Enter deposit amount for PET"

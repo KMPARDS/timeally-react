@@ -176,7 +176,6 @@ class LumSumDeposit extends Component {
                 className="stakingInput"
                 autoFocus
                 onChange={this.onAmountUpdate}
-                value={this.state.userAmount}
                 type="text"
                 autoComplete="off"
                 placeholder="Enter total deposit amount"
