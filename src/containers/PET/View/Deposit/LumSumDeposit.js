@@ -165,7 +165,7 @@ class LumSumDeposit extends Component {
               }}>
                 <option disabled selected={this.state.frequencyMode === null}>Select SAP Frequency Mode</option>
                 {[[3, getFees(3)], [6, getFees(6)], [12, getFees(12)]].map(entry => (
-                  <option value={entry[0]} selected={this.state.frequencyMode === 0}>{entry[0]} Months => {entry[1]}% Convenience Fee</option>
+                  <option key={'lumsumplan-'+entry[0]} value={entry[0]} selected={this.state.frequencyMode === 0}>{entry[0]} Months => {entry[1]}% Convenience Fee</option>
                 ))}
 
               </Form.Control>

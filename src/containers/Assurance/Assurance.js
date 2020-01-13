@@ -8,7 +8,7 @@ import View from './View/View';
 import AssuranceId from './View/AssuranceId/AssuranceId';
 import Deposit from './View/Deposit/Deposit';
 import Benefits from './View/Benefits/Benefits';
-import PowerBooster from './View/PowerBooster/PowerBooster';
+// import PowerBooster from './View/PowerBooster/PowerBooster';
 import Nominee from './View/Nominee/Nominee';
 import NewNominee from './View/Nominee/NewNominee';
 import Appointee from './View/Appointee/Appointee';
