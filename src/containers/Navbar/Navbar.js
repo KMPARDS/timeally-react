@@ -231,10 +231,10 @@ class NavbarComponent extends Component {
                    }
 
                   { this.props.store.walletInstance.address ?
-                   <Nav.Link  onClick={() => this.props.history.push('/loans-info')}><span style={{
+                   <Nav.Link  onClick={() => this.props.history.push('/loans')}><span style={{
                      color:'#fff',
                      textShadow:this.props.location.pathname.split('/')[1]==='loans-info'?'0 0 2px #fff':undefined
-                   }}>TimeAlly Loan</span></Nav.Link>
+                   }}>Loan</span></Nav.Link>
                     // <li className="active"><a onClick={() => this.props.history.push('/loans-info')}>Apply for Loan</a></li>
                      : null
                   }

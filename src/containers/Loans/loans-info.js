@@ -46,7 +46,7 @@ class LoansInfo extends Component {
               </div>
             </div>
             {/* content start */}
-   
+
             <div className="section-space80 mb10">
         <div className="container">
           <div className="row">
@@ -56,7 +56,7 @@ class LoansInfo extends Component {
                 <h1>TimeAlly Loan for TimeAlly holders</h1>
                 <p>TimeAlly offers TA loan to the holders of TimeAlly Smart Contract. The maximum loan amount can be 50% of the TimeAlly holding.<br></br><br></br>
                  <span style={{fontWeight:'bold'}}>Initial offer</span>: TimeAlly holders will get opportunity to avail loan  upto 50% after consuming 75% of contract period.  More plan options will be introduced after deployment of 1 year & 2 year vesting initial plans.<br></br><br></br>
-                  
+
                   The features of TA loan are outline below</p>
               </div>
               {/* /.section title start*/}
@@ -96,23 +96,31 @@ class LoansInfo extends Component {
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
               <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
               <div className="circle"><img src="./images/premium.png"/></div>
-              
+
                 <h3 className="number-title">Convenient and Paperless</h3>
                 <p>TimeAlly holders can apply for TA Loan, after consuming 75% of contract period in paperless mode.</p>
               </div>
             </div>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
               <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
-              
+
               <div className="circle"><img src="./images/fire.png"/></div>
                 <h3 className="number-title">Loan Default</h3>
                 <p>In case of Loan Default by the user, remaining 50% of the staked tokens will be burnt permanently.</p>
               </div>
             </div>
           </div>
-          {/* <div className="row">
-            <div className="offset-xl-2 col-xl-8 offset-md-2 col-md-8 offset-md-2 col-md-8 col-sm-12 col-12 text-center"> <a href="#" className="btn btn-default">View Our Loans</a> </div>
-          </div> */}
+          <div className="outline pinside30 bg-boxshadow" style={{marginBottom: '1rem', backgroundColor: '#fff'}}>
+            <Button onClick={this.props.store.walletInstance && this.props.store.walletInstance.address
+              ? () => this.props.history.push('/loans/view')
+              : () => (
+                window.returnLocationAfterLoadWallet={
+                  name:'View My Loans',
+                  location:'/loans/view',
+                  sourceLocation:this.props.location.pathname
+                },this.setState({showLoginModal:true})
+              )}>View My Loans</Button>
+          </div>
         </div>
       </div>
       </div>
