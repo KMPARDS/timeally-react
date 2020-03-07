@@ -66,8 +66,8 @@ class LoansInfo extends Component {
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
               <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
                 <div className="circle"><img src="./images/loan.png"/></div>
-                <h3 className="number-title">Flexible Credit Line</h3>
-                <p>TimeAlly users can apply for a loan upto 50% of the amount of ES staked in TimeAlly Smart Contract.</p>
+                <h3 className="number-title">Multiple Loan Contracts</h3>
+                <p>TimeAlly users holding multiple TimeAlly Stakings can take multiple loans and all staking contracts are independent of each other.</p>
               </div>
             </div>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">

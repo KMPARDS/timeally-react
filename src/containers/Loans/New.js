@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Button, Form, Spinner, Alert } from 'react-bootstrap';
+import { Card, Button, Form, Spinner, Alert, Table } from 'react-bootstrap';
 import Layout from '../Layout/Layout';
 import TransactionModal from '../TransactionModal/TransactionModal';
 import { timeally, network } from '../../env';
@@ -103,9 +103,17 @@ class Loan extends Component {
       <Form>
         <Form.Group controlId="exampleForm.ControlSelect2">
           <Form.Label>Select staking on which you want to take loan:</Form.Label>
-          <Card>
-            {this.state.stakings}
-          </Card>
+          <Table responsive>
+            <thead>
+              <tr>
+                <th>Staking</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.stakings}
+            </tbody>
+          </Table>
         </Form.Group>
         {this.state.selectedStakingIds.length ? <div>Selected stakings: {this.state.selectedStakingIds.join(', ')}<br /><br /></div> : null}
         <Button variant="primary"
@@ -225,13 +233,20 @@ class StakingElement extends Component {
   };
 
   render = () => (
-    <Card style={{margin: '.2rem', textAlign:'left', cursor:'pointer', backgroundColor: this.state.selected ? '#0002' : undefined}} onClick={() => {
-      this.props.selectStaking(this.props.stakingId);
-      this.setState({ selected: !this.state.selected });
-    }}>
+    <tr>
+      <td>
       StakingId: {this.props.stakingId}) Stake Amount: {this.props.stakeAmount} | {this.state.staking
-        ? new Date(this.state.staking[1].toNumber() * 1000).toLocaleString() : 'Loading staking time...'}
-    </Card>
+          ? new Date(this.state.staking[1].toNumber() * 1000).toLocaleString() : 'Loading staking time...'}
+      </td>
+      <td>
+        <Button
+          disabled={this.state.staking && !this.state.staking.status.eq(1)}
+          onClick={() => {
+          this.props.selectStaking(this.props.stakingId);
+          this.setState({ selected: !this.state.selected });
+        }}>{this.state.staking && !this.state.staking.status.eq(1) ? <>Not Active</> : <>{this.state.selected ? <>Unselect</> : <>Select</>}</>}</Button>
+      </td>
+    </tr>
   );
 }
 

@@ -131,7 +131,7 @@ class LoanRow extends Component {
      <td>{new Date(this.props.loan.timestamp * 1000).toLocaleString()}</td>
      <td>2 month / 1%</td>
      <td>{this.props.loan.amount} ES</td>
-     <td>{window.getTimeRemaining(this.props.loan.timestamp + 2629744 * 2 - this.props.currentTimestamp)}</td>
+     <td>{this.state.isActive ? <>{window.getTimeRemaining(this.props.loan.timestamp + 2629744 * 2 - this.props.currentTimestamp)}</> : <>-</>}</td>
      <td>
        <Button
         onClick={() => this.props.history.push('/loans/view/repay/'+this.props.loan.loanId)}
