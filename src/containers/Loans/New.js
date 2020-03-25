@@ -79,21 +79,6 @@ class Loan extends Component {
     this.setState({ maxLoanAmount: ethers.utils.formatEther(maxLoanAmount), currentScreen: 1 });
   };
 
-  // takeLoan = async () => {
-  //   this.setState({ loanProcessing: true });
-  //   try {
-  //     const tx = await this.props.store.timeallyInstance.takeLoanOnSelfStaking(
-  //       0,
-  //       ethers.utils.parseEther(this.state.loaningAmount),
-  //       this.state.selectedStakingIds
-  //     );
-  //     await tx.wait();
-  //   } catch (e) {
-  //     this.setState({ errorMessage: e.message });
-  //   }
-  //   this.setState({ loanProcessing: false });
-  // }
-
   render() {
     const startOverAgainButton = (
       <span style={{display:'block', textAlign:'left', cursor: 'pointer'}} onClick={() => this.setState({ currentScreen: 0 })}>{'<'}Start All Over</span>
