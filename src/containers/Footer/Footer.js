@@ -57,6 +57,8 @@ class FooterComponent extends Component {
                 <li className="list-inline-item">
                   <a href="https://bitcointalk.org/index.php?topic=5025979.msg45502457" target="_blank" rel="noopener noreferrer"><i className="fa fa-btc"></i></a>
                 </li>
+                <li className="list-inline-item"><a href="https://coinmarketcap.com/currencies/era-swap/" target="_blank"><img src="/images/cmc.png" style={{height: '25px', marginBottom: '7px'}} /></a></li>
+                <li className="list-inline-item" style={{marginLeft:'-4px'}}><a href="https://ethplorer.io/address/0xef1344bdf80bef3ff4428d8becec3eea4a2cf574" target="_blank"><img src="/images/ethplorer2.png" style={{height: '25px', marginBottom: '7px'}} /></a></li>
               </ul>
                 </div>
               {/* /.Footer Logo */}
