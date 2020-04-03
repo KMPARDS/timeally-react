@@ -22,10 +22,6 @@
     "reactstrap": "8.0.1",
     "redux": "4.0.4"
   },
-  "engines": {
-    "node": "11.7.0",
-    "npm": "6.10.2"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
