@@ -104,6 +104,8 @@ class Home extends Component {
 
             <p><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/vfgf2pvYSoc?rel=0&amp" target="_blank">Click to open TimeAlly Walkthrough in a new tab</a></p>
 
+            <p><a style={{color: 'black', textDecoration: 'underline'}} href="/pdf/TimeAlly_DApp.pdf" target="_blank">View the TimeAlly Presenter</a></p>
+
             {/*<div className="row">
                 <div className="offset-md-2 col-md-4">
                   <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
