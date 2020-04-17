@@ -96,7 +96,7 @@ class TransactionModal extends Component {
       try {
         ethGasStationResponse = (await axios.get('https://ethgasstation.info/json/ethgasAPI.json')).data;
         console.log(ethGasStationResponse);
-        this.setState({ ethGasStation: [
+        await this.setState({ ethGasStation: [
           ethGasStationResponse['safeLow'] / 10,
           ethGasStationResponse['average'] / 10,
           ethGasStationResponse['fast'] / 10,
@@ -104,7 +104,7 @@ class TransactionModal extends Component {
         ] });
       } catch (err) {
         console.log('Eth Gas Station API error:', err.message);
-        this.setState({ ethGasStation: [
+        await this.setState({ ethGasStation: [
           10,
           15,
           20,
@@ -113,7 +113,7 @@ class TransactionModal extends Component {
       }
       this.setState({
         estimatedGas,
-        selectedGwei: 1,
+        selectedGwei: this.state.ethGasStation[this.state.ethGasStation.length - 1],
         currentScreen: 1
       });
 
@@ -229,6 +229,15 @@ class TransactionModal extends Component {
             </span>
             <span onClick={()=>this.setState({currentScreen: 2})} style={{cursor:'pointer', display: 'inline-block', float:'right', fontSize: '0.8rem', textDecoration: 'underline'}}>Advanced settings</span>
           </Card>
+          {(() => {
+            if(this.state.selectedGwei <= this.state.ethGasStation[0]) {
+              return <Alert variant="danger">Your transaction might take plenty of hours to get confirmed. Please increase gas price from advanced settings.</Alert>;
+            } else if(this.state.selectedGwei < this.state.ethGasStation[3]){
+              return <Alert variant="warning">Your transaction might take some time to get confirmed. If you don't want to wait, you can increase gas price.</Alert>
+            } else if(this.state.selectedGwei > this.state.ethGasStation[3]) {
+              return <Alert variant="success">You have selected higher gas fee than what others are paying. Your transaction would be prioritized by the miners and would be confirmed in the next one or two blocks!</Alert>
+            }
+          })()}
           <Button style={{margin:'0'}}variant="primary" size="lg" block onClick={this.sendTransaction}>{window.connectedToMetamask ? 'Proceed to Metamask' : 'Sign and Submit'}</Button>
           {/*<Row style={{marginTop: '12px'}}>
             <Col style={{paddingRight: '6px'}}>
@@ -279,6 +288,7 @@ class TransactionModal extends Component {
                 </InputGroup.Append>
               </InputGroup>
             <Card.Text>Network fee: {Math.round(this.state.estimatedGas * this.state.selectedGwei) / 10**9} ETH</Card.Text>
+            <p>You can refer to <a style={{color:'black'}} href="https://ethgasstation.info/" target="_blank">Eth Gas Station</a> for gas price stastics.</p>
             <button onClick={() => this.setState({ currentScreen: 1 })}>Proceed</button>
           </Card>
         </Modal.Body>

@@ -15,13 +15,14 @@ class Rewards extends Component {
     stakingPlan: undefined,
     showTransactionModal: false,
     errorMessage: '',
-    successDisplay: false
+    successDisplay: false,
+    restaked: false
   }
 
   checkReward = async() => {
     this.setState({ status: 1 });
     const reward = await this.props.store.timeallyInstance.functions.launchReward(this.props.store.walletInstance.address);
-    this.setState({ status: 2, reward: ethers.utils.formatEther(reward) });
+    this.setState({ status: 2, reward: window.lessDecimals(reward) });
   };
 
   claimReward = async () => {
@@ -109,8 +110,15 @@ class Rewards extends Component {
                 <div className="row">
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <p>Note: <strong>You need some amount of Ether in your wallet address to proceed with your claim. Having at least 0.01 ETH is good</strong>. The network fee is generally pretty less than this, you can view exact amount of network gas fee when you will proceed. It depends on how much crowded Ethereum network is currently. This fee is paid to the miners of Ethereum blockchain network who contribute their resources to keep this network decentralized, immutable and safe from corruption. If you don't have sufficient amount of Ether, your transaction would not be proceed. Ether is a popular cryptocurrency and you can get it from almost any cryptocurrency exchange.</p>
-                    {this.state.reward ? null : <button className="btn btn-default btn-sm" onClick={this.checkReward}>Check for vesting rewards</button>}
-                    {rewardComponent}
+                    {this.state.restaked
+                      ? <>
+                        <Alert variant="success">Your ES are staked. You can go to stakings to see your staking.</Alert>
+                        <Button onClick={() => this.props.history.push('/stakings')}>Go to Stakings</Button>
+                      </>
+                      : <>
+                      {this.state.reward ? null : <button className="btn btn-default btn-sm" onClick={this.checkReward}>Check for vesting rewards</button>}
+                      {rewardComponent}
+                    </>}
                   </div>
                 </div>
               </div>
@@ -128,7 +136,13 @@ class Rewards extends Component {
               estimator: this.props.store.timeallyInstance.estimate.claimLaunchReward,
               contract: this.props.store.timeallyInstance,
               arguments: [this.state.stakingPlan],
-              reward: this.state.reward
+              reward: this.state.reward,
+              continueFunction: () => this.setState({
+                status: 0,
+                reward: '',
+                showTransactionModal: false,
+                restaked: true
+              })
               //minimumBetInEs: this.state.minimumBetInExaEs!==undefined ? (new BigNumber(ethers.utils.bigNumberify(this.state.minimumBetInExaEs))).dividedBy(10**18).toFixed() : undefined
             }}
           />
