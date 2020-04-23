@@ -24,3 +24,22 @@
 table td{
     text-align: center !important;
 }
+.tsgap-fet p {
+    min-height: 98px;
+}
+
+.background-tsgap {
+    background: url(/images/bg-tsgap.jpg) !important;
+    background-size: cover !importan
+}
+.page-header-tsgap {
+background: url(/images/ban-tsgap.png) no-repeat center !important;
+}
+.tsgap-sip-bg p{
+    color: #fff;
+}
+.tsgap-img {
+    height: 214px;
+    position: absolute;
+    left: 15%;
+}

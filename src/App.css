@@ -35,3 +35,6 @@
 .set-word-break-all {
   word-break:break-all;
 }
+.background-tsgap {
+    background: url(/images/bg-tsgap.jpg) !important;
+}
