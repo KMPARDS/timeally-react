@@ -61,7 +61,7 @@ General css class
 -----------------------------------*/
 
 body { font-size: 15px; font-family: 'Poppins', sans-serif; line-height: 1.4; color: #333; background-color: #eff3f8; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-h1, h2, h3, h4, h5, h6 { margin: 0px 0px 10px 0px; color: #3c4d6b; font-weight: 500; }
+h1, h2, h3, h4, h5, h6 { margin: 0px 0px 10px 0px; color: #15549a; font-weight: 500; }
 h1 { font-size: 32px; line-height: 44px; letter-spacing: -1px; }
 h2 { font-size: 24px; line-height: 32px; }
 h3 { font-size: 20px; line-height: 28px; }
@@ -234,8 +234,8 @@ Background & Block color
 Buttons
 ------------------------------------------*/
 
-.btn { margin: 0px 10px; font-size: 14px !important; border-radius: 2px!important; line-height: 12px!important; letter-spacing: 1px!important; text-transform: uppercase!important; padding: 20px 30px !important; border: none!important; font-weight: 600!important; }
-.btn-default { background-color: #971802; color: #fff; border-color: #f51f8a; }
+.btn { margin: 0px 10px; font-size: 14px ; border-radius: 2px; line-height: 12px; letter-spacing: 1px; text-transform: uppercase; padding: 20px 30px; border: none; font-weight: 600; }
+.btn-default { background-color: #263f8b; color: #fff; border-color: #f51f8a; }
 .btn-default:hover { color: #fff; background-color: #333; border-color: #ff389c; }
 .btn-default.focus, .btn-default:focus { color: #fff; background-color: #d5504f; border-color: #c64241; }
 /* .btn-primary { background-color: #15549a!important; color: #fff; } */
@@ -423,14 +423,14 @@ display: block; background: #dddddd; content: '';}*/
 index-1
 ------------------------------------------*/
 .mail-text { border-right: 2px solid #fff; color: #fff }
-.rate-table { background-color: #fff; border-top: 1px solid #dee7f2; border-bottom: 1px solid #dee7f2; margin-top: -21px; }
-.loan-rate { font-size: 32px; color: #414855; margin-bottom: 0px; font-weight: 600; line-height: 1; }
-.rate-counter-block { border-right: 1px solid #dee7f2; padding-top: 20px; padding-bottom: 20px; }
-.rate-counter-block-second { padding-top: 20px; padding-bottom: 20px; }
+.rate-box {line-height: 45px;}
+.rate-table { background-color: #fff; margin-top: -21px; }
+.loan-rate { font-size: 43px; color: #fff; margin-bottom: 0px; font-weight: 800; line-height: 1; }
+.rate-counter-block {  padding-top: 60px; padding-bottom: 40px; }
+.rate-counter-block-second { padding-top: 60px; padding-bottom: 40px; }
 .rate-counter-block:first-child { }
 .rate-icon { float: left; padding-top: 5px; padding-right: 20px; padding-left: 20px; }
-.rate-box { }
-.rate-title { text-transform: uppercase; font-size: 14px; color: #778191; }
+.rate-title { text-transform: uppercase; font-size: 18px; color: #fff;font-weight:500;}
 .cta { background-size: cover; margin: 0; min-height: 410px; border: none; padding: 100px 0px; background: linear-gradient(rgba(16, 75, 149, 0.8), rgba(16, 75, 149, 0.8)), rgba(16, 75, 149, 0.8) url(/images/cta-img.jpg) no-repeat center; }
 .testimonial-img-1 { }
 .testimonial-name-1 { color: #15549a; font-size: 14px; text-transform: uppercase; font-weight: 500; margin-bottom: 0px; }
@@ -479,7 +479,7 @@ index-1
 /*------------------------------------
  index-5 Business Loan Home Page
 -------------------------------------*/
-.business-loan-products { background-color: #fff; padding: 40px; border: 1px solid #dee4ee; text-align: center; margin-bottom: 30px; }
+.business-loan-products { background-color: #fff; padding: 40px 15px 40px 15px; border: 1px solid #dee4ee; text-align: center; margin-bottom: 30px; }
 .loan-products-icon { margin-bottom: 20px; }
 .loan-products-content { }
 .video-play { position: absolute; top: 24%; left: 41%; }
@@ -935,7 +935,7 @@ Pagination
 .st-accordion .accordion .panel-heading.active .sign { color: #95cd40; }
 .st-accordion .panel-title { margin-top: 0; margin-bottom: 0; font-size: 18px; color: inherit; position: relative; color: #3c4d6b; }
 .sign { color: #084988; padding: 0 2px; position: absolute; right: -10px; top: 6px; }
-.st-accordion .panel-heading.active .sign { color: #971802; }
+.st-accordion .panel-heading.active .sign { color: #15549a; }
 .st-accordion .panel { margin-bottom: 20px; background-color: #fff; border: 1px solid transparent; border-radius: 0px; -webkit-box-shadow: none; box-shadow: none; }
 .st-accordion .panel-default { border-color: transparent; border-bottom: 1px solid #e0e7ea; }
 .st-accordion .panel-group .panel { margin-bottom: 10px; border-radius: 0px; -webkit-box-shadow: 0px 0px 0px 0px rgba(234, 234, 234, 1); -moz-box-shadow: 0px 0px 0px 0px rgba(234, 234, 234, 1); box-shadow: 0px 0px 0px 0px rgba(234, 234, 234, 1); }
@@ -947,7 +947,7 @@ Pagination
 /*--------------------------------
 Extra Plugin CSS - Back to top
 ---------------------------------*/
-.cd-top { display: inline-block; height: 40px; width: 40px; position: fixed; bottom: 40px; right: 10px; overflow: hidden; text-indent: 100%; white-space: nowrap; visibility: hidden; border-radius: 5px; background: #971802 url(/images/cd-top-arrow.svg) no-repeat center 50%; opacity: 0; -webkit-transition: opacity .3s 0s, visibility 0s .3s; -moz-transition: opacity .3s 0s, visibility 0s .3s; transition: opacity .3s 0s, visibility 0s .3s; }
+.cd-top { display: inline-block; height: 40px; width: 40px; position: fixed; bottom: 40px; right: 10px; overflow: hidden; text-indent: 100%; white-space: nowrap; visibility: hidden; border-radius: 5px; background: #15549a url(/images/cd-top-arrow.svg) no-repeat center 50%; opacity: 0; -webkit-transition: opacity .3s 0s, visibility 0s .3s; -moz-transition: opacity .3s 0s, visibility 0s .3s; transition: opacity .3s 0s, visibility 0s .3s; }
 .cd-top.cd-is-visible, .cd-top.cd-fade-out, .no-touch .cd-top:hover { -webkit-transition: opacity .3s 0s, visibility 0s 0s; -moz-transition: opacity .3s 0s, visibility 0s 0s; transition: opacity .3s 0s, visibility 0s 0s; }
 .cd-top.cd-is-visible {    /* the button becomes visible */
 visibility: visible; opacity: 1; }
@@ -1570,3 +1570,111 @@ video {
 	max-width: 85%;
 }
 /* video resposive end */
+
+
+
+.navbar-light .navbar-nav .nav-link {
+    color:#000 !important;
+}
+.main-btn { 
+  margin: 0px 10px;
+  font-size: 12px ;
+  border-radius: 19px !important ;
+  line-height: 12px ;
+  letter-spacing: 1px ;
+  text-transform: uppercase ;
+  padding: 11px 10px ;
+  border: none ;
+  font-weight: 600;
+}
+.banner-in-bg{
+  color:#fff;
+  width: 70%;
+}
+.banner-in-bg h1{
+font-size: 59px;
+line-height: 58px;
+}
+.banner-con{
+  margin:0;
+  padding: 0;
+  text-align: left;
+}
+.banner-con:{
+  width: 50%;
+  margin:0;
+  padding: 0;
+  text-align: left;
+}
+.hero-tab-block {
+    padding-top: 15% !important;
+    padding-bottom: 15%!important;
+}
+.main-btn-blue {
+    background-color: #263f8b !important;
+}
+.hero-section::before{
+   content: "";
+    background: #00000061 !important;
+}
+.total-es-count {
+    background: url(/images/total-es-count.jpg)no-repeat;
+    background-position-x: 0%;
+    background-size: auto;
+    background-size: cover;
+    background-position: 52%;
+}   
+.what-bg {
+    margin: 0 0 20px 0;
+}
+.what-bg .bor-right{
+  border-right: 2px solid #15549a;
+}
+.features-bg .number-block {
+    min-height: 230px;
+}
+
+@media screen and (max-width:768px) {
+  .what-bg .bor-right {
+      border-right: none;
+  }
+  .navbar {
+      padding: 15px 0 !important;
+  }
+  .main-btn { 
+    margin: 0px 1px;
+    font-size: 10px !important;
+    border-radius: 18px !important;
+    line-height: 12px;
+    letter-spacing: 0 !important;
+    text-transform: capitalize !important;
+    padding: 11px 9px !important;
+    border: none;
+    font-weight: 800 !important;
+    cursor: pointer;
+  }
+  .navbar-toggler {
+      padding: 5px 7px;
+      font-size: 15px;
+  }
+  .quick-info {
+    float:none;
+  }
+  .top-bar {
+      display: none;
+  }
+  .banner-in-bg {
+    width: 100%;
+}
+  .banner-in-bg h1 {
+      font-size: 39px;
+      line-height: 38px;
+  }
+  .hero-tab-block {
+    padding-top: 5% !important;
+    padding-bottom: 5% !important;
+}
+.features-bg .number-block {
+    min-height: auto;
+}
+}

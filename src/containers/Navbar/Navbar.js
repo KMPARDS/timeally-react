@@ -170,98 +170,38 @@ class NavbarComponent extends Component {
         <div className="top-header">
           <div className="container">
             <div className="row">
-              <div className="col-xl-2 col-lg-1 col-md-10 col-sm-6 col-6">
+              <div className="col-sm-2">
                 {/* logo */}
                 <div className="logo">
                   <img onClick={() => this.props.history.push('/')} src="/images/logo.png" alt="TimeAlly" />
                 </div>
               </div>
-              <div className="col-xl-10 col-lg-11 col-md-10 col-sm-12 col-12">
+              <div className="col-sm-10">
+                
+
                 <div className="quick-info">
-                  {navbarButtons}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="bg-light-blue">
-          <div className="container-fluid">
-            <div className="row">
-              {/* logo */}
-              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                  <Navbar expand="lg">
+                 <Navbar expand="lg">
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                       <Nav className="mr-auto">
                         <Nav.Link onClick={() => this.props.history.push('/')}><span style={{
-                          color:'#fff',
+                          color:'#00',
                           textShadow:this.props.location.pathname==='/'?'0 0 2px #fff':undefined
                         }}>Home</span></Nav.Link>
-                        { this.props.store.walletInstance.address ?
-                          <Nav.Link  onClick={() => this.props.history.push('/dashboard')}><span style={{
-                            color:'#fff',
-                            textShadow:this.props.location.pathname.split('/')[1]==='dashboard'?'0 0 2px #fff':undefined
-                          }}>Dashboard</span></Nav.Link>
-                          : null
-                          }
-                        { this.props.store.walletInstance.address ?
-                         <Nav.Link  onClick={() => this.props.history.push('/wallet')}><span style={{
-                           color:'#fff',
-                           textShadow:this.props.location.pathname.split('/')[1]==='wallet'?'0 0 2px #fff':undefined
-                         }}>Wallet</span></Nav.Link>
-                            : null
-                        }
 
-                    {/* { this.props.store.walletInstance.address ?
-
-                          <li><a onClick={() => this.props.history.push('/transactions')}>Transactions</a>
-                            <ul>
-                                <li><a onClick={() => this.props.history.push('/transactions/stakings')}>Staking Transactions</a></li>
-                                <li><a onClick={() => this.props.history.push('/transactions/withdrawls')}>Withdrawal Transactions</a></li>
-                              </ul>
-                          </li>
-                    : null
-                     } */}
-                   { this.props.store.walletInstance.address ?
-                   <Nav.Link  onClick={() => this.props.history.push('/stakings')}><span style={{
-                     color:'#fff',
-                     textShadow:this.props.location.pathname.split('/')[1]==='stakings'?'0 0 2px #fff':undefined
-                   }}>TimeAlly Stakings</span></Nav.Link>
-                      : null
-                   }
-
-                  { this.props.store.walletInstance.address ?
-                   <Nav.Link  onClick={() => this.props.history.push('/loans')}><span style={{
-                     color:'#fff',
-                     textShadow:this.props.location.pathname.split('/')[1]==='loans-info'?'0 0 2px #fff':undefined
-                   }}>Loan</span></Nav.Link>
-                    // <li className="active"><a onClick={() => this.props.history.push('/loans-info')}>Apply for Loan</a></li>
-                     : null
-                  }
-                  {network === 'homestead' ? null : <Nav.Link  onClick={() => this.props.history.push('/mou')}><span style={{
-                    color:'#fff',
-                    textShadow:this.props.location.pathname==='/mou'?'0 0 2px #fff':undefined
-                  }}>The mou Time Machine</span></Nav.Link>}
-
-                  { this.props.store.walletInstance.address ?
-                    <Nav.Link  onClick={() => this.props.history.push('/rewards')}><span style={{
-                      color:'#fff',
-                      textShadow:this.props.location.pathname.split('/')[1]==='rewards'?'0 0 2px #fff':undefined
-                    }}>TimeAlly Rewards</span></Nav.Link>
-                    : null
-                  }
 
                   <Nav.Link onClick={() => this.props.history.push('/assurance')}><span style={{
-                    color:'#fff',
+                    color:'#000',
                     textShadow:this.props.location.pathname.split('/')[1]==='assurance'?'0 0 2px #fff':undefined
                   }}>TSGAP</span></Nav.Link>
 
                   <Nav.Link onClick={() => this.props.history.push('/pet')}><span style={{
-                    color:'#fff',
+                    color:'#000',
                     textShadow:this.props.location.pathname.split('/')[1]==='pet'?'0 0 2px #fff':undefined
                   }}>PET <img src='/images/new.png' style={{height:'20px',position:'relative',bottom:'10px'}} /></span></Nav.Link>
+                   
 
-                   <Nav.Link  href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank" ><span style={{color:'#fff'}}>T & C</span></Nav.Link>
+
 
                         {/* <Nav.Link href="#link">Link</Nav.Link> */}
                         {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
@@ -272,13 +212,21 @@ class NavbarComponent extends Component {
                           <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                         </NavDropdown> */}
                       </Nav>
+
                     </Navbar.Collapse>
+                      {navbarButtons}
                   </Navbar>
                 {/* /.navigation start*/}
+
+
+
+                
+                </div>
               </div>
             </div>
           </div>
         </div>
+        
       </div>
        </div>
       // <Navbar style={{backgroundColor: '#070707'}} {...this.props}>

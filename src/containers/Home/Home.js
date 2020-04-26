@@ -38,14 +38,12 @@ class Home extends Component {
   <div className="hero-section">
       <div className="container">
         <div className="row">
-          <div className="offset-xl-7 col-xl-5 offset-lg-2 col-lg-8 col-md-12 col-sm-12 col-12 ">
+          <div className="banner-con ">
             <div className="hero-tab-block">
-               <div className="lead-calculator pinside40">
-                         <div className="row">
-                             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb10">
-                             <div className="card-hero-block">
-                                 <h1 className="text-white" style={{fontSize:'30px'}}>TimeAlly Smart Contract</h1>
-                                 <p className="text-white">TimeAlly Smart Contract - Controls Volatility, Reward Distribution from ES NRT and simply increase TA Holder’s Era Swap (ES) counts based on their vesting periods without getting in to the hassle of day trading. </p>
+               <div className="banner-in-bg pinside40">
+                         
+                             
+                                 <h1 className="text-white">Accumulate wealth in the future economy</h1>
                                  <div className="mt30">
                                      <a  onClick={() => {
                                          if(this.props.store.walletInstance.address) {
@@ -53,23 +51,51 @@ class Home extends Component {
                                          } else {
                                            this.props.history.push('create-wallet')
                                          }
-                                       }} className="btn btn-default">Vest Now</a>
+                                       }} className="btn btn-default main-btn-blue">Vest Now</a>
                                  </div>
-                             </div>
-                             </div>
-                         </div>
+                            
+                         
                      </div>
                 </div>
             </div>
         </div>
       </div>
     </div>
-    <div className="rate-table">
+
+   <div className="bg-white what-bg">
+      <div className="container pinside20 ">
+          <div className="row">
+                <div className="col-md-6 pinside40 bor-right">
+                        <div className="what-dapp ">
+                             <h1>What is DApp?</h1>
+                             <p>Decentralized Application (DApp) is an open-source application that runs autonomously on s decentralized public blockchain. DApp uses distributed ledger technology which aren’t stored on a centralized location, hence cant be controlled by a single entity
+                             </p>
+                             <p><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/DM6hvVaCu_g?rel=0&amp" target="_blank">Click to open TimeAlly Teaser in a new tab</a></p>
+
+         
+                         </div>
+                 </div> 
+
+                 
+                 <div className="col-md-6 pinside40">
+                         <div className="what-timeally">
+                             <h1>What is TimeAlly?</h1>
+                             <p>TimeAlly is a decentralized application based on a pre-defined set of rules of Smart Contracts to offer multiple benefits to the community. TimeAlly increases Era Swap Utility count for TimeAlly contract holders for holding tokens over a period of time, using flexible TimeAlly Plans
+                             </p>
+                                <p><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/vfgf2pvYSoc?rel=0&amp" target="_blank">Click to open TimeAlly Walkthrough in a new tab</a></p>
+
+                         </div>
+                  </div> 
+        
+          </div> 
+      </div>     
+    </div>
+    <div className="rate-table total-es-count">
         <div className="container">
           <div className="row">
             <div className="col-md-6">
               <div className="rate-counter-block">
-                <div className="icon rate-icon  "> <img src="images/deposit.png" alt="" className="icon-svg-1x" /></div>
+                
                 <div className="rate-box">
                   <h1 className="loan-rate">{this.state.nrt ? this.state.nrt + ' ES' : 'Loading...'}</h1>
                   <small className="rate-title">NRT Released in this month for TimeAlly</small>
@@ -78,7 +104,6 @@ class Home extends Component {
             </div>
             <div className="col-md-6">
               <div className="rate-counter-block-second">
-              <div className="icon rate-icon  "> <img src="images/tank-truck.png" alt="" className="icon-svg-1x" /></div>
                 <div className="rate-box">
                   <h1 className="loan-rate">{this.state.totalActiveStakingsNextMonth ? this.state.totalActiveStakingsNextMonth + ' ES' : 'Loading...'}</h1>
                   <small className="rate-title">Total Active Stakes in next month</small>
@@ -88,47 +113,15 @@ class Home extends Component {
           </div>
         </div>
       </div>
-    <div className="section-space80 bg-light">
-    <div className="container">
-      <div className="row">
-        <div className=" col-xl-12 col-lg-8 col-md-12 col-sm-12 col-12">
-          <div className="section-title text-center mb60">
-          <h1>What is DApp</h1>
-            <p>Decentralized Applications (DApp) is open source application that runs autonomously on decentralized public blockchain. They have existed since the advent of P2P network. DApp uses distributed ledger technology which is neither stored in centralized location nor can be controlled by single entity. It generates & uses tokens by following a standard cryptographic algorithm. <br></br>
-            </p>
-            <hr/>
-              <h1>What is TimeAlly</h1>
-            <p>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the generation & distribution of ES Newly released Token. TimeAlly increase Era Swap count for TimeAlly contract holders for holding tokens over a period of time.</p>
-
-            <p><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/DM6hvVaCu_g?rel=0&amp" target="_blank">Click to open TimeAlly Teaser in a new tab</a></p>
-
-            <p><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/vfgf2pvYSoc?rel=0&amp" target="_blank">Click to open TimeAlly Walkthrough in a new tab</a></p>
-
-            {/*<div className="row">
-                <div className="offset-md-2 col-md-4">
-                  <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                      <iframe src="https://www.youtube-nocookie.com/embed/DM6hvVaCu_g?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                      <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube-nocookie.com/embed/vfgf2pvYSoc?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                  </div>
-                </div>
-              </div>*/}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div className="section-space80 mb10">
+    
+  <div className="section-space80 mb10 features-bg">
         <div className="container">
           <div className="row">
             <div className="col-xl-12 col-md-12 col-md-12 col-sm-12 col-12">
               <div className="mb100 text-center section-title">
                 {/* section title start*/}
                 <h1>Features of TimeAlly</h1>
-                <p>TimeAlly is a DApp which refers to a suite of protocols that define distribution of Newly Released Era Swap (ES) Tokens in a decentralized way. TimeAlly uses Ethereum Virtual Machine (“EVM”), which can execute code of arbitrary algorithmic complexity following standard cryptography with no downtime and keeping all created objects safe from modifying. Every transaction triggered by users are recorded transparently & irreversibly in block confirmation so that old transactions are preserved forever for all to see. TimeAlly is an open source application & can work even without any web interface.</p>
+                <p>TimeAlly is an open-source application and can work even without any web-interference. It is powered on a pre-defined set of rules of Smart Contract and executes code of arbitrary algorithmic complexity following standard cryptography with no downtime and keeping everything safe from modifying </p>
                 <a rel="noopener noreferrer" className="btn btn-default" href="https://etherscan.io/address/0x5630ee5f247bd6b61991fbb2f117bbeb45990876#code" target="_blank" ><p style={{color:'#fff'}}>View TA Smart Contract</p></a>
               </div>
               {/* /.section title start*/}
@@ -136,49 +129,51 @@ class Home extends Component {
           </div>
           <div className="row">
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+              <div className="bg-white pinside30 number-block outline mb20 bg-boxshadow">
+              <div className="circle"><img src="./images/control.png"/></div>
+                <h3 className="number-title">Control</h3>
+                <p>You get bonus rewards based on your TimeAlly Plan, and the value of your ES held may go up as more usage increases of ES Utility</p>
+              </div>
+            </div>
+            
+            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
               <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
-                <div className="circle"><img src="./images/nomination.png"/></div>
-                <h3 className="number-title">Nomination</h3>
-                <p>Appoint nominee, who will receive all the benefits of TimeAlly.</p>
+              <div className="circle"><img src="./images/benifits.png"/></div>
+                <h3 className="number-title"> Future benefits</h3>
+                <p>You get bonus rewards based on your TimeAlly Plan, and the value of your ES held may go up as more usage increases of ES Utility</p>
               </div>
             </div>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
               <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
-              <div className="circle"><img src="./images/anonimity.png"/></div>
-                <h3 className="number-title">Privacy</h3>
-                <p>TimeAlly Smart Contract provides privacy to TimeAlly holder.</p>
-              </div>
-            </div>
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-              <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
-              <div className="circle"><img src="./images/box.png"/></div>
-                <h3 className="number-title">ES NRT Distribution</h3>
-                <p>Governs the distribution of ES from NRT pool to users.</p>
+              <div className="circle"><img src="./images/blocks.png"/></div>
+                <h3 className="number-title"> Blocks</h3>
+                <p>Every transaction triggered by users are recorded transparently & irreversibly in block confirmation so that old transactions persevere forever</p>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-              <div className="bg-white pinside30 number-block outline mb20 bg-boxshadow">
-              <div className="circle"><img src="./images/control.png"/></div>
-                <h3 className="number-title">Control</h3>
-                <p>The private keys stays with the user only giving control.</p>
+              <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
+                <div className="circle"><img src="./images/nomination.png"/></div>
+                <h3 className="number-title">Nomination</h3>
+                <p>You get to appoint trusted nomine on your plan, who will be receiving all the benefits of TimeAlly in case of uncertainty </p>
+              </div>
+            </div>
+            
+            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+              <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
+              <div className="circle"><img src="./images/no-central-aut.png"/></div>
+
+                <h3 className="number-title">No Central Authority</h3>
+                <p>TimeAlly uses Ethereum Virtual Machine (EVM) to execute standard cryptography with no downtime to keep it all safe and untouched .</p>
               </div>
             </div>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
               <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
-              <div className="circle"><img src="./images/less-users.png"/></div>
 
-                <h3 className="number-title">In case of Less Users</h3>
-                <p>ES count per user will increase for less users to distribute for staking.</p>
-              </div>
-            </div>
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-              <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
-
-              <div className="circle"><img src="./images/team.png"/></div>
-                <h3 className="number-title">In case of More Users</h3>
-                <p>The Value of ES holded may go up as more usage increases value.</p>
+              <div className="circle"><img src="./images/box.png"/></div>
+                <h3 className="number-title">ES NRT Distribution</h3>
+                <p>With TimeAlly decentralized application you can govern the distribution of ES from NRT (Newly Released Token) pool to users</p>
               </div>
             </div>
           </div>
@@ -240,43 +235,56 @@ class Home extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
               <div className="business-loan-products bg-boxshadow">
               <div className="circle"><img src="./images/jar.png"/></div>
                 {/* <div className="loan-products-icon"><img src="./images/medal.png"/></div> */}
                 <div className="loan-products-content">
                   <h3>TimeAlly Loan</h3>
                   <input type="checkbox" className="read-more-state" id="post-1" />
-                  <p className="read-more-wrap">TimeAlly holders will get opportunity to avail loan upto 50% for a duration of 2 months after consuming 75% of contract period. More plan options will be introduced after <span className="read-more-target"> deployment of 1 year & 2 year vesting initial plans. The borrower has to pay 1% additional of the borrowed ES for 60 days. The additional 1% will be collected in luck pool and distributed back to the community. In case a borrower fails to pay back within 60 days and 12 hours, remaining staked tokens in TimeAlly contract will be burnt.
- </span></p>
+                  <p className="read-more-wrap">TimeAlly holders will get the opportunity to avail loan up to 50% for a duration of 2 months after consuming 75% of the  <span className="read-more-target"> contract period. The borrower has to pay 1% additional of the borrowed ES for 60 days; an additional 1% will be collected in luck pool and distributed back to the community. In case a borrower fails to pay back within 60 days and 12 hours, remaining staked tokens in TimeAlly contract will be burnt</span></p>
                     <label htmlFor="post-1"  className="btn btn-default read-more-trigger"></label>
                 </div>
               </div>
             </div>
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
               <div className="business-loan-products bg-boxshadow">
               <div className="circle"><img src="./images/value.png"/></div>
                 {/* <div className="loan-products-icon"><i className="flaticon-time-is-money icon-4x icon-primary" /></div> */}
                 <div className="loan-products-content">
                   <h3>TimeAlly Club</h3>
                   <input type="checkbox" className="read-more-state" id="post-2" />
-                  <p className="read-more-wrap">TimeAlly Club, a premium membership offering for Era Swap Community, will provide the users with additional benefits of rewards along with <span className="read-more-target">exclusive membership benefits like Utility Bill Payments, Travel & Holidays, Dine-out, Education, Health & Fitness, etc. It will be available in 5 categories: Silver, Gold, Diamond, Emerald and Ruby.</span></p>
+                  <p className="read-more-wrap">TimeAlly Club is a premium membership for Era Swap Community, to provide community additional benefits of rewards along  <span className="read-more-target"> with exclusive membership add-ons such as; Utility Bill Payments, Travel & Holidays, Education, Health & Fitness, etc. TimeAlly Club membership is available in 5 categories that are; Silver, Gold, Diamond, Emerald and Ruby</span> </p>
                     <label htmlFor="post-2"  className="btn btn-default read-more-trigger"></label>
                 </div>
               </div>
             </div>
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
               <div className="business-loan-products bg-boxshadow">
               <div className="circle"><img src="./images/life-insurance.png"/></div>
                 {/* <div className="loan-products-icon"><i className="flaticon-rich icon-4x icon-primary" /></div> */}
                 <div className="loan-products-content">
-                  <h3>TimeAlly Insurance</h3>
+                  <h3>TimeAlly SGAP</h3>
                   <input type="checkbox" className="read-more-state" id="post-3" />
-                  <p className="read-more-wrap">The insurance policy issued will be based on efficient underwriting norms of smart contract removing middleman and physical processes. No dilution on mortality. <span className="read-more-target">  TimeAlly will create provision for users to get their premium adjustment from TimeAlly payouts, TimeAlly Rewards & TimeAlly Power. TimeAlly insurance will be launched soon for community.</span></p>
+                  <p className="read-more-wrap">TimeAlly Super Goal Achiever Plan (TSGAP) is a Decentralized Smart Contract powered Systematic Accumulation Plan designed <span className="read-more-target">  to safeguard community`s interest, so they can have financial support to support their goals, its incentivize Stakers behavior for regularly in a disciplined way. The benefit of this SAP is that Stakers can choose minimal staking in Era Swap, Leverage Power of Compounding, Milestone based Goal Achievement, Booster Bonus, with complete transparency and ownership of your digital assets </span></p>
                     <label htmlFor="post-3"  className="btn btn-default read-more-trigger"></label>
                 </div>
               </div>
             </div>
+
+            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+              <div className="business-loan-products bg-boxshadow">
+              <div className="circle"><img src="./images/pet.png"/></div>
+                {/* <div className="loan-products-icon"><i className="flaticon-time-is-money icon-4x icon-primary" /></div> */}
+                <div className="loan-products-content">
+                  <h3>TimeAlly PET </h3>
+                  <input type="checkbox" className="read-more-state" id="post-4" />
+                  <p className="read-more-wrap">TimeAlly PET Stands for Personal Era Swap Teller, it is a 50-50 Plan designed to provide a helping hand to those who wish <span className="read-more-target">  to stake but couldn’t. It is a Systematic Accumulation Plan powered on Smart Contracts, it is an extraordinary plan intend to help you with your stakings with PET`s Smart Contribution, hence you don’t have to stake the complete amount of your selected plan and PET will contribute another half. For.eg. Choose 100000 ES Plan. Stake 50000 ES & PET will stake another 50000 ES for you </span></p>
+                    <label htmlFor="post-4"  className="btn btn-default read-more-trigger"></label>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
