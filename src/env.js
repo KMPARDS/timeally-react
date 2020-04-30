@@ -8,7 +8,7 @@ const fundsBucketJSON = require('./ethereum/compiledContracts/TimeAllyPET_FundsB
 const env = {
   network:
            // 'homestead',
-           'kovan',
+           (process.env.REACT_APP_ETH_NETWORK) || 'kovan',
   esContract: {
     address: '0x53E750ee41c562C171D65Bcb51405b16a56cF676',
     abi: eraSwapTokenJSON.abi

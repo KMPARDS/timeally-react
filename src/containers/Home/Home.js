@@ -113,6 +113,7 @@ class Home extends Component {
           </div>
         </div>
       </div>
+
     
   <div className="section-space80 mb10 features-bg">
         <div className="container">

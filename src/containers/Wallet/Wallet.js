@@ -1,40 +1,51 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import copy from 'copy-to-clipboard';
+import { Button } from 'react-bootstrap';
 
 const ethers = require('ethers');
 
 class WalletPage extends Component {
   state = {
-    userAddress: '',
-    esBalance: {},
-    etherBalance: {},
-    totalStakingsNow: {},
-    totalStakingsNext: {},
-    shareNow: {},
-    shareNext: {},
-    myActiveStakings: undefined,
+    esBalance: null,
+    etherBalance: null,
+    totalStakingsNow: null,
+    totalStakingsNext: null,
+    rewardsESBalance: null,
+    tsgapPrepaidESBalance: null,
+    prepaidESBalance: null,
+    myActiveStakings: null,
     copied: false
   };
 
   componentDidMount = async () => {
     if(Object.keys(this.props.store.walletInstance).length) {
+      const userAddress = this.props.store.walletInstance.address;
       const currentMonth = await this.props.store.timeallyInstance.functions.getCurrentMonth();
-
-      await this.setState({
-        userAddress: this.props.store.walletInstance.address
-      });
 
       (async()=>{
         this.setState({
-          esBalance: await this.props.store.esInstance.functions.balanceOf(this.state.userAddress)
+          esBalance: await this.props.store.esInstance.functions.balanceOf(userAddress)
         });
       })();
 
       (async()=>{
         this.setState({
-          etherBalance: await this.props.store.providerInstance.getBalance(this.state.userAddress)
+          etherBalance: await this.props.store.providerInstance.getBalance(userAddress)
         });
+      })();
+
+      (async() => {
+        const rewardsESBalance = await this.props.store.timeallyInstance.functions.launchReward(userAddress);
+        this.setState({ rewardsESBalance });
+      })();
+      (async() => {
+        const tsgapPrepaidESBalance = await this.props.store.sipInstance.functions.prepaidES(userAddress);
+        this.setState({ tsgapPrepaidESBalance });
+      })();
+      (async() => {
+        const prepaidESBalance = await this.props.store.petInstance.functions.prepaidES(userAddress);
+        this.setState({ prepaidESBalance });
       })();
 
       (async() => {
@@ -64,15 +75,17 @@ class WalletPage extends Component {
           }
         }
 
-        this.setState({ myActiveStakings: ethers.utils.formatEther(myActiveStakings) });
+        this.setState({ myActiveStakings });
       })();
     }
   }
 
   render() {
     let isWalletPresent = false;
+    let userAddress;
     if(Object.keys(this.props.store.walletInstance).length) {
       isWalletPresent = true;
+      userAddress = this.props.store.walletInstance.address;
     }
     return (
       <div>
@@ -118,18 +131,35 @@ class WalletPage extends Component {
                      isWalletPresent ?
                     <div className="col-12">
                       <div className="bg-white pinside30 mb30 highlight-outline outline set-word-break-all">
-                        <p><b>YourAddress</b> : <span style={{color:'#f51f8a'}} onClick={() => {
-                          copy(this.state.userAddress);
+                        <p style={{cursor: 'pointer'}} onClick={() => {
+                          copy(userAddress);
                           this.setState({ copied: true });
                           setTimeout(this.setState.bind(this, {copied: false}), 2000);
-                        }}>{this.state.userAddress}</span>{this.state.copied ? <>✓ Copied!</> : null}</p>
+                        }}><b>YourAddress</b> : <span style={{color:'#f51f8a'}}>{userAddress}</span>{this.state.copied ? <> ✓ Copied!</> : (userAddress ? <> Click to Copy</> : null)}</p>
                         <div className="row">
                           <div className="col-md-6 set-word-break-all"><b>Your ES Balance</b>:
-                            {Object.keys(this.state.esBalance).length ? ethers.utils.formatEther(this.state.esBalance) : null} ES</div>
+                            {this.state.esBalance ? window.lessDecimals(this.state.esBalance) : null} ES
+                          </div>
                           <div className="col-md-6 set-word-break-all"><b>Your Ether Balance</b>:
-                            {Object.keys(this.state.etherBalance).length ? ethers.utils.formatEther(this.state.etherBalance) : null } ETH</div>
+                            {this.state.etherBalance ? window.lessDecimals(this.state.etherBalance) : null } ETH
+                          </div>
                           <div className="col-md-6 set-word-break-all"><b>Your Stakings</b>:
-                            {this.state.myActiveStakings ? this.state.myActiveStakings + ' ES' : 'Loading...'}</div>
+                            {this.state.myActiveStakings ? window.lessDecimals(this.state.myActiveStakings) + ' ES' : 'Loading...'}
+                          </div>
+                          <div className="col-md-6 set-word-break-all"><b>Your TimeAlly Rewards:</b>:
+                            {this.state.rewardsESBalance ? window.lessDecimals(this.state.rewardsESBalance) + ' ES' : 'Loading...'}
+                            {this.state.rewardsESBalance && !this.state.rewardsESBalance.eq(0) ? <Button onClick={() => this.props.history.push('/rewards')}>Go to TA Rewards</Button> : null}
+                          </div>
+                          <div className="col-md-6 set-word-break-all"><b>Your TSGAP PrepaidES</b>:
+                            {this.state.tsgapPrepaidESBalance ? window.lessDecimals(this.state.tsgapPrepaidESBalance) + ' ES' : 'Loading...'}
+                            {this.state.tsgapPrepaidESBalance && !this.state.tsgapPrepaidESBalance.eq(0) ? <Button onClick={() => this.props.history.push('/assurance')}>Go to TSGAP</Button> : null}
+                          </div>
+                          <div className="col-md-6 set-word-break-all"><b>Your PET PrepaidES</b>:
+                            {this.state.prepaidESBalance ? window.lessDecimals(this.state.prepaidESBalance) + ' ES' : 'Loading...'}
+                            {this.state.prepaidESBalance && !this.state.prepaidESBalance.eq(0) ? <Button onClick={() => this.props.history.push('/pet')}>Go to PET</Button> : null}
+                          </div>
+
+
 
 
 

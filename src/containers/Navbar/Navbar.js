@@ -19,8 +19,8 @@ class NavbarComponent extends Component {
 
   updatePrice = () => {
     (async() => {
-      const response = await axios.get('https://api.coinmarketcap.com/v1/ticker/ethereum/');
-      this.setState({ etherPrice: response.data[0]['price_usd'] });
+      const response = await axios.get('https://api.etherscan.io/api?module=stats&action=ethprice');
+      this.setState({ etherPrice: response.data.result.ethusd });
       //console.log(response);
     })();
 
@@ -41,7 +41,7 @@ class NavbarComponent extends Component {
   }
 
   componentDidMount = async () => {
-    setInterval(this.updatePrice, 5000);
+    setInterval(this.updatePrice, 10000);
 
     window.zHistory = this.props.history;
 

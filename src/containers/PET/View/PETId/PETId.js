@@ -151,14 +151,14 @@ class PETId extends Component {
                     {targetStatus}
                       {showDepositButton
                         ? <><br />
-                            <Button onClick={() => this.props.history.push(this.props.location.pathname+'/deposit/')}>Make Monthly Deposit</Button>
+                      <Button variant={depositAmount.gte(this.state.commitmentAmount) ? 'warning' : 'primary'} onClick={() => this.props.history.push(this.props.location.pathname+'/deposit/')}>{depositAmount.gte(this.state.commitmentAmount) ? <>Make Topup</> : <>Make Monthly Deposit</>}</Button>
                           </>
                         :null}
                     </td>
                   <td>{petArray[0]
                     ? <>
                       <span style={{fontSize: '1rem'}}>{window.lessDecimals(petAmount)} ES</span><br />
-                    {window.lessDecimals(petArray[0])} ES (for acheiving half of {window.lessDecimals(this.state.commitmentAmount)} ES commitment){petArray[1].gt(0)
+                    {window.lessDecimals(petArray[0])} ES (for acheiving self commitment of {window.lessDecimals(this.state.commitmentAmount)} ES){petArray[1].gt(0)
                       ? <> and {window.lessDecimals(petArray[1])} ES (for topup of {window.lessDecimals(depositAmount.sub(this.state.commitmentAmount))} ES)</>
                       :null}</>
                     : <></>}
