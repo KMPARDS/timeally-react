@@ -129,31 +129,29 @@ class Home extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-              <div className="bg-white pinside30 number-block outline mb20 bg-boxshadow">
+            <div className="col-md-6 col-lg-4 pdt30">
+              <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
               <div className="circle"><img src="./images/control.png"/></div>
                 <h3 className="number-title">Control</h3>
                 <p>You get bonus rewards based on your TimeAlly Plan, and the value of your ES held may go up as more usage increases of ES Utility</p>
               </div>
             </div>
             
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+            <div className="col-md-6 col-lg-4 pdt30">
               <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
               <div className="circle"><img src="./images/benifits.png"/></div>
                 <h3 className="number-title"> Future benefits</h3>
                 <p>You get bonus rewards based on your TimeAlly Plan, and the value of your ES held may go up as more usage increases of ES Utility</p>
               </div>
             </div>
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+            <div className="col-md-6 col-lg-4 pdt30">
               <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
               <div className="circle"><img src="./images/blocks.png"/></div>
                 <h3 className="number-title"> Blocks</h3>
                 <p>Every transaction triggered by users are recorded transparently & irreversibly in block confirmation so that old transactions persevere forever</p>
               </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+            <div className="col-md-6 col-lg-4 pdt30">
               <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
                 <div className="circle"><img src="./images/nomination.png"/></div>
                 <h3 className="number-title">Nomination</h3>
@@ -161,7 +159,7 @@ class Home extends Component {
               </div>
             </div>
             
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+            <div className="col-md-6 col-lg-4 pdt30">
               <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
               <div className="circle"><img src="./images/no-central-aut.png"/></div>
 
@@ -169,7 +167,7 @@ class Home extends Component {
                 <p>TimeAlly uses Ethereum Virtual Machine (EVM) to execute standard cryptography with no downtime to keep it all safe and untouched .</p>
               </div>
             </div>
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+            <div className="col-md-6 col-lg-4 pdt30">
               <div className="bg-white pinside30 number-block outline mb60 bg-boxshadow">
 
               <div className="circle"><img src="./images/box.png"/></div>
@@ -178,52 +176,58 @@ class Home extends Component {
               </div>
             </div>
           </div>
+          
           {/* <div className="row">
             <div className="offset-xl-2 col-xl-8 offset-md-2 col-md-8 offset-md-2 col-md-8 col-sm-12 col-12 text-center"> <a href="#" className="btn btn-default">View Our Loans</a> </div>
           </div> */}
         </div>
       </div>
-      <div className="card-hero-section" style={{paddingBottom:'50px'}}>
-            <div className="container">
-              <div className="row">
-                <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                  {/* hero-caption */}
-                  <div className="card-hero-block text-center">
-                    <h1 className="text-white">How TimeAlly works</h1>
-                    <p className="text-white">TimeAlly rewards TA holders for locking their tokens in TA smart contract (TA Time Vault) for the duration of one or two years as per their choice.</p><br></br>
-                    <ul style={{textAlign:'left', color:'#fff'}}>
-                      <li>Vesting for 1 Year: 13% (1.08% per month) of ES Tokens from NRT pool is allocated to be distributed among TA Vestors. </li>
-                      <li>Vesting for 2 Year: 15% (1.25% per month) of ES Tokens from NRT pool is allocated  to be distributed among TA Vestors.</li>
-                      <li>All the Rewards will be distributed 50% in TimeAlly & 50 % in Liquid.</li>
-                    </ul>
-                    <p style={{color:'#fff'}}>
-                    There is a fixed number of ES rewarded every month to users which is governed by TA smart contract. Total number of ES tokens to be distributed among TA holders is pre-defined, but which user will get how many ES tokens is not defined. It depends on number of token staked in proportion to their vesting plans.</p>
-                    <div className="row">
-                      <div className="col-md-6">
-                        <h2 className="text-white">In case of more users</h2>
-                        <img src="./images/a.png"></img>
-                        <p className="text-white">If more users opt for TimeAlly vesting then there will be scarcity of liquid tokens which will create more demand of ES. This way the value of ES holded by users is expected to go up as the price per ES shall increase with increasing demand.</p>
-                      </div>
-                      <div className="col-md-6">
-                        <h2 className="text-white">In case of few users</h2>
-                        <img src="./images/b.png"></img>
-                        <p className="text-white">If few users opt for TimeAlly vesting then more tokens per user will be received. As the number of tokens to be distributed every month is fixed but the number of receivers is reduced. This way more ES will be received to these fewer members.</p>
-                      </div>
+
+      <div className="how-bg">
+        <div className="card-hero-section">
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                {/* hero-caption */}
+                <div className="card-hero-block text-center">
+                  <h1 className="text-white">How TimeAlly works</h1>
+                  <p className="text-white">TimeAlly rewards TA holders for locking their tokens in TA smart contract (TA Time Vault) for the duration of one or two years as per their choice.</p><br></br>
+                  <ul style={{textAlign:'left', color:'#fff'}}>
+                    <li>Vesting for 1 Year: 13% (1.08% per month) of ES Tokens from NRT pool is allocated to be distributed among TA Vestors. </li>
+                    <li>Vesting for 2 Year: 15% (1.25% per month) of ES Tokens from NRT pool is allocated  to be distributed among TA Vestors.</li>
+                    <li>All the Rewards will be distributed 50% in TimeAlly & 50 % in Liquid.</li>
+                  </ul>
+                  <p style={{color:'#fff'}}>
+                  There is a fixed number of ES rewarded every month to users which is governed by TA smart contract. Total number of ES tokens to be distributed among TA holders is pre-defined, but which user will get how many ES tokens is not defined. It depends on number of token staked in proportion to their vesting plans.</p>
+                  <div className="border"></div>
+                  <div className="row">
+                    <div className="col-md-6 border-right">
+                      <h2 className="text-white pdt40 ">In case of more users</h2>
+                      <img src="./images/a.png"></img>
+                      <p className="text-white">If more users opt for TimeAlly vesting then there will be scarcity of liquid tokens which will create more demand of ES. This way the value of ES holded by users is expected to go up as the price per ES shall increase with increasing demand.</p>
+                    </div>
+                    <div className="col-md-6">
+                      <h2 className="text-white pdt40">In case of few users</h2>
+                      <img src="./images/b.png"></img>
+                      <p className="text-white">If few users opt for TimeAlly vesting then more tokens per user will be received. As the number of tokens to be distributed every month is fixed but the number of receivers is reduced. This way more ES will be received to these fewer members.</p>
                     </div>
                   </div>
-                  {/* /.hero-caption */}
-
                 </div>
-                <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12 text-right">
-                  <div className="mt10">
-                    {/* <img src="./images/TimeAlly-Info-wp.png" alt className="img-fluid" /> */}
-                  </div>
+                {/* /.hero-caption */}
 
+              </div>
+              <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12 text-right">
+                <div className="mt10">
+                  {/* <img src="./images/TimeAlly-Info-wp.png" alt className="img-fluid" /> */}
                 </div>
+
               </div>
             </div>
           </div>
-    <div className="section-space80">
+        </div>
+      </div>
+
+      <div className="section-space80">
         <div className="container">
           <div className="row">
             <div className="offset-xl-2 col-xl-8 offset-md-2 col-md-8 offset-md-2 col-md-8 col-sm-12 col-12">
@@ -236,7 +240,7 @@ class Home extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+            <div className="col-md-6 col-lg-3 pdb30">
               <div className="business-loan-products bg-boxshadow">
               <div className="circle"><img src="./images/jar.png"/></div>
                 {/* <div className="loan-products-icon"><img src="./images/medal.png"/></div> */}
@@ -248,7 +252,7 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+            <div className="col-md-6 col-lg-3 pdb30">
               <div className="business-loan-products bg-boxshadow">
               <div className="circle"><img src="./images/value.png"/></div>
                 {/* <div className="loan-products-icon"><i className="flaticon-time-is-money icon-4x icon-primary" /></div> */}
@@ -260,12 +264,12 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+            <div className="col-md-6 col-lg-3 pdb30">
               <div className="business-loan-products bg-boxshadow">
               <div className="circle"><img src="./images/life-insurance.png"/></div>
                 {/* <div className="loan-products-icon"><i className="flaticon-rich icon-4x icon-primary" /></div> */}
                 <div className="loan-products-content">
-                  <h3>TimeAlly SGAP</h3>
+                  <h3>TimeAlly Assurance</h3>
                   <input type="checkbox" className="read-more-state" id="post-3" />
                   <p className="read-more-wrap">TimeAlly Super Goal Achiever Plan (TSGAP) is a Decentralized Smart Contract powered Systematic Accumulation Plan designed <span className="read-more-target">  to safeguard community`s interest, so they can have financial support to support their goals, its incentivize Stakers behavior for regularly in a disciplined way. The benefit of this SAP is that Stakers can choose minimal staking in Era Swap, Leverage Power of Compounding, Milestone based Goal Achievement, Booster Bonus, with complete transparency and ownership of your digital assets </span></p>
                     <label htmlFor="post-3"  className="btn btn-default read-more-trigger"></label>
@@ -273,7 +277,7 @@ class Home extends Component {
               </div>
             </div>
 
-            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+            <div className="col-md-6 col-lg-3 pdb30">
               <div className="business-loan-products bg-boxshadow">
               <div className="circle"><img src="./images/pet.png"/></div>
                 {/* <div className="loan-products-icon"><i className="flaticon-time-is-money icon-4x icon-primary" /></div> */}
@@ -289,73 +293,72 @@ class Home extends Component {
           </div>
         </div>
       </div>
-      <div className="card-hero-section ">
-        <div className="container">
-          <div className="row">
-            <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-              {/* hero-caption */}
-              <div className="card-hero-block text-center">
-                <h1 className="text-white">Power <img src="./images/pt.png" style={{height:'69px'}} /> Tokens</h1>
-                <p className="text-white">Power Tokens are additional 10% of NRT allocated every month to TimeAlly vestors. Power Tokens are allocated to the TimeAlly members in a ratio 10:1 per year. The Power Tokens can be uses to encourage, appreciate, donate to friends, family, collegues on Swappers Wall and services on Time Swappers & Buzcafe.<br></br>To know more about power token the user can read <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank" >Era Swap White Paper</a><br></br><br></br>
-                <strong>Use Power Tokens on below platforms</strong>
-                </p>
-                 <div className="col-md-12">
-                    <span style={{marginLeft:'10px'}}>
-                      <a href="http://timeswappers.com/home" target="_blank" >
-                       <img src="./images/swp_bz-01.png" style={{ height:'80px'}}></img>
-                      </a>
-                    </span>
-                    <span style={{marginLeft:'10px'}}>
-                      <a href="http://timeswappers.com" target="_blank" >
-                       <img src="./images/ts.png" style={{ height:'80px'}}></img>
-                      </a>
-                    </span>
-                    <span style={{marginLeft:'10px'}}>
-                       <img src="./images/swp_bz-02.png" style={{ height:'80px'}}></img>
-                    </span>
-                  </div>
-                  <br></br>
-                  <p><a style={{color: 'white', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/V3PtAX_GMjw?rel=0&amp" target="_blank">Click to open Power Token Insights Video in a new tab</a></p>
-                  <p><a style={{color: 'white', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/a89tFlAQ2vY?rel=0&amp" target="_blank">Click to open SwappersWall Video in a new tab</a></p>
-                {/*<div className="row">
-                  <div className="offset-md-2 col-md-4">
-                    <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                        <iframe src="https://www.youtube-nocookie.com/embed/V3PtAX_GMjw?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
-                      </div>
-                  </div>
+       
 
-                  <div className="col-md-4">
-                    <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                      <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube-nocookie.com/embed/a89tFlAQ2vY?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+      <div className="power-bg">
+        <div className="card-hero-section ">
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                {/* hero-caption */}
+                <div className="card-hero-block text-center">
+                  <h1 className="text-white">Power <img src="./images/pt.png" style={{height:'69px'}} /> Tokens</h1>
+                  <p className="text-white">Power Tokens are additional 10% of NRT allocated every month to TimeAlly vestors. Power Tokens are allocated to the TimeAlly members in a ratio 10:1 per year. The Power Tokens can be uses to encourage, appreciate, donate to friends, family, collegues on Swappers Wall and services on Time Swappers & Buzcafe.<br></br>To know more about power token the user can read <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank" >Era Swap White Paper</a><br></br><br></br>
+                  <strong>Used to encourage, appreciate new talents</strong>
+                  </p>
+                   <div className="col-md-12">
+                      <span style={{marginLeft:'10px'}}>
+                        <a href="http://timeswappers.com/home" target="_blank" >
+                         <img src="./images/swp_bz-01.png" style={{ height:'80px'}}></img>
+                        </a>
+                      </span>
+                     
                     </div>
-                  </div>
-                </div>*/}
-                <div className="row">
-                  {/* <div className="col-md-4">
-                    <img src="./images/swp_bz-01.png"></img>
-                  </div> */}
+                    <br></br>
+                    <p><a style={{color: 'white', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/V3PtAX_GMjw?rel=0&amp" target="_blank">Click to open Power Token Insights Video in a new tab</a></p>
+                    <p><a style={{color: 'white', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/a89tFlAQ2vY?rel=0&amp" target="_blank">Click to open SwappersWall Video in a new tab</a></p>
+                  {/*<div className="row">
+                    <div className="offset-md-2 col-md-4">
+                      <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
+                          <iframe src="https://www.youtube-nocookie.com/embed/V3PtAX_GMjw?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
+                        </div>
+                    </div>
 
-                  {/* <div className="col-md-4">
-                  <img src="./images/swp_bz-02.png"></img>
-                  </div> */}
+                    <div className="col-md-4">
+                      <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
+                        <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube-nocookie.com/embed/a89tFlAQ2vY?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                      </div>
+                    </div>
+                  </div>*/}
+                  <div className="row">
+                    {/* <div className="col-md-4">
+                      <img src="./images/swp_bz-01.png"></img>
+                    </div> */}
+
+                    {/* <div className="col-md-4">
+                    <img src="./images/swp_bz-02.png"></img>
+                    </div> */}
+                  </div>
+                  {/* <a className="btn-link-white">Watch the video for TimeAlly activation</a> */}
+                  {/* <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
+                      <iframe width="560" height="315" style={{position: 'absolute', top: 0, left: 0,}} src="https://www.youtube-nocookie.com/embed/X0SV9pGQls4?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                    </div> */}
                 </div>
-                {/* <a className="btn-link-white">Watch the video for TimeAlly activation</a> */}
-                {/* <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                    <iframe width="560" height="315" style={{position: 'absolute', top: 0, left: 0,}} src="https://www.youtube-nocookie.com/embed/X0SV9pGQls4?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                  </div> */}
+                {/* /.hero-caption */}
               </div>
-              {/* /.hero-caption */}
-            </div>
-            <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12 text-right">
-              <div className="mt10">
-                {/* <img src="./images/TimeAlly-Info-wp.png" alt className="img-fluid" /> */}
+              <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12 text-right">
+                <div className="mt10">
+                  {/* <img src="./images/TimeAlly-Info-wp.png" alt className="img-fluid" /> */}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="section-space80 bg-white">
-        <div className="container">
+
+
+      <div className="section-space80 bg-white ">
+        <div className="container pdb60">
           <div className="row">
             <div className="offset-xl-2 col-xl-8 offset-md-2 col-md-8 offset-md-2 col-md-8 col-sm-12 col-12">
               <div className="text-center section-title">
@@ -367,7 +370,7 @@ class Home extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div className="col-lg-6">
               <div className="bg-white">
                     <Accordion defaultActiveKey="0" style={{textAlign:'left'}}>
                       <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', borderTop:'0px', padding: '10px 0px 10px 30px'}}>
@@ -499,7 +502,16 @@ class Home extends Component {
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap (ES) has to be claimed by the users based on the work performed in the ecosystem or vesting done in TimeAlly. As per preset rules, if the user has performed tasks, then they are eligible for rewards. User can trigger and withdraw once they have received rewards.</Card.Body>
                         </Accordion.Collapse>
                       </Card>
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
+                    
+                      
+
+                    </Accordion>
+              </div>
+            </div>
+             <div className="col-lg-6">
+              <div className="bg-white">
+                    <Accordion defaultActiveKey="0" style={{textAlign:'left'}}>
+                        <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
                         <Accordion.Toggle as={Card.Header} eventKey="8">
                         Q-9 &nbsp; Is TimeAlly a guaranteed return plan?
                         </Accordion.Toggle>
@@ -590,6 +602,7 @@ class Home extends Component {
                     </Accordion>
               </div>
             </div>
+
           </div>
         </div>
       </div>
