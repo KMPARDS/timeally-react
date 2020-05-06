@@ -318,7 +318,7 @@ icon
 /*-----------------------------------------
 top bar
 ------------------------------------------*/
-.top-bar { padding-top: 10px; padding-bottom: 10px; background-color: #263f8b; font-size: 12px; color: #83bcfa; font-weight: 500; text-transform: uppercase; }
+.top-bar { padding-top: 0px; padding-bottom: 0px; background-color: #263f8b; font-size: 9px; color: #83bcfa; font-weight: 500; text-transform: uppercase; }
 .top-text { padding-left: 20px; line-height: 1.6; }
 .top-text a { color: #83bcfa; }
 .top-text a:hover { color: #fff; }
@@ -671,7 +671,7 @@ compare Student loan table
 .header-standard { }
 .header-standard.header { padding-bottom: 0px; padding-top: 0px; }
 .top-header { padding-top: 5px; padding-bottom: 5px; }
-.quick-info { float: right; font-size: 16px; color: #fff; font-weight: 600; padding-top: 9px; }
+.quick-info { float: right; font-size: 16px; color: #fff; font-weight: 600; padding-top: 18px; }
 .header-standard .search-btn { border-radius: 2px; width: 46px; height: 42px; padding: 10px 0px 0px 0px; margin-top: 0px; color: #ffffff; background-color: #263f8b; display: inline-block; }
 .header-standard #navigation { float: inherit; margin-top: -1px; }
 .header-standard #navigation>ul>li>a { padding: 22px 35px; color: #ffffff; font-weight: 400; }
@@ -1652,8 +1652,23 @@ line-height: 58px;
   border: 1px solid #dee2e675 !important;
 }
 .border-right{
-  border-right:1px solid #dee2e675 !important;;
+  border-right:1px solid #dee2e675 !important;
 }
+
+@media screen and (max-width:1200px) {
+  .top-bar {
+    display: none;
+  }
+}
+
+@media screen and (max-width:992px) {
+  .navbar-light .navbar-toggler {
+      position: absolute !important;
+      top: -60px!important;
+      left: 125px!important;
+  }
+}
+
 @media screen and (max-width:768px) {
     .what-bg .bor-right {
         border-right: none;
@@ -1703,7 +1718,9 @@ line-height: 58px;
       top:15px;
     }
     .border-right{
-      display: none;
+     border-right: none !important;
+   border-bottom: 1px solid #dee2e675 !important;
+  padding-bottom: 40px;
     }
 }
 
@@ -1712,4 +1729,8 @@ line-height: 58px;
       top:10px;
     }
     
+}
+
+.navbar {
+    padding:2px 15px;
 }
