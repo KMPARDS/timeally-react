@@ -170,13 +170,13 @@ class NavbarComponent extends Component {
         <div className="top-header">
           <div className="container">
             <div className="row">
-              <div className="col-xl-2 col-lg-1 col-md-10 col-sm-6 col-6">
+              <div className="col-sm-2">
                 {/* logo */}
                 <div className="logo">
                   <img onClick={() => this.props.history.push('/')} src="/images/logo.png" alt="TimeAlly" />
                 </div>
               </div>
-              <div className="col-xl-10 col-lg-11 col-md-10 col-sm-12 col-12">
+              <div className="col-sm-10">
                 <div className="quick-info">
                   {navbarButtons}
                 </div>
@@ -185,10 +185,10 @@ class NavbarComponent extends Component {
           </div>
         </div>
         <div className="bg-light-blue">
-          <div className="container-fluid">
+          <div className="container">
             <div className="row">
               {/* logo */}
-              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
                   <Navbar expand="lg">
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
@@ -279,8 +279,13 @@ class NavbarComponent extends Component {
             </div>
           </div>
         </div>
+        
       </div>
        </div>
+
+
+
+
       // <Navbar style={{backgroundColor: '#070707'}} {...this.props}>
       //   <Link to="/">
       //     <Navbar.Brand>
