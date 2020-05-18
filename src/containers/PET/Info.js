@@ -81,7 +81,16 @@ class PET extends Component {
       <div className="container pinside30 position-top" style={{'background-color': '#EFF3F8 !important', 'margin-bottom': '30px', 'border-radius': '20px'}}>
         <h2 style={{marginTop: '1rem'}}>TimeAlly PET</h2>
         <p style={{marginBottom: '1rem'}}>Time Ally PET (Personal Era Swap Teller) Plan is Systematic Accumulation Plan which is designed to support with additonal PET bounty by 50% of the Monthly commitment selected by staker and reward with annuity and PET bonus consistently for 5 years to provide maximum gains to meet the future milestone.</p>
-      </div>
+     <Button onClick={this.props.store.walletInstance && this.props.store.walletInstance.address
+          ? () => this.props.history.push('/pet/view')
+          : () => (
+            window.returnLocationAfterLoadWallet={
+              name:'View My PETs',
+              location:'/pet/view',
+              sourceLocation:this.props.location.pathname
+            },this.setState({showLoginModal:true})
+          )}>View My PETs</Button>
+	 </div>
       <div className="row">
         <div className="col-xl-4 col-md-12">
           <div className="bg-white pinside306090 number-block outline mb60 bg-boxshadow">
