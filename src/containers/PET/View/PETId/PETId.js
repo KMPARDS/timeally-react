@@ -158,8 +158,14 @@ class PETId extends Component {
                   <td>{petArray[0]
                     ? <>
                       <span style={{fontSize: '1rem'}}>{window.lessDecimals(petAmount)} ES</span><br />
-                    {window.lessDecimals(petArray[0])} ES (for acheiving self commitment of {window.lessDecimals(this.state.commitmentAmount)} ES){petArray[1].gt(0)
-                      ? <> and {window.lessDecimals(petArray[1])} ES (for topup of {window.lessDecimals(depositAmount.sub(this.state.commitmentAmount))} ES)</>
+                    {window.lessDecimals(petArray[0] || ethers.constants.Zero)} ES (for acheiving {(() => {
+                      if(depositAmount.gte(this.state.commitmentAmount)) {
+                        return <>self commitment</>;
+                    } else if(depositAmount.lt(this.state.commitmentAmount) && depositAmount.gte(this.state.commitmentAmount.div(2))) {
+                      return <>half of self commitment</>;
+                    }
+                    })()} of {window.lessDecimals(this.state.commitmentAmount)} ES){(petArray[1] || ethers.constants.Zero).gt(0)
+                      ? <> and {window.lessDecimals(petArray[1] || ethers.constants.Zero)} ES (for topup of {window.lessDecimals(depositAmount.sub(this.state.commitmentAmount))} ES)</>
                       :null}</>
                     : <></>}
                   </td>
