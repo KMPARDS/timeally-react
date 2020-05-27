@@ -142,6 +142,79 @@
     100% { opacity: 1.0; }
 }
 
+
+
+
+/* modal css start here*/
+#css-only-modals {
+  position: fixed;
+  pointer-events: none;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000000;
+  text-align: center;
+  white-space: nowrap;
+  height: 100%;
+ 
+}
+
+#css-only-modals:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+  background: #00000069;
+}
+
+.css-only-modal-check {
+  pointer-events: auto;
+}
+
+.css-only-modal-check:checked ~ .css-only-modal {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.css-only-modal {
+  width:35%;
+  background: #FFF;
+  z-index: 1;
+  display: inline-block;
+  position: relative;
+  pointer-events: auto;
+  padding: 4px;
+  text-align: right;
+  border-radius: 10px;
+  white-space: normal;
+  display: inline-block;
+  vertical-align: middle;
+  opacity: 0;
+    pointer-events: none;
+    
+}
+
+.css-only-modal h2 {
+  text-align: center;
+}
+
+.css-only-modal p {
+  text-align: left;
+}
+
+.css-only-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor:pointer;
+}
+
+.css-only-modal-check {
+  display: none;
+}
+
       </style>
     <script type="application/ld+json">
       {
@@ -238,6 +311,14 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+<div id="css-only-modals">
+       <input id="modal1" class="css-only-modal-check" type="checkbox" checked/>
+     <div class="css-only-modal">
+        <label for="modal1" class="css-only-modal-close"><i class="fa fa-times fa-2x"></i></label>
+        <a href="" target="_blank"><img src="/images/ES-Network-Info.jpg" class="img-responsive svelte-1ewjq1k" alt="" style="width:100%"/>  </a>
+        </div> 
+     <div id="screen-shade"></div>
+  </div>
 
 
   </body>
