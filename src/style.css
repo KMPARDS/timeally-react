@@ -318,7 +318,7 @@ icon
 /*-----------------------------------------
 top bar
 ------------------------------------------*/
-.top-bar { padding-top: 0px; padding-bottom: 0px; background-color: #263f8b; font-size: 9px; color: #83bcfa; font-weight: 500; text-transform: uppercase; }
+.top-bar { padding-top: 0px; padding-bottom: 0px; background-color: #263f8b; font-size: 12px; color: #83bcfa; font-weight: 600; text-transform: uppercase; }
 .top-text { padding-left: 20px; line-height: 1.6; }
 .top-text a { color: #83bcfa; }
 .top-text a:hover { color: #fff; }

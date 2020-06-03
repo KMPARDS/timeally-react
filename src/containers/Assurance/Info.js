@@ -43,7 +43,17 @@ class SIP extends Component {
       <div className="container pinside30 position-top" style={{'background-color': '#EFF3F8 !important', 'margin-bottom': '30px', 'border-radius': '20px'}}>
         <h2 style={{marginTop: '1rem'}}>TSGAP Right SAP for Achievers </h2>
         <p style={{marginBottom: '1rem'}}>TimeAlly Super Goal Achiever Plan (TSGAP) is a decentralized Smart Contract powered Systematic Accumulation Plan to safeguard your interest so that you can have a helping hand to support you achieving your goal & make the most of your golden years with financial independence </p>
-      </div>
+			<Button onClick={this.props.store.walletInstance && this.props.store.walletInstance.address
+			? () => this.props.history.push('/assurance/view')
+			: () => (
+			window.returnLocationAfterLoadWallet={
+			name:'View My SIPs',
+			location:'/assurance/view',
+			sourceLocation:this.props.location.pathname
+			},this.setState({showLoginModal:true})
+			)}>View My SIPs</Button>
+
+	 </div>
       <div className="row tsgap-fet">
         <div className="col-xl-4 col-md-12">
           <div className="bg-white pinside306090 number-block outline mb60 bg-boxshadow">

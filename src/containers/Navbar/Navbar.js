@@ -107,7 +107,7 @@ class NavbarComponent extends Component {
   }
 
   render() {
-    const announcementLink = <span><a href="/pdf/star_makers2.pdf" target="_blank" className="btn main-btn btn-default btn-sm flash-button margin-custom" >Announcement</a></span>;
+    const announcementLink = <span><a href="/pdf/Phase2.pdf" target="_blank" className="btn main-btn btn-default btn-sm flash-button margin-custom" >Announcement</a></span>;
 
     let navbarButtons = (
      <div>
