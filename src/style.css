@@ -1743,3 +1743,75 @@ line-height: 58px;
 .navbar {
     padding:2px 15px;
 }
+
+
+
+/* modal css start here*/
+#css-only-modals {
+  position: fixed;
+  pointer-events: none;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000000;
+  text-align: center;
+  white-space: nowrap;
+  height: 100%;
+ 
+}
+
+#css-only-modals:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+  background: #00000069;
+}
+
+.css-only-modal-check {
+  pointer-events: auto;
+}
+
+.css-only-modal-check:checked ~ .css-only-modal {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.css-only-modal {
+  width:35%;
+  background: #FFF;
+  z-index: 1;
+  display: inline-block;
+  position: relative;
+  pointer-events: auto;
+  padding: 4px;
+  text-align: right;
+  border-radius: 10px;
+  white-space: normal;
+  display: inline-block;
+  vertical-align: middle;
+  opacity: 0;
+    pointer-events: none;
+    
+}
+
+.css-only-modal h2 {
+  text-align: center;
+}
+
+.css-only-modal p {
+  text-align: left;
+}
+
+.css-only-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor:pointer;
+}
+
+.css-only-modal-check {
+  display: none;
+}
