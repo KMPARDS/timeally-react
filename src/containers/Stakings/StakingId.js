@@ -252,8 +252,8 @@ class StakingId extends Component {
               <div className="row">
                 <div className="col-md-12">
                   <div className="wrapper-content bg-white pinside40">
-                   <div className="bg-white section-space80">
-                     <div className="container">
+                   <div className="bg-white">
+                     <div className="">
                         {this.state.loading
                           ? <p>Please wait loading staking details...</p>
                           : <><p style={{padding: '10px'}}>Please select months of which you want to withdraw your NRT benefits.</p>

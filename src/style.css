@@ -1659,12 +1659,18 @@ line-height: 58px;
   .top-bar {
     display: none;
   }
+  .tsgap-img {
+      height: 174px;
+      position: static !important;
+      left: 15%;
+      margin-bottom: 25px;
+  }
 }
 
 @media screen and (max-width:992px) {
   .navbar-light .navbar-toggler {
       position: absolute !important;
-      top: -40px;
+      top: -60px;
       left: 125px;
   }
 }
@@ -1692,6 +1698,9 @@ line-height: 58px;
         padding: 5px 7px;
         font-size: 15px;
     }
+     .navbar-light .navbar-toggler {
+          top: -40px;
+      }
     .quick-info {
       float:none;
       margin-left: 32px;
@@ -1814,4 +1823,24 @@ line-height: 58px;
 
 .css-only-modal-check {
   display: none;
+}
+.page-header .bg-white h1.page-title{
+  text-align: left;
+}
+.mou-bg{
+  min-height: 450px;  
+}
+
+.dashboard-bg .title{
+  color: #263f8b;
+  font-size: 15px;
+}
+.dashboard-bg .title{
+color: #263f8b;
+font-size: 14px;
+margin-bottom: 15px;
+font-weight: 800;
+}
+.dashboard-bg .number{
+  color: #000;
 }

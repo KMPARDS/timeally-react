@@ -126,14 +126,14 @@ class NavbarComponent extends Component {
             copy(this.props.store.walletInstance.address);
             this.setState({ copied: true });
             setTimeout(this.setState.bind(this, {copied: false}), 2000);
-          }} className="btn btn-primary btn-sm margin-custom" style={{backgroundColor: this.props.store.walletInstance._ethersType !== 'Signer' ? '#333' : undefined, cursor: 'pointer'}}>{this.state.copied ? <>✓ Address Copied!</> : <>Welcome {
+          }} className="btn main-btn btn-success btn-sm  margin-custom" style={{backgroundColor: this.props.store.walletInstance._ethersType !== 'Signer' ? '#333' : undefined, cursor: 'pointer'}}>{this.state.copied ? <>✓ Address Copied!</> : <>Welcome {
               this.props.store.walletInstance.address.slice(0,6) + '...' + this.props.store.walletInstance.address.slice(this.props.store.walletInstance.address.length - 3, this.props.store.walletInstance.address.length - 1)
             }</>}</a>
           </span>
           <span><a onClick={() => {
               this.props.dispatch({ type: 'LOAD-WALLET-INSTANCE', payload: {} });
               this.props.history.push('/logout');
-            } } className="btn btn-default btn-sm">Logout</a></span>
+            } } className="btn main-btn btn-dark btn-sm margin-custom">Logout</a></span>
 
         </div>
       );
