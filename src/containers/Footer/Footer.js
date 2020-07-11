@@ -83,7 +83,8 @@ class FooterComponent extends Component {
                 <a href="/pdf/TimeAlly.pdf" target="_blank">User Guide</a> &nbsp; | &nbsp;
                 <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank"  >Era Swap White Paper</a> &nbsp; | &nbsp;
                 <a href="https://eraswaptoken.io/era-swap-howey-test-letter-august7-2018.php" target="_blank" rel="noopener noreferrer">Howey Test</a> &nbsp; | &nbsp;
-                <a href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank">Terms of use</a> &nbsp;
+               <a href="https://eraswaptoken.io/pdf/eraswap-terms-conditions.pdf" target="_blank">Era Swap Terms & Conditions</a> | &nbsp;
+                 | &nbsp;  <a href="/pdf/timeally-terms-condtions.pdf" target="_blank">Terms of use</a> &nbsp;
                  | &nbsp; <a href="/pdf/TimeAlly-Privacy.pdf" target="_blank">Privacy Policy</a> &nbsp;
                  | &nbsp; <a href="/pdf/TSGAP_without_DaySwappers_Incentive.pdf" target="_blank">TSGAP</a> &nbsp;
                  | &nbsp; <a href="/pdf/TimeAlly_PET_without_DaySwappers_Incentive.pdf" target="_blank">PET</a> &nbsp;
