@@ -89,6 +89,7 @@ class FooterComponent extends Component {
                  | &nbsp; <a href="/pdf/TSGAP_without_DaySwappers_Incentive.pdf" target="_blank">TSGAP</a> &nbsp;
                  | &nbsp; <a href="/pdf/TimeAlly_PET_without_DaySwappers_Incentive.pdf" target="_blank">PET</a> &nbsp;
                  | &nbsp; <a href="/pdf/TimeAlly_without_DaySwappers_Incentive.pdf" target="_blank">TimeAlly</a>
+                 | &nbsp; <a href="/excel/1L1T_Cal.xlsx" target="_blank">1 Life Time</a>
 
 
 
