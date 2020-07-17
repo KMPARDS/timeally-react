@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 const ListOfLoadMethods = props => {
   return (
-    <div>
+    <div class="container">
       {/*<Card style={{margin: '15px 0'}} onClick={() => props.history.push('/load-wallet/scan-from-app')}>
         <Card.Body align="center">
           Log in by scaning from Era Swap Wallet App

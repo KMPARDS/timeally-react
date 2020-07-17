@@ -29,12 +29,12 @@ class SIP extends Component {
       breadcrumb={['Home', 'Assurance']}
       title="TSGAP Right SAP for Achievers"
       transparent={true}
-      buttonName="New SIP"
+      buttonName="New SAP"
       buttonOnClick={this.props.store.walletInstance && this.props.store.walletInstance.address
         ? () => this.props.history.push('/assurance/new')
         : () => (
           window.returnLocationAfterLoadWallet={
-            name:'New SIP',
+            name:'New SAP',
             location:'/assurance/new',
             sourceLocation:this.props.location.pathname
           },this.setState({showLoginModal:true})
@@ -47,11 +47,11 @@ class SIP extends Component {
 			? () => this.props.history.push('/assurance/view')
 			: () => (
 			window.returnLocationAfterLoadWallet={
-			name:'View My SIPs',
+			name:'View My SAPs',
 			location:'/assurance/view',
 			sourceLocation:this.props.location.pathname
 			},this.setState({showLoginModal:true})
-			)}>View My SIPs</Button>
+			)}>View My SAPs</Button>
 
 	 </div>
       <div className="row tsgap-fet">
@@ -108,17 +108,17 @@ class SIP extends Component {
 	          this.state.fundsDeposit ? ethers.utils.formatEther(this.state.fundsDeposit) + ' ES' : 'Loading...'}</p>
 	        <p><strong>Benefits Already Alloted:</strong> {this.state.pendingBenefits ? ethers.utils.formatEther(this.state.pendingBenefits) + ' ES' : 'Loading...'} ({this.state.fundsDeposit && this.state.pendingBenefits
 	          ? window.lessDecimals(this.state.pendingBenefits.mul(ethers.utils.parseEther('100')).div(this.state.fundsDeposit), 4) + '% of fund bucket is allocated' : 'Loading...'})</p>
-	        <Button onClick={() => this.props.history.push('/assurance/calculate')}>SIP Calculator</Button>
+	        <Button onClick={() => this.props.history.push('/assurance/calculate')}>SAP Calculator</Button>
 	        <Button onClick={this.props.store.walletInstance && this.props.store.walletInstance.address
 	          ? () => this.props.history.push('/assurance/view')
 	          : () => (
 	            window.returnLocationAfterLoadWallet={
-	              name:'View My SIPs',
+	              name:'View My SAPs',
 	              location:'/assurance/view',
 	              sourceLocation:this.props.location.pathname
 	            },this.setState({showLoginModal:true})
-	          )}>View My SIPs</Button>
-	        <p style={{marginTop:'1rem'}}><strong>SIP Smart Contract Link:</strong> <a href="https://etherscan.io/address/0xbad9af4db5401b7d5e8177a18c1d69c35fc03fd3#code" target="_blank" style={{color: '#000', textDecoration: 'underline'}}>EtherScan</a></p>
+	          )}>View My SAPs</Button>
+	        <p style={{marginTop:'1rem'}}><strong>SAP Smart Contract Link:</strong> <a href="https://etherscan.io/address/0xbad9af4db5401b7d5e8177a18c1d69c35fc03fd3#code" target="_blank" style={{color: '#000', textDecoration: 'underline'}}>EtherScan</a></p>
 	         </div>
          </div>
       </div>

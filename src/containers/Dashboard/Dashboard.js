@@ -162,7 +162,7 @@ class Dashboard extends Component {
                 </div>
               </div>
           <div>
-    <div className="container">
+    <div className="container dashboard-bg">
         <div className="row">
           <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div className="wrapper-content bg-white pinside10">
@@ -173,19 +173,19 @@ class Dashboard extends Component {
                       <div className="bg-light pinside10 ">
                         <div className="row">
                           <div className="col-xl-5 col-lg-5 col-md-5 col-sm-5 " style={{textAlign:'center'}}>
-                             <span>Current NRT Month</span><br></br><br></br>
-                            <span style={{fontSize:'12px'}}>{this.state.currentMonth}{this.state.currentMonth !== undefined ? null : 'Loading...'}</span>
+                             <span className="title">Current NRT Month</span><br></br><br></br>
+                            <span className="number" style={{fontSize:'12px'}}>{this.state.currentMonth}{this.state.currentMonth !== undefined ? null : 'Loading...'}</span>
                             <hr />
-                            <span>NRT Release this month</span><br></br><br></br>
-                            <span style={{fontSize:'12px'}}>{this.state.nrtRelease}{this.state.nrtRelease !== undefined ? ' ES' : 'Loading...'}</span>
+                            <span className="title">NRT Release this month</span><br></br><br></br>
+                            <span className="number" style={{fontSize:'12px'}}>{this.state.nrtRelease}{this.state.nrtRelease !== undefined ? ' ES' : 'Loading...'}</span>
                           </div>
-                          <div className="vl" />
+                          <div className="vl"/>
                           <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 " style={{textAlign:'center'}}>
-                            <span>Next Month Active Stakings in the Blockchain</span><br></br><br></br>
-                            <span style={{fontSize:'12px'}}>{this.state.totalActiveStakings}{this.state.totalActiveStakings !== undefined ? ' ES' : 'Loading...'}</span>
+                            <span className="title">Next Month Active Stakings in the Blockchain</span><br></br><br></br>
+                            <span className="number" style={{fontSize:'12px'}}>{this.state.totalActiveStakings}{this.state.totalActiveStakings !== undefined ? ' ES' : 'Loading...'}</span>
                             <hr />
-                            <span>My Active Stakings</span><br></br><br></br>
-                            <span style={{fontSize:'12px'}}>{this.state.myActiveStakings}{this.state.myActiveStakings !== undefined ? ' ES' : 'Loading...'}</span>
+                            <span className="title">My Active Stakings</span><br></br><br></br>
+                            <span className="number" style={{fontSize:'12px'}}>{this.state.myActiveStakings}{this.state.myActiveStakings !== undefined ? ' ES' : 'Loading...'}</span>
                           </div>
                         </div>
                       </div>
@@ -196,9 +196,9 @@ class Dashboard extends Component {
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                           <div className="bg-light">
                           <hr />
-                            <span style={{textAlign:'center'}}>TOTAL STAKED IN 24 HOURS</span>
+                            <span className="title" style={{textAlign:'center'}}>TOTAL STAKED IN 24 HOURS</span>
                             {/* <h2 id="emi" className="pull-right">Graph</h2> */}<br></br><br></br>
-                          <h2>{this.state.stakingsInLast24Hours ? this.state.stakingsInLast24Hours + ' ES' : 'Loading...'}</h2>
+                          <h2 className="number">{this.state.stakingsInLast24Hours ? this.state.stakingsInLast24Hours + ' ES' : 'Loading...'}</h2>
                           </div>
                         </div>
                       </div>

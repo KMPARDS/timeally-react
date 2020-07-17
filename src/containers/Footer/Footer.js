@@ -81,13 +81,15 @@ class FooterComponent extends Component {
                 <a rel="noopener noreferrer" href="https://etherscan.io/address/0x5630ee5f247bd6b61991fbb2f117bbeb45990876#code" target="_blank" rel="noopener noreferrer">TA Smart Contract Address: 0x5630ee5f247Bd6B61991FBB2f117bBEb45990876</a> | <a style={{cursor:'pointer'}} onClick={() => this.props.history.push('/view-all-world-staking')}>View All World Staking</a><br/>{/*&nbsp; | &nbsp;*/}
                 <a href="/pdf/TimeAlly_Contract_Security_Software_Testing_Report.pdf" target="_blank"  >Contract, Security, and Software Testing Reports</a> &nbsp; | &nbsp;
                 <a href="/pdf/TimeAlly.pdf" target="_blank">User Guide</a> &nbsp; | &nbsp;
-                <a href="https://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank"  >Era Swap White Paper</a> &nbsp; | &nbsp;
-                <a href="https://eraswaptoken.io/era-swap-howey-test-letter-august7-2018.php" target="_blank" rel="noopener noreferrer">Howey Test</a> &nbsp; | &nbsp;
-                <a href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank">Terms of use</a> &nbsp;
-                 | &nbsp; <a href="/pdf/TimeAlly-Privacy.pdf" target="_blank">Privacy Policy</a> &nbsp;
+                <a href="http://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank"  >Era Swap White Paper</a> &nbsp; | &nbsp;
+                <a href="http://eraswaptoken.io/pdf/era-swap-howey-test-letter-august7-2018.pdf" target="_blank" rel="noopener noreferrer">Howey Test</a> &nbsp; | &nbsp;
+               <a href="https://eraswaptoken.io/pdf/eraswap-terms-conditions.pdf" target="_blank">Era Swap Terms & Conditions</a> | &nbsp;
+                 | &nbsp;  <a href="/pdf/timeally-terms-condtions.pdf" target="_blank">Terms of use</a> &nbsp;
+                 | &nbsp; <a href="/pdf/timeally-privacy-policy.pdf" target="_blank">Privacy Policy</a> &nbsp;
                  | &nbsp; <a href="/pdf/TSGAP_without_DaySwappers_Incentive.pdf" target="_blank">TSGAP</a> &nbsp;
                  | &nbsp; <a href="/pdf/TimeAlly_PET_without_DaySwappers_Incentive.pdf" target="_blank">PET</a> &nbsp;
                  | &nbsp; <a href="/pdf/TimeAlly_without_DaySwappers_Incentive.pdf" target="_blank">TimeAlly</a>
+                 | &nbsp; <a href="/excel/1L1T_Cal.xlsx" target="_blank">1 Life Time</a>
 
 
 
