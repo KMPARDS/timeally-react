@@ -428,7 +428,7 @@ class Home extends Component {
                           <div className="row">
                               <div className="offset-md-4 col-md-4">
                               <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                                  {/*<iframe src="https://www.youtube-nocookie.com/embed/31PT42RIOQs?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />*/}
+                                  <iframe src="https://www.youtube-nocookie.com/embed/31PT42RIOQs?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
                               </div>
 
                               </div>
@@ -448,7 +448,7 @@ class Home extends Component {
                             <strong style={{textAlign:'center'}}>Please watch this video on how to stake in TimeAlly.</strong>
                             <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/3msYFRo9d4E?rel=0&amp" target="_blank">Click to open the Video in a new tab</a></p> <br></br><br></br>
                               <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                                {/*<iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube-nocookie.com/embed/3msYFRo9d4E?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>*/}
+                                <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube-nocookie.com/embed/3msYFRo9d4E?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
                               </div>
                             </div>
 
@@ -466,7 +466,7 @@ class Home extends Component {
                             <strong style={{textAlign:'center'}}>Please watch this video on how to do staking of TimeAlly on Etherscan.</strong> <br></br><br></br>
                             <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/Jtc3unocmEA?rel=0&amp" target="_blank">Click to open the Video in a new tab</a></p>
                               <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                              {/*  <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube-nocookie.com/embed/Jtc3unocmEA?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>*/}
+                               <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube-nocookie.com/embed/Jtc3unocmEA?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
                               </div>
                             </div>
                             <br></br>
@@ -595,7 +595,10 @@ class Home extends Component {
                         Q-17. &nbsp; What is GitHub link of TimeAlly.io?
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="15">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>TimeAlly: https://github.com/KMPARDS/timeally-react</Card.Body>
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
+                            <p><a href="https://github.com/KMPARDS/timeally-react">TimeAlly: https://github.com/KMPARDS/timeally-react</a></p>
+                            
+                          </Card.Body>
                         </Accordion.Collapse>
                       </Card>
 
