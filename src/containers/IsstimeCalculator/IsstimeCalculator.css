@@ -1,0 +1,15 @@
+.pink-btn{
+    background-color: #f51f8a;
+    color: #fff;
+    border-color: #f51f8a;
+}
+
+.pink-btn:hover{
+    background-color: #ff389c;
+    color: #fff;
+    border-color: #ff389c;
+}
+
+.black-head-txt.bold-txt{
+ font-weight: 600;
+}

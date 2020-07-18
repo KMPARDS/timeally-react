@@ -6,6 +6,9 @@ import { Card, Button, Accordion } from 'react-bootstrap';
 
 import { timeally } from '../../env';
 
+
+import './LifeTime.css';
+
 // import Loader from 'react-loader-spinner';
 // export default class App extends React.Component {
 
@@ -41,13 +44,11 @@ class LifeTime extends Component {
           <div className="banner-con ">
             <div className="hero-tab-block">
                <div className="banner-in-bg pinside40">
-                         
-                             
                                  <h1 className="text-white">TimeAlly 1 Life Time Smart Contract</h1>
                                  <p className="text-white">Various versions have evolved over the years, sometimes by accident, sometimes on purpose</p>
                                  <div className="mt30">
                                      <a className="btn btn-default main-btn-blue">GET STARTED</a>
-                                     <a className="btn btn-default main-btn-white">VIEW MY ISSTYME</a>
+                                     <a href="/isstime-stack" className="btn  bg-txt-white">VIEW MY ISSTYME</a>
                                  </div>
                             
                      </div>
@@ -59,49 +60,72 @@ class LifeTime extends Component {
 
    <div className="bg-white what-bg">
       <div className="container pinside20 ">
-          <div className="row">
-                <div className="col-md-6 pinside40 bor-right">
+      <div className="row">
+            <div className="col-xl-12 col-md-12 col-md-12 col-sm-12 col-12">
+              <div className="mb100 text-center section-title">
+                {/* section title start*/}
+                <h2>FEATURES OF TIMEALLY 1LT REWARDS FOR PARTICIPANTS IN ES</h2>
+              </div>
+              {/* /.section title start*/}
+              <div className="row">
+                <div className="col-md-4 pinside40 bor-right">
                         <div className="what-dapp ">
-                             <h1>What is DApp?</h1>
-                             <p>Decentralized Application (DApp) is an open-source application that runs autonomously on s decentralized public blockchain. DApp uses distributed ledger technology which aren’t stored on a centralized location, hence cant be controlled by a single entity
+                        <h1>15% of NRT</h1>
+                             <p>TimeAlly can be claimed 50% in TimeAlly stakes and 50% in Liquid
                              </p>
-                             <p><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/DM6hvVaCu_g?rel=0&amp" target="_blank">Click to open TimeAlly Teaser in a new tab</a></p>
-
-         
                          </div>
                  </div> 
-
-                 
-                 <div className="col-md-6 pinside40">
+                 <div className="col-md-4 pinside40 bor-right">
                          <div className="what-timeally">
-                             <h1>What is TimeAlly?</h1>
-                             <p>TimeAlly is a decentralized application based on a pre-defined set of rules of Smart Contracts to offer multiple benefits to the community. TimeAlly increases Era Swap Utility count for TimeAlly contract holders for holding tokens over a period of time, using flexible TimeAlly Plans
-                             </p>
-                                <p><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/vfgf2pvYSoc?rel=0&amp" target="_blank">Click to open TimeAlly Walkthrough in a new tab</a></p>
-
+                         <h1>10% of NRT</h1>
+                             <p>Power Tokens can be sent 50% in TimeAlly stakes and 50% in prepaid ES stakes</p>
+                         </div>
+                  </div> 
+                  <div className="col-md-4 pinside40">
+                         <div className="what-timeally">
+                         <h1>12% of NRT</h1>
+                         <p>ESN PoS CP can be claimed in prepaid ES stakes if POS deligated to ESN node</p> 
                          </div>
                   </div> 
         
           </div> 
+            </div>
+          </div>
       </div>     
     </div>
-    <div className="rate-table total-es-count">
+
+
+     <div className="section-space80">
         <div className="container">
           <div className="row">
-            <div className="col-md-6">
-              <div className="rate-counter-block">
-                
-                <div className="rate-box">
-                  <h1 className="loan-rate">{this.state.nrt ? this.state.nrt + ' ES' : 'Loading...'}</h1>
-                  <small className="rate-title">NRT Released in this month for TimeAlly</small>
+            <div className="offset-xl-2 col-xl-8 offset-md-2 col-md-8 offset-md-2 col-md-8 col-sm-12 col-12">
+              <div className="section-title mb60 text-center">
+                {/* section title start*/}
+                <h1 className="black-head-txt">Lorem Ipsum Sample Text</h1>
+                <p>We will match you with a loan program that meet your financial need.</p>
+              </div>
+              {/* /.section title start*/}
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-md-6 col-lg-6 pdb30">
+              <div className="business-loan-products bg-boxshadow">
+                  <img src="./images/related-img-2.jpg"/>
+                <div className="loan-products-content">
+                  <h3>TimeAlly Loan</h3>
                 </div>
               </div>
             </div>
-            <div className="col-md-6">
-              <div className="rate-counter-block-second">
-                <div className="rate-box">
-                  <h1 className="loan-rate">{this.state.totalActiveStakingsNextMonth ? this.state.totalActiveStakingsNextMonth + ' ES' : 'Loading...'}</h1>
-                  <small className="rate-title">Total Active Stakes in next month</small>
+            <div className="col-md-6 col-lg-6 pdb30">
+              <div className="business-loan-products bg-boxshadow">
+              <div className="circle"><img src="./images/value.png"/></div>
+                {/* <div className="loan-products-icon"><i className="flaticon-time-is-money icon-4x icon-primary" /></div> */}
+                <div className="loan-products-content">
+                  <h3>TimeAlly Club</h3>
+                 
+                  <p className="read-more-wrap">TimeAlly Club is a premium membership for Era Swap Community, to provide community additional benefits of rewards along  <span className="read-more-target"> with exclusive membership add-ons such as; Utility Bill Payments, Travel & Holidays, Education, Health & Fitness, etc. TimeAlly Club membership is available in 5 categories that are; Silver, Gold, Diamond, Emerald and Ruby</span> </p>
+                    <label htmlFor="post-2"  className="btn btn-default read-more-trigger"></label>
                 </div>
               </div>
             </div>
@@ -116,7 +140,7 @@ class LifeTime extends Component {
             <div className="col-xl-12 col-md-12 col-md-12 col-sm-12 col-12">
               <div className="mb100 text-center section-title">
                 {/* section title start*/}
-                <h1>Features of TimeAlly</h1>
+                <h1 className="black-head-txt">Something else</h1>
                 <p>TimeAlly is an open-source application and can work even without any web-interference. It is powered on a pre-defined set of rules of Smart Contract and executes code of arbitrary algorithmic complexity following standard cryptography with no downtime and keeping everything safe from modifying </p>
                 <a rel="noopener noreferrer" className="btn btn-default" href="https://etherscan.io/address/0x5630ee5f247bd6b61991fbb2f117bbeb45990876#code" target="_blank" ><p style={{color:'#fff'}}>View TA Smart Contract</p></a>
               </div>
@@ -238,13 +262,8 @@ class LifeTime extends Component {
           <div className="row">
             <div className="col-md-6 col-lg-3 pdb30">
               <div className="business-loan-products bg-boxshadow">
-              <div className="circle"><img src="./images/jar.png"/></div>
-                {/* <div className="loan-products-icon"><img src="./images/medal.png"/></div> */}
                 <div className="loan-products-content">
                   <h3>TimeAlly Loan</h3>
-                  <input type="checkbox" className="read-more-state" id="post-1" />
-                  <p className="read-more-wrap">TimeAlly holders will get the opportunity to avail loan up to 50% for a duration of 2 months after consuming 75% of the  <span className="read-more-target"> contract period. The borrower has to pay 1% additional of the borrowed ES for 60 days; an additional 1% will be collected in luck pool and distributed back to the community. In case a borrower fails to pay back within 60 days and 12 hours, remaining staked tokens in TimeAlly contract will be burnt</span></p>
-                    <label htmlFor="post-1"  className="btn btn-default read-more-trigger"></label>
                 </div>
               </div>
             </div>
@@ -359,7 +378,8 @@ class LifeTime extends Component {
             <div className="offset-xl-2 col-xl-8 offset-md-2 col-md-8 offset-md-2 col-md-8 col-sm-12 col-12">
               <div className="text-center section-title">
                 {/* section title start*/}
-                <h1>FAQ's</h1>
+                <h1 className="black-head-txt">Frequently Asked Question</h1>
+                <p>Our Mission is to deliver reliable , latest news and opinions</p>
                 <hr></hr>
               </div>
               {/* /.section title start*/}
@@ -371,7 +391,7 @@ class LifeTime extends Component {
                     <Accordion defaultActiveKey="0" style={{textAlign:'left'}}>
                       <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', borderTop:'0px', padding: '10px 0px 10px 30px'}}>
                         <Accordion.Toggle as={Card.Header} eventKey="0">
-                          Q-1. &nbsp; What is Era Swap Token?
+                          Q-1. &nbsp;How much can I burrow?
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap Token or ES is a decentralized utility token currently based on Ethereum blockchain (ERC20) which will be used on multiple platforms for exchange of services(P2P), avail discounts, get rewards and many more utility.</Card.Body>
@@ -504,104 +524,6 @@ class LifeTime extends Component {
                     </Accordion>
               </div>
             </div>
-             <div className="col-lg-6">
-              <div className="bg-white">
-                    <Accordion defaultActiveKey="0" style={{textAlign:'left'}}>
-                        <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="8">
-                        Q-9 &nbsp; Is TimeAlly a guaranteed return plan?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="8">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>No, TimeAlly doesn’t given any guarantee of any return. however, it gives a guaranteed number of Era Swap tokens (ES) from ES NRT pool to users according to their vesting periods.</Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="9">
-                        Q-10. &nbsp; Does ES give guaranteed return?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="9">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>ES doesn’t give any guaranteed return however the value of Era Swap depends on demand and supply dynamics of the ecosystem which depends on usage and users.</Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="10">
-                        Q-11. &nbsp; How Time Vaults increases the ES count for TimeAlly vestor?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="10">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Time Vault holds the token allocated from NRT every month. The Smart Contract releases ES token from NRT Pool over next 50 years under pre-defined set of rules.<br></br>
-                          All ES tokens which are to be released in future are stored in Time Vault and are distributed based on the work performed by the users among them.
-                          </Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="11">
-                        Q-12. &nbsp; Does Era Swap guarantee Fiat or other crypto?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="11">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap doesn’t guarantee any Fiat or Crypto because Era Swap doesn’t control any Fiat or any other cryptocurrency.</Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="12">
-                        Q-13. &nbsp; Can Era Swap token be used outside the system?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="12">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>No, Era Swap token can only be used in the Eco System. ES cannot be used outside Era swap Ecosystem.</Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="13">
-                        Q-14. &nbsp; Do you store my private keys, Keystore or mnemonic?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="13">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>When you load Wallet in the TimeAlly ÐApp, your private keys stay only on your computer. The TimeAlly ÐApp directly talks with blockchain hence any centralized intermediate server is not at all required and hence any of your data is NOT sent to our servers (we are also not recording any usage data). Your computer signs any transactions you authorise and only the signed transaction is submitted to blockchain for being included in blocks by miners who are mining in Ethereum. When you logout or even refresh page your private keys are erased from computer’s memory. The TimeAlly ÐApp source code is open source and anyone can check what is happening.</Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="14">
-                        Q-15. &nbsp; What is Gas Fee / Network Fee?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="14">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Ethereum is a decentralized and immutable platform. Tens of thousands of miners dedicate their computers to maintain the Ethereum network. For compensation, the concept of the gas fee is there. All transactions on Ethereum Network cost gas and this fee is transferred to miners in ETH. Users can choose to pay less or more gas to miners. A miner can choose which transactions to mine, and generally, they give priority to those transactions which give them more fees. You can customize your gas fees in the advanced settings while making staking, withdrawal or any transaction.</Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="18">
-                          Q-16. &nbsp; How To Stake Your Era Swap Tokens In TimeAlly Using Keystore/ Mnemonics/Private Key?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="18">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Please watch this video to understand "How To Stake Your Era Swap Tokens In TimeAlly Using Keystore/ Mnemonics/Private Key"
-
-                          <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube.com/embed/Jtc3unocmEA" target="_blank">Click to open the Video in a new tab</a></p>
-                          <div className="row">
-                            <div className="offset-md-4 col-md-4" >
-                                <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px', marginTop:'20px'}}>
-                                    {<iframe width="560" height="315" src="https://www.youtube.com/embed/Jtc3unocmEA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
-                                </div>
-                             </div>
-                           </div>
-                          </Card.Body>
-                         </Accordion.Collapse>
-                      </Card>
-                      <Card style={{color:'#3c4d6b', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="15">
-                        Q-17. &nbsp; What is GitHub link of TimeAlly.io?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="15">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
-                            <p><a href="https://github.com/KMPARDS/timeally-react">TimeAlly: https://github.com/KMPARDS/timeally-react</a></p>
-                            
-                          </Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-
-
-                    </Accordion>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>

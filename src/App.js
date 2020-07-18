@@ -23,6 +23,9 @@ import Assurance from './containers/Assurance/Assurance';
 import PET from './containers/PET/PET';
 import Logout from './containers/Logout/Logout';
 import LifeTime from './containers/LifeTime/LifeTime';
+import IsstimeStack from './containers/IsstimeStack/IsstimeStack';
+import IsstimeCalculator from './containers/IsstimeCalculator/IsstimeCalculator';
+
 import './App.css';
 
 import provider from './ethereum/provider';
@@ -172,7 +175,9 @@ function App(props) {
             <Route path="/transactions/withdrawls" exact component={WithdrawlTransactions} />
             <Route path="/rewards" exact component={Rewards} />
             <Route path="/logout" exact component={Logout} />
-            <Route path="/lifetime" exact component={LifeTime} />
+            <Route path="/lifetime" exact component={LifeTime}/>
+            <Route path="/isstime-stack" exact component={IsstimeStack}/>
+            <Route path="/isstime-calculator" exact component={IsstimeCalculator}/>
             <Route path="/insurance" exact render={
               () => <div>Coming soon</div>
             } />
