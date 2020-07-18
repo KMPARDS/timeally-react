@@ -50,8 +50,7 @@ class LifeTime extends Component {
                                      <a className="btn btn-default main-btn-blue">GET STARTED</a>
                                      <a href="/isstime-stack" className="btn  bg-txt-white">VIEW MY ISSTYME</a>
                                  </div>
-                            
-                     </div>
+                         </div>
                 </div>
             </div>
         </div>

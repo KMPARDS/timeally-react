@@ -25,6 +25,7 @@ import Logout from './containers/Logout/Logout';
 import LifeTime from './containers/LifeTime/LifeTime';
 import IsstimeStack from './containers/IsstimeStack/IsstimeStack';
 import IsstimeCalculator from './containers/IsstimeCalculator/IsstimeCalculator';
+import StackingId from './containers/IsstimeStack/StackingId';
 
 import './App.css';
 
@@ -178,6 +179,7 @@ function App(props) {
             <Route path="/lifetime" exact component={LifeTime}/>
             <Route path="/isstime-stack" exact component={IsstimeStack}/>
             <Route path="/isstime-calculator" exact component={IsstimeCalculator}/>
+            <Route path="/stacking-id" exact component={StackingId}/>
             <Route path="/insurance" exact render={
               () => <div>Coming soon</div>
             } />
