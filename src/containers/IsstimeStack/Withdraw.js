@@ -25,7 +25,7 @@ class Withdraw extends Component {
           <div className="container dashboard-bg">
             <div className="row">
               <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div className="wrapper-content bg-white pinside10">
+                <div className="wrapper-content-stack bg-white pinside10">
                   <div className="row">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                       <div className="row table-padding">
@@ -40,9 +40,9 @@ class Withdraw extends Component {
                             <td>11</td>
                             <td>67.78 ES </td>
                             <td><div className="withdraw-data-flex">
-                            <a className="pink-btn">WITHDRAW</a>
+                           <a className="pink-btn-with">WITHDRAW</a>
                             <a className="btn btn-default main-btn-blue">RESTAKE </a>
-                            <a className="btn btn-default main-btn-blue">CONVERT TO WES</a>
+                            <a className="btn  border-conv">CONVERT TO WES</a>
                                 </div></td>
                             
                           </tr>
@@ -51,9 +51,9 @@ class Withdraw extends Component {
                             <td>11</td>
                             <td>67.78 ES </td>
                             <td><div className="withdraw-data-flex">
-                            <a className="pink-btn">WITHDRAW</a>
+                           <a className="pink-btn-with">WITHDRAW</a>
                             <a className="btn btn-default main-btn-blue">RESTAKE </a>
-                            <a className="btn btn-default main-btn-blue">CONVERT TO WES</a>
+                            <a className="btn  border-conv">CONVERT TO WES</a>
                                 </div></td>
                             
                           </tr>
@@ -62,9 +62,9 @@ class Withdraw extends Component {
                             <td>11</td>
                             <td>67.78 ES </td>
                             <td><div className="withdraw-data-flex">
-                             <a className="pink-btn">WITHDRAW</a>
+                            <a className="pink-btn-with">WITHDRAW</a>
                             <a className="btn btn-default main-btn-blue">RESTAKE </a>
-                            <a className="btn btn-default main-btn-blue">CONVERT TO WES</a>
+                            <a className="btn  border-conv">CONVERT TO WES</a>
                                 </div></td>
                             
                           </tr>
@@ -73,9 +73,9 @@ class Withdraw extends Component {
                             <td>11</td>
                             <td>67.78 ES </td>
                             <td><div className="withdraw-data-flex">
-                             <a className="pink-btn">WITHDRAW</a>
+                             <a className="pink-btn-with">WITHDRAW</a>
                             <a className="btn btn-default main-btn-blue">RESTAKE </a>
-                            <a className="btn btn-default main-btn-blue">CONVERT TO WES</a>
+                            <a className="btn  border-conv">CONVERT TO WES</a>
                                 </div></td>
                             
                           </tr>
@@ -84,9 +84,9 @@ class Withdraw extends Component {
                             <td>11</td>
                             <td>67.78 ES </td>
                             <td><div className="withdraw-data-flex">
-                             <a className="pink-btn">WITHDRAW</a>
+                            <a className="pink-btn-with">WITHDRAW</a>
                             <a className="btn btn-default main-btn-blue">RESTAKE </a>
-                            <a className="btn btn-default main-btn-blue">CONVERT TO WES</a>
+                            <a className="btn  border-conv">CONVERT TO WES</a>
                                 </div></td>
                             
                           </tr>

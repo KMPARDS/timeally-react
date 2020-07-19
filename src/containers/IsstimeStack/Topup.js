@@ -25,7 +25,7 @@ class Topup extends Component {
           <div className="container dashboard-bg">
             <div className="row">
               <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div className="wrapper-content bg-white pinside10">
+                <div className="wrapper-content-stack bg-white pinside10">
                   <div className="row">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                       <div className="row table-padding">
@@ -38,35 +38,35 @@ class Topup extends Component {
                           </tr>
                           <tr>
                             <td>11</td>
-                            <td>1000.0 ES <div className="green-status"></div></td>
+                            <td>1000.0 ES  <div className="green-status">Target of 1000.0 ES is Acheived!</div></td>
                             <td>Deposit time elapsed.</td>
                             <td className="topup-gray">MAKE TOP UP</td>
                           </tr>
 
                           <tr>
                             <td>11</td>
-                            <td>1000.0 ES <div className="green-status"></div></td>
+                            <td>1000.0 ES <div className="green-status">Target of 1000.0 ES is Acheived!</div></td>
                             <td>Deposit time elapsed.</td>
                             <td className="topup-gray">MAKE TOP UP</td>
                           </tr>
 
                           <tr>
                             <td>11</td>
-                            <td>1000.0 ES <div className="green-status"></div></td>
+                            <td>1000.0 ES  <div className="green-status">Target of 1000.0 ES is Acheived!</div></td>
                             <td>Deposit time elapsed.</td>
                             <td className="topup-gray">MAKE TOP UP</td>
                           </tr>
 
                         <tr>
                             <td>11</td>
-                            <td>1000.0 ES <div className="green-status"></div></td>
+                            <td>1000.0 ES  <div className="green-status">Target of 1000.0 ES is Acheived!</div></td>
                             <td>Deposit time elapsed.</td>
                             <td className="topup-gray">MAKE TOP UP</td>
                           </tr>
 
                           <tr>
                             <td>11</td>
-                            <td>1000.0 ES <div className="green-status"></div></td>
+                            <td>1000.0 ES  <div className="green-status">Target of 1000.0 ES is Acheived!</div></td>
                             <td>Deposit time elapsed.</td>
                             <td className="topup-gray">MAKE TOP UP</td>
                           </tr>

@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { Card, Button, Accordion } from 'react-bootstrap';
 import { timeally } from '../../env';
 import Topup from '../IsstimeStack/Topup';
+import Withdraw from '../IsstimeStack/Withdraw';
+import IsstimeElligible from '../IsstimeStack/IsstimeElligible';
+import Delegate from '../IsstimeStack/Delegate';
 import {
     BrowserRouter as Router,
     Route,
@@ -20,21 +23,25 @@ const routes = [
         sidebar: () => <div><Topup /></div>,
         main: () => <h2></h2>
     },
-    // {
-    //     path: '/withdraw',
-    //     sidebar: () => <div><Pages /></div>,
-    //     main: () => <h2></h2>
-    // },
-    // {
-    //     path: '/istime',
-    //     sidebar: () => <div><FotoPage /></div>,
-    //     main: () => <h2></h2>
-    // },
-    // {
-    //     path: '/split-transfer',
-    //     sidebar: () => <div><Club /></div>,
-    //     main: () => <h2></h2>
-    // },
+
+
+    {
+        path: '/withdraw',
+        sidebar: () => <div><Withdraw /></div>,
+        main: () => <h2></h2>
+    },
+
+
+    {
+        path: '/istime',
+        sidebar: () => <div><IsstimeElligible /></div>,
+        main: () => <h2></h2>
+    },
+    {
+        path: '/delegate',
+        sidebar: () => <div><Delegate /></div>,
+        main: () => <h2></h2>
+    },
 
     // {
     //     path: '/delegate',
@@ -63,6 +70,7 @@ class StackingId extends Component {
                             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             </div>
                             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <Router>
                                 <div className="bg-white pinside30">
                                     <div className="row">
                                         <div className="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12">
@@ -82,19 +90,19 @@ class StackingId extends Component {
                                     <div className="stack-bgd-color">
                                         <div className="row stack-box-flex">
                                             <div className="stck-1">
-                                            <Link to="/Topup" className="stack-link"> WITHDRAW</Link>
+                                            <Link to="/withdraw" className="stack-link"> WITHDRAW</Link>
                                             </div>
                                             <div className="stck-1">
                                             <Link to="/Topup" className="stack-link"> TOP UP </Link>
                                             </div>
                                             <div className="stck-1">
-                                            <Link to="" className="stack-link"> ISSTIME</Link>
+                                            <Link to="/istime" className="stack-link"> ISSTIME</Link>
                                             </div>
                                             <div className="stck-1">
                                                 <Link to="" className="stack-link"> SPILT TRANSFER MERGE</Link>
                                             </div>
                                             <div className="stck-1">
-                                                <Link to="" className="stack-link"> DELEGATE</Link>
+                                                <Link to="/delegate" className="stack-link"> DELEGATE</Link>
                                             </div>
                                         </div>
                                     </div>
@@ -107,6 +115,7 @@ class StackingId extends Component {
                                         />
                                     ))}
                                 </div>
+                                </Router>
                             </div>
                         </div>
                     </div>

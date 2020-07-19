@@ -63,3 +63,28 @@
     color: #fff;
     border-color: #f51f8a;
 }
+
+.wrapper-content-stack {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.btn.border-conv{
+ border: 1px solid  #263f8b;
+ height: 40px;
+ padding-top: 13px;
+}
+
+.pink-btn-with{
+  background-color: #f51f8a;
+    color: #fff !important;
+    border-color: #f51f8a;
+    height: 40px;
+    padding-top: 13px;
+    padding: 10px;
+}
+
+.del-flex-right{
+  display: flex;
+  justify-content: end;
+}
