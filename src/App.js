@@ -22,6 +22,10 @@ import Rewards from './containers/Rewards/Rewards';
 import Assurance from './containers/Assurance/Assurance';
 import PET from './containers/PET/PET';
 import Logout from './containers/Logout/Logout';
+import LifeTime from './containers/LifeTime/LifeTime';
+import IsstimeStack from './containers/IsstimeStack/IsstimeStack';
+import IsstimeCalculator from './containers/IsstimeCalculator/IsstimeCalculator';
+import StackingId from './containers/IsstimeStack/StackingId';
 
 import './App.css';
 
@@ -172,6 +176,10 @@ function App(props) {
             <Route path="/transactions/withdrawls" exact component={WithdrawlTransactions} />
             <Route path="/rewards" exact component={Rewards} />
             <Route path="/logout" exact component={Logout} />
+            <Route path="/lifetime" exact component={LifeTime}/>
+            <Route path="/isstime-stack" exact component={IsstimeStack}/>
+            <Route path="/isstime-calculator" exact component={IsstimeCalculator}/>
+            <Route path="/stacking-id" exact component={StackingId}/>
             <Route path="/insurance" exact render={
               () => <div>Coming soon</div>
             } />
