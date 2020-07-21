@@ -6,6 +6,8 @@ import Topup from '../IsstimeStack/Topup';
 import Withdraw from '../IsstimeStack/Withdraw';
 import IsstimeElligible from '../IsstimeStack/IsstimeElligible';
 import Delegate from '../IsstimeStack/Delegate';
+import SpiltTransferManager from '../SpiltTransferManager/SpiltTransferManager';
+
 import {
     BrowserRouter as Router,
     Route,
@@ -43,11 +45,11 @@ const routes = [
         main: () => <h2></h2>
     },
 
-    // {
-    //     path: '/delegate',
-    //     sidebar: () => <div><Club /></div>,
-    //     main: () => <h2></h2>
-    // },
+    {
+        path: '/split-transfer',
+        sidebar: () => <div><SpiltTransferManager /></div>,
+        main: () => <h2></h2>
+    },
 ]
 
 class StackingId extends Component {
@@ -99,7 +101,7 @@ class StackingId extends Component {
                                             <Link to="/istime" className="stack-link"> ISSTIME</Link>
                                             </div>
                                             <div className="stck-1">
-                                                <Link to="" className="stack-link"> SPILT TRANSFER MERGE</Link>
+                                                <Link to="/split-transfer" className="stack-link"> SPILT TRANSFER MERGE</Link>
                                             </div>
                                             <div className="stck-1">
                                                 <Link to="/delegate" className="stack-link"> DELEGATE</Link>

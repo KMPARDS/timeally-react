@@ -41,7 +41,7 @@ class Withdraw extends Component {
                             <td>67.78 ES </td>
                             <td><div className="withdraw-data-flex">
                            <a className="pink-btn-with">WITHDRAW</a>
-                            <a className="btn btn-default main-btn-blue">RESTAKE </a>
+                           <a className="btn btn-restake">RESTAKE </a>
                             <a className="btn  border-conv">CONVERT TO WES</a>
                                 </div></td>
                             
@@ -52,7 +52,7 @@ class Withdraw extends Component {
                             <td>67.78 ES </td>
                             <td><div className="withdraw-data-flex">
                            <a className="pink-btn-with">WITHDRAW</a>
-                            <a className="btn btn-default main-btn-blue">RESTAKE </a>
+                            <a className="btn btn-restake">RESTAKE </a>
                             <a className="btn  border-conv">CONVERT TO WES</a>
                                 </div></td>
                             
@@ -63,7 +63,7 @@ class Withdraw extends Component {
                             <td>67.78 ES </td>
                             <td><div className="withdraw-data-flex">
                             <a className="pink-btn-with">WITHDRAW</a>
-                            <a className="btn btn-default main-btn-blue">RESTAKE </a>
+                             <a className="btn btn-restake">RESTAKE </a>
                             <a className="btn  border-conv">CONVERT TO WES</a>
                                 </div></td>
                             
@@ -74,7 +74,7 @@ class Withdraw extends Component {
                             <td>67.78 ES </td>
                             <td><div className="withdraw-data-flex">
                              <a className="pink-btn-with">WITHDRAW</a>
-                            <a className="btn btn-default main-btn-blue">RESTAKE </a>
+                             <a className="btn btn-restake">RESTAKE </a>
                             <a className="btn  border-conv">CONVERT TO WES</a>
                                 </div></td>
                             
@@ -85,10 +85,9 @@ class Withdraw extends Component {
                             <td>67.78 ES </td>
                             <td><div className="withdraw-data-flex">
                             <a className="pink-btn-with">WITHDRAW</a>
-                            <a className="btn btn-default main-btn-blue">RESTAKE </a>
+                             <a className="btn btn-restake">RESTAKE </a>
                             <a className="btn  border-conv">CONVERT TO WES</a>
                                 </div></td>
-                            
                           </tr>
 
                          

@@ -1,0 +1,9 @@
+.spilt-link{
+    color: #263f8b !important;
+    font-size: 18px;
+}
+
+
+.row.stack-box-flex.border-spilt{
+    border-bottom: 1px solid #0000005c;
+}
