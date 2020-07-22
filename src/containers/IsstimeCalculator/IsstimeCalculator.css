@@ -13,3 +13,26 @@
 .black-head-txt.bold-txt{
  font-weight: 600;
 }
+
+.mb20.align-left{
+ text-align:left;
+}
+
+.calc-faq-txt {
+    font-size: 21px;
+    color: #9098a3;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .align-left{
+      text-align:left;
+      font-weight: 400;
+  }
+
+  .clock-align{
+      display: flex;
+      justify-content: flex-start;
+      margin: 20px;
+  }
+  

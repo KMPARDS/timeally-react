@@ -1,9 +1,29 @@
 .spilt-link{
     color: #263f8b !important;
     font-size: 18px;
+    font-weight: 500;
 }
 
+.spilt-link.align-left{
+text-align: left;
+}
 
 .row.stack-box-flex.border-spilt{
     border-bottom: 1px solid #0000005c;
+}
+
+.desc-split{
+    text-align: justify;
+    font-weight: 400;
+}
+
+.desc-spilt-bold{
+    text-align: left;
+    font-weight: 500;
+    font-size: 18px;
+    color: #000000bd;
+}
+.para-margin{
+    margin-top: 4px;
+    margin-left: 10px;
 }

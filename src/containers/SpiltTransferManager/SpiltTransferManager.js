@@ -60,7 +60,7 @@ class SplitTransferManager extends Component {
                         <div className="row">
                             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div className="wrapper-content-stack bg-white pinside10">
-                                   
+                                   <Router>
                                     <div>
                                     <div className="row stack-box-flex border-spilt">
                                             <div className="stck-1">
@@ -85,6 +85,7 @@ class SplitTransferManager extends Component {
                                         />
                                     ))}
                                     </div>
+                                    </Router>
                                 </div>
                             </div>
                         </div>

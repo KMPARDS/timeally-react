@@ -38,17 +38,17 @@ class LifeTime extends Component {
     return (
 
       <div>
-        <div className="hero-section">
+        <div className="hero-section lifetime">
           <div className="container">
             <div className="row">
               <div className="banner-con ">
                 <div className="hero-tab-block">
                   <div className="banner-in-bg pinside40">
                     <h1 className="text-white">TimeAlly 1 Life Time Smart Contract</h1>
-                    <p className="text-white">Various versions have evolved over the years, sometimes by accident, sometimes on purpose</p>
+                    <p className="text-white">First Generation TimeAlly Smart Contract is built especially for the staker, who wants to support ESN & Accumulate Era Swap in Long-term.</p>
                     <div className="mt30">
                       <a className="btn btn-default main-btn-blue">GET STARTED</a>
-                      <a href="/isstime-stack" className="btn  bg-txt-white">VIEW MY ISSTYME</a>
+                      <a href="/isstime-stack" className="btn  bg-txt-white">VIEW MY ISSTIME</a>
                     </div>
                   </div>
                 </div>
@@ -61,7 +61,7 @@ class LifeTime extends Component {
           <div className="container pinside20 ">
             <div className="row">
               <div className="col-xl-12 col-md-12 col-md-12 col-sm-12 col-12">
-                <div className="mb100 text-center section-title">
+                <div className="mb30 text-center section-title">
                   {/* section title start*/}
                   <h2>FEATURES OF TIMEALLY 1LT REWARDS FOR PARTICIPANTS IN ES</h2>
                 </div>
@@ -70,20 +70,20 @@ class LifeTime extends Component {
                   <div className="col-md-4 pinside40 bor-right">
                     <div className="what-dapp ">
                       <h1>15% of NRT</h1>
-                      <p>TimeAlly can be claimed 50% in TimeAlly stakes and 50% in Liquid
+                      <p>TimeAlly can be claimed 50% in TimeAlly stakes and 50% in ES
                              </p>
                     </div>
                   </div>
                   <div className="col-md-4 pinside40 bor-right">
                     <div className="what-timeally">
                       <h1>10% of NRT</h1>
-                      <p>Power Tokens can be sent 50% in TimeAlly stakes and 50% in prepaid ES stakes</p>
+                      <p>Power Tokens can be sent 50% in TimeAlly stakes and 50% in Wrapped ES (WES)</p>
                     </div>
                   </div>
                   <div className="col-md-4 pinside40">
                     <div className="what-timeally">
                       <h1>12% of NRT</h1>
-                      <p>ESN PoS CP can be claimed in prepaid ES stakes if POS deligated to ESN node</p>
+                      <p>ESN PoS CP can be claimed in Wrapped ES (WES) if POS delegated to ESN node</p>
                     </div>
                   </div>
 
@@ -100,8 +100,7 @@ class LifeTime extends Component {
               <div className="offset-xl-2 col-xl-8 offset-md-2 col-md-8 offset-md-2 col-md-8 col-sm-12 col-12">
                 <div className="section-title mb60 text-center">
                   {/* section title start*/}
-                  <h1 className="black-head-txt">Lorem Ipsum Sample Text</h1>
-                  <p>We will match you with a loan program that meet your financial need.</p>
+                  <p className="opp-txt-sz">Opportunity for Era Swap Stakers to avail TimeAlly Loan in Just a few clicks</p>
                 </div>
                 {/* /.section title start*/}
               </div>
@@ -112,7 +111,7 @@ class LifeTime extends Component {
                 <div className="business-loan-sample bg-boxshadow">
                   <img className="loan-hnd-img" src="./images/loan.jpg" />
                   <div className="loan-products-content">
-                    <h3>TimeAlly Loan</h3>
+                  <a href=""><h3 className="mt10">TimeAlly Loan</h3></a>
                   </div>
                 </div>
               </div>
@@ -121,7 +120,7 @@ class LifeTime extends Component {
                   <div className="loan-products-content">
                   <img className="loan-hnd-img" src="./images/calc.jpg" />
                   <div className="loan-products-content">
-                    <h3>ISSTIME LIMIT</h3>
+                    <h3 className="mt10">ISSTIME LIMIT</h3>
                   </div>
                   </div>
                 </div>
@@ -139,38 +138,36 @@ class LifeTime extends Component {
                   {/* hero-caption */}
                   <div className="card-hero-block text-center">
                     <h1 className="text-white">Why People Choose Us</h1>
-                    <p className="text-white">We understand how to effectively guide you through
-                                <br />the home loan or refinance process and avoid potential problems along the way
+                    <p className="text-white">TimeAlly 1LT is also a perfect solution for stakers 
+                                <br />who do not want to get into the risk of day trading to maximize their token counts.
                     </p>
                     <div className="col-md-12">
                       <div className="row">
                         <div className="col-md-6 col-lg-4 pdt30">
                           <div className="">
                             <div className="sm-calc-flex"><img className="sm-calc-img" src="./images/smallcalc.png" /></div>
-                            <h3 className="text-white">Heading 1</h3>
-                            <p className="text-white">The generated Lorem Ipsum is therefore
-                            always free from repetition, injected
-                                     humour, or non-characteristic words etc </p>
+                            <h3 className="text-white">Multiple Reward Options</h3>
+                            <p className="text-white">TimeAlly 1Life Time offers rewards to users from multiple options of NRT Distribution Chart.
+                                i.e. 15% + 10% + 12% of NRT for staking once in 1LT.</p>
                           </div>
                         </div>
 
                         <div className="col-md-6 col-lg-4 pdt30">
                           <div className="">
                             <div className="sm-calc-flex"><img className="sm-calc-img" src="./images/smallcalc.png" /></div>
-                            <h3 className="text-white">Heading 2</h3>
-                            <p className="text-white">The generated Lorem Ipsum is therefore
-                            always free from repetition, injected
-                                     humour, or non-characteristic words etc </p>
+                            <h3 className="text-white">Long Term</h3>
+                            <p className="text-white">TimeAlly 1Life Time empowers community members to participate in ESN via PoS CP to
+                            secure their stakes and withstand network inflation in Long Term leveraging Decentralized
+                            Structure of Era Swap DAO.</p>
                           </div>
                         </div>
 
                         <div className="col-md-6 col-lg-4 pdt30">
                           <div className="">
                             <div className="sm-calc-flex"><img className="sm-calc-img" src="./images/smallcalc.png" /></div>
-                            <h3 className="text-white">Heading 3</h3>
-                            <p className="text-white">The generated Lorem Ipsum is therefore
-                            always free from repetition, injected
-                                     humour, or non-characteristic words etc </p>
+                            <h3 className="text-white">Flexible</h3>
+                            <p className="text-white">TimeAlly Staking (TA 1Life Time) offers TimeAlly Loan with flexible IssTime Limit based on 4
+                                 Key Levers for an Individual's IssTime Limit.</p>
                           </div>
                         </div>
 
@@ -197,13 +194,12 @@ class LifeTime extends Component {
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                   {/* hero-caption */}
                   <div className="card-hero-block text-center">
-                    <h1 className="text-white">Some of Our awesome testimonials</h1>
-                    <p className="text-white">lorem ipsum dummy text</p><br></br>
+                    <h1 className="text-white">TimeAlly Stakers Testimonials </h1>
                     <div className="row">
                       <div className="col-md-6 col-lg-4 pdb30">
                         <div className="business-loan-products bg-boxshadow">
                           <div className="loan-products-content">
-                            <p className="read-more-wrap">I loved the customer service you guys provided me. That was very nice and patient with questions I had. I would really like definitely come back here </p>
+                            <p className="read-more-wrap">I loved the transparency in TimeAlly Staking Smart Contracts available for stakers. I would really recommend it to people who are looking for a long-term accumulation staking plan. </p>
                             <p className="testimonial-txt">-Manoj Kumar</p>
                           </div>
                         </div>
@@ -212,7 +208,7 @@ class LifeTime extends Component {
                       <div className="col-md-6 col-lg-4 pdb30">
                         <div className="business-loan-products bg-boxshadow">
                           <div className="loan-products-content">
-                            <p className="read-more-wrap">I had good experience with insight loans Services. I m thankful to insight for the help you guys gave me,My loan was fast and easy thanks . </p>
+                            <p className="read-more-wrap">TimeAlly 1 Life Time Smart Contract is the foundation to participate in Era Swap Network, which will be the game-changer for the future economy. I have staked in Era Swap and look forward to it.</p>
                             <p className="testimonial-txt">-Shyam Pandey</p>
                           </div>
                         </div>
@@ -221,7 +217,8 @@ class LifeTime extends Component {
                       <div className="col-md-6 col-lg-4 pdb30">
                         <div className="business-loan-products bg-boxshadow">
                           <div className="loan-products-content">
-                            <p className="read-more-wrap">We come out of their office very happy with their services.They treat us very kind,Definitely will come back, Waiting time is appropriate. </p>
+                            <p className="read-more-wrap">TimeAlly rewards users for long-term disciplined behavior while staking. If you stake in a
+                              disciplined manner in TimeAlly PET or TSGAP on a monthly basis then the returns are good </p>
                             <p className="testimonial-txt">-Rajkumar Dubey</p>
                           </div>
                         </div>
@@ -255,85 +252,120 @@ class LifeTime extends Component {
               <div className="col-lg-12">
                 <div className="bg-white">
                   <Accordion defaultActiveKey="0" style={{ textAlign: 'left' }}>
-                    <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '0px', padding: '10px 0px 10px 30px' }}>
-                      <Accordion.Toggle as={Card.Header} eventKey="0">
-                        Q-1. &nbsp;How much can I burrow?
-                        </Accordion.Toggle>
-                      <Accordion.Collapse eventKey="0">
-                        <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}>Era Swap Token or ES is a decentralized utility token currently based on Ethereum blockchain (ERC20) which will be used on multiple platforms for exchange of services(P2P), avail discounts, get rewards and many more utility.</Card.Body>
-                      </Accordion.Collapse>
-                    </Card>
-                    <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                  <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
                       <Accordion.Toggle as={Card.Header} eventKey="1">
-                        Q-2. &nbsp; Can I pay off my loan early?
+                        Q-1. &nbsp;Will an existing staker miss his / her rewards due to his delay in activating staking?
                         </Accordion.Toggle>
                       <Accordion.Collapse eventKey="1">
-                        <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the generation & distribution of ES Newly released Token. <br></br><br></br>
-                          <h4 style={{ textAlign: 'center' }}>Please watch this videos to understand .</h4>
-                          <p style={{ textAlign: 'center' }}><a style={{ color: 'black', textDecoration: 'underline' }} href="https://www.youtube-nocookie.com/embed/Xqx8wEGQNXE?rel=0&amp" target="_blank">Click to open the <u>TimeAlly Tour</u> Video in a new tab</a></p>
-                          <div className="row">
-                            <div className="offset-md-4 col-md-4">
-
-                              {/*<div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                                  <iframe src="https://www.youtube-nocookie.com/embed/Xqx8wEGQNXE?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
-                                </div>*/}
-                            </div>
-                          </div>
-                          <p style={{ textAlign: 'center' }}><a style={{ color: 'black', textDecoration: 'underline' }} href="https://www.youtube-nocookie.com/embed/vfgf2pvYSoc?rel=0&amp" target="_blank">Click to open the <u>TimeAlly Quick Walk Through</u> Video in a new tab</a></p>
-                          <div className="row">
-                            <div className="offset-md-4 col-md-4">
-                              {/*<div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                                    <iframe src="https://www.youtube-nocookie.com/embed/vfgf2pvYSoc?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
-                                </div>*/}
-                            </div>
-                          </div>
-                          <p style={{ textAlign: 'center' }}><a style={{ color: 'black', textDecoration: 'underline' }} href="https://www.youtube-nocookie.com/embed/DM6hvVaCu_g?rel=0&amp" target="_blank">Click to open the <u>TimeAlly Teaser</u> Video in a new tab</a></p>
-                          <div className="row">
-                            <div className="offset-md-4 col-md-4">
-                              <div style={{ position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom: '20px' }}>
-                                <iframe src="https://www.youtube-nocookie.com/embed/DM6hvVaCu_g?rel=0&amp;showinfo=0" style={{ position: 'absolute', top: 0, left: 0, width: '350px', height: '350px' }} frameBorder={0} allowFullScreen />
-                              </div>
-                            </div>
-                          </div>
+                        <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+                          
+                          <p style={{textAlign: 'left' }}> All existing stakers will be receiving a pre-activated upgraded TimeAlly staking plan on ESN. There will not be any transition loss of staking rewards due to a delay in staking in ESN.</p>
+      
                         </Card.Body>
                       </Accordion.Collapse>
                     </Card>
-                    <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', padding: '10px 0px 10px 30px' }}>
+
+                    <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
                       <Accordion.Toggle as={Card.Header} eventKey="2">
-                        Q-3. &nbsp;Do you offer Refinancing ?
+                        Q-2. &nbsp; How will a staker pay the transaction fee/network fee?
                         </Accordion.Toggle>
                       <Accordion.Collapse eventKey="2">
-                        <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}>
-                          Please watch this video on how to claim your staking in TimeAlly DApp.<br></br><br></br>
-                          <p style={{ textAlign: 'center' }}><a style={{ color: 'black', textDecoration: 'underline' }} href="https://www.youtube-nocookie.com/embed/31PT42RIOQs?rel=0&amp" target="_blank">Click to open the Video in a new tab</a></p>
-                          <div className="row">
-                            <div className="offset-md-4 col-md-4">
-                              <div style={{ position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom: '20px' }}>
-                                <iframe src="https://www.youtube-nocookie.com/embed/31PT42RIOQs?rel=0&amp;showinfo=0" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} frameBorder={0} allowFullScreen />
-                              </div>
-
-                            </div>
-                          </div>
+                        <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+                          
+                          <p style={{textAlign: 'left' }}>Stakers can use ES to pay for their transaction fee instead of their current requirement of paying in ether.</p>
+      
                         </Card.Body>
                       </Accordion.Collapse>
                     </Card>
-                    <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', padding: '10px 0px 10px 30px' }}>
+
+                   <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
                       <Accordion.Toggle as={Card.Header} eventKey="3">
-                        Q-4. &nbsp; When should I apply ?
+                        Q-3. &nbsp;How Stakers will be eligible to participate in ES mining?
                         </Accordion.Toggle>
                       <Accordion.Collapse eventKey="3">
-                        <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}>
-                          One can vest in TimeAlly just by locking up ES in TimeAlly smart contract for a vesting period of 1 year or 2 years.<br></br><br></br>
+                        <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+                          
+                          <p style={{textAlign: 'left' }}>Stakers will be eligible to participate in Era Swap mining by delegating their PoS to a validator node.</p>
+      
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
 
-                          <div className="col-md-4 offset-md-4">
-                            <strong style={{ textAlign: 'center' }}>Please watch this video on how to stake in TimeAlly.</strong>
-                            <p style={{ textAlign: 'center' }}><a style={{ color: 'black', textDecoration: 'underline' }} href="https://www.youtube-nocookie.com/embed/3msYFRo9d4E?rel=0&amp" target="_blank">Click to open the Video in a new tab</a></p> <br></br><br></br>
-                            <div style={{ position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%' }}>
-                              <iframe style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} src="https://www.youtube-nocookie.com/embed/3msYFRo9d4E?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
-                            </div>
-                          </div>
+                   <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                      <Accordion.Toggle as={Card.Header} eventKey="4">
+                        Q-4. &nbsp; What is IssTime and on whose activities decide an Individual staker’s IssTime Limit?
+                        </Accordion.Toggle>
+                      <Accordion.Collapse eventKey="4">
+                        <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+                          
+                          <p style={{textAlign: 'left' }}>There is special dynamic IssTime limit awarded to every TimeAlly stake Holders as per their behaviour and action for deciding their eligible TimeAlly Loan amount</p>
+      
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
 
-                          <br></br>
+                    <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                      <Accordion.Toggle as={Card.Header} eventKey="5">
+                        Q-5. &nbsp; Can Stakers Transfer their TimeAlly 1LT Contracts to any other?
+                        </Accordion.Toggle>
+                      <Accordion.Collapse eventKey="5">
+                        <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+                          
+                          <p style={{textAlign: 'left' }}>Stakers can split & transfer their pre-activated TimeAlly smart contract to other users from Day 1</p>
+      
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+
+
+                    <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                      <Accordion.Toggle as={Card.Header} eventKey="6">
+                        Q-6. &nbsp; Is there any risk of total fund loss due to any breach?
+                        </Accordion.Toggle>
+                      <Accordion.Collapse eventKey="6">
+                        <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+                          
+                          <p style={{textAlign: 'left' }}>New TimeAlly uses a distributed fund pattern which mitigates the risk of total funds loss in an event of breach.</p>
+      
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+
+
+                    <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                      <Accordion.Toggle as={Card.Header} eventKey="7">
+                        Q-7. &nbsp; Is this Smart Contract design recommended?
+                        </Accordion.Toggle>
+                      <Accordion.Collapse eventKey="7">
+                        <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+                          <p style={{textAlign: 'left' }}>This is a smart contract design security recommended from ConsenSys.</p>
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+
+
+                    <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                      <Accordion.Toggle as={Card.Header} eventKey="8">
+                        Q-8. &nbsp; When can a Staker claim his / her rewards?
+                        </Accordion.Toggle>
+                      <Accordion.Collapse eventKey="8">
+                        <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+                          
+                          <p style={{textAlign: 'left' }}>All Rewards can be claimed by participants at the end of the ES NRT month.</p>
+      
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+
+                    <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                      <Accordion.Toggle as={Card.Header} eventKey="9">
+                        Q-9. &nbsp;  How much ES is reserved for Staking rewards and will this supply reduce in the future?
+                        </Accordion.Toggle>
+                      <Accordion.Collapse eventKey="9">
+                        <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+                          
+                          <p style={{ textAlign: 'left' }}>Global 37% NRT for 3rd year is 272.727 million ES which is reserved for Staking Rewards and will reduce by 10% every year.</p>
+      
                         </Card.Body>
                       </Accordion.Collapse>
                     </Card>

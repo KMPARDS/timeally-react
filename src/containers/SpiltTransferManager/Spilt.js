@@ -28,13 +28,12 @@ class Spilt extends Component {
                                 <div className="wrapper-content-stack bg-white pinside10">
                                     <div className="row">
                                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                            <p className="spilt-link">About Spilt</p>
-                                            <p>All Time Ally 1 Life Time Stake holders will get opportunity to avail TimeAlly loan which they have to repay back within 30 Day 10 Hours
-                                                  or before end of ES NRT Month (whichever is earlier). There will be an interest of 0.1% per day on the loan amount.</p>
+                                            <p className="spilt-link align-left">About Spilt</p>
+                                            <p className="desc-split">When a staker splits his TimeAlly stakes, his current IssTime Limit also splits in the same proportion of the split ES amount.</p>
                                           <div className="flex-span-chk">
-                                           <p>Staking Amount : </p> <p>7804.976628809254477568 ES</p>
+                                          <p className="desc-spilt-bold">Staking Amount : </p>  <p className="para-margin">7804.976628809254477568 ES</p>
                                            </div>
-                                           <p>Division Percent: </p>
+                                           <p className="desc-spilt-bold">Division Percent: </p>
                                            <input className="delegate-sm-box" type="text" id="owner" name="owner" placeholder="Enter your division Percentage here" />
                                            <div className="flex-span-chk">
                                            </div>

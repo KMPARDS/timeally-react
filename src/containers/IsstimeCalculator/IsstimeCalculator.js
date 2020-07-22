@@ -1,71 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import {Card, Button, Accordion} from 'react-bootstrap';
+import { Card, Button, Accordion } from 'react-bootstrap';
 import { timeally } from '../../env';
 import './IsstimeCalculator.css';
 
 const ethers = require('ethers');
 
-class IsstimeCalculator  extends Component {
+class IsstimeCalculator extends Component {
   state = {
-    
+
   }
 
   componentDidMount = async () => {
-   
+
   }
 
-  
+
 
   render() {
     return (
       <div>
-          <div className="page-header">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    </div>
-                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                      <div className="bg-white pinside30">
-                        <div className="row">
-                          <div className="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12">
-                            <h2 className="black-head-txt bold-txt">TimeAlly 1 Life Time Loan</h2>
-                          </div>
-                          <div className="col-xl-8 col-lg-8 col-md-3 col-sm-12 col-12">
-                            <div className="row">
-                              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div className="btn-action">
-                                {/* <Button className="btn btn-default btn-sm" onClick={() => this.props.history.push('/stakings/new')}>Apply for Loan</Button> */}
-                                <Button className="pink-btn" onClick={() => this.props.history.push('/stakings/new')}>ISSTIME LIMIT CALCULATOR</Button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        <div className="page-header">
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               </div>
-          <div>
-    <div className="container dashboard-bg">
-        <div className="row">
-          <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <div className="wrapper-content bg-white pinside10">
-              <div className="row">
-                <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div className="bg-white pinside30">
                   <div className="row">
-                   
-                    <div className="v2" />
-                    <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                    <div className="col-xl-4 col-lg-4 col-md-9 col-sm-12 col-12">
+                      <h2 className="black-head-txt bold-txt">TimeAlly 1 Life Time Loan</h2>
+                    </div>
+                    <div className="col-xl-8 col-lg-8 col-md-3 col-sm-12 col-12">
                       <div className="row">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                          <div className="bg-light">
-                          <hr />
-                            <span className="title" style={{textAlign:'center'}}>TOTAL STAKED IN 24 HOURS</span>
-                            {/* <h2 id="emi" className="pull-right">Graph</h2> */}<br></br><br></br>
-                          <h2 className="number">{this.state.stakingsInLast24Hours ? this.state.stakingsInLast24Hours + ' ES' : 'Loading...'}</h2>
+                          <div className="btn-action">
+                            {/* <Button className="btn btn-default btn-sm" onClick={() => this.props.history.push('/stakings/new')}>Apply for Loan</Button> */}
+                            <Button className="pink-btn" onClick={() => this.props.history.push('/stakings/new')}>ISSTIME LIMIT CALCULATOR</Button>
                           </div>
                         </div>
                       </div>
@@ -76,153 +48,313 @@ class IsstimeCalculator  extends Component {
             </div>
           </div>
         </div>
-      </div>
-      <div className="container">
-       <h2 className="mb20">View Recent Stakings in the World</h2>
-       <div className="row">
-            <div className="col-lg-12">
-              <div className="bg-white">
-                    <Accordion defaultActiveKey="0" style={{textAlign:'left'}}>
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', borderTop:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="0">
-                          Q-1. &nbsp;How much can I burrow?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="0">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap Token or ES is a decentralized utility token currently based on Ethereum blockchain (ERC20) which will be used on multiple platforms for exchange of services(P2P), avail discounts, get rewards and many more utility.</Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', borderTop:'1px solid #ccc', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="1">
-                          Q-2. &nbsp; What is TimeAlly DApp?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="1">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>TimeAlly is a Decentralized App (DApp) which is based on pre-defined set of rules through Smart Contracts to offers multiple benefits to users, govern the generation & distribution of ES Newly released Token. <br></br><br></br>
-                          <h4 style={{textAlign:'center'}}>Please watch this videos to understand .</h4>
-                          <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/Xqx8wEGQNXE?rel=0&amp" target="_blank">Click to open the <u>TimeAlly Tour</u> Video in a new tab</a></p>
-                          <div className="row">
-                            <div className="offset-md-4 col-md-4">
+        <div>
+          <div className="container dashboard-bg">
+            <div className="row">
+              <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div className="wrapper-content bg-white pinside10">
+                  <div className="row">
+                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <h2 className="align-left">How does IssTime Limit decides the individuals Loan Limit?</h2>
+                      <p>IssTime Limit depends on Four levers (A + B + C + D = IssTime Limit) which are as follows: </p>
+                      <div className="row ">
+                      <div className="col-md-6 col-lg-6 pdb30">
+                        <div className="clock-align"><img className="sm-calc-img" src="./images/time.png" /></div>
+                        <p></p>
+                        <div className="clock-align"><img className="sm-calc-img" src="./images/time.png" /></div>
+                        </div>
 
-                                {/*<div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                                  <iframe src="https://www.youtube-nocookie.com/embed/Xqx8wEGQNXE?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
-                                </div>*/}
-                             </div>
-                           </div>
-                           <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/vfgf2pvYSoc?rel=0&amp" target="_blank">Click to open the <u>TimeAlly Quick Walk Through</u> Video in a new tab</a></p>
-                           <div className="row">
-                            <div className="offset-md-4 col-md-4">
-                                {/*<div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                                    <iframe src="https://www.youtube-nocookie.com/embed/vfgf2pvYSoc?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
-                                </div>*/}
-                             </div>
-                           </div>
-                           <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/DM6hvVaCu_g?rel=0&amp" target="_blank">Click to open the <u>TimeAlly Teaser</u> Video in a new tab</a></p>
-                           <div className="row">
-                            <div className="offset-md-4 col-md-4">
-                                <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                                    <iframe src="https://www.youtube-nocookie.com/embed/DM6hvVaCu_g?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '350px', height: '350px'}} frameBorder={0} allowFullScreen />
-                                </div>
-                             </div>
-                           </div>
-                          </Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="2">
-                        Q-3. &nbsp; How to claim your staking in TimeAlly
+                        <div className="col-md-6 col-lg-6 pdb30">
+                        <div className="clock-align"><img className="sm-calc-img" src="./images/time.png" /></div>
+                        <div className="clock-align"><img className="sm-calc-img" src="./images/time.png" /></div>
+                       </div>
+                      </div>
+                      <div className="container">
+                        <p className="calc-faq-txt">FAQ ON TIMEALLY LOAN & ISSTIME LIMIT</p>
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="bg-white">
+                              <Accordion defaultActiveKey="0" style={{ textAlign: 'left' }}>
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="1">
+                                    Q-1. &nbsp; Can Stakers Transfer their TimeAlly 1LT Contracts to any other?
                         </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="2">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
-                          Please watch this video on how to claim your staking in TimeAlly DApp.<br></br><br></br>
-                          <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/31PT42RIOQs?rel=0&amp" target="_blank">Click to open the Video in a new tab</a></p>
-                          <div className="row">
-                              <div className="offset-md-4 col-md-4">
-                              <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%', marginBottom:'20px'}}>
-                                  <iframe src="https://www.youtube-nocookie.com/embed/31PT42RIOQs?rel=0&amp;showinfo=0" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} frameBorder={0} allowFullScreen />
-                              </div>
+                                  <Accordion.Collapse eventKey="1">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
 
-                              </div>
+                                      <p style={{ textAlign: 'left' }}> Stakers can split and transfer their TimeAlly Stakes to other users directly
+from day 1 of TimeAlly 1 Life Time Smart Contract. </p>
+
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="2">
+                                    Q-2. &nbsp; Is there any charge for transferring staking?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="2">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}> For every transfer, there will be a charge depending on the anniversary of
+                                      the stake. 3% for less than and equal to 1 year, 2% for less than and equal to  2 years, 1% for less than and equal to 3 years, while 3
+                                      years there will not be any transfer charge, these charges collected will be
+burned. </p>
+
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="3">
+                                    Q-3. &nbsp;What happens to unclaimed rewards in case of transfer?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="3">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}>In case of transfer all unclaimed rewards are also transferred to the
+recipient</p>
+
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="4">
+                                    Q-4. &nbsp;  Is it necessary to claim rewards before splitting?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="4">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}>Every split will create a new contract on the current timestamp,
+                                      unclaimed rewards shall remain in the initial contract. Hence it is not necessary
+to claim rewards before splitting.</p>
+
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="5">
+                                    Q-5. &nbsp;What happens when a staker splits his TimeAlly stakes?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="5">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}> When a staker splits his TimeAlly stakes, his current IssTime Limit also
+splits in the same proportion of the split ES amount.</p>
+
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="6">
+                                    Q-6. &nbsp;  How userbase on Era Swap Ecosystem increases IssTime Limit?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="6">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}>IssTime Liquid Limit shall increase with an active user base of the
+                                      ecosystem. On every 10,000 active users for the month, IssTime limit will
+                                      increase by 1% for the next month for all stakers. This limit will not be carried
+                                      forward and be considered as per actual active users. eg. If in a month there
+                                      are 1,00,000 active users, then an additional 10% lssTime Liquid Limit shall
+increase for next month.</p>
+
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="7">
+                                    Q-7. &nbsp; What is the benefit of restaking of TimeAlly Liquid Rewards & Day
+                                    Swappers Rewards?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="7">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+                                      <p style={{ textAlign: 'left' }}>ssTime Liquid Limit shall increase with 225% on restake of individual's
+liquid TimeAlly (7.5% NRT) rewards and Day Swappers liquid rewards.</p>
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="8">
+                                    Q-8. &nbsp; What is the benefit of restaking of TimeAlly Club Rewards?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="8">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}>IssTime Liquid Limit shall increase with 125% on restake of individuals
+TimeAlly Club rewards.</p>
+
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="9">
+                                    Q-9. &nbsp;  What is the benefit of converting all liquid rewards into WES stakes?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="9">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}>IssTime Liquid Limit shall increase with 100% on the conversion of
+                                      individuals Liquid TimeAlly (7.5% NRT) rewards, TimeAlly Club and Day
+Swappers liquid rewards into WES stakes.</p>
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="10">
+                                    Q-10. &nbsp;What is the interest rate and duration of TimeAlly Loan?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="10">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}>Loan can be taken for a period of 1 day to 30 days 10 hours with 0.1%
+                                      interest per day on the loan amount for one NRT month if rewards are
+unclaimed for the respective month at the time of applying for a loan.</p>
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="11">
+                                    Q-11. &nbsp; When a staker can be eligible for the next loan and rewards?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="11">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}>After repayment of loan, staker will be eligible to claim rewards for the
+                                      month and there will be a cool-off period of 1 complete NRT month to become
+eligible for the next Loan.</p>
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="12">
+                                    Q-12. &nbsp;  What is the maximum IssTime Limit without any charges?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="12">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}>Maximum IssTime Liquid Limit for any user is 97% of his total stakings.</p>
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="13">
+                                    Q-13. &nbsp; What happens to the interest paid by a Loan Borrower?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="13">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}> When interest repaid, the interest received will be added to Luck Pool.</p>
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="14">
+                                    Q-14. &nbsp; What happens in case of Loan amount & Interest Default?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="14">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}>Stakes will be burnt in the next NRT month in case of default for Interest
+and Loan repayment. </p>
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="15">
+                                    Q-15. &nbsp;  What happens in case of informing about wilful default of Loan &
+                                    Interest?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="15">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}>In case of submission of intent for wilful default of loan at the time of
+                                      applying for a loan or before the end of loan period then users will receive 1%
+                                      additional reward. At the end of the loan if the user doesn't volunteer to
+                                      inform about loan default then 1% reward of tokens to be burnt will be
+                                      awarded to the user who informs about the same on first come first server
+basis.</p>
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="16">
+                                    Q-16. &nbsp; Can a staker exit with the ES amount equivalent to his IssTime Limit?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="16">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}>In case a person wishes to exit in liquid with IssTime Limit he does not
+need to pay the interest.</p>
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="17">
+                                    Q-17. &nbsp; Is there any TimeAlly Club and Day Swappers Rewards on split, transfer,
+                                    merger, acquisition, and restake cases?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="17">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}>There will be activation, TimeAlly Club, and Day Swapper reward on WES
+                                      and liquid top-ups. However, there will not be any activisation, TimeAlly Club,
+                                      and Day Swappers reward on split, transfer, merger, acquisition, and restake
+cases.</p>
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+
+                                <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
+                                  <Accordion.Toggle as={Card.Header} eventKey="18">
+                                    Q-18. &nbsp; What is Top-Up and how its beneficial?
+                        </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey="18">
+                                    <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
+
+                                      <p style={{ textAlign: 'left' }}> Users can choose to maintain 1 master TimeAlly contract on 1 wallet and
+                                      merge other contracts as top-up. It reduces the hassle of managing multiple
+                                      TimeAlly contracts. New top-up contracts shouldn't have any unclaimed
+                                      rewards at the time of merging with the master contract as the unclaimed
+                                      rewards cannot be recovered at the time of merging. All IssTime Liquid Limit of
+new top-up contracts shall be added into the master contract.</p>
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+                              </Accordion>
                             </div>
-                          </Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="3">
-                        Q-4. &nbsp; How to vest in TimeAlly?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="3">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
-                            One can vest in TimeAlly just by locking up ES in TimeAlly smart contract for a vesting period of 1 year or 2 years.<br></br><br></br>
-
-                            <div className="col-md-4 offset-md-4">
-                            <strong style={{textAlign:'center'}}>Please watch this video on how to stake in TimeAlly.</strong>
-                            <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/3msYFRo9d4E?rel=0&amp" target="_blank">Click to open the Video in a new tab</a></p> <br></br><br></br>
-                              <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                                <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube-nocookie.com/embed/3msYFRo9d4E?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
-                              </div>
-                            </div>
-
-                            <br></br>
-                          </Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="4">
-                        Q-5. &nbsp; How to do staking of TimeAlly on Etherscan?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="4">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
-                            <div className="col-md-4 offset-md-4">
-                            <strong style={{textAlign:'center'}}>Please watch this video on how to do staking of TimeAlly on Etherscan.</strong> <br></br><br></br>
-                            <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/Jtc3unocmEA?rel=0&amp" target="_blank">Click to open the Video in a new tab</a></p>
-                              <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                               <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube-nocookie.com/embed/Jtc3unocmEA?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
-                              </div>
-                            </div>
-                            <br></br>
-                          </Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px',fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="5">
-                        Q-6. &nbsp; What benefit user gets on locking up their ES in TimeAlly?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="5">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
-                            <p>Vestors get the below mentioned benefits<br></br>
-                            Vesting for 1 Year: 13% newly release token from NRT will be allocated for TimeAlly vestors.<br></br>
-                            {/* Vesting for 1 Year: 13% (1.08% per month) of ES Tokens from NRT pool is allocated to be distributed among TA Vestors who vest tokens for 1 year.<br></br> */}
-                            Vesting for 2 Year: 15% (1.25% per month) of ES Tokens from NRT pool is allocated for TA Vestors.
-                              </p>
-                          </Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="6">
-                        Q-7. &nbsp; How rewards are distributed through TimeAlly?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="6">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap ecosystem users receive rewards for the tasks they perform. The rewards are always distributed in 50% ES liquid and 50% ES TimeAlly locked to every user in Era Swap ecosystem.</Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-                      <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
-                        <Accordion.Toggle as={Card.Header} eventKey="7">
-                        Q-8. &nbsp; How TimeAlly vestors get rewarded in TimeAlly?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="7">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap (ES) has to be claimed by the users based on the work performed in the ecosystem or vesting done in TimeAlly. As per preset rules, if the user has performed tasks, then they are eligible for rewards. User can trigger and withdraw once they have received rewards.</Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
-                    
-                      
-
-                    </Accordion>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-              </div>
-        
+     </div>
     );
   }
 };

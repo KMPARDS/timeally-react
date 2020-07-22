@@ -57,7 +57,7 @@ class IsstimeElligible extends Component {
                                                 </div>
                                                 <div className="col-md-6 col-lg-6 pdb30">
                                                     <h3 className="eligible-head">How much loan you are eligible for ?</h3>
-                                                  <div className="flex-span-chk"><p className="align-eligible txt-eligible">Total Percentage:</p> <h6> 125%</h6></div>
+                                                  <div className="flex-span-chk"><p className="align-eligible txt-eligible">Total Percentage:</p> <h6 className="mt-10"> 125%</h6></div>
                                                    <p className="align-eligible txt-eligible">You are Eligible for this loan </p>
                                                    <h1 className="align-eligible">ES 6520</h1>
                                                    <div className="avail-flex">

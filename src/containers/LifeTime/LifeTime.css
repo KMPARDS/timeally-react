@@ -51,3 +51,14 @@
       width: 100%;
       object-fit: fill;
   }
+
+  .hero-section.lifetime{
+    background-image: linear-gradient( rgba(0, 0, 0, -0.4), rgba(0, 0, 0, 0.6) ), url(/images/lifebgd.jpg);
+    background-size: cover;
+    background-position-x: center;
+    background-repeat: no-repeat;
+  }
+
+  .opp-txt-sz{
+    font-size: 20px;
+  }
