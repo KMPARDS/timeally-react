@@ -270,7 +270,7 @@ The stakers have to repay back the Loan Amount within 30 Day 10 Hours or before 
                 <div className="loan-products-content">
                   <h3>TimeAlly Assurance</h3>
                   <input type="checkbox" className="read-more-state" id="post-3" />
-                  <p className="read-more-wrap">TimeAlly Super Goal Achiever Plan (TSGAP) is a Decentralized Smart Contract powered Systematic Accumulation Plan designed <span className="read-more-target">  to safeguard community`s interest, so they can have financial support to support their goals, its incentivize Stakers behavior for regularly in a disciplined way. The benefit of this SAP is that Stakers can choose minimal staking in Era Swap, Leverage Power of Compounding, Milestone based Goal Achievement, Booster Bonus, with complete transparency and ownership of your digital assets </span></p>
+                  <p className="read-more-wrap">TimeAlly Super Goal Achiever Plan (TSGAP) is a Decentralized Smart Contract powered Systematic  <span className="read-more-target">  Accumulation Plan designed to safeguard community`s interest, so they can have financial support to support their goals, its incentivize Stakers behavior for regularly in a disciplined way. The benefit of this SAP is that Stakers can choose minimal staking in Era Swap, Leverage Power of Compounding, Milestone based Goal Achievement, Booster Bonus, with complete transparency and ownership of your digital assets </span></p>
                     <label htmlFor="post-3"  className="btn btn-default read-more-trigger"></label>
                 </div>
               </div>
@@ -283,7 +283,7 @@ The stakers have to repay back the Loan Amount within 30 Day 10 Hours or before 
                 <div className="loan-products-content">
                   <h3>TimeAlly PET </h3>
                   <input type="checkbox" className="read-more-state" id="post-4" />
-                  <p className="read-more-wrap">TimeAlly PET Stands for Personal Era Swap Teller, it is a 50-50 Plan designed to provide a helping hand to those who wish <span className="read-more-target">  to stake but couldn’t. It is a Systematic Accumulation Plan powered on Smart Contracts, it is an extraordinary plan intend to help you with your stakings with PET`s Smart Contribution, hence you don’t have to stake the complete amount of your selected plan and PET will contribute another half. For.eg. Choose 100000 ES Plan. Stake 50000 ES & PET will stake another 50000 ES for you </span></p>
+                  <p className="read-more-wrap">TimeAlly PET Stands for Personal Era Swap Teller, it is a 50-50 Plan designed to provide a helping hand  <span className="read-more-target"> to those who wish to stake but couldn’t. It is a Systematic Accumulation Plan powered on Smart Contracts, it is an extraordinary plan intend to help you with your stakings with PET`s Smart Contribution, hence you don’t have to stake the complete amount of your selected plan and PET will contribute another half. For.eg. Choose 100000 ES Plan. Stake 50000 ES & PET will stake another 50000 ES for you </span></p>
                     <label htmlFor="post-4"  className="btn btn-default read-more-trigger"></label>
                 </div>
               </div>
@@ -468,7 +468,7 @@ The stakers have to repay back the Loan Amount within 30 Day 10 Hours or before 
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="5">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
-                            <p>Vestors in TimeAlly 1LT get the below mentioned benefits<br></br>
+                            <p>Vestors in TimeAlly 1LT can claim the below mentioned benefits<br></br>
                             15% of newly release token as per NRT for staking.<br></br>
                             {/* Vesting for 1 Year: 13% (1.08% per month) of ES Tokens from NRT pool is allocated to be distributed among TA Vestors who vest tokens for 1 year.<br></br> */}
                             12% of newly release token as per NRT for ESN delegation.<br></br>
@@ -482,8 +482,7 @@ The stakers have to repay back the Loan Amount within 30 Day 10 Hours or before 
                         Q-7. &nbsp; How rewards are distributed through TimeAlly?
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="6">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap ecosystem users receive rewards for the tasks they perform. The 
-                           rewards are always distributed as per NRT distribution Chart to every user in Era Swap ecosystem.</Card.Body>
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap ecosystem users receive rewards for the tasks they perform. The rewards are always distributed as per NRT distribution Chart to every Active user in Era Swap ecosystem</Card.Body>
                         </Accordion.Collapse>
                       </Card>
                       <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
@@ -590,7 +589,7 @@ The stakers have to repay back the Loan Amount within 30 Day 10 Hours or before 
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="15">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
-                            <p><a href="https://github.com/KMPARDS/timeally-react">TimeAlly: https://github.com/KMPARDS/timeally-react</a></p>
+                            <p><a href="https://github.com/KMPARDS/timeally-react" style={{color:'#000', fontSize:'14px', fontWeight:'300'}}>TimeAlly: https://github.com/KMPARDS/timeally-react</a></p>
                             
                           </Card.Body>
                         </Accordion.Collapse>
