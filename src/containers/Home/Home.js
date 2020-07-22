@@ -191,12 +191,8 @@ class Home extends Component {
                 {/* hero-caption */}
                 <div className="card-hero-block text-center">
                   <h1 className="text-white">How TimeAlly works</h1>
-                  <p className="text-white">TimeAlly rewards TA holders for locking their tokens in TA smart contract (TA Time Vault) for the duration of one or two years as per their choice.</p><br></br>
-                  <ul style={{textAlign:'left', color:'#fff'}}>
-                    <li>Vesting for 1 Year: 13% (1.08% per month) of ES Tokens from NRT pool is allocated to be distributed among TA Vestors. </li>
-                    <li>Vesting for 2 Year: 15% (1.25% per month) of ES Tokens from NRT pool is allocated  to be distributed among TA Vestors.</li>
-                    <li>All the Rewards will be distributed 50% in TimeAlly & 50 % in Liquid.</li>
-                  </ul>
+                  <p className="text-white">TimeAlly rewards TA holders for locking their tokens in TA smart contract (TA Time Vault) for a specified time period.</p>
+                 
                   <p style={{color:'#fff'}}>
                   There is a fixed number of ES rewarded every month to users which is governed by TA smart contract. Total number of ES tokens to be distributed among TA holders is pre-defined, but which user will get how many ES tokens is not defined. It depends on number of token staked in proportion to their vesting plans.</p>
                   <div className="border"></div>
@@ -234,7 +230,8 @@ class Home extends Component {
               <div className="section-title mb60 text-center">
                 {/* section title start*/}
                 <h1>More TimeAlly Products</h1>
-                <p>There is an extended product line of TimeAlly Smart Contract for users. They are TimeAlly Loan, TimeAlly Club & TimeAlly Insurance for Era Swap Community which stakes ES in TimeAlly Contract. As a TimeAlly Smart Contract holder you can choose any of these add-on products.</p>
+                <p>There is an extended product line of TimeAlly Smart Contract for users. They are TimeAlly 1LT, TSGAP, TimeAlly PET & TimeAlly Loan for
+Era Swap Community stakers who have staked ES in TimeAlly Contract. To become a TimeAlly Smart Contract holder you can choose any of these Smart Contracts.</p>
               </div>
               {/* /.section title start*/}
             </div>
@@ -248,7 +245,8 @@ class Home extends Component {
                 <div className="loan-products-content">
                   <h3>TimeAlly Loan</h3>
                   <input type="checkbox" className="read-more-state" id="post-1" />
-                  <p className="read-more-wrap">TimeAlly holders will get the opportunity to avail loan up to 50% for a duration of 2 months after consuming 75% of the  <span className="read-more-target"> contract period. The borrower has to pay 1% additional of the borrowed ES for 60 days; an additional 1% will be collected in luck pool and distributed back to the community. In case a borrower fails to pay back within 60 days and 12 hours, remaining staked tokens in TimeAlly contract will be burnt</span></p>
+                  <p className="read-more-wrap">TimeAlly 1 Life Time stakehoders can apply for TimeAlly Loan based on their individual IssTime Limit  <span className="read-more-target">
+The stakers have to repay back the Loan Amount within 30 Day 10 Hours or before end of ES NRT Month (whichever is earlier). There will be an interest of 0.1% per day on the loan amount.If the staker fails to repay back the TimeAlly Loan Principle amount and interest, then the stakes of the staker will be burnt.</span></p>
                     <label htmlFor="post-1"  className="btn btn-default read-more-trigger"></label>
                 </div>
               </div>
@@ -258,9 +256,9 @@ class Home extends Component {
               <div className="circle"><img src="./images/value.png"/></div>
                 {/* <div className="loan-products-icon"><i className="flaticon-time-is-money icon-4x icon-primary" /></div> */}
                 <div className="loan-products-content">
-                  <h3>TimeAlly Club</h3>
+                  <h3>TimeAlly 1LT</h3>
                   <input type="checkbox" className="read-more-state" id="post-2" />
-                  <p className="read-more-wrap">TimeAlly Club is a premium membership for Era Swap Community, to provide community additional benefits of rewards along  <span className="read-more-target"> with exclusive membership add-ons such as; Utility Bill Payments, Travel & Holidays, Education, Health & Fitness, etc. TimeAlly Club membership is available in 5 categories that are; Silver, Gold, Diamond, Emerald and Ruby</span> </p>
+                  <p className="read-more-wrap">TimeAlly 1 Life Time is the first generation TimeAlly Smart Contract, built especially for the staker, who wants to <span className="read-more-target"> support ESN &amp; Accumulate Era Swap in Long-term. </span> </p>
                     <label htmlFor="post-2"  className="btn btn-default read-more-trigger"></label>
                 </div>
               </div>
@@ -442,17 +440,8 @@ class Home extends Component {
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="3">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
-                            One can vest in TimeAlly just by locking up ES in TimeAlly smart contract for a vesting period of 1 year or 2 years.<br></br><br></br>
-
-                            <div className="col-md-4 offset-md-4">
-                            <strong style={{textAlign:'center'}}>Please watch this video on how to stake in TimeAlly.</strong>
-                            <p style={{textAlign: 'center'}}><a style={{color: 'black', textDecoration: 'underline'}} href="https://www.youtube-nocookie.com/embed/3msYFRo9d4E?rel=0&amp" target="_blank">Click to open the Video in a new tab</a></p> <br></br><br></br>
-                              <div style={{position: 'relative', height: 0, overflow: 'hidden', maxWidth: '100%', paddingBottom: '56.25%'}}>
-                                <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://www.youtube-nocookie.com/embed/3msYFRo9d4E?rel=0&amp;showinfo=0" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
-                              </div>
-                            </div>
-
-                            <br></br>
+                            One can vest in TimeAlly just by locking up ES in TimeAlly smart contract for a specefied vesting period.<br></br><br></br>
+                             <br></br>
                           </Card.Body>
                         </Accordion.Collapse>
                       </Card>
@@ -479,10 +468,11 @@ class Home extends Component {
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="5">
                           <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>
-                            <p>Vestors get the below mentioned benefits<br></br>
-                            Vesting for 1 Year: 13% newly release token from NRT will be allocated for TimeAlly vestors.<br></br>
+                            <p>Vestors in TimeAlly 1LT get the below mentioned benefits<br></br>
+                            15% of newly release token as per NRT for staking.<br></br>
                             {/* Vesting for 1 Year: 13% (1.08% per month) of ES Tokens from NRT pool is allocated to be distributed among TA Vestors who vest tokens for 1 year.<br></br> */}
-                            Vesting for 2 Year: 15% (1.25% per month) of ES Tokens from NRT pool is allocated for TA Vestors.
+                            12% of newly release token as per NRT for ESN delegation.<br></br>
+                            10% of newly release token as per NRT for Swappers wall          
                               </p>
                           </Card.Body>
                         </Accordion.Collapse>
@@ -492,7 +482,8 @@ class Home extends Component {
                         Q-7. &nbsp; How rewards are distributed through TimeAlly?
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="6">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap ecosystem users receive rewards for the tasks they perform. The rewards are always distributed in 50% ES liquid and 50% ES TimeAlly locked to every user in Era Swap ecosystem.</Card.Body>
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap ecosystem users receive rewards for the tasks they perform. The 
+                           rewards are always distributed as per NRT distribution Chart to every user in Era Swap ecosystem.</Card.Body>
                         </Accordion.Collapse>
                       </Card>
                       <Card style={{color:'#3c4d6b', marginBottom:'0px', fontWeight:'500', borderRight:'0px', borderLeft:'0px', padding: '10px 0px 10px 30px'}}>
@@ -568,7 +559,10 @@ class Home extends Component {
                         Q-15. &nbsp; What is Gas Fee / Network Fee?
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="14">
-                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Ethereum is a decentralized and immutable platform. Tens of thousands of miners dedicate their computers to maintain the Ethereum network. For compensation, the concept of the gas fee is there. All transactions on Ethereum Network cost gas and this fee is transferred to miners in ETH. Users can choose to pay less or more gas to miners. A miner can choose which transactions to mine, and generally, they give priority to those transactions which give them more fees. You can customize your gas fees in the advanced settings while making staking, withdrawal or any transaction.</Card.Body>
+                          <Card.Body style={{color:'#333', fontSize:'14px', fontWeight:'300'}}>Era Swap Network is a decentralized network. Generally,
+                        miners dedicate their computers to maintain the network. For compensation, the concept of the gas fee is there. All transactions
+                          on Era swap Network cost small gas and this fee is transferred to miners. Users can choose to pay gas to miners for the transaction to happen. A miner can
+                          choose which transactions to mine, and generally, they give priority to those transactions which give them more gas fees. </Card.Body>
                         </Accordion.Collapse>
                       </Card>
 
