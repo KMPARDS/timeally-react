@@ -261,6 +261,8 @@ class NavbarComponent extends Component {
                     textShadow:this.props.location.pathname.split('/')[1]==='pet'?'0 0 2px #fff':undefined
                   }}>PET <img src='/images/new.png' style={{height:'20px',position:'relative',bottom:'10px'}} /></span></Nav.Link>
 
+                   <Nav.Link as="a" href="https://www.youtube.com/embed/LfRqq2EnQBQ" target="_blank" ><span style={{color:'#fff'}}>1LifeTime Teaser  <img src='/images/new.png' style={{height:'20px',position:'relative',bottom:'10px'}} /></span></Nav.Link>
+
                    <Nav.Link  href="/pdf/TimeAlly-Terms-Use.pdf" target="_blank" ><span style={{color:'#fff'}}>T & C</span></Nav.Link>
 
                         {/* <Nav.Link href="#link">Link</Nav.Link> */}
