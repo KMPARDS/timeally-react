@@ -26,7 +26,9 @@ import LifeTime from './containers/LifeTime/LifeTime';
 import IsstimeStack from './containers/IsstimeStack/IsstimeStack';
 import IsstimeCalculator from './containers/IsstimeCalculator/IsstimeCalculator';
 import StackingId from './containers/IsstimeStack/StackingId';
-
+import Newstake from './containers/NewStake/Newstake';
+import Selectstake from './containers/NewStake/Selectstake';
+import CheckElligible from './containers/NewStake/CheckElligible';
 import './App.css';
 
 import provider from './ethereum/provider';
@@ -180,6 +182,10 @@ function App(props) {
             <Route path="/isstime-stack" exact component={IsstimeStack}/>
             <Route path="/isstime-calculator" exact component={IsstimeCalculator}/>
             <Route path="/stacking-id" exact component={StackingId}/>
+            <Route path="/new-stake" exact component={Newstake}/>
+            <Route path="/check-eligible" exact component={CheckElligible}/>
+            <Route path="/select-stake" exact component={Selectstake}/>
+
             <Route path="/insurance" exact render={
               () => <div>Coming soon</div>
             } />

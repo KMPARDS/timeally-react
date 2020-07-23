@@ -53,20 +53,55 @@ class IsstimeCalculator extends Component {
             <div className="row">
               <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div className="wrapper-content bg-white pinside10">
+                <div className="avail-container-margin">
+                <h2 className="align-left">About TimeAlly 1 Life Time Loan</h2>
+              <p className="avail-btm-border">All TimeAlly 1 Life Time Stake holders will get the opportunity to avail TimeAlly loan which
+              they have to repay back within 30 Day 10 Hours or before the end of ES NRT Month. There
+              will be an interest of 0.1% per day on the loan amount. If the staker fails to repay back the
+              TimeAlly Loan Principle amount and interest, then the stakes of the staker will be burnt. The
+              amount of Loan, for which an individual staker is eligible, depends on his IssTime Limit,
+              however, it cannot be more than 97% of the current staking.</p>
+             <div className="time-avail-flex">
+              <a href="/select-stake" class="btn btn-default main-btn-blue">AVAIL TIMEALLY LOAN</a>
+              </div>
+              </div>
+              <div class="card-hero-section margin-calc">
+                <h2 class="text-white">Want to check your Loan Limit</h2>
+                <Button className="pink-btn">TRY ISSTIME LIMIT CALCULATOR</Button>
+                  </div>
+                  <div className="avail-container-margin">
                   <div className="row">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                       <h2 className="align-left">How does IssTime Limit decides the individuals Loan Limit?</h2>
-                      <p>IssTime Limit depends on Four levers (A + B + C + D = IssTime Limit) which are as follows: </p>
+                      <p className="clock-txt">IssTime Limit depends on Four levers (A + B + C + D = IssTime Limit) which are as follows: </p>
                       <div className="row ">
                       <div className="col-md-6 col-lg-6 pdb30">
-                        <div className="clock-align"><img className="sm-calc-img" src="./images/time.png" /></div>
-                        <p></p>
-                        <div className="clock-align"><img className="sm-calc-img" src="./images/time.png" /></div>
+                        <div className="clock-align"><img className="sm-clock-img" src="./images/time.png" /></div>
+                        <div className="lever-box">
+                        <p className="clock-head-ln">Lever A</p>
+                        <p className="clock-txt">IssTime Liquid Limit will increase by 225% for restaking while 100% for claiming in prepaid
+                        ES for Liquid ES rewards received in TimeAlly.</p>
                         </div>
-
+                        <div className="clock-align"><img className="sm-clock-img" src="./images/time.png" /></div>
+                        <div className="lever-box">
+                        <p className="clock-head-ln">Lever B</p>
+                        <p className="clock-txt">IssTime Liquid Limit will increase by 225% for restaking while 100% for claiming in prepaid
+                              ES for Liquid ES rewards received in Day Swappers.</p>
+                        </div>
+                        </div>
                         <div className="col-md-6 col-lg-6 pdb30">
-                        <div className="clock-align"><img className="sm-calc-img" src="./images/time.png" /></div>
-                        <div className="clock-align"><img className="sm-calc-img" src="./images/time.png" /></div>
+                        <div className="clock-align"><img className="sm-clock-img" src="./images/time.png" /></div>
+                        <div className="lever-box">
+                        <p className="clock-head-ln">Lever C</p>
+                        <p className="clock-txt">IssTime Liquid Limit will increase by 125% for restaking while 100% for claiming in prepaid
+                           ES for Liquid ES rewards received in TimeAlly Club.</p>
+                        </div>
+                        <div className="clock-align"><img className="sm-clock-img" src="./images/time.png" /></div>
+                        <div className="lever-box">
+                        <p className="clock-head-ln">Lever D</p>
+                        <p className="clock-txt">IssTime Liquid Limit will increase by 225% for restaking while 100% for claiming in prepaid
+                        ES for Liquid ES rewards received in TimeAlly.</p>
+                        </div>
                        </div>
                       </div>
                       <div className="container">
@@ -83,8 +118,7 @@ class IsstimeCalculator extends Component {
                                     <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
 
                                       <p style={{ textAlign: 'left' }}> Stakers can split and transfer their TimeAlly Stakes to other users directly
-from day 1 of TimeAlly 1 Life Time Smart Contract. </p>
-
+                                         from day 1 of TimeAlly 1 Life Time Smart Contract. </p>
                                     </Card.Body>
                                   </Accordion.Collapse>
                                 </Card>
@@ -349,6 +383,7 @@ new top-up contracts shall be added into the master contract.</p>
                       </div>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
             </div>

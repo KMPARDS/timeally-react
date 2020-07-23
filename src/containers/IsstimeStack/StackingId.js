@@ -20,19 +20,17 @@ const ethers = require('ethers');
 
 const routes = [
     {
-        path: '/Topup',
-        exact: true,
-        sidebar: () => <div><Topup /></div>,
-        main: () => <h2></h2>
-    },
-
-
-    {
         path: '/withdraw',
         sidebar: () => <div><Withdraw /></div>,
         main: () => <h2></h2>
     },
 
+    {
+        path: '/Topup',
+        exact: true,
+        sidebar: () => <div><Topup /></div>,
+        main: () => <h2></h2>
+    },
 
     {
         path: '/istime',

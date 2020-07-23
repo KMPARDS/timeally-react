@@ -37,7 +37,9 @@ class Spilt extends Component {
                                            <input className="delegate-sm-box" type="text" id="owner" name="owner" placeholder="Enter your division Percentage here" />
                                            <div className="flex-span-chk">
                                            </div>
+                                           <div className="del-flex-right">
                                            <a className="btn  border-conv">Proceed</a>
+                                           </div>
                                         </div>
                                     </div>
                                 </div>

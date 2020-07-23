@@ -63,8 +63,8 @@ class IsstimeStack extends Component {
                             <th>Plan</th>
                             <th>Time</th>
                             <th>Estimated next benefit time</th>
-                            <th>Country</th>
-                            <th>Country</th>
+                            <th>Unclaimed Benefits</th>
+                            <th>Details</th>
                           </tr>
                           <tr>
                             <td>5</td>

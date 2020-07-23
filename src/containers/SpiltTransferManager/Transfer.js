@@ -28,7 +28,7 @@ class Transfer extends Component {
                                 <div className="wrapper-content-stack bg-white pinside10">
                                     <div className="row">
                                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <p className="spilt-link align-left">About Spilt</p>
+                                        <p className="spilt-link align-left">About Transfer</p>
                                             <p className="desc-split">For every transfer, there will be a charge depending on the anniversary of the stake. 3% for
                                             &#8804; 1 year, 2% for &#8804; 2 years, 1% for &#8804; 3 years, while &#62; 3 years there will not be any transfer
                                             charge, these charges collected will be burned.</p>
@@ -40,7 +40,11 @@ class Transfer extends Component {
                                            <div className="flex-span-chk">
                                            <p>Note:</p><p>ES 1 would be charged as a transaction charge</p>
                                            </div>
+
+                                           <div className="del-flex-right">
                                            <a class="btn btn-default main-btn-blue">Confirm</a>
+                                           </div>
+                                           
                                         </div>
                                     </div>
                                 </div>

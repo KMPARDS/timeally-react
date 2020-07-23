@@ -111,7 +111,7 @@ class LifeTime extends Component {
                 <div className="business-loan-sample bg-boxshadow">
                   <img className="loan-hnd-img" src="./images/loan.jpg" />
                   <div className="loan-products-content">
-                  <a href=""><h3 className="mt10">TimeAlly Loan</h3></a>
+                  <a href="/isstime-calculator"><h3 className="mt10">TimeAlly Loan</h3></a>
                   </div>
                 </div>
               </div>

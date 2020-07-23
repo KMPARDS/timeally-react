@@ -1,0 +1,20 @@
+.isstime-logo-img {
+    width: 250px;
+    height: 72px;
+}
+
+.black-head-txt.stake-hd{
+    margin-top: 20px;
+    color: #414346;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.btn.btn-default.main-btn-blue.view:focus{
+    background-color: #f51f8a;
+}
+
+.right-eligible{
+    display: flex;
+    justify-content: flex-end;
+}
