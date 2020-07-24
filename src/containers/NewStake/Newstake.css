@@ -10,11 +10,26 @@
     font-size: 22px;
 }
 
-.btn.btn-default.main-btn-blue.view:focus{
+.btn.btn-default.main-btn-blue.view:active{
     background-color: #f51f8a;
+    cursor: pointer;
 }
 
+
+
 .right-eligible{
+    margin-top:20px;
     display: flex;
     justify-content: flex-end;
+}
+
+.terms-box{
+    display: flex;
+    justify-content: left;
+    margin-left: 10px;
+}
+
+.chck-box{
+    margin-top: 5px;
+    margin-right: 3px;
 }

@@ -73,7 +73,7 @@ class Selectstake extends Component {
                                                 <td>67.89 ES
                                                 Go to view staking to
                             withdraw this benefit</td>
-                                                <td><a href="/stacking-id" className="btn btn-default main-btn-blue view">SELECT</a></td>
+                                                <td><a className="btn btn-default main-btn-blue view">SELECT</a></td>
                                             </tr>
 
                                             <tr>
@@ -85,7 +85,7 @@ class Selectstake extends Component {
                                                 <td>67.89 ES
                                                 Go to view staking to
                             withdraw this benefit</td>
-                                                <td><a href="/stacking-id" className="btn btn-default main-btn-blue view">SELECT</a></td>
+                                                <td><a className="btn btn-default main-btn-blue view">SELECT</a></td>
                                             </tr>
 
                                             <tr>
@@ -97,7 +97,7 @@ class Selectstake extends Component {
                                                 <td>67.89 ES
                                                 Go to view staking to
                             withdraw this benefit</td>
-                                                <td><a href="/stacking-id" className="btn btn-default main-btn-blue view">SELECT</a></td>
+                                                <td><a className="btn btn-default main-btn-blue view">SELECT</a></td>
                                             </tr>
 
                                             <tr>
@@ -109,7 +109,7 @@ class Selectstake extends Component {
                                                 <td>67.89 ES
                                                 Go to view staking to
                             withdraw this benefit</td>
-                                                <td><a href="/stacking-id" className="btn btn-default main-btn-blue view">SELECT</a></td>
+                                                <td><a className="btn btn-default main-btn-blue view">SELECT</a></td>
                                             </tr>
 
                                             <tr>
@@ -121,12 +121,12 @@ class Selectstake extends Component {
                                                 <td>67.89 ES
                                                 Go to view staking to
                                        withdraw this benefit</td>
-                                                <td><a href="/stacking-id" className="btn btn-default main-btn-blue view">SELECT</a></td>
+                                                <td><a className="btn btn-default main-btn-blue view">SELECT</a></td>
                                             </tr>
                                         </table>
                                     </div>
                                     <div className="right-eligible">
-                                    <Button className="pink-btn">CHECK LOAN ELIGIBILITY </Button>
+                                    <a href="/check-eligible"><Button className="pink-btn">CHECK LOAN ELIGIBILITY </Button></a>
                                     </div>
                                 </div>
                             </div>

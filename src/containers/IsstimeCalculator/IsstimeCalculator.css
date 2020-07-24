@@ -77,3 +77,12 @@
 .avail-container-margin{
     margin: 20px;
 }
+
+.lifetime-bgd{
+    margin: 0;
+    padding: 204px 0px 68px;
+    min-height: 464px;
+    border: none;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), rgba(0, 0, 0, 0.2) url(/images/frnds.jpg) no-repeat center;
+    background-size: cover;
+}

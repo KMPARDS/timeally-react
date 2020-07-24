@@ -21,7 +21,7 @@ class IsstimeCalculator extends Component {
   render() {
     return (
       <div>
-        <div className="page-header">
+        <div className="lifetime-bgd">
           <div className="container">
             <div className="row">
               <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">

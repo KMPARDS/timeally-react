@@ -113,6 +113,11 @@ Liquid Limit of new top-up contracts shall be added into the the master contract
                   </p>
                   </div>
                 </div>
+                <div className="terms-box">
+                <input className="chck-box" type="checkbox" name="terms" id="terms" onchange=""/>  I accept the above terms & conditions and wish to proceed further.
+                </div>
+
+
                 <div className="time-avail-flex">
                 <a href="/new-stake" class="btn btn-default main-btn-blue">Proceed</a>
                 </div>

@@ -151,6 +151,10 @@ th {
   margin-left: -12px;
 }
 
+a.stack-link:active {
+  border-bottom: 3px solid #fff;
+}
+
 .delegate-sm-box{
   background-color:#f4f6f8;
   border: 1px solid  rgba(213, 221, 234, 0.5);

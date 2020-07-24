@@ -1,9 +1,13 @@
 .spilt-link{
-    color: #263f8b !important;
+    color: #364369 !important;
     font-size: 18px;
     font-weight: 500;
 }
 
+
+a.spilt-link:active {
+    border-bottom: 2px solid #263f8b ;
+}
 .spilt-link.align-left{
 text-align: left;
 }

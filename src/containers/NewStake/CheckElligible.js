@@ -53,6 +53,7 @@ class CheckElligible extends Component {
                         <div className="row">
                             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div className="wrapper-content bg-white pinside10">
+                                <div className="avail-container-margin">
                                 <div className="row ">
                                                 <div className="col-md-6 col-lg-6 pdb30">
                                                     <h3 className="eligible-head">Check your eligibility for Loans</h3>
@@ -77,7 +78,7 @@ class CheckElligible extends Component {
                                                         <div className="value-box" >25</div>
                                                     </div>
                                                     <div className="check-btn-flex">
-                                                       <a href="/check-eligible"><Button className="pink-btn">CHECK ELIGIBILITY</Button> </a>
+                                                       <a href=""><Button className="pink-btn">CHECK ELIGIBILITY</Button> </a>
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6 col-lg-6 pdb30">
@@ -86,10 +87,12 @@ class CheckElligible extends Component {
                                                    <p className="align-eligible txt-eligible">You are Eligible for this loan </p>
                                                    <h1 className="align-eligible">ES 6520</h1>
                                                    <div className="avail-flex">
-                                                   <a className="btn btn-restake">AVAIL ISSTIME LOAN</a>
+                                                   <a href="/new-stake" className="btn btn-restake">AVAIL ISSTIME LOAN</a>
                                                    </div>
                                                 </div>
                                             </div>
+                               </div>
+                               
                                 </div>
                             </div>
                         </div>
