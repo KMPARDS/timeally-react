@@ -1587,10 +1587,7 @@ video {
   border: none ;
   font-weight: 600;
 }
-.banner-in-bg{
-  color:#fff;
-  width: 70%;
-}
+
 .banner-in-bg h1{
 font-size: 59px;
 line-height: 58px;
@@ -1600,7 +1597,7 @@ line-height: 58px;
   padding: 0;
   text-align: left;
 }
-.banner-con:{
+.banner-con{
   width: 50%;
   margin:0;
   padding: 0;
@@ -1612,6 +1609,7 @@ line-height: 58px;
 }
 .main-btn-blue {
     background-color: #263f8b !important;
+    color: #ffffff !important;
 }
 .hero-section::before{
    content: "";

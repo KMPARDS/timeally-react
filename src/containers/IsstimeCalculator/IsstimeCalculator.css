@@ -13,3 +13,76 @@
 .black-head-txt.bold-txt{
  font-weight: 600;
 }
+
+.mb20.align-left{
+ text-align:left;
+}
+
+.calc-faq-txt {
+    font-size: 21px;
+    color: #414346;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .align-left{
+      text-align:left;
+      font-weight: 400;
+  }
+
+  .clock-align{
+      display: flex;
+      justify-content: flex-start;
+      margin: 20px;
+  }
+
+  .clock-txt{
+      text-align: left;
+      color: #414346;
+      margin-bottom: 0px;
+      font-size: 14px;
+  }
+
+  .clock-head-ln{
+      font-size: 18px;
+      color: #414346;
+      text-align: left;
+      margin-bottom: 0px;
+      font-weight: 500;
+  }
+
+  .sm-clock-img{
+    width: 50px;
+    height: 50px;
+}
+
+.card-hero-section.margin-calc{
+ margin:15px -10px 15px -10px;
+ background-color: #15549a;
+}
+
+.time-avail-flex{
+    display:flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+  
+.avail-btm-border{
+    border-bottom: 1px solid #a7a7a7;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.avail-container-margin{
+    margin: 20px;
+}
+
+.lifetime-bgd{
+    margin: 0;
+    padding: 204px 0px 68px;
+    min-height: 464px;
+    border: none;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), rgba(0, 0, 0, 0.2) url(/images/frnds.jpg) no-repeat center;
+    background-size: cover;
+}
