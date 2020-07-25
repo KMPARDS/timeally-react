@@ -48,6 +48,9 @@ class IsstimeCalculator extends Component {
             </div>
           </div>
         </div>
+
+          {/* One lifetime Loan */}
+
         <div>
           <div className="container dashboard-bg">
             <div className="row">
@@ -113,7 +116,7 @@ class IsstimeCalculator extends Component {
                                 <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
                                   <Accordion.Toggle as={Card.Header} eventKey="1">
                                     Q-1. &nbsp; Can Stakers Transfer their TimeAlly 1LT Contracts to any other?
-                        </Accordion.Toggle>
+                                            </Accordion.Toggle>
                                   <Accordion.Collapse eventKey="1">
                                     <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
 
@@ -126,14 +129,14 @@ class IsstimeCalculator extends Component {
                                 <Card style={{ color: '#3c4d6b', marginBottom: '0px', fontWeight: '500', borderRight: '0px', borderLeft: '0px', borderTop: '1px solid #ccc', padding: '10px 0px 10px 30px' }}>
                                   <Accordion.Toggle as={Card.Header} eventKey="2">
                                     Q-2. &nbsp; Is there any charge for transferring staking?
-                        </Accordion.Toggle>
+                                   </Accordion.Toggle>
                                   <Accordion.Collapse eventKey="2">
                                     <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
 
                                       <p style={{ textAlign: 'left' }}> For every transfer, there will be a charge depending on the anniversary of
                                       the stake. 3% for less than and equal to 1 year, 2% for less than and equal to  2 years, 1% for less than and equal to 3 years, while 3
                                       years there will not be any transfer charge, these charges collected will be
-burned. </p>
+                                      burned. </p>
 
                                     </Card.Body>
                                   </Accordion.Collapse>
@@ -147,7 +150,7 @@ burned. </p>
                                     <Card.Body style={{ color: '#333', fontSize: '14px', fontWeight: '300' }}> <br></br><br></br>
 
                                       <p style={{ textAlign: 'left' }}>In case of transfer all unclaimed rewards are also transferred to the
-recipient</p>
+                                      recipient</p>
 
                                     </Card.Body>
                                   </Accordion.Collapse>
@@ -162,7 +165,7 @@ recipient</p>
 
                                       <p style={{ textAlign: 'left' }}>Every split will create a new contract on the current timestamp,
                                       unclaimed rewards shall remain in the initial contract. Hence it is not necessary
-to claim rewards before splitting.</p>
+                                       to claim rewards before splitting.</p>
 
                                     </Card.Body>
                                   </Accordion.Collapse>
@@ -388,7 +391,9 @@ new top-up contracts shall be added into the master contract.</p>
               </div>
             </div>
           </div>
+       
         </div>
+    
      </div>
     );
   }
